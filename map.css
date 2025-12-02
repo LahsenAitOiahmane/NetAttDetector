@@ -1,0 +1,22 @@
+/* network_attack_detection/
+│
+├── data/
+│   ├── data_loader.py
+│
+├── models/
+│   ├── base_model.py
+│   ├── bagging_random_forest.py
+│   ├── xgboost.py
+│   ├── pca_svm.py
+│   ├── isolation_forest.py
+│   ├── one_class_svm.py
+│   ├── extra_trees.py
+│   └── mlp_neural_network.py
+│
+├── utils/
+│   ├── logging_setup.py
+│   ├── plot_utils.py
+│
+├── main.py
+│
+└── requirements.txt */
