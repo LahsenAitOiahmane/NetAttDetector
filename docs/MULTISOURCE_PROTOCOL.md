@@ -1,6 +1,7 @@
 # Registered multi-source experiment protocol
 
-Registered on 29 October 2026 before inspecting the new CSE-CIC holdout. The initial UNSW
+Registered on 29 October 2026 before inspecting the new CSE-CIC holdout. Version 2 amends
+cleaning/grouping after the development-only audit and before candidate fitting. The initial UNSW
 and ToN transfer results are already known; both sources now become development data.
 The exact candidate grid and budgets are committed in `configs/multisource.json`.
 
@@ -15,12 +16,13 @@ The exact candidate grid and budgets are committed in `configs/multisource.json`
    definitions, not independently verified exporter parity or label ground truth.
 4. Compare the 40-feature contract with a preregistered 34-feature alternative excluding
    source/destination ports, TTL extrema, IP protocol and application-protocol identifiers.
-   Use this smallest feature set for duplicate/conflict grouping across every candidate and
-   split, so removing features cannot create identical model inputs across partitions.
-5. Exclude globally conflicting development fingerprints. Remove conflicting/duplicate
-   smallest-representation rows in the sample, retaining source counts before/after. Split
-   source/label strata 60% training, 15% calibration, 25% validation, with disjoint feature
-   groups. These are not host-, session- or time-held-out splits; explicitly report that limit.
+   Use this smallest feature set for grouping across development partitions, so removing
+   features cannot create identical model inputs across training/calibration/validation.
+5. Exclude globally conflicting **full 40-feature** fingerprints and repeated full-feature
+   rows in the sample. Retain ambiguous reduced-feature groups: they measure information
+   loss, not automatically incorrect labels. Use 20 stratified group folds over source/label
+   strata: folds 0–11 train, 12–14 calibrate, 15–19 validate. This approximates 60/15/25;
+   large groups can change row/class proportions. These are not host/session/time holdouts.
 6. Train the nine declared candidates sequentially with two threads. Compare equal-source
    weights with equal-source/class weights. Fit preprocessing only on training. Fit sigmoid
    calibration only on the separate calibration set. Compare calibrated and uncalibrated
@@ -35,9 +37,11 @@ The exact candidate grid and budgets are committed in `configs/multisource.json`
    validation leaderboard and threshold **before** reading new holdout flow records.
    Download/checksum/CRC verification before that freeze may inspect archive metadata only.
 9. Evaluate NF-CSE-CIC-IDS2018-v2 once, with a uniform cap of 200,000 and seed 4242.
-   Exclude smallest-feature fingerprints seen anywhere in the full development inputs,
-   not merely their samples. Remove within-sample conflicts/duplicates using the same
-   grouping. Report every exclusion and prevalence change. Compare the frozen new model
+   Exclude full-feature fingerprints seen anywhere in the full development inputs,
+   not merely their samples. Remove within-sample full-feature conflicts/duplicates.
+   Report reduced-representation overlaps/ambiguity without deleting them: distinct full
+   observations can legitimately share reduced measurements. Report exclusions/prevalence.
+   Compare the frozen new model
    and the original saved UNSW champion on these identical holdout rows in one evaluation.
 10. Report precision, recall, FPR, average precision, minority-family supports/recall,
     conditional Wilson 95% intervals, wall time, sampled process RSS, model size and warm
@@ -51,3 +55,13 @@ is assessed on the new source; real exporter parity and local shadow testing rem
 
 Calibration follows the primary [scikit-learn guidance](https://scikit-learn.org/stable/modules/calibration.html)
 on keeping classifier-fitting and calibration observations disjoint.
+
+## Development-only amendment rationale
+
+The first full audit found 7,429 rows in conflicting full-feature groups, but 10,090,679 rows
+in conflicting reduced-feature groups. Dropping ports/protocol/TTL collapses many distinct
+observations into the same feature state. Deleting those ambiguous states would remove hard
+cases and change the task substantially. Version 2 retains them, isolates those groups during
+development splitting, and restricts label-conflict exclusion to the full recorded representation.
+The first audit/cache is retained as diagnostic evidence; it is not the training cohort. No model
+candidate or new holdout result had been inspected when this amendment was registered.

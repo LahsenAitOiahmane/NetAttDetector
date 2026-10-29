@@ -1,5 +1,5 @@
 {
-  "protocol_version": 1,
+  "protocol_version": 2,
   "seed": 42,
   "rows_per_source": 100000,
   "chunk_rows": 50000,
