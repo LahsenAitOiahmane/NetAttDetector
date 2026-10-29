@@ -6,8 +6,12 @@ on:
       experiment:
         description: Experiment to reproduce
         type: choice
-        options: [baseline, multisource]
+        options: [baseline, multisource, export]
         default: baseline
+      source_run:
+        description: Existing multi-source run to export without refitting
+        type: string
+        default: '40972007019'
       profile:
         description: CPU budget profile
         type: choice
@@ -23,7 +27,7 @@ concurrency:
 
 jobs:
   train:
-    if: inputs.experiment != 'multisource'
+    if: inputs.experiment == 'baseline'
     runs-on: ubuntu-latest
     timeout-minutes: 45
     env:
@@ -121,4 +125,41 @@ jobs:
             data/processed/multisource/resources.json
             data/raw/*.manifest.json
             reports/local/
+          retention-days: 14
+  export:
+    if: inputs.experiment == 'export'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: read
+      actions: read
+    env:
+      SOURCE_RUN: ${{ inputs.source_run }}
+      GH_TOKEN: ${{ github.token }}
+      OMP_NUM_THREADS: '2'
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: '3.13'
+      - uses: astral-sh/setup-uv@68559e99cc807c1eb7e9238fd43a15bba460eec2 # v10.3.3
+        with:
+          version: '0.12.17'
+          enable-cache: true
+      - run: uv sync --frozen --extra dev --extra boosting
+      - run: uv run --no-sync pytest tests/test_portable.py
+      - name: Retrieve the original frozen artifact
+        shell: bash
+        run: |
+          [[ "$SOURCE_RUN" =~ ^[0-9]+$ ]]
+          gh run download "$SOURCE_RUN" --repo "$GITHUB_REPOSITORY" --dir artifacts/import
+      - name: Export existing trees, without training or threshold changes
+        shell: bash
+        run: uv run --no-sync netatt export-portable --model "artifacts/import/multisource-${SOURCE_RUN}/artifacts/multisource/model.joblib" --output artifacts/portable-cloud
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: portable-cloud-${{ github.run_id }}
+          path: artifacts/portable-cloud/
           retention-days: 14

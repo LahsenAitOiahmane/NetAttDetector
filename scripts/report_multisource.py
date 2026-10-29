@@ -15,12 +15,13 @@ def percent(value):
     return f"{100 * value:.2f}%"
 
 
-def render(prepared, run, output, holdout=None):
+def render(prepared, run, output, holdout=None, diagnostic=None):
     prepared, run, output = Path(prepared), Path(run), Path(output)
     audit = json.loads((prepared / "audit.json").read_text())
     diagnostics = json.loads((prepared / "diagnostics.json").read_text())
     freeze = json.loads((run / "freeze.json").read_text())
     report = json.loads(Path(holdout).read_text()) if holdout else None
+    extra = json.loads(Path(diagnostic).read_text()) if diagnostic else None
     figures = output.parent / "figures"
     figures.mkdir(parents=True, exist_ok=True)
     plt.rcParams.update({"font.size": 10, "axes.spines.top": False, "axes.spines.right": False})
@@ -42,10 +43,16 @@ def render(prepared, run, output, holdout=None):
         recall = min(m["attack_recall"] for m in record["by_source"].values())
         best_by_candidate[name] = max(best_by_candidate.get(name, 0), recall)
     names = list(best_by_candidate)
-    axes[1].barh(names[::-1], [best_by_candidate[n] for n in names[::-1]], color="#df813e")
+    axes[1].barh(
+        names[::-1],
+        [best_by_candidate[n] for n in names[::-1]],
+        color=[
+            "#147d92" if n == freeze["selected"]["spec"]["id"] else "#df813e" for n in names[::-1]
+        ],
+    )
     axes[1].set_xlim(0, 1)
     axes[1].set_xlabel("Worst-source validation recall (best calibration variant)")
-    axes[1].set_title("Development comparison; feasibility remains a separate requirement")
+    axes[1].set_title("Validation recall: selected candidate in teal")
     fig.savefig(figures / "multisource-development.png", dpi=150, facecolor="white")
     plt.close(fig)
 
@@ -60,6 +67,14 @@ def render(prepared, run, output, holdout=None):
     text += f"The bounded cohort contains {audit['cohort_rows']:,} rows after removing {audit['sample_global_conflict_rows_removed']:,} sampled rows in globally conflicting full groups and {audit['sample_repeated_full_rows_removed']:,} sampled full duplicates. Sampling then deduplicating changes prevalence; full counts and cohort counts are recorded in the audit JSON.\n\n"
     text += "Feature dictionaries have matching hashes where reported; this confirms identical supplied definitions, not independently measured exporter parity. KS and source-conditional label associations describe shift without proving causation. All numeric nonfinite/coercion/range counts are in the audit. Fingerprints use 64-bit hashes of float32 representations, with a small theoretical collision risk.\n\n"
     text += "## Development selection\n\n"
+    if extra:
+        text += "### Original-model dependence diagnosis\n\nOn a capped development diagnostic sample, shuffling MIN_TTL changed the original model's average precision as follows. Positive drops indicate measured dependence; negative drops indicate the shuffle improved ranking. This sample may overlap original baseline fitting and is not independent performance evidence.\n\n| Source | Mean AP drop when MIN_TTL is shuffled | Repeats |\n|---|---:|---:|\n"
+        for source, item in extra["permutation_importance"].items():
+            ttl = next(v for v in item["features"] if v["feature"] == "MIN_TTL")
+            text += f"| {source} | {ttl['mean_ap_drop']:.5f} | 3 |\n"
+        text += "\nThis supports a source-specific shortcut explanation alongside measured shift, but correlated predictors and unverified exporter semantics prevent a complete causal explanation. The primary [dataset paper, section 4](https://arxiv.org/html/2101.11315v2#S4) also excluded TTL from its UNSW experiments because of label association. Our frozen selected full-feature model still includes TTL and retains this limitation. Removing the six-field set did not meet the registered constraints in development. A targeted TTL-only ablation is a future experiment, not an unreported post-test model change.\n\n"
+        ambiguity = extra["reduced_representation_ambiguity"]
+        text += f"The development cohort has {ambiguity['ambiguous_groups']:,} reduced-feature groups containing both labels. Any deterministic classifier restricted to that representation must make at least {ambiguity['minimum_empirical_errors_for_a_deterministic_reduced_classifier']:,} errors on these recorded rows. This finite-cohort counting bound does not predict future-network performance.\n\n"
     text += f"Selected: **{freeze['selected']['id']}**, threshold `{freeze['selected']['threshold']}`. Constraints met in each development source: **{freeze['selected']['constraints_met_each_source']}**.\n\n"
     text += "| Candidate / calibration | Each-source constraints | Worst-source precision | Worst-source recall | Mean Brier | Fit seconds | Model bytes |\n|---|---|---:|---:|---:|---:|---:|\n"
     for r in records:
@@ -70,6 +85,12 @@ def render(prepared, run, output, holdout=None):
     text += (
         "![Source distributions and validation comparison](figures/multisource-development.png)\n\n"
     )
+    if extra:
+        text += "### Illustrative validation trade-offs\n\nThese thresholds were explored on validation after freezing, without changing the selected artifact or testing alternatives on CSE. They illustrate constraint costs and are not new independent test results.\n\n| Illustrative precision target | Feasible | Worst-source precision | Worst-source recall | Maximum source FPR |\n|---|---|---:|---:|---:|\n"
+        for item in extra["illustrative_validation_operating_points"]:
+            values = list(item["by_source"].values())
+            text += f"| {percent(item['precision_target'])} | {item['feasible']} | {percent(min(m['attack_precision'] for m in values))} | {percent(min(m['attack_recall'] for m in values))} | {percent(max(m['false_positive_rate'] for m in values))} |\n"
+        text += "\nOther support/FPR confidence constraints remain enforced. The illustrative precision lower bound is min(0.95, target−0.03). Operational trade-offs require an agreed local alert budget.\n\n"
     if report:
         text += "## Frozen independent CSE-CIC result\n\n"
         text += f"Scanned {report['profile']['rows_scanned']:,} fresh-source rows. Evaluated {report['evaluated_rows']:,} sampled, deduplicated rows, excluding {report['all_development_overlap_rows_excluded']:,} full-feature matches found anywhere in development. Reduced-representation overlaps and ambiguity are reported and retained.\n\n"
@@ -120,6 +141,7 @@ if __name__ == "__main__":
     parser.add_argument("--prepared", required=True)
     parser.add_argument("--run", required=True)
     parser.add_argument("--holdout")
+    parser.add_argument("--diagnostic")
     parser.add_argument("--output", required=True)
     args = parser.parse_args()
-    render(args.prepared, args.run, args.output, args.holdout)
+    render(args.prepared, args.run, args.output, args.holdout, args.diagnostic)

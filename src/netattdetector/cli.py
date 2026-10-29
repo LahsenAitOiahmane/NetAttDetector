@@ -68,10 +68,27 @@ def parser():
     frozen.add_argument("--data", required=True)
     frozen.add_argument("--baseline")
     frozen.add_argument("--output", required=True)
+    export = commands.add_parser(
+        "export-portable", help="Convert XGBoost serialization without refitting"
+    )
+    export.add_argument("--model", required=True)
+    export.add_argument("--output", required=True)
+    verify = commands.add_parser(
+        "verify-portable", help="Check a portable export's prediction probes"
+    )
+    verify.add_argument("path")
     return root
 
 
 def execute(args):
+    if args.command == "export-portable":
+        from netattdetector.portable import export_portable
+
+        return export_portable(args.model, args.output)
+    if args.command == "verify-portable":
+        from netattdetector.portable import verify_portable
+
+        return verify_portable(args.path)
     if args.command == "prepare-multisource":
         from netattdetector.audit import prepare_sources
         from netattdetector.multisource import load_protocol
