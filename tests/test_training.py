@@ -54,6 +54,18 @@ def test_legacy_artifact_is_rejected(tmp_path):
         load_bundle(path)
 
 
+def test_inference_honors_thread_budget(tmp_path, flows, monkeypatch):
+    model = make_model("extra_trees", TrainConfig(trees=5, threads=4))
+    model.fit(flows[FEATURES], flows["Label"])
+    monkeypatch.setattr(
+        "netattdetector.inference.load_bundle", lambda _: {"model": model, "threshold": 0.5}
+    )
+    data = tmp_path / "flows.csv"
+    flows.to_csv(data, index=False)
+    predict_csv(tmp_path / "trusted-model.joblib", data, tmp_path / "pred.csv", threads=1)
+    assert model.named_steps["classifier"].n_jobs == 1
+
+
 def test_same_dataset_cannot_be_external_holdout(tmp_path, flows):
     path = tmp_path / "flows.csv"
     flows.to_csv(path, index=False)

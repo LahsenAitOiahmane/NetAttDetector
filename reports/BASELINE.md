@@ -14,6 +14,9 @@ does not establish generalization across capture sessions, devices, time or depl
 Any external failure is reported alongside the in-domain result. Detailed results and acquisition
 records are appended once the corresponding runs finish.
 
+**Release assessment: do not deploy this champion.** The independent-source test below exposes
+severe transfer failure. The in-domain accuracy is not evidence of real-world readiness.
+
 ## Local experiment
 
 Command:
@@ -76,3 +79,54 @@ commit-bound reproduction. Model selection has not been changed in response to t
 Machine-readable evidence: [metrics](evidence/local-metrics.json),
 [data profile](evidence/local-data-profile.json),
 [download manifest](evidence/nf-unsw-nb15-v2.manifest.json).
+
+## Independent-source evaluation of the saved local champion
+
+Evaluated the already saved local model against NF-ToN-IoT-v2 without refitting any preprocessing,
+retraining the classifier, changing its threshold, or choosing a different candidate. The reference
+archive checksum was verified and its original seeded cohort regenerated for overlap checks.
+
+The complete second CSV contained 16,940,496 flows: 6,099,469 benign and 10,841,027 attack.
+The capped 200,000-row sample had two feature-equivalent rows with conflicting binary labels;
+both were excluded, along with 5,707 repeated feature rows. The remaining 194,291 flows had
+zero feature-hash overlap with the in-domain cohort. Labels were valid throughout the full scan.
+
+| Metric | In-domain random test | External ToN-IoT sample |
+|---|---:|---:|
+| Evaluated flows | 38,579 | 194,291 |
+| Attack prevalence | 3.28% | 63.52% |
+| Accuracy | 99.31% | 36.19% |
+| Attack precision | 97.17% | 29.94% |
+| Attack recall | 81.28% | **0.3314%** |
+| Average precision | 0.9801 | 0.5737 |
+| ROC AUC | 0.9995 | 0.3342 |
+| Benign FPR | 0.0804% | **1.3503%** |
+| False alarms / 10,000 benign flows | 8.04 | 135.03 |
+
+External confusion counts: 69,914 TN, 957 FP, 123,011 FN and 409 TP. Backdoor and ransomware
+had zero detected attacks in this sample; scanning, DDoS and DoS recall were also near zero.
+The external average precision is below its 0.6352 attack-prevalence baseline. This is not just
+a reassuringly high-ranking model with an inconvenient operating point.
+
+This demonstrates transfer failure under the stated protocol. It does **not** identify a single
+cause. Traffic/attack distribution differences, source-specific feature-label shortcuts, export
+semantics and label quality all require investigation. Shared feature names do not establish
+deployment compatibility. Do not lower the threshold using this test and report a new independent
+test success; that would turn the external source into development data.
+
+External evaluation took 210.91 seconds including the reference rescan and complete second
+source scan. Sampled peak process RSS was 342.1 MiB. The local model was unchanged.
+
+Machine-readable evidence: [external metrics, profile and slices](evidence/external-local.json),
+[second download manifest](evidence/nf-ton-iot-v2.manifest.json).
+The two archives total 201,997,602 bytes (192.64 MiB compressed) and 19,330,771 verified flows.
+Their data CSVs total about 3.12 GB uncompressed and remain compressed on disk.
+
+## Next experiment decision
+
+Keep this model as a reproducible baseline. Prioritize global conflict/duplicate checks,
+source/capture-aware splits, feature distribution and port/TTL/application-ID ablations, then
+development across multiple sources. Establish a **new** untouched source or local capture for
+evaluation before adapting to UNSW and ToN together. Tune and calibrate within development
+data; gate any next candidate on minority recall, uncertainty, local false alarms and exporter
+parity. A larger merged dataset or a neural network is not by itself a remedy.

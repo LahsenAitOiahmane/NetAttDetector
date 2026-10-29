@@ -16,7 +16,7 @@ def plot(metrics_path, profile_path, output):
     profile = json.loads(Path(profile_path).read_text(encoding="utf-8"))
     plt.rcParams.update({"font.size": 10, "axes.spines.top": False, "axes.spines.right": False})
     fig, axes = plt.subplots(2, 2, figsize=(14, 9), layout="constrained")
-    fig.suptitle("NetAttDetector — initial UNSW research baseline", fontsize=19, weight="bold")
+    fig.suptitle("NetAttDetector — initial research baseline", fontsize=19, weight="bold")
     counts = profile["full_attack_counts"]
     names = sorted(counts, key=counts.get)
     ax = axes[0, 0]
@@ -80,7 +80,7 @@ def plot(metrics_path, profile_path, output):
     )
     ax.set_xlim(0, 1.1)
     ax.set_xlabel("Binary attack recall; tiny supports are not reliable estimates")
-    ax.set_title("Attack-family errors hidden by 99.31% accuracy")
+    ax.set_title(f"Attack-family errors hidden by {report['test']['accuracy']:.2%} accuracy")
     output = Path(output)
     output.parent.mkdir(parents=True, exist_ok=True)
     fig.savefig(output, dpi=150, facecolor="white")

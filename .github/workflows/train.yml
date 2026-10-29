@@ -8,13 +8,6 @@ on:
         type: choice
         options: [laptop, benchmark]
         default: benchmark
-  push:
-    branches: [codex/modernize-nids-foundation]
-    paths:
-      - '.github/workflows/train.yml'
-      - 'src/**'
-      - 'configs/**'
-      - 'uv.lock'
 
 permissions:
   contents: read

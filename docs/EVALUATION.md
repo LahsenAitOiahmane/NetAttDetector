@@ -117,3 +117,8 @@ random split of known attack families.
 Pipeline and threshold rationale follows the primary scikit-learn guidance on
 [preprocessing and leakage](https://scikit-learn.org/stable/common_pitfalls.html) and
 [decision thresholds](https://scikit-learn.org/stable/modules/classification_threshold.html).
+
+The initial external failure also motivates reading Layeghy and Portmann's primary research,
+[On Generalisability of Machine Learning-based Network Intrusion Detection Systems](https://arxiv.org/abs/2205.04112).
+Their investigation links some transfer failures to feature-label relationships that change across
+sources. That is a hypothesis for our next audit, not proof of the cause of this particular result.

@@ -170,7 +170,12 @@ def make_model(name, config):
             random_state=config.seed,
         )
     elif name == "xgboost":
-        from xgboost import XGBClassifier
+        try:
+            from xgboost import XGBClassifier
+        except ImportError as error:
+            raise ValueError(
+                "XGBoost requested but not installed. Run uv sync --frozen --extra boosting."
+            ) from error
 
         estimator = XGBClassifier(
             n_estimators=config.boosting_iterations,

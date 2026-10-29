@@ -44,6 +44,28 @@ feature rows, and selected histogram boosting on validation. Test accuracy was 9
 a valid research result, not tuned away. Full acquisition, external evaluation and remote workflow
 outcomes are recorded in `reports/BASELINE.md` and appended below when verified.
 
+Completed both real acquisitions: 19,330,771 verified flows across two compressed archives,
+201,997,602 bytes in total. Download reuse passed the stored SHA-256 checks. Actual inference
+through `app/app.py` successfully classified 1,000 exported real flow rows with the saved local
+pipeline. Added an inference resource-budget regression check so a requested lower thread count
+also controls saved forest/XGBoost estimators; added a clear optional-XGBoost installation error.
+The supported test suite now has 24 passing tests, with lint and format checks passing locally.
+
+The frozen local champion failed independent-source evaluation: ToN attack recall 0.3314%,
+precision 29.94%, benign FPR 1.3503%, across 194,291 deduplicated sample rows. It scanned all
+16,940,496 source rows, excluded two conflicting feature rows and 5,707 duplicates in the capped
+sample, and found no overlap with the original cohort. No model or threshold was retuned.
+Recorded exact counts, provenance, runtime/RSS and attack slices. Updated release assessment
+to explicitly block deployment and prioritize generalization/feature audits. Root cause remains
+unproven. This failed test is part of the deliverable, not discarded evidence.
+
+The initial [GitHub CI run](https://github.com/LahsenAitOiahmane/NetAttDetector/actions/runs/40966748944)
+passed on Python 3.11 and 3.13 (23 tests at that source revision, plus synthetic smoke training).
+The initial real-data workflow runs against commit `e0a8352`; the temporary branch-push trigger
+was removed after launch, leaving the final research workflow manual-only. Figure generation
+used standard Matplotlib from JSON evidence; the optional analysis extra documents reproduction
+without adding plotting dependencies to the prediction runtime.
+
 ## Outstanding work
 
 This foundation does not complete the production roadmap. Global data audits, robust capture/time

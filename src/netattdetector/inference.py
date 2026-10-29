@@ -29,6 +29,9 @@ def predict_csv(model_path, input_path, output_path, chunk_rows=10_000, threads=
     if output.exists():
         raise ValueError("Prediction output already exists; choose a fresh path.")
     bundle = load_bundle(model_path)
+    classifier = bundle["model"].named_steps["classifier"]
+    if "n_jobs" in classifier.get_params(deep=False):
+        classifier.set_params(n_jobs=threads)
     output.parent.mkdir(parents=True, exist_ok=True)
     partial = output.with_name(output.name + ".part")
     rows = 0

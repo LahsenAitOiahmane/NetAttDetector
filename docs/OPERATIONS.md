@@ -38,8 +38,9 @@ hardware snapshot and download manifests for 14 days. It does not upload raw arc
 Each workflow has read-only repository permissions, SHA-pinned actions and concurrency limits.
 No secrets, deployment keys or paid GPU runner are required.
 
-The initial modernization branch has an automatic bounded training trigger so that the workflow
-can be exercised before merge. After merge, run it manually from Actions, or:
+A temporary branch-push trigger exercised the first bounded training run before merge. The
+final workflow is manual-only to avoid unnecessary downloads/training on source edits.
+After merge, run it manually from Actions, or:
 
 ```powershell
 gh workflow run train.yml --ref main -f profile=benchmark
@@ -48,8 +49,7 @@ gh run view RUN_ID
 gh run download RUN_ID --dir artifacts/github-RUN_ID
 ```
 
-Replace `RUN_ID` with an actual run ID. The branch trigger is intentionally limited; after the
-foundation merges, remove it if no longer needed. Do not enable daily full retraining until the
+Replace `RUN_ID` with an actual run ID. Do not enable daily full retraining until the
 data update process and a monitoring need exist. A green run means execution completed;
 `validation_constraints_met` and `test_constraints_met` still govern research interpretation.
 
@@ -58,6 +58,21 @@ for public repositories; private repositories and larger runners can have differ
 Review [current billing rules](https://docs.github.com/en/actions/concepts/billing-and-usage)
 before changing runner type or repository visibility. Artifact expiry is not long-term model
 archiving: preserve approved release evidence separately with its provenance.
+
+To evaluate an existing local champion without retraining it:
+
+```powershell
+uv run --no-sync python scripts/evaluate_external.py --model artifacts/baseline-local/model.joblib --reference-data data/raw/nf-unsw-nb15-v2.zip --external data/raw/nf-ton-iot-v2.zip --output reports/local/new-external-evaluation.json
+```
+
+This verifies the reference archive against the original report, regenerates its deterministic
+cohort to exclude overlap, and freezes the saved threshold. Repeating the same external source
+does not create fresh evidence of generalization. The initial external report is retained under
+`reports/evidence/`; do not adapt to it and continue calling it an independent holdout.
+
+Optional figure rendering uses `uv run --frozen --extra analysis python scripts/plot_report.py
+--metrics artifacts/baseline-local/metrics.json --profile artifacts/baseline-local/data-profile.json
+--output reports/local/benchmark.png` as a single command. The analysis extra is not an inference dependency.
 
 ## Files to preserve
 

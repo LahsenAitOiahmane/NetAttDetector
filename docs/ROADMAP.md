@@ -35,6 +35,11 @@ synthetic smoke test alone does not complete an ML quality story.
 The order below is the default priority. `Implemented` describes present code, not production
 acceptance. `Measured` requires a linked result. Remaining stories are not claimed complete.
 
+The initial external test detected only 0.33% of ToN attacks at the frozen UNSW threshold.
+That blocks deployment and makes NAD-013–016 the immediate priority. Before using ToN to
+improve a multi-source model, reserve a new independent source/capture. See the baseline report;
+the roadmap must not be read as an endorsement of the initial champion for live protection.
+
 | ID | Priority / points | Story and measurable acceptance | Dependencies | State |
 |---|---|---|---|---|
 | NAD-001 | P0 / 3 | Audit all original modules and artifact inventory; record missing data and misleading score limitations | — | Done: AUDIT.md |

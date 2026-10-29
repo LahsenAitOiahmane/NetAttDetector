@@ -1,0 +1,21 @@
+{
+  "dataset": "nf-ton-iot-v2",
+  "downloaded_at_utc": "2026-10-29T22:33:55.698181+00:00",
+  "source": "https://www.cyber.uq.edu.au/project/machine-learning-based-nids-datasets",
+  "record": "https://rdm.uq.edu.au/files/a4ad7080-ef9c-11ed-a964-b70596e96ad5",
+  "license_note": "Academic research with citation; commercial use requires author agreement.",
+  "publisher_reported_flows": 16940496,
+  "bytes": 168120179,
+  "sha256": "69dd3b8bd59e23f0718dfc69b2757cb6ca08fe2c4c1d4fd126b8bbd204bbbad2",
+  "publisher_checksum_verified": false,
+  "csv_members": [
+    {
+      "name": "9bafce9d380588c2_MOHANAD_A4706/data/NF-ToN-IoT-v2.csv",
+      "bytes": 2676491000
+    },
+    {
+      "name": "9bafce9d380588c2_MOHANAD_A4706/data/NetFlow_v2_Features.csv",
+      "bytes": 2115
+    }
+  ]
+}
