@@ -1,4 +1,5 @@
 import io
+import threading
 import zipfile
 
 import pytest
@@ -46,3 +47,26 @@ def test_budget_refuses_before_full_transfer(tmp_path, monkeypatch):
     with pytest.raises(ValueError, match="exceeds limit"):
         datasets.download("nf-unsw-nb15-v2", tmp_path, max_mib=1)
     assert not list(tmp_path.glob("*.zip"))
+
+
+def test_parallel_ranges_are_written_in_order(tmp_path, monkeypatch):
+    buffer = io.BytesIO()
+    with zipfile.ZipFile(buffer, "w") as archive:
+        archive.writestr("flows.csv", "Label,Attack\n" + "0,Benign\n" * 250000)
+    payload = buffer.getvalue()
+    second_started = threading.Event()
+    monkeypatch.setattr(datasets, "resolve_download", lambda _: "https://example.invalid/archive")
+
+    def fake_open(url, headers=None):
+        first, last = map(int, headers["Range"].removeprefix("bytes=").split("-"))
+        if first == 2**20:
+            second_started.set()
+        elif first == 0 and last > 0:
+            assert second_started.wait(2)
+        return Response(
+            payload[first : last + 1], {"Content-Range": f"bytes {first}-{last}/{len(payload)}"}
+        )
+
+    monkeypatch.setattr(datasets, "open_url", fake_open)
+    datasets.download("nf-unsw-nb15-v2", tmp_path, max_mib=4, block_mib=1, workers=2)
+    assert (tmp_path / "nf-unsw-nb15-v2.zip").read_bytes() == payload

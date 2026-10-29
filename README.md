@@ -11,6 +11,10 @@ The initial champion reached 99.31% accuracy on its random UNSW holdout but dete
 0.33% of attacks on the independent ToN-IoT sample. **It is unsuitable for deployment.**
 The [model card](reports/BASELINE.md) retains this failure and explains the next work priorities.
 
+The next experiment implements global development-data auditing, source-aware weighting,
+grouped train/calibration/validation partitions, feature ablations and an untouched CSE-CIC
+source test. Its preregistered rules are in [the multi-source protocol](docs/MULTISOURCE_PROTOCOL.md).
+
 ## What changed
 
 - A versioned feature contract replaces hand-built packet placeholders.

@@ -85,6 +85,43 @@ Created [draft PR #1](https://github.com/LahsenAitOiahmane/NetAttDetector/pull/1
 problem statement, implementation summary, validation links, measured failures and remaining
 release gates. All changes are on `codex/modernize-nids-foundation`; `main` is awaiting review.
 
+## 29 October 2026 — multi-source development and registered fresh-source test
+
+The user authorized the next experiment. PR #1 had been merged, so this phase starts from
+`origin/main` at `0b090f2` on `codex/multisource-generalization`. Registered the initial protocol
+in commit `899de37`, then amended it in `f94cbaa` using development-only audit evidence before
+any candidate fitting or fresh holdout inspection. CSE-CIC-IDS2018-v2 is reserved for the final
+frozen test. Its 612,059,380-byte archive exceeds the old 512 MiB budget; the explicit acquisition
+budget is 768 MiB with ample disk headroom. Transfer uses two workers and bounded 4 MiB blocks.
+
+Audited every one of 19,330,771 development rows with disk partitions. Full 40-feature
+representations had 5,310,377 repeated rows and 2,542 conflicting groups containing 7,429 rows.
+Only one full-feature group was shared across both sources. Both supplied feature dictionaries
+have SHA-256 `f20e86a939f9eb53b06ace15de4cc977ed61c02e538c6465efe72b635448e939`.
+No binary-label versus benign/attack-name disagreements or tested port/protocol/TTL range errors
+were found. ToN has 216 nonfinite/coerced values in the two per-second byte fields (105/111).
+These remain training-imputed missing values, not fabricated zeros.
+
+The reduced representation produced ambiguous groups containing 10,090,679 raw rows. These
+are not automatically label mistakes: losing measurements can collapse different observations.
+The registered amendment retains reduced ambiguity, isolates its groups across development
+partitions, and restricts conflict/duplicate deletion to the full representation. The initial
+overcleaned 29,179-row cache is retained for diagnosis and is not used for fitting.
+
+The corrected cache contains 195,894 rows, removing 55 sampled rows from globally conflicting
+full groups and 4,051 sampled full duplicates. Source/label counts: UNSW benign 94,350 / attack
+3,291; ToN benign 35,704 / attack 62,549. The corrected full preparation took 387.46 seconds
+and sampled peak process RSS 365.7 MiB. Conditional benign-source KS distances reach 0.907
+for source-to-destination average throughput, showing substantial measured distribution shift.
+This supports investigating transfer failure but does not by itself prove a causal explanation.
+
+Implemented globally checked reusable caches, group-stratified train/calibration/validation,
+equal-source/class weighting, nine declared model/feature/weight variants, sigmoid calibration
+on disjoint data through FrozenEstimator, per-source confidence/support constraints, immutable
+model/index/protocol bindings, and exclusive holdout-access receipts. Version-2 bundles support
+the selected ordered feature subset and calibrated inference while retaining version-1 support.
+Exact selection, holdout and reproduction outcomes are recorded in the phase-2 report when run.
+
 ## Outstanding work
 
 This foundation does not complete the production roadmap. Global data audits, robust capture/time

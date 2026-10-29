@@ -56,6 +56,9 @@ is assessed on the new source; real exporter parity and local shadow testing rem
 Calibration follows the primary [scikit-learn guidance](https://scikit-learn.org/stable/modules/calibration.html)
 on keeping classifier-fitting and calibration observations disjoint.
 
+Candidate names use `stable` as shorthand for the predefined reduced feature set. The name
+does not establish domain invariance; that remains a hypothesis tested by the comparison.
+
 ## Development-only amendment rationale
 
 The first full audit found 7,429 rows in conflicting full-feature groups, but 10,090,679 rows
