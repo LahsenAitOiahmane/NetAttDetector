@@ -1,0 +1,142 @@
+{
+  "model_sha256": "7f0fe9da3b0296c7ec243e280e48212d4361ed886fe410c3f3736bcf33f4a525",
+  "reference_data_sha256": "0e42c11dc9799a1e0851ff0b98c2ed1b47c56331a6eb99ba14c800cfe94d03ed",
+  "profile": {
+    "input": "data\\raw\\nf-ton-iot-v2.zip",
+    "sha256": "69dd3b8bd59e23f0718dfc69b2757cb6ca08fe2c4c1d4fd126b8bbd204bbbad2",
+    "member": null,
+    "schema": "uq-netflow-v2-numeric-1",
+    "rows_scanned": 16940496,
+    "invalid_label_rows": 0,
+    "full_label_counts": {
+      "0": 6099469,
+      "1": 10841027
+    },
+    "full_attack_counts": {
+      "Benign": 6099469,
+      "backdoor": 16809,
+      "ddos": 2026234,
+      "dos": 712609,
+      "injection": 684465,
+      "mitm": 7723,
+      "password": 1153323,
+      "ransomware": 3425,
+      "scanning": 3781419,
+      "xss": 2455020
+    },
+    "sampling": "uniform random priorities over all valid rows; no class rebalancing",
+    "seed": 42,
+    "requested_max_rows": 200000,
+    "sample_rows_before_deduplication": 200000,
+    "conflicting_feature_rows_removed": 2,
+    "duplicate_feature_rows_removed": 5707,
+    "sample_rows": 194291,
+    "sample_label_counts": {
+      "0": 70871,
+      "1": 123420
+    },
+    "sample_attack_counts": {
+      "Benign": 70871,
+      "scanning": 40960,
+      "xss": 28749,
+      "ddos": 23634,
+      "password": 13435,
+      "injection": 8229,
+      "dos": 8107,
+      "backdoor": 192,
+      "mitm": 78,
+      "ransomware": 36
+    },
+    "duplicate_scope": "bounded sample, not full archive; float32 feature fingerprints"
+  },
+  "overlapping_feature_rows_excluded": 0,
+  "threshold_policy": "saved in-domain validation threshold; no fitting or tuning",
+  "metrics": {
+    "rows": 194291,
+    "attack_prevalence": 0.6352327179334092,
+    "threshold": 0.9957466410915312,
+    "accuracy": 0.36194677056580077,
+    "balanced_accuracy": 0.4949052399693815,
+    "attack_precision": 0.29941434846266474,
+    "attack_recall": 0.003313887538486469,
+    "attack_f1": 0.006555222540990175,
+    "macro_f1": 0.26830816518336714,
+    "average_precision": 0.5737468688435332,
+    "roc_auc": 0.33421871107227463,
+    "brier_score": 0.48227612008150267,
+    "false_positive_rate": 0.013503407599723441,
+    "false_alarms_per_10000_benign_flows": 135.03407599723442,
+    "confusion_matrix": {
+      "tn": 69914,
+      "fp": 957,
+      "fn": 123011,
+      "tp": 409
+    }
+  },
+  "attack_slices": {
+    "Benign": {
+      "support": 70871,
+      "attack_rows": 0,
+      "attack_recall": null,
+      "benign_false_positive_rate": 0.013503407599723441
+    },
+    "backdoor": {
+      "support": 192,
+      "attack_rows": 192,
+      "attack_recall": 0.0,
+      "benign_false_positive_rate": null
+    },
+    "ddos": {
+      "support": 23634,
+      "attack_rows": 23634,
+      "attack_recall": 8.462384700008462e-05,
+      "benign_false_positive_rate": null
+    },
+    "dos": {
+      "support": 8107,
+      "attack_rows": 8107,
+      "attack_recall": 0.00012335019119279634,
+      "benign_false_positive_rate": null
+    },
+    "injection": {
+      "support": 8229,
+      "attack_rows": 8229,
+      "attack_recall": 0.001336735933892332,
+      "benign_false_positive_rate": null
+    },
+    "mitm": {
+      "support": 78,
+      "attack_rows": 78,
+      "attack_recall": 0.02564102564102564,
+      "benign_false_positive_rate": null
+    },
+    "password": {
+      "support": 13435,
+      "attack_rows": 13435,
+      "attack_recall": 0.02776330480089319,
+      "benign_false_positive_rate": null
+    },
+    "ransomware": {
+      "support": 36,
+      "attack_rows": 36,
+      "attack_recall": 0.0,
+      "benign_false_positive_rate": null
+    },
+    "scanning": {
+      "support": 40960,
+      "attack_rows": 40960,
+      "attack_recall": 4.8828125e-05,
+      "benign_false_positive_rate": null
+    },
+    "xss": {
+      "support": 28749,
+      "attack_rows": 28749,
+      "attack_recall": 0.0006261087342168423,
+      "benign_false_positive_rate": null
+    }
+  },
+  "resources": {
+    "wall_seconds": 210.90719120000722,
+    "sampled_peak_process_rss_mib": 342.09765625
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "dataset": "nf-unsw-nb15-v2",
+  "downloaded_at_utc": "2026-10-29T22:22:35.839383+00:00",
+  "source": "https://www.cyber.uq.edu.au/project/machine-learning-based-nids-datasets",
+  "record": "https://rdm.uq.edu.au/files/8c6e2a00-ef9c-11ed-827d-e762de186848",
+  "license_note": "Academic research with citation; commercial use requires author agreement.",
+  "publisher_reported_flows": 2390275,
+  "bytes": 33877423,
+  "sha256": "0e42c11dc9799a1e0851ff0b98c2ed1b47c56331a6eb99ba14c800cfe94d03ed",
+  "publisher_checksum_verified": false,
+  "csv_members": [
+    {
+      "name": "fe6cb615d161452c_MOHANAD_A4706/data/NF-UNSW-NB15-v2.csv",
+      "bytes": 441867785
+    },
+    {
+      "name": "fe6cb615d161452c_MOHANAD_A4706/data/NetFlow_v2_Features.csv",
+      "bytes": 2115
+    }
+  ]
+}
