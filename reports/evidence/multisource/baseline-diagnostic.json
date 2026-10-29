@@ -1,0 +1,758 @@
+{
+  "scope": "development-only diagnostic; sample may overlap original baseline fitting; not independent performance evidence or causal proof",
+  "source_cache_sha256": "6b66aecfbe5a32f34ac2fb88d0c6f29d9de8a1ab29170fa85a9548abcb17164f",
+  "baseline_sha256": "7f0fe9da3b0296c7ec243e280e48212d4361ed886fe410c3f3736bcf33f4a525",
+  "frozen_model_sha256": "aa08786a5ba1f50c944b71adc19ba12a90c7202f64a5f890ec5554303ea87f42",
+  "permutation_importance": {
+    "ton": {
+      "rows": 5000,
+      "attack_rows": 3228,
+      "average_precision": 0.590960482899054,
+      "features": [
+        {
+          "feature": "SHORTEST_FLOW_PKT",
+          "mean_ap_drop": 0.04796783824490969,
+          "std_ap_drop": 0.0005470203524389144
+        },
+        {
+          "feature": "NUM_PKTS_UP_TO_128_BYTES",
+          "mean_ap_drop": 0.03294362305708076,
+          "std_ap_drop": 0.0017814512695645437
+        },
+        {
+          "feature": "L4_DST_PORT",
+          "mean_ap_drop": 0.023651081015224357,
+          "std_ap_drop": 0.004185071239401437
+        },
+        {
+          "feature": "OUT_BYTES",
+          "mean_ap_drop": 0.02137173124259147,
+          "std_ap_drop": 0.001637170416025584
+        },
+        {
+          "feature": "L7_PROTO",
+          "mean_ap_drop": 0.01715305755605645,
+          "std_ap_drop": 0.0014232289891746696
+        },
+        {
+          "feature": "LONGEST_FLOW_PKT",
+          "mean_ap_drop": 0.016916342856974336,
+          "std_ap_drop": 0.0006850975868184185
+        },
+        {
+          "feature": "L4_SRC_PORT",
+          "mean_ap_drop": 0.013965055037537569,
+          "std_ap_drop": 0.0011401750257422553
+        },
+        {
+          "feature": "SRC_TO_DST_AVG_THROUGHPUT",
+          "mean_ap_drop": 0.011563571593428579,
+          "std_ap_drop": 0.00230397111308578
+        },
+        {
+          "feature": "DST_TO_SRC_SECOND_BYTES",
+          "mean_ap_drop": 0.009167842546672245,
+          "std_ap_drop": 0.000455300776264048
+        },
+        {
+          "feature": "SRC_TO_DST_SECOND_BYTES",
+          "mean_ap_drop": 0.00816379205482413,
+          "std_ap_drop": 0.0005981993848786356
+        },
+        {
+          "feature": "DNS_QUERY_TYPE",
+          "mean_ap_drop": 0.007645714004170356,
+          "std_ap_drop": 0.0012012668552833481
+        },
+        {
+          "feature": "TCP_FLAGS",
+          "mean_ap_drop": 0.007580557436396962,
+          "std_ap_drop": 0.0005569657813062902
+        },
+        {
+          "feature": "DNS_TTL_ANSWER",
+          "mean_ap_drop": 0.005693975386448151,
+          "std_ap_drop": 0.0005787287099331321
+        },
+        {
+          "feature": "IN_PKTS",
+          "mean_ap_drop": 0.004679450060901054,
+          "std_ap_drop": 0.0006606498009423377
+        },
+        {
+          "feature": "DST_TO_SRC_AVG_THROUGHPUT",
+          "mean_ap_drop": 0.004248595028820838,
+          "std_ap_drop": 0.0004956684353144311
+        },
+        {
+          "feature": "DURATION_IN",
+          "mean_ap_drop": 0.004180227640205092,
+          "std_ap_drop": 0.0003605405596042488
+        },
+        {
+          "feature": "MIN_IP_PKT_LEN",
+          "mean_ap_drop": 0.0030835393314855297,
+          "std_ap_drop": 0.0019447023362947813
+        },
+        {
+          "feature": "CLIENT_TCP_FLAGS",
+          "mean_ap_drop": 0.0017947474643714711,
+          "std_ap_drop": 0.0006532374905732633
+        },
+        {
+          "feature": "ICMP_IPV4_TYPE",
+          "mean_ap_drop": 0.001059751770476199,
+          "std_ap_drop": 0.0002336857730168958
+        },
+        {
+          "feature": "ICMP_TYPE",
+          "mean_ap_drop": 0.00040494340520221456,
+          "std_ap_drop": 0.00021106266536303835
+        },
+        {
+          "feature": "FLOW_DURATION_MILLISECONDS",
+          "mean_ap_drop": 0.00017575468038070566,
+          "std_ap_drop": 0.0008286528997410415
+        },
+        {
+          "feature": "DURATION_OUT",
+          "mean_ap_drop": 5.5345531479344956e-05,
+          "std_ap_drop": 5.295512602207472e-05
+        },
+        {
+          "feature": "RETRANSMITTED_IN_BYTES",
+          "mean_ap_drop": 2.5648108012458575e-05,
+          "std_ap_drop": 6.781674241510371e-05
+        },
+        {
+          "feature": "NUM_PKTS_128_TO_256_BYTES",
+          "mean_ap_drop": 4.126541639319174e-06,
+          "std_ap_drop": 2.630495933264944e-07
+        },
+        {
+          "feature": "MAX_TTL",
+          "mean_ap_drop": 0.0,
+          "std_ap_drop": 0.0
+        },
+        {
+          "feature": "MAX_IP_PKT_LEN",
+          "mean_ap_drop": 0.0,
+          "std_ap_drop": 0.0
+        },
+        {
+          "feature": "NUM_PKTS_512_TO_1024_BYTES",
+          "mean_ap_drop": 0.0,
+          "std_ap_drop": 0.0
+        },
+        {
+          "feature": "NUM_PKTS_1024_TO_1514_BYTES",
+          "mean_ap_drop": 0.0,
+          "std_ap_drop": 0.0
+        },
+        {
+          "feature": "FTP_COMMAND_RET_CODE",
+          "mean_ap_drop": 0.0,
+          "std_ap_drop": 0.0
+        },
+        {
+          "feature": "RETRANSMITTED_OUT_PKTS",
+          "mean_ap_drop": -1.1472467283576056e-07,
+          "std_ap_drop": 1.622451882631488e-07
+        },
+        {
+          "feature": "RETRANSMITTED_IN_PKTS",
+          "mean_ap_drop": -2.576380864945567e-07,
+          "std_ap_drop": 1.9883323773011781e-07
+        },
+        {
+          "feature": "NUM_PKTS_256_TO_512_BYTES",
+          "mean_ap_drop": -9.247123768559481e-06,
+          "std_ap_drop": 3.826920506387505e-06
+        },
+        {
+          "feature": "RETRANSMITTED_OUT_BYTES",
+          "mean_ap_drop": -1.406138529029081e-05,
+          "std_ap_drop": 6.048804190319671e-05
+        },
+        {
+          "feature": "OUT_PKTS",
+          "mean_ap_drop": -2.2224924847824568e-05,
+          "std_ap_drop": 1.0206607295220429e-05
+        },
+        {
+          "feature": "PROTOCOL",
+          "mean_ap_drop": -0.0001386988603782798,
+          "std_ap_drop": 0.0001165940264435589
+        },
+        {
+          "feature": "SERVER_TCP_FLAGS",
+          "mean_ap_drop": -0.0024677317592211403,
+          "std_ap_drop": 0.001190979465557266
+        },
+        {
+          "feature": "IN_BYTES",
+          "mean_ap_drop": -0.004559791046781984,
+          "std_ap_drop": 0.0008327782898310017
+        },
+        {
+          "feature": "MIN_TTL",
+          "mean_ap_drop": -0.01992242007802525,
+          "std_ap_drop": 0.0033733875337063797
+        },
+        {
+          "feature": "TCP_WIN_MAX_OUT",
+          "mean_ap_drop": -0.03487857743262679,
+          "std_ap_drop": 0.0016161111009999891
+        },
+        {
+          "feature": "TCP_WIN_MAX_IN",
+          "mean_ap_drop": -0.12985747876956114,
+          "std_ap_drop": 0.0014595178138773056
+        }
+      ]
+    },
+    "unsw": {
+      "rows": 5000,
+      "attack_rows": 170,
+      "average_precision": 0.9978531710359848,
+      "features": [
+        {
+          "feature": "MIN_TTL",
+          "mean_ap_drop": 0.6962675818327785,
+          "std_ap_drop": 0.01550613823738543
+        },
+        {
+          "feature": "TCP_WIN_MAX_IN",
+          "mean_ap_drop": 0.01825759458780407,
+          "std_ap_drop": 0.0047079072350065775
+        },
+        {
+          "feature": "L4_DST_PORT",
+          "mean_ap_drop": 0.013268571635126588,
+          "std_ap_drop": 0.0008520742302562854
+        },
+        {
+          "feature": "ICMP_IPV4_TYPE",
+          "mean_ap_drop": 0.003790208354627622,
+          "std_ap_drop": 2.2106488275678995e-05
+        },
+        {
+          "feature": "TCP_WIN_MAX_OUT",
+          "mean_ap_drop": 0.002744306476519539,
+          "std_ap_drop": 0.0004156937534109715
+        },
+        {
+          "feature": "LONGEST_FLOW_PKT",
+          "mean_ap_drop": 0.0010285611466438471,
+          "std_ap_drop": 0.00031816102611328283
+        },
+        {
+          "feature": "DST_TO_SRC_SECOND_BYTES",
+          "mean_ap_drop": 0.0009249277322903223,
+          "std_ap_drop": 0.0009500148514246465
+        },
+        {
+          "feature": "L4_SRC_PORT",
+          "mean_ap_drop": 0.0007614013014055251,
+          "std_ap_drop": 0.00011323369606611061
+        },
+        {
+          "feature": "IN_BYTES",
+          "mean_ap_drop": 0.0006476484244173722,
+          "std_ap_drop": 3.2393163469234574e-05
+        },
+        {
+          "feature": "NUM_PKTS_UP_TO_128_BYTES",
+          "mean_ap_drop": 0.0006180663904004439,
+          "std_ap_drop": 0.00012903104801418854
+        },
+        {
+          "feature": "TCP_FLAGS",
+          "mean_ap_drop": 0.0006028418786700648,
+          "std_ap_drop": 0.00029917156079089705
+        },
+        {
+          "feature": "OUT_BYTES",
+          "mean_ap_drop": 0.0005020430469371284,
+          "std_ap_drop": 0.00039845392718288543
+        },
+        {
+          "feature": "ICMP_TYPE",
+          "mean_ap_drop": 0.00029814892095103573,
+          "std_ap_drop": 0.00011255518828880482
+        },
+        {
+          "feature": "FLOW_DURATION_MILLISECONDS",
+          "mean_ap_drop": 0.00024181583306448484,
+          "std_ap_drop": 6.914946058528952e-05
+        },
+        {
+          "feature": "RETRANSMITTED_IN_BYTES",
+          "mean_ap_drop": 0.0001451698796462638,
+          "std_ap_drop": 0.00016481238714650688
+        },
+        {
+          "feature": "DNS_QUERY_TYPE",
+          "mean_ap_drop": 0.00013926877425403847,
+          "std_ap_drop": 0.00026593746853391305
+        },
+        {
+          "feature": "RETRANSMITTED_OUT_PKTS",
+          "mean_ap_drop": 0.0001292606381348982,
+          "std_ap_drop": 9.740351779930372e-05
+        },
+        {
+          "feature": "SERVER_TCP_FLAGS",
+          "mean_ap_drop": 9.804939564791078e-05,
+          "std_ap_drop": 0.0005546324519232073
+        },
+        {
+          "feature": "OUT_PKTS",
+          "mean_ap_drop": 9.201786960522096e-05,
+          "std_ap_drop": 0.00015628055124133894
+        },
+        {
+          "feature": "RETRANSMITTED_IN_PKTS",
+          "mean_ap_drop": 6.586938558509707e-05,
+          "std_ap_drop": 6.171734953739303e-05
+        },
+        {
+          "feature": "NUM_PKTS_512_TO_1024_BYTES",
+          "mean_ap_drop": 5.465667230379149e-05,
+          "std_ap_drop": 3.864810362310192e-05
+        },
+        {
+          "feature": "SHORTEST_FLOW_PKT",
+          "mean_ap_drop": 5.461214585851989e-05,
+          "std_ap_drop": 3.864810362310192e-05
+        },
+        {
+          "feature": "MIN_IP_PKT_LEN",
+          "mean_ap_drop": 4.9939362479286174e-05,
+          "std_ap_drop": 5.4739072842860906e-05
+        },
+        {
+          "feature": "MAX_TTL",
+          "mean_ap_drop": 4.0849673202725256e-05,
+          "std_ap_drop": 0.0
+        },
+        {
+          "feature": "NUM_PKTS_128_TO_256_BYTES",
+          "mean_ap_drop": 4.0849673202725256e-05,
+          "std_ap_drop": 0.0
+        },
+        {
+          "feature": "DURATION_OUT",
+          "mean_ap_drop": 3.676177898914723e-05,
+          "std_ap_drop": 0.0
+        },
+        {
+          "feature": "SRC_TO_DST_AVG_THROUGHPUT",
+          "mean_ap_drop": 3.345522198872075e-05,
+          "std_ap_drop": 0.00021507297181999242
+        },
+        {
+          "feature": "DST_TO_SRC_AVG_THROUGHPUT",
+          "mean_ap_drop": 1.8828966389383694e-05,
+          "std_ap_drop": 0.00020972757914955505
+        },
+        {
+          "feature": "SRC_TO_DST_SECOND_BYTES",
+          "mean_ap_drop": 1.476660569369829e-05,
+          "std_ap_drop": 0.0002995684525540034
+        },
+        {
+          "feature": "DURATION_IN",
+          "mean_ap_drop": 1.3616557734167737e-05,
+          "std_ap_drop": 1.9256720620496275e-05
+        },
+        {
+          "feature": "IN_PKTS",
+          "mean_ap_drop": 1.3559352536921901e-05,
+          "std_ap_drop": 6.22256386578674e-05
+        },
+        {
+          "feature": "NUM_PKTS_1024_TO_1514_BYTES",
+          "mean_ap_drop": 1.1264223611751056e-05,
+          "std_ap_drop": 1.5930017801184583e-05
+        },
+        {
+          "feature": "MAX_IP_PKT_LEN",
+          "mean_ap_drop": 0.0,
+          "std_ap_drop": 0.0
+        },
+        {
+          "feature": "DNS_TTL_ANSWER",
+          "mean_ap_drop": 0.0,
+          "std_ap_drop": 0.0
+        },
+        {
+          "feature": "FTP_COMMAND_RET_CODE",
+          "mean_ap_drop": 0.0,
+          "std_ap_drop": 0.0
+        },
+        {
+          "feature": "PROTOCOL",
+          "mean_ap_drop": -8.209306234796543e-06,
+          "std_ap_drop": 7.571811281875946e-05
+        },
+        {
+          "feature": "NUM_PKTS_256_TO_512_BYTES",
+          "mean_ap_drop": -1.6887000714153427e-05,
+          "std_ap_drop": 4.05520000764903e-05
+        },
+        {
+          "feature": "CLIENT_TCP_FLAGS",
+          "mean_ap_drop": -4.0688491182105935e-05,
+          "std_ap_drop": 0.00022255284827275122
+        },
+        {
+          "feature": "L7_PROTO",
+          "mean_ap_drop": -5.617043337883635e-05,
+          "std_ap_drop": 0.00013710694342852935
+        },
+        {
+          "feature": "RETRANSMITTED_OUT_BYTES",
+          "mean_ap_drop": -0.00023744686803543283,
+          "std_ap_drop": 0.0007023701910099555
+        }
+      ]
+    }
+  },
+  "illustrative_validation_operating_points": [
+    {
+      "precision_target": 0.8,
+      "feasible": true,
+      "threshold": 0.9889190793037415,
+      "by_source": {
+        "ton": {
+          "rows": 20731,
+          "attack_prevalence": 0.8300612609136077,
+          "threshold": 0.9889190793037415,
+          "accuracy": 0.6897882398340649,
+          "balanced_accuracy": 0.812123423374562,
+          "attack_precision": 0.9991662806855025,
+          "attack_recall": 0.6268014876801488,
+          "attack_f1": 0.7703460343534622,
+          "macro_f1": 0.6462622511465654,
+          "average_precision": 0.9917185574666206,
+          "roc_auc": 0.9582754765027535,
+          "brier_score": 0.06462147831916809,
+          "false_positive_rate": 0.002554640931024695,
+          "false_alarms_per_10000_benign_flows": 25.546409310246947,
+          "confusion_matrix": {
+            "tn": 3514,
+            "fp": 9,
+            "fn": 6422,
+            "tp": 10786
+          },
+          "conditional_wilson_95": {
+            "attack_precision": [
+              0.9984161213630832,
+              0.9995613043724475
+            ],
+            "attack_recall": [
+              0.6195476072218898,
+              0.6339987672576138
+            ],
+            "false_positive_rate": [
+              0.0013446075181247196,
+              0.004848315831482686
+            ],
+            "limitation": "Binomial intervals assume independent labels/rows; not capture-level or model-selection uncertainty."
+          }
+        },
+        "unsw": {
+          "rows": 26752,
+          "attack_prevalence": 0.031810705741626796,
+          "threshold": 0.9889190793037415,
+          "accuracy": 0.9739458732057417,
+          "balanced_accuracy": 0.5938912248849921,
+          "attack_precision": 0.963855421686747,
+          "attack_recall": 0.18801410105757932,
+          "attack_f1": 0.31465093411996065,
+          "macro_f1": 0.6506857276959473,
+          "average_precision": 0.9684421500651998,
+          "roc_auc": 0.9992161920348344,
+          "brier_score": 0.004212031606584787,
+          "false_positive_rate": 0.00023165128759507355,
+          "false_alarms_per_10000_benign_flows": 2.3165128759507354,
+          "confusion_matrix": {
+            "tn": 25895,
+            "fp": 6,
+            "fn": 691,
+            "tp": 160
+          },
+          "conditional_wilson_95": {
+            "attack_precision": [
+              0.9233967259756455,
+              0.9833312370865515
+            ],
+            "attack_recall": [
+              0.16318623035590774,
+              0.21564595598593528
+            ],
+            "false_positive_rate": [
+              0.00010617205017047216,
+              0.0005053529748282835
+            ],
+            "limitation": "Binomial intervals assume independent labels/rows; not capture-level or model-selection uncertainty."
+          }
+        }
+      }
+    },
+    {
+      "precision_target": 0.9,
+      "feasible": true,
+      "threshold": 0.9889190793037415,
+      "by_source": {
+        "ton": {
+          "rows": 20731,
+          "attack_prevalence": 0.8300612609136077,
+          "threshold": 0.9889190793037415,
+          "accuracy": 0.6897882398340649,
+          "balanced_accuracy": 0.812123423374562,
+          "attack_precision": 0.9991662806855025,
+          "attack_recall": 0.6268014876801488,
+          "attack_f1": 0.7703460343534622,
+          "macro_f1": 0.6462622511465654,
+          "average_precision": 0.9917185574666206,
+          "roc_auc": 0.9582754765027535,
+          "brier_score": 0.06462147831916809,
+          "false_positive_rate": 0.002554640931024695,
+          "false_alarms_per_10000_benign_flows": 25.546409310246947,
+          "confusion_matrix": {
+            "tn": 3514,
+            "fp": 9,
+            "fn": 6422,
+            "tp": 10786
+          },
+          "conditional_wilson_95": {
+            "attack_precision": [
+              0.9984161213630832,
+              0.9995613043724475
+            ],
+            "attack_recall": [
+              0.6195476072218898,
+              0.6339987672576138
+            ],
+            "false_positive_rate": [
+              0.0013446075181247196,
+              0.004848315831482686
+            ],
+            "limitation": "Binomial intervals assume independent labels/rows; not capture-level or model-selection uncertainty."
+          }
+        },
+        "unsw": {
+          "rows": 26752,
+          "attack_prevalence": 0.031810705741626796,
+          "threshold": 0.9889190793037415,
+          "accuracy": 0.9739458732057417,
+          "balanced_accuracy": 0.5938912248849921,
+          "attack_precision": 0.963855421686747,
+          "attack_recall": 0.18801410105757932,
+          "attack_f1": 0.31465093411996065,
+          "macro_f1": 0.6506857276959473,
+          "average_precision": 0.9684421500651998,
+          "roc_auc": 0.9992161920348344,
+          "brier_score": 0.004212031606584787,
+          "false_positive_rate": 0.00023165128759507355,
+          "false_alarms_per_10000_benign_flows": 2.3165128759507354,
+          "confusion_matrix": {
+            "tn": 25895,
+            "fp": 6,
+            "fn": 691,
+            "tp": 160
+          },
+          "conditional_wilson_95": {
+            "attack_precision": [
+              0.9233967259756455,
+              0.9833312370865515
+            ],
+            "attack_recall": [
+              0.16318623035590774,
+              0.21564595598593528
+            ],
+            "false_positive_rate": [
+              0.00010617205017047216,
+              0.0005053529748282835
+            ],
+            "limitation": "Binomial intervals assume independent labels/rows; not capture-level or model-selection uncertainty."
+          }
+        }
+      }
+    },
+    {
+      "precision_target": 0.95,
+      "feasible": true,
+      "threshold": 0.9889190793037415,
+      "by_source": {
+        "ton": {
+          "rows": 20731,
+          "attack_prevalence": 0.8300612609136077,
+          "threshold": 0.9889190793037415,
+          "accuracy": 0.6897882398340649,
+          "balanced_accuracy": 0.812123423374562,
+          "attack_precision": 0.9991662806855025,
+          "attack_recall": 0.6268014876801488,
+          "attack_f1": 0.7703460343534622,
+          "macro_f1": 0.6462622511465654,
+          "average_precision": 0.9917185574666206,
+          "roc_auc": 0.9582754765027535,
+          "brier_score": 0.06462147831916809,
+          "false_positive_rate": 0.002554640931024695,
+          "false_alarms_per_10000_benign_flows": 25.546409310246947,
+          "confusion_matrix": {
+            "tn": 3514,
+            "fp": 9,
+            "fn": 6422,
+            "tp": 10786
+          },
+          "conditional_wilson_95": {
+            "attack_precision": [
+              0.9984161213630832,
+              0.9995613043724475
+            ],
+            "attack_recall": [
+              0.6195476072218898,
+              0.6339987672576138
+            ],
+            "false_positive_rate": [
+              0.0013446075181247196,
+              0.004848315831482686
+            ],
+            "limitation": "Binomial intervals assume independent labels/rows; not capture-level or model-selection uncertainty."
+          }
+        },
+        "unsw": {
+          "rows": 26752,
+          "attack_prevalence": 0.031810705741626796,
+          "threshold": 0.9889190793037415,
+          "accuracy": 0.9739458732057417,
+          "balanced_accuracy": 0.5938912248849921,
+          "attack_precision": 0.963855421686747,
+          "attack_recall": 0.18801410105757932,
+          "attack_f1": 0.31465093411996065,
+          "macro_f1": 0.6506857276959473,
+          "average_precision": 0.9684421500651998,
+          "roc_auc": 0.9992161920348344,
+          "brier_score": 0.004212031606584787,
+          "false_positive_rate": 0.00023165128759507355,
+          "false_alarms_per_10000_benign_flows": 2.3165128759507354,
+          "confusion_matrix": {
+            "tn": 25895,
+            "fp": 6,
+            "fn": 691,
+            "tp": 160
+          },
+          "conditional_wilson_95": {
+            "attack_precision": [
+              0.9233967259756455,
+              0.9833312370865515
+            ],
+            "attack_recall": [
+              0.16318623035590774,
+              0.21564595598593528
+            ],
+            "false_positive_rate": [
+              0.00010617205017047216,
+              0.0005053529748282835
+            ],
+            "limitation": "Binomial intervals assume independent labels/rows; not capture-level or model-selection uncertainty."
+          }
+        }
+      }
+    },
+    {
+      "precision_target": 0.98,
+      "feasible": true,
+      "threshold": 0.9936622381210327,
+      "by_source": {
+        "ton": {
+          "rows": 20731,
+          "attack_prevalence": 0.8300612609136077,
+          "threshold": 0.9936622381210327,
+          "accuracy": 0.6306497515797598,
+          "balanced_accuracy": 0.7770647985285775,
+          "attack_precision": 0.9995815461868396,
+          "attack_recall": 0.5552649930264993,
+          "attack_f1": 0.7139388052452647,
+          "macro_f1": 0.5964386098359702,
+          "average_precision": 0.9917185574666206,
+          "roc_auc": 0.9582754765027535,
+          "brier_score": 0.06462147831916809,
+          "false_positive_rate": 0.0011353959693443088,
+          "false_alarms_per_10000_benign_flows": 11.353959693443088,
+          "confusion_matrix": {
+            "tn": 3519,
+            "fp": 4,
+            "fn": 7653,
+            "tp": 9555
+          },
+          "conditional_wilson_95": {
+            "attack_precision": [
+              0.9989244618949497,
+              0.9998372598305766
+            ],
+            "attack_recall": [
+              0.5478286951192232,
+              0.5626766220805973
+            ],
+            "false_positive_rate": [
+              0.00044161913600669904,
+              0.0029159059920589306
+            ],
+            "limitation": "Binomial intervals assume independent labels/rows; not capture-level or model-selection uncertainty."
+          }
+        },
+        "unsw": {
+          "rows": 26752,
+          "attack_prevalence": 0.031810705741626796,
+          "threshold": 0.9936622381210327,
+          "accuracy": 0.9711797248803827,
+          "balanced_accuracy": 0.5470035252643948,
+          "attack_precision": 1.0,
+          "attack_recall": 0.09400705052878966,
+          "attack_f1": 0.17185821697099893,
+          "macro_f1": 0.578596447233526,
+          "average_precision": 0.9684421500651998,
+          "roc_auc": 0.9992161920348344,
+          "brier_score": 0.004212031606584787,
+          "false_positive_rate": 0.0,
+          "false_alarms_per_10000_benign_flows": 0.0,
+          "confusion_matrix": {
+            "tn": 25901,
+            "fp": 0,
+            "fn": 771,
+            "tp": 80
+          },
+          "conditional_wilson_95": {
+            "attack_precision": [
+              0.9541818704644728,
+              1.0
+            ],
+            "attack_recall": [
+              0.07618304015517385,
+              0.1154799367981473
+            ],
+            "false_positive_rate": [
+              0.0,
+              0.0001482911534818946
+            ],
+            "limitation": "Binomial intervals assume independent labels/rows; not capture-level or model-selection uncertainty."
+          }
+        }
+      }
+    }
+  ],
+  "reduced_representation_ambiguity": {
+    "cohort_rows": 195894,
+    "ambiguous_groups": 116,
+    "minimum_empirical_errors_for_a_deterministic_reduced_classifier": 2770,
+    "scope": "finite development cohort only; not a bound on future distributions"
+  },
+  "cautions": [
+    "Correlated predictors can mask permutation importance; associations are not causes.",
+    "Illustrative thresholds use validation only, are not the frozen model, and are not evaluated on the new source."
+  ]
+}

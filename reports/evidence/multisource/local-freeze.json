@@ -1,0 +1,2975 @@
+{
+  "frozen_at_utc": "2026-10-29T23:18:07.425482+00:00",
+  "protocol_version": 2,
+  "git_revision": "07e25ff1035750dd6a2a5a7e675dfee4ef3768f2",
+  "git_worktree_dirty": false,
+  "python": "3.13.5",
+  "config": {
+    "protocol_version": 2,
+    "seed": 42,
+    "rows_per_source": 100000,
+    "chunk_rows": 50000,
+    "threads": 2,
+    "audit_buckets": 64,
+    "search_budget_seconds": 3600,
+    "min_precision": 0.98,
+    "max_fpr": 0.005,
+    "precision_lower_bound": 0.95,
+    "min_alerts_per_source": 25,
+    "development_sources": [
+      "nf-unsw-nb15-v2",
+      "nf-ton-iot-v2"
+    ],
+    "holdout_source": "nf-cse-cic-ids2018-v2",
+    "holdout_rows": 200000,
+    "holdout_seed": 4242,
+    "candidates": [
+      {
+        "id": "hist-full-balanced",
+        "model": "hist",
+        "features": "full",
+        "weighting": "source_class",
+        "iterations": 150,
+        "depth": 8
+      },
+      {
+        "id": "hist-stable-balanced",
+        "model": "hist",
+        "features": "stable",
+        "weighting": "source_class",
+        "iterations": 150,
+        "depth": 8
+      },
+      {
+        "id": "hist-stable-natural",
+        "model": "hist",
+        "features": "stable",
+        "weighting": "source",
+        "iterations": 150,
+        "depth": 8
+      },
+      {
+        "id": "hist-stable-shallow",
+        "model": "hist",
+        "features": "stable",
+        "weighting": "source_class",
+        "iterations": 200,
+        "depth": 4
+      },
+      {
+        "id": "extra-full-balanced",
+        "model": "extra_trees",
+        "features": "full",
+        "weighting": "source_class",
+        "iterations": 100,
+        "depth": 14
+      },
+      {
+        "id": "extra-stable-balanced",
+        "model": "extra_trees",
+        "features": "stable",
+        "weighting": "source_class",
+        "iterations": 100,
+        "depth": 14
+      },
+      {
+        "id": "xgb-full-natural",
+        "model": "xgboost",
+        "features": "full",
+        "weighting": "source",
+        "iterations": 150,
+        "depth": 6
+      },
+      {
+        "id": "xgb-stable-natural",
+        "model": "xgboost",
+        "features": "stable",
+        "weighting": "source",
+        "iterations": 150,
+        "depth": 6
+      },
+      {
+        "id": "xgb-stable-balanced",
+        "model": "xgboost",
+        "features": "stable",
+        "weighting": "source_class",
+        "iterations": 200,
+        "depth": 4
+      }
+    ]
+  },
+  "protocol_sha256": "04ca2aa02193bd9a748dc4cd5a6427afee13582b457713a728195e33abe9cc09",
+  "prepared_audit_sha256": "13cc0e562056110dec2fb73246a84a8cf81a4438917e8b15ab13e22d6a708100",
+  "prepared_cache_sha256": "6b66aecfbe5a32f34ac2fb88d0c6f29d9de8a1ab29170fa85a9548abcb17164f",
+  "development_sources": {
+    "unsw": "0e42c11dc9799a1e0851ff0b98c2ed1b47c56331a6eb99ba14c800cfe94d03ed",
+    "ton": "69dd3b8bd59e23f0718dfc69b2757cb6ca08fe2c4c1d4fd126b8bbd204bbbad2"
+  },
+  "partitions": {
+    "train": {
+      "rows": 120042,
+      "label_counts": {
+        "0": 83088,
+        "1": 36954
+      },
+      "fingerprint_sha256": "cf86b26e1e120d69b03619bc0222ac046700989566514fcc632394f88abe4802",
+      "source_label_counts": {
+        "ton:0": 30144,
+        "ton:1": 35018,
+        "unsw:0": 52944,
+        "unsw:1": 1936
+      },
+      "full_fingerprint_sha256": "d84f01ee7b99711a083fabe45233061fb89301ffba278ba8b65ac708dc2f21c1"
+    },
+    "calibration": {
+      "rows": 28369,
+      "label_counts": {
+        "0": 17542,
+        "1": 10827
+      },
+      "fingerprint_sha256": "697422afa91f40838b42d68bedc188ca9dbae8438fb5b13f788a2d5afc009d91",
+      "source_label_counts": {
+        "ton:0": 2037,
+        "ton:1": 10323,
+        "unsw:0": 15505,
+        "unsw:1": 504
+      },
+      "full_fingerprint_sha256": "ab8dd11513492723921ead38351649ea861d063fe4822fcfb4b414c559c3a964"
+    },
+    "validation": {
+      "rows": 47483,
+      "label_counts": {
+        "0": 29424,
+        "1": 18059
+      },
+      "fingerprint_sha256": "2e0ccf3b1b60a485d4d03a634cde7961ac200bbca9222a6931fc373354aa98dc",
+      "source_label_counts": {
+        "ton:0": 3523,
+        "ton:1": 17208,
+        "unsw:0": 25901,
+        "unsw:1": 851
+      },
+      "full_fingerprint_sha256": "402586fe8031463c95e07e17cdef94678a6a2196df49829de001061a33e9e610"
+    }
+  },
+  "validation_leaderboard": [
+    {
+      "id": "hist-full-balanced:none",
+      "spec": {
+        "id": "hist-full-balanced",
+        "model": "hist",
+        "features": "full",
+        "weighting": "source_class",
+        "iterations": 150,
+        "depth": 8
+      },
+      "calibration": "none",
+      "fit_seconds": 21.127082100021653,
+      "calibration_seconds": 0.0,
+      "model_bytes": 213500,
+      "threshold": 0.664353666386246,
+      "constraints_met_each_source": false,
+      "pooled_validation": {
+        "rows": 47483,
+        "attack_prevalence": 0.3803255902112335,
+        "threshold": 0.664353666386246,
+        "accuracy": 0.9383147652844176,
+        "balanced_accuracy": 0.9237705144451148,
+        "attack_precision": 0.9716334164588528,
+        "attack_recall": 0.8630045960462928,
+        "attack_f1": 0.9141030528754509,
+        "macro_f1": 0.9329908695957585,
+        "average_precision": 0.981630695801439,
+        "roc_auc": 0.9877030423298944,
+        "brier_score": 0.03352703149000299,
+        "false_positive_rate": 0.015463567156063078,
+        "false_alarms_per_10000_benign_flows": 154.63567156063078,
+        "confusion_matrix": {
+          "tn": 28969,
+          "fp": 455,
+          "fn": 2474,
+          "tp": 15585
+        },
+        "conditional_wilson_95": {
+          "attack_precision": [
+            0.9689491014649599,
+            0.9740918802621265
+          ],
+          "attack_recall": [
+            0.8579124513203158,
+            0.8679423390176384
+          ],
+          "false_positive_rate": [
+            0.014115657525686668,
+            0.016937977859003753
+          ],
+          "limitation": "Binomial intervals assume independent labels/rows; not capture-level or model-selection uncertainty."
+        }
+      },
+      "by_source": {
+        "ton": {
+          "rows": 20731,
+          "attack_prevalence": 0.8300612609136077,
+          "threshold": 0.664353666386246,
+          "accuracy": 0.8663836766195553,
+          "balanced_accuracy": 0.8857665747159564,
+          "attack_precision": 0.9801143921255653,
+          "attack_recall": 0.8564039981403998,
+          "attack_f1": 0.9140925443493363,
+          "macro_f1": 0.8067967603499773,
+          "average_precision": 0.9902934928018983,
+          "roc_auc": 0.9512431869973672,
+          "brier_score": 0.06970491534148811,
+          "false_positive_rate": 0.08487084870848709,
+          "false_alarms_per_10000_benign_flows": 848.7084870848709,
+          "confusion_matrix": {
+            "tn": 3224,
+            "fp": 299,
+            "fn": 2471,
+            "tp": 14737
+          },
+          "conditional_wilson_95": {
+            "attack_precision": [
+              0.9777572160808409,
+              0.9822263076505396
+            ],
+            "attack_recall": [
+              0.8510848912941454,
+              0.8615640155265679
+            ],
+            "false_positive_rate": [
+              0.07611427983268196,
+              0.09453174036634845
+            ],
+            "limitation": "Binomial intervals assume independent labels/rows; not capture-level or model-selection uncertainty."
+          }
+        },
+        "unsw": {
+          "rows": 26752,
+          "attack_prevalence": 0.031810705741626796,
+          "threshold": 0.664353666386246,
+          "accuracy": 0.994056519138756,
+          "balanced_accuracy": 0.9952259010638492,
+          "attack_precision": 0.8446215139442231,
+          "attack_recall": 0.9964747356051704,
+          "attack_f1": 0.9142857142857143,
+          "macro_f1": 0.9556036211460324,
+          "average_precision": 0.9546622105624295,
+          "roc_auc": 0.9991000034434652,
+          "brier_score": 0.005491605722765472,
+          "false_positive_rate": 0.006022933477471912,
+          "false_alarms_per_10000_benign_flows": 60.22933477471912,
+          "confusion_matrix": {
+            "tn": 25745,
+            "fp": 156,
+            "fn": 3,
+            "tp": 848
+          },
+          "conditional_wilson_95": {
+            "attack_precision": [
+              0.8209039309411728,
+              0.8657119985223067
+            ],
+            "attack_recall": [
+              0.9896870038179636,
+              0.9988003832651676
+            ],
+            "false_positive_rate": [
+              0.005151128076710276,
+              0.007041243736210004
+            ],
+            "limitation": "Binomial intervals assume independent labels/rows; not capture-level or model-selection uncertainty."
+          }
+        }
+      }
+    },
+    {
+      "id": "hist-full-balanced:sigmoid",
+      "spec": {
+        "id": "hist-full-balanced",
+        "model": "hist",
+        "features": "full",
+        "weighting": "source_class",
+        "iterations": 150,
+        "depth": 8
+      },
+      "calibration": "sigmoid",
+      "fit_seconds": 21.127082100021653,
+      "calibration_seconds": 3.6768001000164077,
+      "model_bytes": 214327,
+      "threshold": 0.7119871447474703,
+      "constraints_met_each_source": false,
+      "pooled_validation": {
+        "rows": 47483,
+        "attack_prevalence": 0.3803255902112335,
+        "threshold": 0.7119871447474703,
+        "accuracy": 0.9383147652844176,
+        "balanced_accuracy": 0.9237705144451148,
+        "attack_precision": 0.9716334164588528,
+        "attack_recall": 0.8630045960462928,
+        "attack_f1": 0.9141030528754509,
+        "macro_f1": 0.9329908695957585,
+        "average_precision": 0.981630695801439,
+        "roc_auc": 0.9877030423298944,
+        "brier_score": 0.032000742937683076,
+        "false_positive_rate": 0.015463567156063078,
+        "false_alarms_per_10000_benign_flows": 154.63567156063078,
+        "confusion_matrix": {
+          "tn": 28969,
+          "fp": 455,
+          "fn": 2474,
+          "tp": 15585
+        },
+        "conditional_wilson_95": {
+          "attack_precision": [
+            0.9689491014649599,
+            0.9740918802621265
+          ],
+          "attack_recall": [
+            0.8579124513203158,
+            0.8679423390176384
+          ],
+          "false_positive_rate": [
+            0.014115657525686668,
+            0.016937977859003753
+          ],
+          "limitation": "Binomial intervals assume independent labels/rows; not capture-level or model-selection uncertainty."
+        }
+      },
+      "by_source": {
+        "ton": {
+          "rows": 20731,
+          "attack_prevalence": 0.8300612609136077,
+          "threshold": 0.7119871447474703,
+          "accuracy": 0.8663836766195553,
+          "balanced_accuracy": 0.8857665747159564,
+          "attack_precision": 0.9801143921255653,
+          "attack_recall": 0.8564039981403998,
+          "attack_f1": 0.9140925443493363,
+          "macro_f1": 0.8067967603499773,
+          "average_precision": 0.9902934928018983,
+          "roc_auc": 0.9512431869973672,
+          "brier_score": 0.06615128513030323,
+          "false_positive_rate": 0.08487084870848709,
+          "false_alarms_per_10000_benign_flows": 848.7084870848709,
+          "confusion_matrix": {
+            "tn": 3224,
+            "fp": 299,
+            "fn": 2471,
+            "tp": 14737
+          },
+          "conditional_wilson_95": {
+            "attack_precision": [
+              0.9777572160808409,
+              0.9822263076505396
+            ],
+            "attack_recall": [
+              0.8510848912941454,
+              0.8615640155265679
+            ],
+            "false_positive_rate": [
+              0.07611427983268196,
+              0.09453174036634845
+            ],
+            "limitation": "Binomial intervals assume independent labels/rows; not capture-level or model-selection uncertainty."
+          }
+        },
+        "unsw": {
+          "rows": 26752,
+          "attack_prevalence": 0.031810705741626796,
+          "threshold": 0.7119871447474703,
+          "accuracy": 0.994056519138756,
+          "balanced_accuracy": 0.9952259010638492,
+          "attack_precision": 0.8446215139442231,
+          "attack_recall": 0.9964747356051704,
+          "attack_f1": 0.9142857142857143,
+          "macro_f1": 0.9556036211460324,
+          "average_precision": 0.9546622105624295,
+          "roc_auc": 0.9991000034434652,
+          "brier_score": 0.00553637054701291,
+          "false_positive_rate": 0.006022933477471912,
+          "false_alarms_per_10000_benign_flows": 60.22933477471912,
+          "confusion_matrix": {
+            "tn": 25745,
+            "fp": 156,
+            "fn": 3,
+            "tp": 848
+          },
+          "conditional_wilson_95": {
+            "attack_precision": [
+              0.8209039309411728,
+              0.8657119985223067
+            ],
+            "attack_recall": [
+              0.9896870038179636,
+              0.9988003832651676
+            ],
+            "false_positive_rate": [
+              0.005151128076710276,
+              0.007041243736210004
+            ],
+            "limitation": "Binomial intervals assume independent labels/rows; not capture-level or model-selection uncertainty."
+          }
+        }
+      }
+    },
+    {
+      "id": "hist-stable-balanced:none",
+      "spec": {
+        "id": "hist-stable-balanced",
+        "model": "hist",
+        "features": "stable",
+        "weighting": "source_class",
+        "iterations": 150,
+        "depth": 8
+      },
+      "calibration": "none",
+      "fit_seconds": 17.280971799977124,
+      "calibration_seconds": 0.0,
+      "model_bytes": 148801,
+      "threshold": 0.8233565158935396,
+      "constraints_met_each_source": false,
+      "pooled_validation": {
+        "rows": 47483,
+        "attack_prevalence": 0.3803255902112335,
+        "threshold": 0.8233565158935396,
+        "accuracy": 0.9297432765410779,
+        "balanced_accuracy": 0.9125981417744948,
+        "attack_precision": 0.9703533320554597,
+        "attack_recall": 0.8409657234619857,
+        "attack_f1": 0.9010382675763868,
+        "macro_f1": 0.9232891481541331,
+        "average_precision": 0.9803241160301759,
+        "roc_auc": 0.9897141466263939,
+        "brier_score": 0.045921397516852536,
+        "false_positive_rate": 0.015769439912996192,
+        "false_alarms_per_10000_benign_flows": 157.69439912996194,
+        "confusion_matrix": {
+          "tn": 28960,
+          "fp": 464,
+          "fn": 2872,
+          "tp": 15187
+        },
+        "conditional_wilson_95": {
+          "attack_precision": [
+            0.9675785000059336,
+            0.9728973290676564
+          ],
+          "attack_recall": [
+            0.8355594957859636,
+            0.8462269234812094
+          ],
+          "false_positive_rate": [
+            0.014407852645865268,
+            0.017257448396504737
+          ],
+          "limitation": "Binomial intervals assume independent labels/rows; not capture-level or model-selection uncertainty."
+        }
+      },
+      "by_source": {
+        "ton": {
+          "rows": 20731,
+          "attack_prevalence": 0.8300612609136077,
+          "threshold": 0.8233565158935396,
+          "accuracy": 0.8480054025372631,
+          "balanced_accuracy": 0.8760505612780621,
+          "attack_precision": 0.9803841159182558,
+          "attack_recall": 0.8335657833565784,
+          "attack_f1": 0.9010333239109268,
+          "macro_f1": 0.7867943300423386,
+          "average_precision": 0.9862076695491715,
+          "roc_auc": 0.9364455706031152,
+          "brier_score": 0.09606170707213489,
+          "false_positive_rate": 0.08146466080045416,
+          "false_alarms_per_10000_benign_flows": 814.6466080045416,
+          "confusion_matrix": {
+            "tn": 3236,
+            "fp": 287,
+            "fn": 2864,
+            "tp": 14344
+          },
+          "conditional_wilson_95": {
+            "attack_precision": [
+              0.97800772833218,
+              0.9825083141239945
+            ],
+            "attack_recall": [
+              0.8279263439287822,
+              0.8390563277084092
+            ],
+            "false_positive_rate": [
+              0.07288111015361196,
+              0.0909599543137182
+            ],
+            "limitation": "Binomial intervals assume independent labels/rows; not capture-level or model-selection uncertainty."
+          }
+        },
+        "unsw": {
+          "rows": 26752,
+          "attack_prevalence": 0.031810705741626796,
+          "threshold": 0.8233565158935396,
+          "accuracy": 0.9930846291866029,
+          "balanced_accuracy": 0.9918827909815332,
+          "attack_precision": 0.8264705882352941,
+          "attack_recall": 0.9905992949471211,
+          "attack_f1": 0.9011223944414751,
+          "macro_f1": 0.9487697072821324,
+          "average_precision": 0.9077235393188876,
+          "roc_auc": 0.9978065944035028,
+          "brier_score": 0.00706603128664327,
+          "false_positive_rate": 0.00683371298405467,
+          "false_alarms_per_10000_benign_flows": 68.3371298405467,
+          "confusion_matrix": {
+            "tn": 25724,
+            "fp": 177,
+            "fn": 8,
+            "tp": 843
+          },
+          "conditional_wilson_95": {
+            "attack_precision": [
+              0.8020163416979077,
+              0.8484749958643826
+            ],
+            "attack_recall": [
+              0.9815603387683085,
+              0.9952289727280401
+            ],
+            "false_positive_rate": [
+              0.0059009613131572325,
+              0.007912729050072063
+            ],
+            "limitation": "Binomial intervals assume independent labels/rows; not capture-level or model-selection uncertainty."
+          }
+        }
+      }
+    },
+    {
+      "id": "hist-stable-balanced:sigmoid",
+      "spec": {
+        "id": "hist-stable-balanced",
+        "model": "hist",
+        "features": "stable",
+        "weighting": "source_class",
+        "iterations": 150,
+        "depth": 8
+      },
+      "calibration": "sigmoid",
+      "fit_seconds": 17.280971799977124,
+      "calibration_seconds": 0.32893409999087453,
+      "model_bytes": 149596,
+      "threshold": 0.7757613820425804,
+      "constraints_met_each_source": false,
+      "pooled_validation": {
+        "rows": 47483,
+        "attack_prevalence": 0.3803255902112335,
+        "threshold": 0.7757613820425804,
+        "accuracy": 0.9297432765410779,
+        "balanced_accuracy": 0.9125981417744948,
+        "attack_precision": 0.9703533320554597,
+        "attack_recall": 0.8409657234619857,
+        "attack_f1": 0.9010382675763868,
+        "macro_f1": 0.9232891481541331,
+        "average_precision": 0.9803241160301759,
+        "roc_auc": 0.9897141466263939,
+        "brier_score": 0.04052888658638692,
+        "false_positive_rate": 0.015769439912996192,
+        "false_alarms_per_10000_benign_flows": 157.69439912996194,
+        "confusion_matrix": {
+          "tn": 28960,
+          "fp": 464,
+          "fn": 2872,
+          "tp": 15187
+        },
+        "conditional_wilson_95": {
+          "attack_precision": [
+            0.9675785000059336,
+            0.9728973290676564
+          ],
+          "attack_recall": [
+            0.8355594957859636,
+            0.8462269234812094
+          ],
+          "false_positive_rate": [
+            0.014407852645865268,
+            0.017257448396504737
+          ],
+          "limitation": "Binomial intervals assume independent labels/rows; not capture-level or model-selection uncertainty."
+        }
+      },
+      "by_source": {
+        "ton": {
+          "rows": 20731,
+          "attack_prevalence": 0.8300612609136077,
+          "threshold": 0.7757613820425804,
+          "accuracy": 0.8480054025372631,
+          "balanced_accuracy": 0.8760505612780621,
+          "attack_precision": 0.9803841159182558,
+          "attack_recall": 0.8335657833565784,
+          "attack_f1": 0.9010333239109268,
+          "macro_f1": 0.7867943300423386,
+          "average_precision": 0.9862076695491715,
+          "roc_auc": 0.9364455706031152,
+          "brier_score": 0.08395706061011184,
+          "false_positive_rate": 0.08146466080045416,
+          "false_alarms_per_10000_benign_flows": 814.6466080045416,
+          "confusion_matrix": {
+            "tn": 3236,
+            "fp": 287,
+            "fn": 2864,
+            "tp": 14344
+          },
+          "conditional_wilson_95": {
+            "attack_precision": [
+              0.97800772833218,
+              0.9825083141239945
+            ],
+            "attack_recall": [
+              0.8279263439287822,
+              0.8390563277084092
+            ],
+            "false_positive_rate": [
+              0.07288111015361196,
+              0.0909599543137182
+            ],
+            "limitation": "Binomial intervals assume independent labels/rows; not capture-level or model-selection uncertainty."
+          }
+        },
+        "unsw": {
+          "rows": 26752,
+          "attack_prevalence": 0.031810705741626796,
+          "threshold": 0.7757613820425804,
+          "accuracy": 0.9930846291866029,
+          "balanced_accuracy": 0.9918827909815332,
+          "attack_precision": 0.8264705882352941,
+          "attack_recall": 0.9905992949471211,
+          "attack_f1": 0.9011223944414751,
+          "macro_f1": 0.9487697072821324,
+          "average_precision": 0.9077235393188876,
+          "roc_auc": 0.9978065944035028,
+          "brier_score": 0.006874973769182908,
+          "false_positive_rate": 0.00683371298405467,
+          "false_alarms_per_10000_benign_flows": 68.3371298405467,
+          "confusion_matrix": {
+            "tn": 25724,
+            "fp": 177,
+            "fn": 8,
+            "tp": 843
+          },
+          "conditional_wilson_95": {
+            "attack_precision": [
+              0.8020163416979077,
+              0.8484749958643826
+            ],
+            "attack_recall": [
+              0.9815603387683085,
+              0.9952289727280401
+            ],
+            "false_positive_rate": [
+              0.0059009613131572325,
+              0.007912729050072063
+            ],
+            "limitation": "Binomial intervals assume independent labels/rows; not capture-level or model-selection uncertainty."
+          }
+        }
+      }
+    },
+    {
+      "id": "hist-stable-natural:none",
+      "spec": {
+        "id": "hist-stable-natural",
+        "model": "hist",
+        "features": "stable",
+        "weighting": "source",
+        "iterations": 150,
+        "depth": 8
+      },
+      "calibration": "none",
+      "fit_seconds": 19.13813300000038,
+      "calibration_seconds": 0.0,
+      "model_bytes": 204685,
+      "threshold": 0.4816659080487264,
+      "constraints_met_each_source": false,
+      "pooled_validation": {
+        "rows": 47483,
+        "attack_prevalence": 0.3803255902112335,
+        "threshold": 0.4816659080487264,
+        "accuracy": 0.9480656234863004,
+        "balanced_accuracy": 0.940877939480648,
+        "attack_precision": 0.9505345275931811,
+        "attack_recall": 0.9108477767318235,
+        "attack_f1": 0.9302680692229386,
+        "macro_f1": 0.944446809350572,
+        "average_precision": 0.9899022573640337,
+        "roc_auc": 0.9941608237481874,
+        "brier_score": 0.03130842204949294,
+        "false_positive_rate": 0.02909189777052746,
+        "false_alarms_per_10000_benign_flows": 290.9189777052746,
+        "confusion_matrix": {
+          "tn": 28568,
+          "fp": 856,
+          "fn": 1610,
+          "tp": 16449
+        },
+        "conditional_wilson_95": {
+          "attack_precision": [
+            0.9472026439425257,
+            0.9536664313850843
+          ],
+          "attack_recall": [
+            0.9066037838533335,
+            0.9149170180553617
+          ],
+          "false_positive_rate": [
+            0.027232196593830926,
+            0.031074541983027493
+          ],
+          "limitation": "Binomial intervals assume independent labels/rows; not capture-level or model-selection uncertainty."
+        }
+      },
+      "by_source": {
+        "ton": {
+          "rows": 20731,
+          "attack_prevalence": 0.8300612609136077,
+          "threshold": 0.4816659080487264,
+          "accuracy": 0.8890550383483672,
+          "balanced_accuracy": 0.8538242433035852,
+          "attack_precision": 0.9569081770258674,
+          "attack_recall": 0.9071943282194328,
+          "attack_f1": 0.9313883419843685,
+          "macro_f1": 0.820857898951882,
+          "average_precision": 0.9915201925055342,
+          "roc_auc": 0.9606084964937194,
+          "brier_score": 0.06588082989330377,
+          "false_positive_rate": 0.19954584161226227,
+          "false_alarms_per_10000_benign_flows": 1995.4584161226228,
+          "confusion_matrix": {
+            "tn": 2820,
+            "fp": 703,
+            "fn": 1597,
+            "tp": 15611
+          },
+          "conditional_wilson_95": {
+            "attack_precision": [
+              0.9536831034103235,
+              0.9599181248907029
+            ],
+            "attack_recall": [
+              0.9027676674395877,
+              0.9114392280589836
+            ],
+            "false_positive_rate": [
+              0.18667904212570774,
+              0.21306715437389817
+            ],
+            "limitation": "Binomial intervals assume independent labels/rows; not capture-level or model-selection uncertainty."
+          }
+        },
+        "unsw": {
+          "rows": 26752,
+          "attack_prevalence": 0.031810705741626796,
+          "threshold": 0.4816659080487264,
+          "accuracy": 0.9937948564593302,
+          "balanced_accuracy": 0.9894083732276986,
+          "attack_precision": 0.8456104944500504,
+          "attack_recall": 0.9847238542890717,
+          "attack_f1": 0.9098805646036916,
+          "macro_f1": 0.9533336855769803,
+          "average_precision": 0.925601641212747,
+          "roc_auc": 0.9984660701411607,
+          "brier_score": 0.004517132164249154,
+          "false_positive_rate": 0.005907107833674375,
+          "false_alarms_per_10000_benign_flows": 59.07107833674375,
+          "confusion_matrix": {
+            "tn": 25748,
+            "fp": 153,
+            "fn": 13,
+            "tp": 838
+          },
+          "conditional_wilson_95": {
+            "attack_precision": [
+              0.8217838089332493,
+              0.8667681145179639
+            ],
+            "attack_recall": [
+              0.9740401201316743,
+              0.9910511157778917
+            ],
+            "false_positive_rate": [
+              0.005044340148022679,
+              0.006916414729139172
+            ],
+            "limitation": "Binomial intervals assume independent labels/rows; not capture-level or model-selection uncertainty."
+          }
+        }
+      }
+    },
+    {
+      "id": "hist-stable-natural:sigmoid",
+      "spec": {
+        "id": "hist-stable-natural",
+        "model": "hist",
+        "features": "stable",
+        "weighting": "source",
+        "iterations": 150,
+        "depth": 8
+      },
+      "calibration": "sigmoid",
+      "fit_seconds": 19.13813300000038,
+      "calibration_seconds": 0.6704677999950945,
+      "model_bytes": 205460,
+      "threshold": 0.5488189475804859,
+      "constraints_met_each_source": false,
+      "pooled_validation": {
+        "rows": 47483,
+        "attack_prevalence": 0.3803255902112335,
+        "threshold": 0.5488189475804859,
+        "accuracy": 0.9480656234863004,
+        "balanced_accuracy": 0.940877939480648,
+        "attack_precision": 0.9505345275931811,
+        "attack_recall": 0.9108477767318235,
+        "attack_f1": 0.9302680692229386,
+        "macro_f1": 0.944446809350572,
+        "average_precision": 0.9899022573640337,
+        "roc_auc": 0.9941608237481874,
+        "brier_score": 0.028292926782131786,
+        "false_positive_rate": 0.02909189777052746,
+        "false_alarms_per_10000_benign_flows": 290.9189777052746,
+        "confusion_matrix": {
+          "tn": 28568,
+          "fp": 856,
+          "fn": 1610,
+          "tp": 16449
+        },
+        "conditional_wilson_95": {
+          "attack_precision": [
+            0.9472026439425257,
+            0.9536664313850843
+          ],
+          "attack_recall": [
+            0.9066037838533335,
+            0.9149170180553617
+          ],
+          "false_positive_rate": [
+            0.027232196593830926,
+            0.031074541983027493
+          ],
+          "limitation": "Binomial intervals assume independent labels/rows; not capture-level or model-selection uncertainty."
+        }
+      },
+      "by_source": {
+        "ton": {
+          "rows": 20731,
+          "attack_prevalence": 0.8300612609136077,
+          "threshold": 0.5488189475804859,
+          "accuracy": 0.8890550383483672,
+          "balanced_accuracy": 0.8538242433035852,
+          "attack_precision": 0.9569081770258674,
+          "attack_recall": 0.9071943282194328,
+          "attack_f1": 0.9313883419843685,
+          "macro_f1": 0.820857898951882,
+          "average_precision": 0.9915201925055342,
+          "roc_auc": 0.9606084964937194,
+          "brier_score": 0.05874336787543182,
+          "false_positive_rate": 0.19954584161226227,
+          "false_alarms_per_10000_benign_flows": 1995.4584161226228,
+          "confusion_matrix": {
+            "tn": 2820,
+            "fp": 703,
+            "fn": 1597,
+            "tp": 15611
+          },
+          "conditional_wilson_95": {
+            "attack_precision": [
+              0.9536831034103235,
+              0.9599181248907029
+            ],
+            "attack_recall": [
+              0.9027676674395877,
+              0.9114392280589836
+            ],
+            "false_positive_rate": [
+              0.18667904212570774,
+              0.21306715437389817
+            ],
+            "limitation": "Binomial intervals assume independent labels/rows; not capture-level or model-selection uncertainty."
+          }
+        },
+        "unsw": {
+          "rows": 26752,
+          "attack_prevalence": 0.031810705741626796,
+          "threshold": 0.5488189475804859,
+          "accuracy": 0.9937948564593302,
+          "balanced_accuracy": 0.9894083732276986,
+          "attack_precision": 0.8456104944500504,
+          "attack_recall": 0.9847238542890717,
+          "attack_f1": 0.9098805646036916,
+          "macro_f1": 0.9533336855769803,
+          "average_precision": 0.925601641212747,
+          "roc_auc": 0.9984660701411607,
+          "brier_score": 0.0046958837832829885,
+          "false_positive_rate": 0.005907107833674375,
+          "false_alarms_per_10000_benign_flows": 59.07107833674375,
+          "confusion_matrix": {
+            "tn": 25748,
+            "fp": 153,
+            "fn": 13,
+            "tp": 838
+          },
+          "conditional_wilson_95": {
+            "attack_precision": [
+              0.8217838089332493,
+              0.8667681145179639
+            ],
+            "attack_recall": [
+              0.9740401201316743,
+              0.9910511157778917
+            ],
+            "false_positive_rate": [
+              0.005044340148022679,
+              0.006916414729139172
+            ],
+            "limitation": "Binomial intervals assume independent labels/rows; not capture-level or model-selection uncertainty."
+          }
+        }
+      }
+    },
+    {
+      "id": "hist-stable-shallow:none",
+      "spec": {
+        "id": "hist-stable-shallow",
+        "model": "hist",
+        "features": "stable",
+        "weighting": "source_class",
+        "iterations": 200,
+        "depth": 4
+      },
+      "calibration": "none",
+      "fit_seconds": 21.49373899999773,
+      "calibration_seconds": 0.0,
+      "model_bytes": 105850,
+      "threshold": 0.8179333076413434,
+      "constraints_met_each_source": false,
+      "pooled_validation": {
+        "rows": 47483,
+        "attack_prevalence": 0.3803255902112335,
+        "threshold": 0.8179333076413434,
+        "accuracy": 0.9286270875892425,
+        "balanced_accuracy": 0.9113873876819865,
+        "attack_precision": 0.9688099194682347,
+        "attack_recall": 0.8393598759621241,
+        "attack_f1": 0.8994511200118677,
+        "macro_f1": 0.92206522145449,
+        "average_precision": 0.9779557124391453,
+        "roc_auc": 0.9887789492019408,
+        "brier_score": 0.04371240748544589,
+        "false_positive_rate": 0.01658510059815117,
+        "false_alarms_per_10000_benign_flows": 165.8510059815117,
+        "confusion_matrix": {
+          "tn": 28936,
+          "fp": 488,
+          "fn": 2901,
+          "tp": 15158
+        },
+        "conditional_wilson_95": {
+          "attack_precision": [
+            0.9659689560010373,
+            0.9714207318498623
+          ],
+          "attack_recall": [
+            0.8339322580249179,
+            0.8446431492798113
+          ],
+          "false_positive_rate": [
+            0.015187702932476448,
+            0.018108706530372443
+          ],
+          "limitation": "Binomial intervals assume independent labels/rows; not capture-level or model-selection uncertainty."
+        }
+      },
+      "by_source": {
+        "ton": {
+          "rows": 20731,
+          "attack_prevalence": 0.8300612609136077,
+          "threshold": 0.8179333076413434,
+          "accuracy": 0.8455453186049877,
+          "balanced_accuracy": 0.8721984592713645,
+          "attack_precision": 0.9789358500889072,
+          "attack_recall": 0.8318224081822408,
+          "attack_f1": 0.8994030788564248,
+          "macro_f1": 0.7834847620195745,
+          "average_precision": 0.9843545221810192,
+          "roc_auc": 0.9316406494850272,
+          "brier_score": 0.09074374347957416,
+          "false_positive_rate": 0.08742548963951179,
+          "false_alarms_per_10000_benign_flows": 874.2548963951178,
+          "confusion_matrix": {
+            "tn": 3215,
+            "fp": 308,
+            "fn": 2894,
+            "tp": 14314
+          },
+          "conditional_wilson_95": {
+            "attack_precision": [
+              0.976479444711902,
+              0.9811406716714278
+            ],
+            "attack_recall": [
+              0.8261601498015532,
+              0.8373365496842244
+            ],
+            "false_positive_rate": [
+              0.07854205990836005,
+              0.09720767708944558
+            ],
+            "limitation": "Binomial intervals assume independent labels/rows; not capture-level or model-selection uncertainty."
+          }
+        },
+        "unsw": {
+          "rows": 26752,
+          "attack_prevalence": 0.031810705741626796,
+          "threshold": 0.8179333076413434,
+          "accuracy": 0.9930098684210527,
+          "balanced_accuracy": 0.9924124222254394,
+          "attack_precision": 0.82421875,
+          "attack_recall": 0.9917743830787309,
+          "attack_f1": 0.9002666666666667,
+          "macro_f1": 0.9483223356382395,
+          "average_precision": 0.8982245419939312,
+          "roc_auc": 0.9973621877862607,
+          "brier_score": 0.007266286578811859,
+          "false_positive_rate": 0.006949538627852207,
+          "false_alarms_per_10000_benign_flows": 69.49538627852206,
+          "confusion_matrix": {
+            "tn": 25721,
+            "fp": 180,
+            "fn": 7,
+            "tp": 844
+          },
+          "conditional_wilson_95": {
+            "attack_precision": [
+              0.7997056909770262,
+              0.846308336090775
+            ],
+            "attack_recall": [
+              0.9831190227378162,
+              0.996009903875889
+            ],
+            "false_positive_rate": [
+              0.006008385921913915,
+              0.008036921377073812
+            ],
+            "limitation": "Binomial intervals assume independent labels/rows; not capture-level or model-selection uncertainty."
+          }
+        }
+      }
+    },
+    {
+      "id": "hist-stable-shallow:sigmoid",
+      "spec": {
+        "id": "hist-stable-shallow",
+        "model": "hist",
+        "features": "stable",
+        "weighting": "source_class",
+        "iterations": 200,
+        "depth": 4
+      },
+      "calibration": "sigmoid",
+      "fit_seconds": 21.49373899999773,
+      "calibration_seconds": 0.46834030002355576,
+      "model_bytes": 106643,
+      "threshold": 0.75816137798687,
+      "constraints_met_each_source": false,
+      "pooled_validation": {
+        "rows": 47483,
+        "attack_prevalence": 0.3803255902112335,
+        "threshold": 0.75816137798687,
+        "accuracy": 0.9286270875892425,
+        "balanced_accuracy": 0.9113873876819865,
+        "attack_precision": 0.9688099194682347,
+        "attack_recall": 0.8393598759621241,
+        "attack_f1": 0.8994511200118677,
+        "macro_f1": 0.92206522145449,
+        "average_precision": 0.9779557124391453,
+        "roc_auc": 0.9887789492019408,
+        "brier_score": 0.04100823327366512,
+        "false_positive_rate": 0.01658510059815117,
+        "false_alarms_per_10000_benign_flows": 165.8510059815117,
+        "confusion_matrix": {
+          "tn": 28936,
+          "fp": 488,
+          "fn": 2901,
+          "tp": 15158
+        },
+        "conditional_wilson_95": {
+          "attack_precision": [
+            0.9659689560010373,
+            0.9714207318498623
+          ],
+          "attack_recall": [
+            0.8339322580249179,
+            0.8446431492798113
+          ],
+          "false_positive_rate": [
+            0.015187702932476448,
+            0.018108706530372443
+          ],
+          "limitation": "Binomial intervals assume independent labels/rows; not capture-level or model-selection uncertainty."
+        }
+      },
+      "by_source": {
+        "ton": {
+          "rows": 20731,
+          "attack_prevalence": 0.8300612609136077,
+          "threshold": 0.75816137798687,
+          "accuracy": 0.8455453186049877,
+          "balanced_accuracy": 0.8721984592713645,
+          "attack_precision": 0.9789358500889072,
+          "attack_recall": 0.8318224081822408,
+          "attack_f1": 0.8994030788564248,
+          "macro_f1": 0.7834847620195745,
+          "average_precision": 0.9843545221810192,
+          "roc_auc": 0.9316406494850272,
+          "brier_score": 0.08477286143032782,
+          "false_positive_rate": 0.08742548963951179,
+          "false_alarms_per_10000_benign_flows": 874.2548963951178,
+          "confusion_matrix": {
+            "tn": 3215,
+            "fp": 308,
+            "fn": 2894,
+            "tp": 14314
+          },
+          "conditional_wilson_95": {
+            "attack_precision": [
+              0.976479444711902,
+              0.9811406716714278
+            ],
+            "attack_recall": [
+              0.8261601498015532,
+              0.8373365496842244
+            ],
+            "false_positive_rate": [
+              0.07854205990836005,
+              0.09720767708944558
+            ],
+            "limitation": "Binomial intervals assume independent labels/rows; not capture-level or model-selection uncertainty."
+          }
+        },
+        "unsw": {
+          "rows": 26752,
+          "attack_prevalence": 0.031810705741626796,
+          "threshold": 0.75816137798687,
+          "accuracy": 0.9930098684210527,
+          "balanced_accuracy": 0.9924124222254394,
+          "attack_precision": 0.82421875,
+          "attack_recall": 0.9917743830787309,
+          "attack_f1": 0.9002666666666667,
+          "macro_f1": 0.9483223356382395,
+          "average_precision": 0.8982245419939312,
+          "roc_auc": 0.9973621877862607,
+          "brier_score": 0.007093591141646052,
+          "false_positive_rate": 0.006949538627852207,
+          "false_alarms_per_10000_benign_flows": 69.49538627852206,
+          "confusion_matrix": {
+            "tn": 25721,
+            "fp": 180,
+            "fn": 7,
+            "tp": 844
+          },
+          "conditional_wilson_95": {
+            "attack_precision": [
+              0.7997056909770262,
+              0.846308336090775
+            ],
+            "attack_recall": [
+              0.9831190227378162,
+              0.996009903875889
+            ],
+            "false_positive_rate": [
+              0.006008385921913915,
+              0.008036921377073812
+            ],
+            "limitation": "Binomial intervals assume independent labels/rows; not capture-level or model-selection uncertainty."
+          }
+        }
+      }
+    },
+    {
+      "id": "extra-full-balanced:none",
+      "spec": {
+        "id": "extra-full-balanced",
+        "model": "extra_trees",
+        "features": "full",
+        "weighting": "source_class",
+        "iterations": 100,
+        "depth": 14
+      },
+      "calibration": "none",
+      "fit_seconds": 6.663884999987204,
+      "calibration_seconds": 0.0,
+      "model_bytes": 1833886,
+      "threshold": 0.6038507953205067,
+      "constraints_met_each_source": false,
+      "pooled_validation": {
+        "rows": 47483,
+        "attack_prevalence": 0.3803255902112335,
+        "threshold": 0.6038507953205067,
+        "accuracy": 0.9382726449466124,
+        "balanced_accuracy": 0.9242819274241001,
+        "attack_precision": 0.9685332011892963,
+        "attack_recall": 0.8658286726839803,
+        "attack_f1": 0.9143057626523989,
+        "macro_f1": 0.9330345856528457,
+        "average_precision": 0.9683800952818045,
+        "roc_auc": 0.9903942863584022,
+        "brier_score": 0.03682994100466748,
+        "false_positive_rate": 0.017264817835780315,
+        "false_alarms_per_10000_benign_flows": 172.64817835780315,
+        "confusion_matrix": {
+          "tn": 28916,
+          "fp": 508,
+          "fn": 2423,
+          "tp": 15636
+        },
+        "conditional_wilson_95": {
+          "attack_precision": [
+            0.9657268186331838,
+            0.9711166621861296
+          ],
+          "attack_recall": [
+            0.8607797529839872,
+            0.870721989425851
+          ],
+          "false_positive_rate": [
+            0.015838276279695463,
+            0.01881739020021916
+          ],
+          "limitation": "Binomial intervals assume independent labels/rows; not capture-level or model-selection uncertainty."
+        }
+      },
+      "by_source": {
+        "ton": {
+          "rows": 20731,
+          "attack_prevalence": 0.8300612609136077,
+          "threshold": 0.6038507953205067,
+          "accuracy": 0.8672519415368289,
+          "balanced_accuracy": 0.882564935240598,
+          "attack_precision": 0.978042328042328,
+          "attack_recall": 0.8593677359367736,
+          "attack_f1": 0.9148725562979461,
+          "macro_f1": 0.8067903398962908,
+          "average_precision": 0.9907604625963664,
+          "roc_auc": 0.9589549952869982,
+          "brier_score": 0.0739290597721439,
+          "false_positive_rate": 0.09423786545557764,
+          "false_alarms_per_10000_benign_flows": 942.3786545557763,
+          "confusion_matrix": {
+            "tn": 3191,
+            "fp": 332,
+            "fn": 2420,
+            "tp": 14788
+          },
+          "conditional_wilson_95": {
+            "attack_precision": [
+              0.9755822018823951,
+              0.9802596085042651
+            ],
+            "attack_recall": [
+              0.8540933351935003,
+              0.8644817242846168
+            ],
+            "false_positive_rate": [
+              0.08502752764730687,
+              0.10433212081389928
+            ],
+            "limitation": "Binomial intervals assume independent labels/rows; not capture-level or model-selection uncertainty."
+          }
+        },
+        "unsw": {
+          "rows": 26752,
+          "attack_prevalence": 0.031810705741626796,
+          "threshold": 0.6038507953205067,
+          "accuracy": 0.9933089114832536,
+          "balanced_accuracy": 0.9948398155845242,
+          "attack_precision": 0.828125,
+          "attack_recall": 0.9964747356051704,
+          "attack_f1": 0.9045333333333333,
+          "macro_f1": 0.9505331448087961,
+          "average_precision": 0.8866098830131813,
+          "roc_auc": 0.9973445167763668,
+          "brier_score": 0.008080620162541513,
+          "false_positive_rate": 0.006795104436122157,
+          "false_alarms_per_10000_benign_flows": 67.95104436122158,
+          "confusion_matrix": {
+            "tn": 25725,
+            "fp": 176,
+            "fn": 3,
+            "tp": 848
+          },
+          "conditional_wilson_95": {
+            "attack_precision": [
+              0.8038018353506676,
+              0.8499954932480708
+            ],
+            "attack_recall": [
+              0.9896870038179636,
+              0.9988003832651676
+            ],
+            "false_positive_rate": [
+              0.005865169122724556,
+              0.007871315595251928
+            ],
+            "limitation": "Binomial intervals assume independent labels/rows; not capture-level or model-selection uncertainty."
+          }
+        }
+      }
+    },
+    {
+      "id": "extra-full-balanced:sigmoid",
+      "spec": {
+        "id": "extra-full-balanced",
+        "model": "extra_trees",
+        "features": "full",
+        "weighting": "source_class",
+        "iterations": 100,
+        "depth": 14
+      },
+      "calibration": "sigmoid",
+      "fit_seconds": 6.663884999987204,
+      "calibration_seconds": 0.6155968999955803,
+      "model_bytes": 1834745,
+      "threshold": 0.7367296695956992,
+      "constraints_met_each_source": false,
+      "pooled_validation": {
+        "rows": 47483,
+        "attack_prevalence": 0.3803255902112335,
+        "threshold": 0.7367296695956992,
+        "accuracy": 0.9382726449466124,
+        "balanced_accuracy": 0.9242819274241001,
+        "attack_precision": 0.9685332011892963,
+        "attack_recall": 0.8658286726839803,
+        "attack_f1": 0.9143057626523989,
+        "macro_f1": 0.9330345856528457,
+        "average_precision": 0.9683800952818045,
+        "roc_auc": 0.9903942863584022,
+        "brier_score": 0.038503114111677436,
+        "false_positive_rate": 0.017264817835780315,
+        "false_alarms_per_10000_benign_flows": 172.64817835780315,
+        "confusion_matrix": {
+          "tn": 28916,
+          "fp": 508,
+          "fn": 2423,
+          "tp": 15636
+        },
+        "conditional_wilson_95": {
+          "attack_precision": [
+            0.9657268186331838,
+            0.9711166621861296
+          ],
+          "attack_recall": [
+            0.8607797529839872,
+            0.870721989425851
+          ],
+          "false_positive_rate": [
+            0.015838276279695463,
+            0.01881739020021916
+          ],
+          "limitation": "Binomial intervals assume independent labels/rows; not capture-level or model-selection uncertainty."
+        }
+      },
+      "by_source": {
+        "ton": {
+          "rows": 20731,
+          "attack_prevalence": 0.8300612609136077,
+          "threshold": 0.7367296695956992,
+          "accuracy": 0.8672519415368289,
+          "balanced_accuracy": 0.882564935240598,
+          "attack_precision": 0.978042328042328,
+          "attack_recall": 0.8593677359367736,
+          "attack_f1": 0.9148725562979461,
+          "macro_f1": 0.8067903398962908,
+          "average_precision": 0.9907604625963664,
+          "roc_auc": 0.9589549952869982,
+          "brier_score": 0.07937975777195404,
+          "false_positive_rate": 0.09423786545557764,
+          "false_alarms_per_10000_benign_flows": 942.3786545557763,
+          "confusion_matrix": {
+            "tn": 3191,
+            "fp": 332,
+            "fn": 2420,
+            "tp": 14788
+          },
+          "conditional_wilson_95": {
+            "attack_precision": [
+              0.9755822018823951,
+              0.9802596085042651
+            ],
+            "attack_recall": [
+              0.8540933351935003,
+              0.8644817242846168
+            ],
+            "false_positive_rate": [
+              0.08502752764730687,
+              0.10433212081389928
+            ],
+            "limitation": "Binomial intervals assume independent labels/rows; not capture-level or model-selection uncertainty."
+          }
+        },
+        "unsw": {
+          "rows": 26752,
+          "attack_prevalence": 0.031810705741626796,
+          "threshold": 0.7367296695956992,
+          "accuracy": 0.9933089114832536,
+          "balanced_accuracy": 0.9948398155845242,
+          "attack_precision": 0.828125,
+          "attack_recall": 0.9964747356051704,
+          "attack_f1": 0.9045333333333333,
+          "macro_f1": 0.9505331448087961,
+          "average_precision": 0.8866098830131813,
+          "roc_auc": 0.9973445167763668,
+          "brier_score": 0.006826465647218909,
+          "false_positive_rate": 0.006795104436122157,
+          "false_alarms_per_10000_benign_flows": 67.95104436122158,
+          "confusion_matrix": {
+            "tn": 25725,
+            "fp": 176,
+            "fn": 3,
+            "tp": 848
+          },
+          "conditional_wilson_95": {
+            "attack_precision": [
+              0.8038018353506676,
+              0.8499954932480708
+            ],
+            "attack_recall": [
+              0.9896870038179636,
+              0.9988003832651676
+            ],
+            "false_positive_rate": [
+              0.005865169122724556,
+              0.007871315595251928
+            ],
+            "limitation": "Binomial intervals assume independent labels/rows; not capture-level or model-selection uncertainty."
+          }
+        }
+      }
+    },
+    {
+      "id": "extra-stable-balanced:none",
+      "spec": {
+        "id": "extra-stable-balanced",
+        "model": "extra_trees",
+        "features": "stable",
+        "weighting": "source_class",
+        "iterations": 100,
+        "depth": 14
+      },
+      "calibration": "none",
+      "fit_seconds": 4.91432939999504,
+      "calibration_seconds": 0.0,
+      "model_bytes": 1421490,
+      "threshold": 0.4327052451879785,
+      "constraints_met_each_source": false,
+      "pooled_validation": {
+        "rows": 47483,
+        "attack_prevalence": 0.3803255902112335,
+        "threshold": 0.4327052451879785,
+        "accuracy": 0.8909083250847671,
+        "balanced_accuracy": 0.8809530483671415,
+        "attack_precision": 0.8693009118541033,
+        "attack_recall": 0.8393598759621241,
+        "attack_f1": 0.8540680640072121,
+        "macro_f1": 0.8834826615647293,
+        "average_precision": 0.9177540072303845,
+        "roc_auc": 0.9635703139497956,
+        "brier_score": 0.08959089054801206,
+        "false_positive_rate": 0.07745377922784122,
+        "false_alarms_per_10000_benign_flows": 774.5377922784122,
+        "confusion_matrix": {
+          "tn": 27145,
+          "fp": 2279,
+          "fn": 2901,
+          "tp": 15158
+        },
+        "conditional_wilson_95": {
+          "attack_precision": [
+            0.8642164255242061,
+            0.874222716326169
+          ],
+          "attack_recall": [
+            0.8339322580249179,
+            0.8446431492798113
+          ],
+          "false_positive_rate": [
+            0.07445433253111387,
+            0.08056354280997162
+          ],
+          "limitation": "Binomial intervals assume independent labels/rows; not capture-level or model-selection uncertainty."
+        }
+      },
+      "by_source": {
+        "ton": {
+          "rows": 20731,
+          "attack_prevalence": 0.8300612609136077,
+          "threshold": 0.4327052451879785,
+          "accuracy": 0.7640731272008103,
+          "balanced_accuracy": 0.6328265899733345,
+          "attack_precision": 0.8777062250843299,
+          "attack_recall": 0.8316480706648071,
+          "attack_f1": 0.8540566347387581,
+          "macro_f1": 0.6193795565189576,
+          "average_precision": 0.9509528073389885,
+          "roc_auc": 0.7791707541713332,
+          "brier_score": 0.16036763721798025,
+          "false_positive_rate": 0.5659948907181379,
+          "false_alarms_per_10000_benign_flows": 5659.94890718138,
+          "confusion_matrix": {
+            "tn": 1529,
+            "fp": 1994,
+            "fn": 2897,
+            "tp": 14311
+          },
+          "conditional_wilson_95": {
+            "attack_precision": [
+              0.8725882626753907,
+              0.8826462542030789
+            ],
+            "attack_recall": [
+              0.8259835423598911,
+              0.8371645599107449
+            ],
+            "false_positive_rate": [
+              0.549565656922521,
+              0.5822803603791714
+            ],
+            "limitation": "Binomial intervals assume independent labels/rows; not capture-level or model-selection uncertainty."
+          }
+        },
+        "unsw": {
+          "rows": 26752,
+          "attack_prevalence": 0.031810705741626796,
+          "threshold": 0.4327052451879785,
+          "accuracy": 0.9891970693779905,
+          "balanced_accuracy": 0.9921481056563972,
+          "attack_precision": 0.7482332155477032,
+          "attack_recall": 0.9952996474735605,
+          "attack_f1": 0.854261220373172,
+          "macro_f1": 0.9243259286004366,
+          "average_precision": 0.76554346558404,
+          "roc_auc": 0.9943709100061969,
+          "brier_score": 0.03474367407017447,
+          "false_positive_rate": 0.011003436160765994,
+          "false_alarms_per_10000_benign_flows": 110.03436160765993,
+          "confusion_matrix": {
+            "tn": 25616,
+            "fp": 285,
+            "fn": 4,
+            "tp": 847
+          },
+          "conditional_wilson_95": {
+            "attack_precision": [
+              0.7221387011958291,
+              0.7726486616316428
+            ],
+            "attack_recall": [
+              0.987977119976632,
+              0.9981706519891426
+            ],
+            "false_positive_rate": [
+              0.00980354440612697,
+              0.012348355644405826
+            ],
+            "limitation": "Binomial intervals assume independent labels/rows; not capture-level or model-selection uncertainty."
+          }
+        }
+      }
+    },
+    {
+      "id": "extra-stable-balanced:sigmoid",
+      "spec": {
+        "id": "extra-stable-balanced",
+        "model": "extra_trees",
+        "features": "stable",
+        "weighting": "source_class",
+        "iterations": 100,
+        "depth": 14
+      },
+      "calibration": "sigmoid",
+      "fit_seconds": 4.91432939999504,
+      "calibration_seconds": 0.5696529999841005,
+      "model_bytes": 1422284,
+      "threshold": 0.3626927616742537,
+      "constraints_met_each_source": false,
+      "pooled_validation": {
+        "rows": 47483,
+        "attack_prevalence": 0.3803255902112335,
+        "threshold": 0.3626927616742537,
+        "accuracy": 0.8909083250847671,
+        "balanced_accuracy": 0.8809530483671415,
+        "attack_precision": 0.8693009118541033,
+        "attack_recall": 0.8393598759621241,
+        "attack_f1": 0.8540680640072121,
+        "macro_f1": 0.8834826615647293,
+        "average_precision": 0.9177540072303845,
+        "roc_auc": 0.9635703139497956,
+        "brier_score": 0.0852312392346517,
+        "false_positive_rate": 0.07745377922784122,
+        "false_alarms_per_10000_benign_flows": 774.5377922784122,
+        "confusion_matrix": {
+          "tn": 27145,
+          "fp": 2279,
+          "fn": 2901,
+          "tp": 15158
+        },
+        "conditional_wilson_95": {
+          "attack_precision": [
+            0.8642164255242061,
+            0.874222716326169
+          ],
+          "attack_recall": [
+            0.8339322580249179,
+            0.8446431492798113
+          ],
+          "false_positive_rate": [
+            0.07445433253111387,
+            0.08056354280997162
+          ],
+          "limitation": "Binomial intervals assume independent labels/rows; not capture-level or model-selection uncertainty."
+        }
+      },
+      "by_source": {
+        "ton": {
+          "rows": 20731,
+          "attack_prevalence": 0.8300612609136077,
+          "threshold": 0.3626927616742537,
+          "accuracy": 0.7640731272008103,
+          "balanced_accuracy": 0.6328265899733345,
+          "attack_precision": 0.8777062250843299,
+          "attack_recall": 0.8316480706648071,
+          "attack_f1": 0.8540566347387581,
+          "macro_f1": 0.6193795565189576,
+          "average_precision": 0.9509528073389885,
+          "roc_auc": 0.7791707541713332,
+          "brier_score": 0.17596377895079324,
+          "false_positive_rate": 0.5659948907181379,
+          "false_alarms_per_10000_benign_flows": 5659.94890718138,
+          "confusion_matrix": {
+            "tn": 1529,
+            "fp": 1994,
+            "fn": 2897,
+            "tp": 14311
+          },
+          "conditional_wilson_95": {
+            "attack_precision": [
+              0.8725882626753907,
+              0.8826462542030789
+            ],
+            "attack_recall": [
+              0.8259835423598911,
+              0.8371645599107449
+            ],
+            "false_positive_rate": [
+              0.549565656922521,
+              0.5822803603791714
+            ],
+            "limitation": "Binomial intervals assume independent labels/rows; not capture-level or model-selection uncertainty."
+          }
+        },
+        "unsw": {
+          "rows": 26752,
+          "attack_prevalence": 0.031810705741626796,
+          "threshold": 0.3626927616742537,
+          "accuracy": 0.9891970693779905,
+          "balanced_accuracy": 0.9921481056563972,
+          "attack_precision": 0.7482332155477032,
+          "attack_recall": 0.9952996474735605,
+          "attack_f1": 0.854261220373172,
+          "macro_f1": 0.9243259286004366,
+          "average_precision": 0.76554346558404,
+          "roc_auc": 0.9943709100061969,
+          "brier_score": 0.014919625865358558,
+          "false_positive_rate": 0.011003436160765994,
+          "false_alarms_per_10000_benign_flows": 110.03436160765993,
+          "confusion_matrix": {
+            "tn": 25616,
+            "fp": 285,
+            "fn": 4,
+            "tp": 847
+          },
+          "conditional_wilson_95": {
+            "attack_precision": [
+              0.7221387011958291,
+              0.7726486616316428
+            ],
+            "attack_recall": [
+              0.987977119976632,
+              0.9981706519891426
+            ],
+            "false_positive_rate": [
+              0.00980354440612697,
+              0.012348355644405826
+            ],
+            "limitation": "Binomial intervals assume independent labels/rows; not capture-level or model-selection uncertainty."
+          }
+        }
+      }
+    },
+    {
+      "id": "xgb-full-natural:none",
+      "spec": {
+        "id": "xgb-full-natural",
+        "model": "xgboost",
+        "features": "full",
+        "weighting": "source",
+        "iterations": 150,
+        "depth": 6
+      },
+      "calibration": "none",
+      "fit_seconds": 4.616674099990632,
+      "calibration_seconds": 0.0,
+      "model_bytes": 159749,
+      "threshold": 0.9936622381210327,
+      "constraints_met_each_source": true,
+      "pooled_validation": {
+        "rows": 47483,
+        "attack_prevalence": 0.3803255902112335,
+        "threshold": 0.9936622381210327,
+        "accuracy": 0.8225048964892698,
+        "balanced_accuracy": 0.7666965224342746,
+        "attack_precision": 0.9995850191928624,
+        "attack_recall": 0.5335289883160751,
+        "attack_f1": 0.6957181023900643,
+        "macro_f1": 0.7852141085774428,
+        "average_precision": 0.990507199866413,
+        "roc_auc": 0.9940426899913374,
+        "brier_score": 0.030586697161197662,
+        "false_positive_rate": 0.00013594344752582924,
+        "false_alarms_per_10000_benign_flows": 1.3594344752582925,
+        "confusion_matrix": {
+          "tn": 29420,
+          "fp": 4,
+          "fn": 8424,
+          "tp": 9635
+        },
+        "conditional_wilson_95": {
+          "attack_precision": [
+            0.9989333842582523,
+            0.9998386106074456
+          ],
+          "attack_recall": [
+            0.5262466296950086,
+            0.5407970855898105
+          ],
+          "false_positive_rate": [
+            5.286698168688851e-05,
+            0.00034952266817119747
+          ],
+          "limitation": "Binomial intervals assume independent labels/rows; not capture-level or model-selection uncertainty."
+        }
+      },
+      "by_source": {
+        "ton": {
+          "rows": 20731,
+          "attack_prevalence": 0.8300612609136077,
+          "threshold": 0.9936622381210327,
+          "accuracy": 0.6306497515797598,
+          "balanced_accuracy": 0.7770647985285775,
+          "attack_precision": 0.9995815461868396,
+          "attack_recall": 0.5552649930264993,
+          "attack_f1": 0.7139388052452647,
+          "macro_f1": 0.5964386098359702,
+          "average_precision": 0.9917185574666206,
+          "roc_auc": 0.9582754765027535,
+          "brier_score": 0.06462147831916809,
+          "false_positive_rate": 0.0011353959693443088,
+          "false_alarms_per_10000_benign_flows": 11.353959693443088,
+          "confusion_matrix": {
+            "tn": 3519,
+            "fp": 4,
+            "fn": 7653,
+            "tp": 9555
+          },
+          "conditional_wilson_95": {
+            "attack_precision": [
+              0.9989244618949497,
+              0.9998372598305766
+            ],
+            "attack_recall": [
+              0.5478286951192232,
+              0.5626766220805973
+            ],
+            "false_positive_rate": [
+              0.00044161913600669904,
+              0.0029159059920589306
+            ],
+            "limitation": "Binomial intervals assume independent labels/rows; not capture-level or model-selection uncertainty."
+          }
+        },
+        "unsw": {
+          "rows": 26752,
+          "attack_prevalence": 0.031810705741626796,
+          "threshold": 0.9936622381210327,
+          "accuracy": 0.9711797248803827,
+          "balanced_accuracy": 0.5470035252643948,
+          "attack_precision": 1.0,
+          "attack_recall": 0.09400705052878966,
+          "attack_f1": 0.17185821697099893,
+          "macro_f1": 0.578596447233526,
+          "average_precision": 0.9684421500651998,
+          "roc_auc": 0.9992161920348344,
+          "brier_score": 0.004212031606584787,
+          "false_positive_rate": 0.0,
+          "false_alarms_per_10000_benign_flows": 0.0,
+          "confusion_matrix": {
+            "tn": 25901,
+            "fp": 0,
+            "fn": 771,
+            "tp": 80
+          },
+          "conditional_wilson_95": {
+            "attack_precision": [
+              0.9541818704644728,
+              1.0
+            ],
+            "attack_recall": [
+              0.07618304015517385,
+              0.1154799367981473
+            ],
+            "false_positive_rate": [
+              0.0,
+              0.0001482911534818946
+            ],
+            "limitation": "Binomial intervals assume independent labels/rows; not capture-level or model-selection uncertainty."
+          }
+        }
+      }
+    },
+    {
+      "id": "xgb-full-natural:sigmoid",
+      "spec": {
+        "id": "xgb-full-natural",
+        "model": "xgboost",
+        "features": "full",
+        "weighting": "source",
+        "iterations": 150,
+        "depth": 6
+      },
+      "calibration": "sigmoid",
+      "fit_seconds": 4.616674099990632,
+      "calibration_seconds": 0.36383479996584356,
+      "model_bytes": 160626,
+      "threshold": 0.9760805462585801,
+      "constraints_met_each_source": true,
+      "pooled_validation": {
+        "rows": 47483,
+        "attack_prevalence": 0.3803255902112335,
+        "threshold": 0.9760805462585801,
+        "accuracy": 0.8225048964892698,
+        "balanced_accuracy": 0.7666965224342746,
+        "attack_precision": 0.9995850191928624,
+        "attack_recall": 0.5335289883160751,
+        "attack_f1": 0.6957181023900643,
+        "macro_f1": 0.7852141085774428,
+        "average_precision": 0.990507199866413,
+        "roc_auc": 0.9940426899913374,
+        "brier_score": 0.03074163567612741,
+        "false_positive_rate": 0.00013594344752582924,
+        "false_alarms_per_10000_benign_flows": 1.3594344752582925,
+        "confusion_matrix": {
+          "tn": 29420,
+          "fp": 4,
+          "fn": 8424,
+          "tp": 9635
+        },
+        "conditional_wilson_95": {
+          "attack_precision": [
+            0.9989333842582523,
+            0.9998386106074456
+          ],
+          "attack_recall": [
+            0.5262466296950086,
+            0.5407970855898105
+          ],
+          "false_positive_rate": [
+            5.286698168688851e-05,
+            0.00034952266817119747
+          ],
+          "limitation": "Binomial intervals assume independent labels/rows; not capture-level or model-selection uncertainty."
+        }
+      },
+      "by_source": {
+        "ton": {
+          "rows": 20731,
+          "attack_prevalence": 0.8300612609136077,
+          "threshold": 0.9760805462585801,
+          "accuracy": 0.6306497515797598,
+          "balanced_accuracy": 0.7770647985285775,
+          "attack_precision": 0.9995815461868396,
+          "attack_recall": 0.5552649930264993,
+          "attack_f1": 0.7139388052452647,
+          "macro_f1": 0.5964386098359702,
+          "average_precision": 0.9917185574666206,
+          "roc_auc": 0.9582754765027535,
+          "brier_score": 0.06462168378015644,
+          "false_positive_rate": 0.0011353959693443088,
+          "false_alarms_per_10000_benign_flows": 11.353959693443088,
+          "confusion_matrix": {
+            "tn": 3519,
+            "fp": 4,
+            "fn": 7653,
+            "tp": 9555
+          },
+          "conditional_wilson_95": {
+            "attack_precision": [
+              0.9989244618949497,
+              0.9998372598305766
+            ],
+            "attack_recall": [
+              0.5478286951192232,
+              0.5626766220805973
+            ],
+            "false_positive_rate": [
+              0.00044161913600669904,
+              0.0029159059920589306
+            ],
+            "limitation": "Binomial intervals assume independent labels/rows; not capture-level or model-selection uncertainty."
+          }
+        },
+        "unsw": {
+          "rows": 26752,
+          "attack_prevalence": 0.031810705741626796,
+          "threshold": 0.9760805462585801,
+          "accuracy": 0.9711797248803827,
+          "balanced_accuracy": 0.5470035252643948,
+          "attack_precision": 1.0,
+          "attack_recall": 0.09400705052878966,
+          "attack_f1": 0.17185821697099893,
+          "macro_f1": 0.578596447233526,
+          "average_precision": 0.9684421500651998,
+          "roc_auc": 0.9992161920348344,
+          "brier_score": 0.004486878004004731,
+          "false_positive_rate": 0.0,
+          "false_alarms_per_10000_benign_flows": 0.0,
+          "confusion_matrix": {
+            "tn": 25901,
+            "fp": 0,
+            "fn": 771,
+            "tp": 80
+          },
+          "conditional_wilson_95": {
+            "attack_precision": [
+              0.9541818704644728,
+              1.0
+            ],
+            "attack_recall": [
+              0.07618304015517385,
+              0.1154799367981473
+            ],
+            "false_positive_rate": [
+              0.0,
+              0.0001482911534818946
+            ],
+            "limitation": "Binomial intervals assume independent labels/rows; not capture-level or model-selection uncertainty."
+          }
+        }
+      }
+    },
+    {
+      "id": "xgb-stable-natural:none",
+      "spec": {
+        "id": "xgb-stable-natural",
+        "model": "xgboost",
+        "features": "stable",
+        "weighting": "source",
+        "iterations": 150,
+        "depth": 6
+      },
+      "calibration": "none",
+      "fit_seconds": 4.281180000049062,
+      "calibration_seconds": 0.0,
+      "model_bytes": 155555,
+      "threshold": 0.4312135577201843,
+      "constraints_met_each_source": false,
+      "pooled_validation": {
+        "rows": 47483,
+        "attack_prevalence": 0.3803255902112335,
+        "threshold": 0.4312135577201843,
+        "accuracy": 0.9342922730240296,
+        "balanced_accuracy": 0.9223535548665767,
+        "attack_precision": 0.9507029505822724,
+        "attack_recall": 0.872473558890304,
+        "attack_f1": 0.9099099099099099,
+        "macro_f1": 0.9290988870662024,
+        "average_precision": 0.9873867386990155,
+        "roc_auc": 0.9924095770190279,
+        "brier_score": 0.044884078204631805,
+        "false_positive_rate": 0.027766449157150624,
+        "false_alarms_per_10000_benign_flows": 277.66449157150623,
+        "confusion_matrix": {
+          "tn": 28607,
+          "fp": 817,
+          "fn": 2303,
+          "tp": 15756
+        },
+        "conditional_wilson_95": {
+          "attack_precision": [
+            0.9473012851135925,
+            0.9538957274240896
+          ],
+          "attack_recall": [
+            0.8675292765143409,
+            0.8772594119469891
+          ],
+          "false_positive_rate": [
+            0.025949865325033426,
+            0.029706322068546807
+          ],
+          "limitation": "Binomial intervals assume independent labels/rows; not capture-level or model-selection uncertainty."
+        }
+      },
+      "by_source": {
+        "ton": {
+          "rows": 20731,
+          "attack_prevalence": 0.8300612609136077,
+          "threshold": 0.4312135577201843,
+          "accuracy": 0.8572186580483334,
+          "balanced_accuracy": 0.8387103731433194,
+          "attack_precision": 0.9571941984340906,
+          "attack_recall": 0.8667480241748025,
+          "attack_f1": 0.9097285757853004,
+          "macro_f1": 0.7842000812505838,
+          "average_precision": 0.9887913428726176,
+          "roc_auc": 0.9458747989073069,
+          "brier_score": 0.09672437608242035,
+          "false_positive_rate": 0.1893272778881635,
+          "false_alarms_per_10000_benign_flows": 1893.272778881635,
+          "confusion_matrix": {
+            "tn": 2856,
+            "fp": 667,
+            "fn": 2293,
+            "tp": 14915
+          },
+          "conditional_wilson_95": {
+            "attack_precision": [
+              0.9539016593451556,
+              0.9602613672482175
+            ],
+            "attack_recall": [
+              0.8615883880573137,
+              0.8717439535284554
+            ],
+            "false_positive_rate": [
+              0.17673165498069324,
+              0.2025996743238119
+            ],
+            "limitation": "Binomial intervals assume independent labels/rows; not capture-level or model-selection uncertainty."
+          }
+        },
+        "unsw": {
+          "rows": 26752,
+          "attack_prevalence": 0.031810705741626796,
+          "threshold": 0.4312135577201843,
+          "accuracy": 0.9940191387559809,
+          "balanced_accuracy": 0.9912289182470122,
+          "attack_precision": 0.8486377396569122,
+          "attack_recall": 0.9882491186839013,
+          "attack_f1": 0.9131378935939196,
+          "macro_f1": 0.955020419833234,
+          "average_precision": 0.9241098918285,
+          "roc_auc": 0.9982679688197187,
+          "brier_score": 0.004711335990577936,
+          "false_positive_rate": 0.005791282189876839,
+          "false_alarms_per_10000_benign_flows": 57.912821898768385,
+          "confusion_matrix": {
+            "tn": 25751,
+            "fp": 150,
+            "fn": 10,
+            "tp": 841
+          },
+          "conditional_wilson_95": {
+            "attack_precision": [
+              0.8249797948597194,
+              0.8696032403297528
+            ],
+            "attack_recall": [
+              0.9785052595769653,
+              0.9936048216846703
+            ],
+            "false_positive_rate": [
+              0.004937642145744017,
+              0.0067914957956594045
+            ],
+            "limitation": "Binomial intervals assume independent labels/rows; not capture-level or model-selection uncertainty."
+          }
+        }
+      }
+    },
+    {
+      "id": "xgb-stable-natural:sigmoid",
+      "spec": {
+        "id": "xgb-stable-natural",
+        "model": "xgboost",
+        "features": "stable",
+        "weighting": "source",
+        "iterations": 150,
+        "depth": 6
+      },
+      "calibration": "sigmoid",
+      "fit_seconds": 4.281180000049062,
+      "calibration_seconds": 0.28884489997290075,
+      "model_bytes": 156396,
+      "threshold": 0.33221223067945205,
+      "constraints_met_each_source": false,
+      "pooled_validation": {
+        "rows": 47483,
+        "attack_prevalence": 0.3803255902112335,
+        "threshold": 0.33221223067945205,
+        "accuracy": 0.9342922730240296,
+        "balanced_accuracy": 0.9223535548665767,
+        "attack_precision": 0.9507029505822724,
+        "attack_recall": 0.872473558890304,
+        "attack_f1": 0.9099099099099099,
+        "macro_f1": 0.9290988870662024,
+        "average_precision": 0.9873867386990155,
+        "roc_auc": 0.9924095770190279,
+        "brier_score": 0.054359910055846644,
+        "false_positive_rate": 0.027766449157150624,
+        "false_alarms_per_10000_benign_flows": 277.66449157150623,
+        "confusion_matrix": {
+          "tn": 28607,
+          "fp": 817,
+          "fn": 2303,
+          "tp": 15756
+        },
+        "conditional_wilson_95": {
+          "attack_precision": [
+            0.9473012851135925,
+            0.9538957274240896
+          ],
+          "attack_recall": [
+            0.8675292765143409,
+            0.8772594119469891
+          ],
+          "false_positive_rate": [
+            0.025949865325033426,
+            0.029706322068546807
+          ],
+          "limitation": "Binomial intervals assume independent labels/rows; not capture-level or model-selection uncertainty."
+        }
+      },
+      "by_source": {
+        "ton": {
+          "rows": 20731,
+          "attack_prevalence": 0.8300612609136077,
+          "threshold": 0.33221223067945205,
+          "accuracy": 0.8572186580483334,
+          "balanced_accuracy": 0.8387103731433194,
+          "attack_precision": 0.9571941984340906,
+          "attack_recall": 0.8667480241748025,
+          "attack_f1": 0.9097285757853004,
+          "macro_f1": 0.7842000812505838,
+          "average_precision": 0.9887913428726176,
+          "roc_auc": 0.9458747989073069,
+          "brier_score": 0.11801580034913604,
+          "false_positive_rate": 0.1893272778881635,
+          "false_alarms_per_10000_benign_flows": 1893.272778881635,
+          "confusion_matrix": {
+            "tn": 2856,
+            "fp": 667,
+            "fn": 2293,
+            "tp": 14915
+          },
+          "conditional_wilson_95": {
+            "attack_precision": [
+              0.9539016593451556,
+              0.9602613672482175
+            ],
+            "attack_recall": [
+              0.8615883880573137,
+              0.8717439535284554
+            ],
+            "false_positive_rate": [
+              0.17673165498069324,
+              0.2025996743238119
+            ],
+            "limitation": "Binomial intervals assume independent labels/rows; not capture-level or model-selection uncertainty."
+          }
+        },
+        "unsw": {
+          "rows": 26752,
+          "attack_prevalence": 0.031810705741626796,
+          "threshold": 0.33221223067945205,
+          "accuracy": 0.9940191387559809,
+          "balanced_accuracy": 0.9912289182470122,
+          "attack_precision": 0.8486377396569122,
+          "attack_recall": 0.9882491186839013,
+          "attack_f1": 0.9131378935939196,
+          "macro_f1": 0.955020419833234,
+          "average_precision": 0.9241098918285,
+          "roc_auc": 0.9982679688197187,
+          "brier_score": 0.005030878145328445,
+          "false_positive_rate": 0.005791282189876839,
+          "false_alarms_per_10000_benign_flows": 57.912821898768385,
+          "confusion_matrix": {
+            "tn": 25751,
+            "fp": 150,
+            "fn": 10,
+            "tp": 841
+          },
+          "conditional_wilson_95": {
+            "attack_precision": [
+              0.8249797948597194,
+              0.8696032403297528
+            ],
+            "attack_recall": [
+              0.9785052595769653,
+              0.9936048216846703
+            ],
+            "false_positive_rate": [
+              0.004937642145744017,
+              0.0067914957956594045
+            ],
+            "limitation": "Binomial intervals assume independent labels/rows; not capture-level or model-selection uncertainty."
+          }
+        }
+      }
+    },
+    {
+      "id": "xgb-stable-balanced:none",
+      "spec": {
+        "id": "xgb-stable-balanced",
+        "model": "xgboost",
+        "features": "stable",
+        "weighting": "source_class",
+        "iterations": 200,
+        "depth": 4
+      },
+      "calibration": "none",
+      "fit_seconds": 4.750969899992924,
+      "calibration_seconds": 0.0,
+      "model_bytes": 80622,
+      "threshold": 0.7686266303062439,
+      "constraints_met_each_source": false,
+      "pooled_validation": {
+        "rows": 47483,
+        "attack_prevalence": 0.3803255902112335,
+        "threshold": 0.7686266303062439,
+        "accuracy": 0.9283111850557042,
+        "balanced_accuracy": 0.9117955276028507,
+        "attack_precision": 0.9642065251821349,
+        "attack_recall": 0.8427930671687247,
+        "attack_f1": 0.8994208722373241,
+        "macro_f1": 0.9218644886692985,
+        "average_precision": 0.9736339455057215,
+        "roc_auc": 0.9864194178371473,
+        "brier_score": 0.056596942245960236,
+        "false_positive_rate": 0.01920201196302338,
+        "false_alarms_per_10000_benign_flows": 192.02011963023384,
+        "confusion_matrix": {
+          "tn": 28859,
+          "fp": 565,
+          "fn": 2839,
+          "tp": 15220
+        },
+        "conditional_wilson_95": {
+          "attack_precision": [
+            0.9611936391727987,
+            0.966993526315062
+          ],
+          "attack_recall": [
+            0.8374114139780732,
+            0.84802891545326
+          ],
+          "false_positive_rate": [
+            0.01769556946775472,
+            0.020833979510797244
+          ],
+          "limitation": "Binomial intervals assume independent labels/rows; not capture-level or model-selection uncertainty."
+        }
+      },
+      "by_source": {
+        "ton": {
+          "rows": 20731,
+          "attack_prevalence": 0.8300612609136077,
+          "threshold": 0.7686266303062439,
+          "accuracy": 0.8449664753268052,
+          "balanced_accuracy": 0.8637232707216032,
+          "attack_precision": 0.974244272739596,
+          "attack_recall": 0.8353091585309158,
+          "attack_f1": 0.899443088667793,
+          "macro_f1": 0.7805636495970544,
+          "average_precision": 0.982079770031525,
+          "roc_auc": 0.9159784219342032,
+          "brier_score": 0.12016252428293228,
+          "false_positive_rate": 0.10786261708770933,
+          "false_alarms_per_10000_benign_flows": 1078.6261708770933,
+          "confusion_matrix": {
+            "tn": 3143,
+            "fp": 380,
+            "fn": 2834,
+            "tp": 14374
+          },
+          "conditional_wilson_95": {
+            "attack_precision": [
+              0.9715621614785,
+              0.976679492902185
+            ],
+            "attack_recall": [
+              0.8296927576299413,
+              0.8407758861586638
+            ],
+            "false_positive_rate": [
+              0.09804303400289749,
+              0.11853643738510969
+            ],
+            "limitation": "Binomial intervals assume independent labels/rows; not capture-level or model-selection uncertainty."
+          }
+        },
+        "unsw": {
+          "rows": 26752,
+          "attack_prevalence": 0.031810705741626796,
+          "threshold": 0.7686266303062439,
+          "accuracy": 0.9928977272727273,
+          "balanced_accuracy": 0.9934909889872179,
+          "attack_precision": 0.8205625606207565,
+          "attack_recall": 0.9941245593419507,
+          "attack_f1": 0.8990435706695006,
+          "macro_f1": 0.9476814846877393,
+          "average_precision": 0.891355997144786,
+          "roc_auc": 0.9971282227078965,
+          "brier_score": 0.007337877992540598,
+          "false_positive_rate": 0.007142581367514768,
+          "false_alarms_per_10000_benign_flows": 71.42581367514768,
+          "confusion_matrix": {
+            "tn": 25716,
+            "fp": 185,
+            "fn": 5,
+            "tp": 846
+          },
+          "conditional_wilson_95": {
+            "attack_precision": [
+              0.7959634558394487,
+              0.842781730068812
+            ],
+            "attack_recall": [
+              0.986320327740341,
+              0.9974878291080773
+            ],
+            "false_positive_rate": [
+              0.006187583155211024,
+              0.008243752370040752
+            ],
+            "limitation": "Binomial intervals assume independent labels/rows; not capture-level or model-selection uncertainty."
+          }
+        }
+      }
+    },
+    {
+      "id": "xgb-stable-balanced:sigmoid",
+      "spec": {
+        "id": "xgb-stable-balanced",
+        "model": "xgboost",
+        "features": "stable",
+        "weighting": "source_class",
+        "iterations": 200,
+        "depth": 4
+      },
+      "calibration": "sigmoid",
+      "fit_seconds": 4.750969899992924,
+      "calibration_seconds": 0.2970735999988392,
+      "model_bytes": 81460,
+      "threshold": 0.8560401117823424,
+      "constraints_met_each_source": false,
+      "pooled_validation": {
+        "rows": 47483,
+        "attack_prevalence": 0.3803255902112335,
+        "threshold": 0.8560401117823424,
+        "accuracy": 0.9283111850557042,
+        "balanced_accuracy": 0.9117955276028507,
+        "attack_precision": 0.9642065251821349,
+        "attack_recall": 0.8427930671687247,
+        "attack_f1": 0.8994208722373241,
+        "macro_f1": 0.9218644886692985,
+        "average_precision": 0.9736339455057215,
+        "roc_auc": 0.9864194178371473,
+        "brier_score": 0.06274367963212106,
+        "false_positive_rate": 0.01920201196302338,
+        "false_alarms_per_10000_benign_flows": 192.02011963023384,
+        "confusion_matrix": {
+          "tn": 28859,
+          "fp": 565,
+          "fn": 2839,
+          "tp": 15220
+        },
+        "conditional_wilson_95": {
+          "attack_precision": [
+            0.9611936391727987,
+            0.966993526315062
+          ],
+          "attack_recall": [
+            0.8374114139780732,
+            0.84802891545326
+          ],
+          "false_positive_rate": [
+            0.01769556946775472,
+            0.020833979510797244
+          ],
+          "limitation": "Binomial intervals assume independent labels/rows; not capture-level or model-selection uncertainty."
+        }
+      },
+      "by_source": {
+        "ton": {
+          "rows": 20731,
+          "attack_prevalence": 0.8300612609136077,
+          "threshold": 0.8560401117823424,
+          "accuracy": 0.8449664753268052,
+          "balanced_accuracy": 0.8637232707216032,
+          "attack_precision": 0.974244272739596,
+          "attack_recall": 0.8353091585309158,
+          "attack_f1": 0.899443088667793,
+          "macro_f1": 0.7805636495970544,
+          "average_precision": 0.982079770031525,
+          "roc_auc": 0.9159784219342032,
+          "brier_score": 0.13429269055220122,
+          "false_positive_rate": 0.10786261708770933,
+          "false_alarms_per_10000_benign_flows": 1078.6261708770933,
+          "confusion_matrix": {
+            "tn": 3143,
+            "fp": 380,
+            "fn": 2834,
+            "tp": 14374
+          },
+          "conditional_wilson_95": {
+            "attack_precision": [
+              0.9715621614785,
+              0.976679492902185
+            ],
+            "attack_recall": [
+              0.8296927576299413,
+              0.8407758861586638
+            ],
+            "false_positive_rate": [
+              0.09804303400289749,
+              0.11853643738510969
+            ],
+            "limitation": "Binomial intervals assume independent labels/rows; not capture-level or model-selection uncertainty."
+          }
+        },
+        "unsw": {
+          "rows": 26752,
+          "attack_prevalence": 0.031810705741626796,
+          "threshold": 0.8560401117823424,
+          "accuracy": 0.9928977272727273,
+          "balanced_accuracy": 0.9934909889872179,
+          "attack_precision": 0.8205625606207565,
+          "attack_recall": 0.9941245593419507,
+          "attack_f1": 0.8990435706695006,
+          "macro_f1": 0.9476814846877393,
+          "average_precision": 0.891355997144786,
+          "roc_auc": 0.9971282227078965,
+          "brier_score": 0.00729801032200661,
+          "false_positive_rate": 0.007142581367514768,
+          "false_alarms_per_10000_benign_flows": 71.42581367514768,
+          "confusion_matrix": {
+            "tn": 25716,
+            "fp": 185,
+            "fn": 5,
+            "tp": 846
+          },
+          "conditional_wilson_95": {
+            "attack_precision": [
+              0.7959634558394487,
+              0.842781730068812
+            ],
+            "attack_recall": [
+              0.986320327740341,
+              0.9974878291080773
+            ],
+            "false_positive_rate": [
+              0.006187583155211024,
+              0.008243752370040752
+            ],
+            "limitation": "Binomial intervals assume independent labels/rows; not capture-level or model-selection uncertainty."
+          }
+        }
+      }
+    }
+  ],
+  "selected": {
+    "id": "xgb-full-natural:none",
+    "spec": {
+      "id": "xgb-full-natural",
+      "model": "xgboost",
+      "features": "full",
+      "weighting": "source",
+      "iterations": 150,
+      "depth": 6
+    },
+    "calibration": "none",
+    "fit_seconds": 4.616674099990632,
+    "calibration_seconds": 0.0,
+    "model_bytes": 159749,
+    "threshold": 0.9936622381210327,
+    "constraints_met_each_source": true,
+    "pooled_validation": {
+      "rows": 47483,
+      "attack_prevalence": 0.3803255902112335,
+      "threshold": 0.9936622381210327,
+      "accuracy": 0.8225048964892698,
+      "balanced_accuracy": 0.7666965224342746,
+      "attack_precision": 0.9995850191928624,
+      "attack_recall": 0.5335289883160751,
+      "attack_f1": 0.6957181023900643,
+      "macro_f1": 0.7852141085774428,
+      "average_precision": 0.990507199866413,
+      "roc_auc": 0.9940426899913374,
+      "brier_score": 0.030586697161197662,
+      "false_positive_rate": 0.00013594344752582924,
+      "false_alarms_per_10000_benign_flows": 1.3594344752582925,
+      "confusion_matrix": {
+        "tn": 29420,
+        "fp": 4,
+        "fn": 8424,
+        "tp": 9635
+      },
+      "conditional_wilson_95": {
+        "attack_precision": [
+          0.9989333842582523,
+          0.9998386106074456
+        ],
+        "attack_recall": [
+          0.5262466296950086,
+          0.5407970855898105
+        ],
+        "false_positive_rate": [
+          5.286698168688851e-05,
+          0.00034952266817119747
+        ],
+        "limitation": "Binomial intervals assume independent labels/rows; not capture-level or model-selection uncertainty."
+      }
+    },
+    "by_source": {
+      "ton": {
+        "rows": 20731,
+        "attack_prevalence": 0.8300612609136077,
+        "threshold": 0.9936622381210327,
+        "accuracy": 0.6306497515797598,
+        "balanced_accuracy": 0.7770647985285775,
+        "attack_precision": 0.9995815461868396,
+        "attack_recall": 0.5552649930264993,
+        "attack_f1": 0.7139388052452647,
+        "macro_f1": 0.5964386098359702,
+        "average_precision": 0.9917185574666206,
+        "roc_auc": 0.9582754765027535,
+        "brier_score": 0.06462147831916809,
+        "false_positive_rate": 0.0011353959693443088,
+        "false_alarms_per_10000_benign_flows": 11.353959693443088,
+        "confusion_matrix": {
+          "tn": 3519,
+          "fp": 4,
+          "fn": 7653,
+          "tp": 9555
+        },
+        "conditional_wilson_95": {
+          "attack_precision": [
+            0.9989244618949497,
+            0.9998372598305766
+          ],
+          "attack_recall": [
+            0.5478286951192232,
+            0.5626766220805973
+          ],
+          "false_positive_rate": [
+            0.00044161913600669904,
+            0.0029159059920589306
+          ],
+          "limitation": "Binomial intervals assume independent labels/rows; not capture-level or model-selection uncertainty."
+        }
+      },
+      "unsw": {
+        "rows": 26752,
+        "attack_prevalence": 0.031810705741626796,
+        "threshold": 0.9936622381210327,
+        "accuracy": 0.9711797248803827,
+        "balanced_accuracy": 0.5470035252643948,
+        "attack_precision": 1.0,
+        "attack_recall": 0.09400705052878966,
+        "attack_f1": 0.17185821697099893,
+        "macro_f1": 0.578596447233526,
+        "average_precision": 0.9684421500651998,
+        "roc_auc": 0.9992161920348344,
+        "brier_score": 0.004212031606584787,
+        "false_positive_rate": 0.0,
+        "false_alarms_per_10000_benign_flows": 0.0,
+        "confusion_matrix": {
+          "tn": 25901,
+          "fp": 0,
+          "fn": 771,
+          "tp": 80
+        },
+        "conditional_wilson_95": {
+          "attack_precision": [
+            0.9541818704644728,
+            1.0
+          ],
+          "attack_recall": [
+            0.07618304015517385,
+            0.1154799367981473
+          ],
+          "false_positive_rate": [
+            0.0,
+            0.0001482911534818946
+          ],
+          "limitation": "Binomial intervals assume independent labels/rows; not capture-level or model-selection uncertainty."
+        }
+      }
+    }
+  },
+  "validation_attack_slices_by_source": {
+    "ton": {
+      "Benign": {
+        "support": 3523,
+        "attack_rows": 0,
+        "attack_recall": null,
+        "benign_false_positive_rate": 0.0011353959693443088,
+        "attack_recall_conditional_wilson_95": null
+      },
+      "ddos": {
+        "support": 4024,
+        "attack_rows": 4024,
+        "attack_recall": 0.7348409542743539,
+        "benign_false_positive_rate": null,
+        "attack_recall_conditional_wilson_95": [
+          0.7209830704509242,
+          0.748250890051923
+        ]
+      },
+      "dos": {
+        "support": 2839,
+        "attack_rows": 2839,
+        "attack_recall": 0.43148996125396266,
+        "benign_false_positive_rate": null,
+        "attack_recall_conditional_wilson_95": [
+          0.41337581339026985,
+          0.4497892608374817
+        ]
+      },
+      "injection": {
+        "support": 1467,
+        "attack_rows": 1467,
+        "attack_recall": 0.7975460122699386,
+        "benign_false_positive_rate": null,
+        "attack_recall_conditional_wilson_95": [
+          0.7762186566368244,
+          0.8173191409038857
+        ]
+      },
+      "mitm": {
+        "support": 25,
+        "attack_rows": 25,
+        "attack_recall": 0.2,
+        "benign_false_positive_rate": null,
+        "attack_recall_conditional_wilson_95": [
+          0.08860584686802572,
+          0.3913095036954033
+        ]
+      },
+      "password": {
+        "support": 2106,
+        "attack_rows": 2106,
+        "attack_recall": 0.8043684710351378,
+        "benign_false_positive_rate": null,
+        "attack_recall_conditional_wilson_95": [
+          0.7868786125439396,
+          0.820749981841811
+        ]
+      },
+      "ransomware": {
+        "support": 7,
+        "attack_rows": 7,
+        "attack_recall": 0.0,
+        "benign_false_positive_rate": null,
+        "attack_recall_conditional_wilson_95": [
+          0.0,
+          0.35433043506668743
+        ]
+      },
+      "scanning": {
+        "support": 2573,
+        "attack_rows": 2573,
+        "attack_recall": 0.000388651379712398,
+        "benign_false_positive_rate": null,
+        "attack_recall_conditional_wilson_95": [
+          6.860980658057693e-05,
+          0.0021982967587024504
+        ]
+      },
+      "xss": {
+        "support": 4167,
+        "attack_rows": 4167,
+        "attack_recall": 0.6006719462443004,
+        "benign_false_positive_rate": null,
+        "attack_recall_conditional_wilson_95": [
+          0.5857154782782621,
+          0.6154429709899647
+        ]
+      }
+    },
+    "unsw": {
+      "Analysis": {
+        "support": 32,
+        "attack_rows": 32,
+        "attack_recall": 0.0,
+        "benign_false_positive_rate": null,
+        "attack_recall_conditional_wilson_95": [
+          0.0,
+          0.1071791982550706
+        ]
+      },
+      "Backdoor": {
+        "support": 39,
+        "attack_rows": 39,
+        "attack_recall": 0.0,
+        "benign_false_positive_rate": null,
+        "attack_recall_conditional_wilson_95": [
+          0.0,
+          0.08966685370757144
+        ]
+      },
+      "Benign": {
+        "support": 25901,
+        "attack_rows": 0,
+        "attack_recall": null,
+        "benign_false_positive_rate": 0.0,
+        "attack_recall_conditional_wilson_95": null
+      },
+      "DoS": {
+        "support": 56,
+        "attack_rows": 56,
+        "attack_recall": 0.125,
+        "benign_false_positive_rate": null,
+        "attack_recall_conditional_wilson_95": [
+          0.06189068695717122,
+          0.2362547655819014
+        ]
+      },
+      "Exploits": {
+        "support": 282,
+        "attack_rows": 282,
+        "attack_recall": 0.1524822695035461,
+        "benign_false_positive_rate": null,
+        "attack_recall_conditional_wilson_95": [
+          0.11521730565935864,
+          0.1990879011197982
+        ]
+      },
+      "Fuzzers": {
+        "support": 287,
+        "attack_rows": 287,
+        "attack_recall": 0.006968641114982578,
+        "benign_false_positive_rate": null,
+        "attack_recall_conditional_wilson_95": [
+          0.0019131376043191144,
+          0.02504814519384083
+        ]
+      },
+      "Generic": {
+        "support": 65,
+        "attack_rows": 65,
+        "attack_recall": 0.2,
+        "benign_false_positive_rate": null,
+        "attack_recall_conditional_wilson_95": [
+          0.12077959241205476,
+          0.3127013263816594
+        ]
+      },
+      "Reconnaissance": {
+        "support": 79,
+        "attack_rows": 79,
+        "attack_recall": 0.189873417721519,
+        "benign_false_positive_rate": null,
+        "attack_recall_conditional_wilson_95": [
+          0.11858230779759438,
+          0.2899264184181298
+        ]
+      },
+      "Shellcode": {
+        "support": 11,
+        "attack_rows": 11,
+        "attack_recall": 0.0,
+        "benign_false_positive_rate": null,
+        "attack_recall_conditional_wilson_95": [
+          0.0,
+          0.2588329669680317
+        ]
+      }
+    }
+  },
+  "model_sha256": "aa08786a5ba1f50c944b71adc19ba12a90c7202f64a5f890ec5554303ea87f42",
+  "baseline_model_sha256": "7f0fe9da3b0296c7ec243e280e48212d4361ed886fe410c3f3736bcf33f4a525",
+  "budget": {
+    "max_new_fits": 9,
+    "completed_fits": 9,
+    "deadline_exceeded": false
+  },
+  "hardware": {
+    "platform": "Windows",
+    "python": "3.13.5",
+    "cpu": "Intel64 Family 6 Model 140 Stepping 1, GenuineIntel",
+    "physical_cores": 4,
+    "logical_cores": 8,
+    "ram_gib": 15.74,
+    "available_ram_gib": 2.07,
+    "free_disk_gib": 13.0,
+    "recommended_threads": 2,
+    "recommended_max_rows": 200000,
+    "recommended_chunk_rows": 50000
+  },
+  "inference": {
+    "batch_rows": 2048,
+    "median_batch_ms": 9.762100002262741,
+    "p95_batch_ms": 11.895949993049726,
+    "scope": "warm model inference only; excludes parsing/export/queueing"
+  },
+  "hash_index_checksums": {
+    "full-0.npy": "822ef340b9ea9af4331e6af833ab769182080e59c4600424cea3c2e58c71e257",
+    "full-1.npy": "b6dbdacc359d6b9c0484d0d4d7479ec698d523e4f2456489f7f14396eb0ed04f",
+    "full-10.npy": "e98bdd8df8724b8c915539f63c6c9a929dd1ecaeda889aae78776cb4b42f2c37",
+    "full-11.npy": "5929f92b22a1d27391d0d9c7be2a01ef7fe5f4de8a0a347b129f378c3b5eefba",
+    "full-12.npy": "726ff8c4fb20c4d2dd8fb5df21228e20f902bba8faf243455d8be4354b1f2c9d",
+    "full-13.npy": "2d6cb935367bf7ea7ba3ec95db510df6041bc582ef3688671ce73da8520ade72",
+    "full-14.npy": "7ea1f8b1cee913c8f5f98ac71e0460c9dd9e4ad6020ad81c692fccf8ae7bafac",
+    "full-15.npy": "0cf260ad0c1f925979c24d056ebd8b887ae5ae5c7724dbdab13713680d2233b0",
+    "full-16.npy": "2cc1dec58d768ff4e40169e8b96f10a10082ab3a2927804a97d41f1bb0e39769",
+    "full-17.npy": "09e9279fbdeb4b3d65129693e9e8c4606e6d971ec04834e47807fa281ea741eb",
+    "full-18.npy": "d5623872dbe1f21492dbd1c8c05fe59bb0927b0175fc543af95d47667b7e3b2a",
+    "full-19.npy": "16a3d6116d3751b015763dc6f246a03b3fa0a3ebd6f347e18a7eaeb490e33a64",
+    "full-2.npy": "380919076c1402edaa9fc117197ad492aa7b1a2175c9f5ae46d70af8e691a867",
+    "full-20.npy": "7d71f2a7d443ff76b9ddbc17c02f093c942fc769defeb653c1cf4626df60a4ee",
+    "full-21.npy": "a54615b2289f89ad7fc37a81f8aee3d50519cbed4ea8edc2dad6aeeb614e265d",
+    "full-22.npy": "98cfcea8590e7d16124dbffa86a89f94e07e5b4eee75f212fb1621e3dbb05468",
+    "full-23.npy": "e761b39b670c57bebaaffeee46098930697e6f4bcf955b7461a248db4c1dcfed",
+    "full-24.npy": "c699d690048f0bd64ea0402180f47018c27973e5bfd56609a156ff5d13216b08",
+    "full-25.npy": "9a6e5540b162f68cd55c981ec9cb45857a071591d4aeb4a84b60ee93cd2df870",
+    "full-26.npy": "cc5d9e7574c9bc40b6bbaf03c54dcda14f6a609a209cdc15d0c64e4b99a24ef2",
+    "full-27.npy": "2924341fd8875be7d6458f0380222b12199cbda6c2781525e03da3624afee93d",
+    "full-28.npy": "ddf8a4fd7cf8107590d873b156d2f23d403d60ef30442ec13ea1c9d58bc53c6c",
+    "full-29.npy": "12dbc90b487c47bbc570803de76b0ed2446504489b4a3ef3a866b0521d520732",
+    "full-3.npy": "9d0268f200dc9944eab8de7d5f99f5c663cf20ba49090d7139160b2cb5c987a9",
+    "full-30.npy": "6be0fe7415b9f74b72d6bf5bef5eee6a16d0b81e88bb8ebca8f302b4be0c944a",
+    "full-31.npy": "7b6072be692f87212946092d56a358a7bfe3a2f611ca4cdaeea12087ba25baea",
+    "full-32.npy": "dfee4f48edc7d3369e1cf0ee4f33a1616b5c2fba0d080dc9486a8b99d65fbe79",
+    "full-33.npy": "da618f22bec8a29098e9fbe57547a1b9f8a7a7418e874028c9a92c9eb77b01aa",
+    "full-34.npy": "e482a9e509f18aaa38dd21765395cffe83b4811ea685e86f08bcb7cb6185ebbc",
+    "full-35.npy": "033bdcdb61990aa67c3ad86906f9c25b317362c7ed75dbed86ea400f33101e57",
+    "full-36.npy": "f261da8c2619c03016b59b0fe54e22ca19e4f5ff8c00863b03c46a97f99c16e6",
+    "full-37.npy": "3c747e006f5d6f4cd12151e22ba5055644958de1385fe2e06f24fdf53368009a",
+    "full-38.npy": "37a53558af97d8dd99630a5decc108235205a35790d38bce436a5293ffee9f4e",
+    "full-39.npy": "8bce9ab933a83ff12c23125f3a1e63bb69043c340295f2cf0c7d207a6727d1d7",
+    "full-4.npy": "b99b1ecdcc5317e9e09c6d0ebfe99ff36f8b3d4396409e469275b9567d8d20d1",
+    "full-40.npy": "39e60731e74f380fcbff79244ab894d2e328e18f73cddd8b71ee52fa3160cd3b",
+    "full-41.npy": "144b3b302c4219f15d6179d3ec2c65db7af68594c91ba5ece87195c6334df52e",
+    "full-42.npy": "ac70574723d3289566420b8489702f72381113c164519ef2044ff82128410032",
+    "full-43.npy": "8251c8d723c3d9f85a5181b5308a9fc52d02337edf618860f2ad1b83f0da5dab",
+    "full-44.npy": "9c77c4d53e58e9b2630b94721ff497ff4a74e3177f287b76198829cc2312ca63",
+    "full-45.npy": "0fbee35f7232c7714d73f3624c60efb97a86e344d55bd23b679c9824e1b69080",
+    "full-46.npy": "9e739df483d4e4a63eeab8334483310d924bf3489aae74e50183d79116d8b930",
+    "full-47.npy": "5e9437b3fc1405ed4304c8b83bb1d10042ce3c167b0c52d8ef12c77f8deb7090",
+    "full-48.npy": "16d8b5e7b24fe9e3ed30c8f234cf4b68071470e7891fc929f8dd07cdc55867ed",
+    "full-49.npy": "0965ee829e2e9b5c24a1d463b9eba8296918990e95482785ed655ea2897d7014",
+    "full-5.npy": "9ac9764308bc60131460838fbf2d47e7e7bb75a0d3787aa1ae0fff6178130f72",
+    "full-50.npy": "9e4c06856a41bea8f0e7160e7c92150baaf8d233491adea814c9bd91a2e4e109",
+    "full-51.npy": "510b0417d78d6cc9ced83c66d4375b6984d0aaa18a50addaa1b1110993756825",
+    "full-52.npy": "3573826474f91a5ff461a302ff59a5ba2e6b3de04531c4c8489d8a111daae23a",
+    "full-53.npy": "635c80af8fd55f45f8bf7e1e355716180661b5094ed2fcc89568b36388ddaeb9",
+    "full-54.npy": "9926b37c6be21310a4f37595c3ae0cfef0241599f88a7d33b9e9f9fd0d4be51f",
+    "full-55.npy": "ae312fe15dfa41c4d50c1bd23b74d66df9786a5bd12ac912cd9ea79ce58fab86",
+    "full-56.npy": "86e47a24e61fbacd672095ef5ef01d392b878e5d0e6fd7d78a1859ddcae9fba0",
+    "full-57.npy": "7981addd849d53e8a4b1e0deaee8d7d357a2d7fbe08d1bd1d48d50d751247486",
+    "full-58.npy": "ee41a3409acce639397b7899c24065f5788edeaed91b4646719c5483c6064a22",
+    "full-59.npy": "2db2b1598d536023ceef9474e8b01da5d9590814f562b12885a188310c0bab23",
+    "full-6.npy": "2d3e774e5d5ccae08830c52e80211c44820bd2a23e246b4e4f0df120424a015f",
+    "full-60.npy": "aafa9166200f4d8abd221b2d34c1f97ede23b1056987372143cf97ac79d7a7d2",
+    "full-61.npy": "421be5026eac95853aba6400373fdf9254555bdb7a0a835c748bb8ae8c2917a0",
+    "full-62.npy": "1c9db148b45a00929ebd699a8d54b32e33867a2de7140312a6bcf10b3024d0ca",
+    "full-63.npy": "6c3127c5e1f827d3551e666b259d9f1a723a5c9aa9d0398aa76fc85c85e1d264",
+    "full-7.npy": "283119d677e5948fb71de6523f112902253d862e92e740a48038c91ace37eb3c",
+    "full-8.npy": "b9670a3999580b72fe4124f64b6962d1e58048ec91c141d10a493708cfdf1111",
+    "full-9.npy": "e4ba899b9a6517f04e339ccbf5490d83f7a01aeec8e3dd3414fcea48edef511f",
+    "stable-0.npy": "bb0e244aa6268fe29eb9b2b3604f252371863cfe490911102249a84326982d31",
+    "stable-1.npy": "70d28d393581f099607294f7fcff21bb508795389d0774ad3ec5071eccebf617",
+    "stable-10.npy": "a3283d038ea9e0ee1cf0e1f8e1a4972006d506f396a5a4f00752a8b92787e9db",
+    "stable-11.npy": "470f452c5e9bcf8c0e4a854c44cea7f2e44c4c1b3d3fcf68cc0d4d03448ebca3",
+    "stable-12.npy": "96007d730abbcb837b65f59405d4e7e18bb93a5edff277687b1cecd6e5d656c4",
+    "stable-13.npy": "d81d1f82a7983b6b0b6f4ad25756b0d9a7b3681f3df1f80ba8f783c34771ed26",
+    "stable-14.npy": "4117f3ac3b726e66bb40c0dfd7eaf4d3a079bf167d3d8d60858a432027b7b62c",
+    "stable-15.npy": "8cd754ebe9b1cd05bcf821aa510b398f6904894388ca2b202c0a221502e6f3ae",
+    "stable-16.npy": "01ac12bd5d6d9e7be216f6d8e5370bbd914ad723f29480dcce85e094880a1f07",
+    "stable-17.npy": "ae087cf4e8468f4e826588b4502bb83e97f93275c4eeb11b492eaff98139e890",
+    "stable-18.npy": "22d1ae71374367e6239550485832942e126f23b054f04d562ccc5f9cc30931c7",
+    "stable-19.npy": "9e29a37b62172b9a18dc5419413ee54813d6b482cf788cb2ff3fd6a4a9dbbdd1",
+    "stable-2.npy": "1227913d2592bf7525f8507094dc9e5cf00a2115d44dd339cca4a11c7bf37ca2",
+    "stable-20.npy": "29c6e92a5c009abf4a470cfdbb046129120072712d412b4d46e29b953e0e7611",
+    "stable-21.npy": "85b8850d445e908ab4589e9cc1cc0b4972d6fa0a852f861f1637a78a5da49fac",
+    "stable-22.npy": "ee75b49671ce7d5647062626f7691d8c33d52ace8f479314096da948fc3bd482",
+    "stable-23.npy": "e5ca48191a00b84f1aae020ff9f39ab1cb04a3f2aac07bda511caf244f935381",
+    "stable-24.npy": "f9abe8ee22c18babae7f0d1052db25e5ca7ebdcdbaa171705e500e0952140e9e",
+    "stable-25.npy": "a3e4321011aa82f173eb8ea4679432a5d6b8fb4f50dceb581f3631253fd810fa",
+    "stable-26.npy": "e66fa334fdcd3129ee6e8e252bfbdf012a007fe9a8d0b1086afb9430945cb517",
+    "stable-27.npy": "f583cb9e0696094249ee9934a4fab4450f498c3d9e6852481ec23015127ebec5",
+    "stable-28.npy": "c5fa0d1bdad6a412f946c9220ced5b7e492e0e625e2dd03c55813fb778f6fa2c",
+    "stable-29.npy": "4fc8fee28ec8d29d3bf180bfc4849bb449b0a1874fb5ff8f82339e5016d897df",
+    "stable-3.npy": "847a291d6e8d18c72b069c8ec66c318e4916ff4a7a862a4f8408e0adda10cc21",
+    "stable-30.npy": "c47350683c5e069b2d3f487de07db56dce38e9dc23d27e5dfef45b135261d667",
+    "stable-31.npy": "9401d85bb1d0053d1637acb5de2dfde86bbb22de0f1a1fedf35b0186447bc59e",
+    "stable-32.npy": "a1632daea8485aa092694bb571e4adf18a1dbc29da711f6460e38431ff9e10e1",
+    "stable-33.npy": "4e3e2941cf4b9295f1423ca3fdaf1d2aaf828e9dc058125db3258117771d06f1",
+    "stable-34.npy": "7a0e1494549954831482c630fad7ad504c189f99d570ec02bb08b8e7fc2a33ec",
+    "stable-35.npy": "b8bc1816a15131e0a6be33d8fc8a236735067b4e4130819a944f5d7affddc3ac",
+    "stable-36.npy": "c1717f0703e5a4e48782fc4e0e22f25ea5dc4d9857bd018cdca6dc7c72b36400",
+    "stable-37.npy": "aa116c89a838f15a9f8dea0c1c3d5b2e570f7f8a5d02ceae19671fde29be5b7f",
+    "stable-38.npy": "e6f6af107db56f35f08ffde519aca295f165fc523460709dbbc2ac7781d0ba8d",
+    "stable-39.npy": "3e14bb38ad0b429b965aed98e9fa46fde6bcd9194c0097a736cf55d409a50261",
+    "stable-4.npy": "47649c3db992468eed9c4f69dc245b44520eb6f244345899520abd8c018efb85",
+    "stable-40.npy": "60da04378ea83c4ed20ad75cd61bb2e97381b386baf8170bdce94b4c09f49dcf",
+    "stable-41.npy": "76b860421fe047f5ad6821bc06cf2869240fa66504a66f0fc672417c7d8edf74",
+    "stable-42.npy": "551bed5ce2db4607743012f6d303a0008cb927598eca598d03452bf741861e1d",
+    "stable-43.npy": "572af88d8a62874f43aa5d137bd10e834b718a71e7fdd6b1e19b8ce90c87f218",
+    "stable-44.npy": "62e2b6e234a99c25c89342b40e4e8e0f1e10556825c29da4ae25d1d0c1ccc1a8",
+    "stable-45.npy": "12a6d7194ff98266c295e8e9100bfe7fbf40426719cd677f3a1577fd15b71bd1",
+    "stable-46.npy": "f02656e916f1d620f4a46a144100d9af8a544fc9ab5002dbb76bff81a91a2f84",
+    "stable-47.npy": "36bed1e9cc1de832a9256c8551f61fac0dcd11fe70b280533fdb86b741b2d6d8",
+    "stable-48.npy": "819076a8a5b19699d583d2c018b95615f0a16225993148d9d2a6b1404babba73",
+    "stable-49.npy": "469ca5ef154577b93f7df2a4f48e8b955255eaef7acc1102d2ceb04fb123b06b",
+    "stable-5.npy": "6defcf196140c57cc0eea1f3aae1d9d2e18efbb2ddb2e1d6d0d5b9ad3852dc11",
+    "stable-50.npy": "64d15cd7e9116eba3bb2809f71dbe1b6f8b848b483fa4da11f5fedad2f486b41",
+    "stable-51.npy": "2881f4dedc037d0e5c4f046de822a70b2ce10abd1ef221b37d219465763a5dcc",
+    "stable-52.npy": "5ad1f0e1e60985363db4ccfbbb8c70b7ab80dfc567bf828e908494c76e91e8d2",
+    "stable-53.npy": "c82bc3d9d8f5edeb0655d9083cd280333f7c09f06b438c6670409cbb989f4510",
+    "stable-54.npy": "528296c731e5862b7c622d6ab041400069b37a8c82f423136f269bec834170c7",
+    "stable-55.npy": "8bb3a4007801f5c189c624cc41cd6f68b2d49fd33db81fc96f12fac6dcca10e9",
+    "stable-56.npy": "02175ea23e79b77ac2e70b945145877848f8fbb41506a671ed6e746507f83c05",
+    "stable-57.npy": "582d234c6649d30d79294018169559383e748d0682dbc6748285be64e133ec61",
+    "stable-58.npy": "28fcdd541c0e68e84a343f37653cc5bbef63b52ed254641125e4fed970cd0663",
+    "stable-59.npy": "58755c0025f7e58476ee60522c4632f8bff1e46b5fcbf6e900f55c90b997f041",
+    "stable-6.npy": "ab4fd7b43823c49a2cae25c6ed32921cc5367e66b875b7b15d60dd34d29cd16d",
+    "stable-60.npy": "d84e8315f911f00b72034aa238da6cb488a3f244f82e98f4d11f910f54a3f88c",
+    "stable-61.npy": "f804b80fd7fb5ddf01393da48742f2839c70479656a15241053729f74c3fa538",
+    "stable-62.npy": "a9f529d874c432b1c533ec0c204b807ec128f42f38b5255794b650653bda2fbf",
+    "stable-63.npy": "5fd88fc24b0c727efd8f073d1c0fe2350443ce12de649722f51a09a766d7decf",
+    "stable-7.npy": "ffada7d871242dfb98be758ff3d307c97c839d5048e82198477c36c6eca69b3c",
+    "stable-8.npy": "60925658537e0794defc327967338f01a99f61878dec177d6c6e03dfb487b902",
+    "stable-9.npy": "b61fbc2768e52e0eedc07f526cf230780ee88f6da7c79d26bfd5ea7a9231393a"
+  },
+  "versions": {
+    "numpy": "2.5.4",
+    "pandas": "2.3.3",
+    "scipy": "1.18.1",
+    "scikit-learn": "1.9.1",
+    "joblib": "1.6.0",
+    "xgboost": "3.4.1"
+  },
+  "resources": {
+    "wall_seconds": 167.4671515999944,
+    "sampled_peak_process_rss_mib": 388.48046875
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "dataset": "nf-cse-cic-ids2018-v2",
+  "downloaded_at_utc": "2026-10-29T23:32:04.215570+00:00",
+  "source": "https://www.cyber.uq.edu.au/project/machine-learning-based-nids-datasets",
+  "record": "https://rdm.uq.edu.au/files/ce5161d0-ef9c-11ed-827d-e762de186848",
+  "license_note": "Academic research with citation; commercial use requires author agreement.",
+  "publisher_reported_flows": 18893708,
+  "bytes": 612059380,
+  "sha256": "ad6307995d08ff8825d0193d5a1cfa61cf3dc4c6f223962ba3762a7775b5dc24",
+  "publisher_checksum_verified": false,
+  "csv_members": [
+    {
+      "name": "b3427ed8ad063a09_MOHANAD_A4706/data/NF-CSE-CIC-IDS2018-v2.csv",
+      "bytes": 3221378977
+    },
+    {
+      "name": "b3427ed8ad063a09_MOHANAD_A4706/data/NetFlow_v2_Features.csv",
+      "bytes": 2115
+    }
+  ]
+}

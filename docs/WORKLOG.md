@@ -120,12 +120,55 @@ equal-source/class weighting, nine declared model/feature/weight variants, sigmo
 on disjoint data through FrozenEstimator, per-source confidence/support constraints, immutable
 model/index/protocol bindings, and exclusive holdout-access receipts. Version-2 bundles support
 the selected ordered feature subset and calibrated inference while retaining version-1 support.
-Exact selection, holdout and reproduction outcomes are recorded in the phase-2 report when run.
+Exact selection, holdout and reproduction outcomes are recorded in `reports/MULTISOURCE.md`.
+
+At clean source commit `07e25ff`, completed nine fits and eighteen calibration variants in
+167.47 seconds with sampled peak process RSS 388.5 MiB. Only the uncalibrated/calibrated
+XGBoost full-feature pair met all per-source constraints locally; the smaller uncalibrated
+variant was selected at threshold 0.9936622381. Worst-source validation recall was only 9.40%.
+No selected model or threshold was altered after freezing. Saved the original baseline hash,
+all global-index hashes and partition membership fingerprints before opening CSE records.
+
+The full CSE CSV scan verified 18,893,708 rows. All three archives now contain 38,224,479
+verified flows, totaling 814,056,982 compressed bytes. CSE checksum
+`ad6307995d08ff8825d0193d5a1cfa61cf3dc4c6f223962ba3762a7775b5dc24` matched the independent
+GitHub download. Uniform holdout sampling removed 12 conflicting rows and 1,823 duplicates,
+then excluded 151 full-feature matches present anywhere in development. The 198,014 remaining
+rows included 23,764 attacks; 35,665 rows in ambiguous reduced groups and 13,648 reduced
+development matches were retained as registered. The Windows frozen model detected one attack
+and produced 67 false positives (precision 1.47%, recall 0.0042%, FPR 0.03845%). The old
+baseline detected 146 attacks with 12,355 false positives. The candidate is not a deployable
+improvement. Local holdout evaluation took 211.76 seconds and sampled peak RSS 317.4 MiB.
+
+The [GitHub experiment](https://github.com/LahsenAitOiahmane/NetAttDetector/actions/runs/40972007019)
+completed, but it did not reproduce the local fitted XGBoost/threshold. Input hashes, all global
+indexes and partition membership matched; the Linux run found no feasible candidate and used
+the declared F1 fallback at 0.7089409828. That independently frozen variant detected 39.03%
+of attacks with 12.31% precision and 37.92% benign FPR on identical CSE rows. Its quality gate
+also failed. Numerical/stochastic/ordering causes are not proven; preserve the discrepancy.
+Both variants were frozen before CSE access and neither was selected using CSE results.
+
+Baseline permutation diagnostics on capped development samples found MIN_TTL AP drops of
+0.6963 in UNSW and -0.0199 in ToN. These samples may overlap old baseline fitting and are
+diagnostic rather than independent performance evidence. The primary dataset paper also
+describes excluding TTL in UNSW experiments. These observations support source-specific
+dependence without establishing a complete causal explanation. No TTL or threshold change
+was applied to the frozen artifacts after observing this evidence/test.
+
+The cloud XGBoost memory snapshot failed to load on Windows with `input stream corrupted`.
+Added stable-UBJSON export of existing fitted trees, preserving preprocessing/thresholds and
+the original artifact. The [export-only workflow](https://github.com/LahsenAitOiahmane/NetAttDetector/actions/runs/40974339706)
+converted the original Linux model without refitting. Its artifact loaded on Windows and passed
+5,000 parity probes (maximum probability difference 7.45e-9, identical threshold decisions),
+then classified 1,000 real development flow rows successfully. The local portable conversion
+had zero probe difference. This fixes cross-platform inference export, not cross-platform
+training determinism. Manifests and both failed holdout results are checked in as evidence.
 
 ## Outstanding work
 
-This foundation does not complete the production roadmap. Global data audits, robust capture/time
-holdouts, confidence intervals, domain adaptation, exporter parity, a live bounded sensor,
+This work does not complete the production roadmap. Global audits cover the development inputs;
+conditional confidence intervals and a fresh-source test are now implemented. Robust capture/time
+holdouts, capture-level uncertainty, training stability, domain adaptation, exporter parity, a live bounded sensor,
 operational alert budgets, shadow validation, serving/monitoring/rollback, and commercial release
 permissions remain explicit backlog items. No production accuracy or real-network alert quality
 is claimed.

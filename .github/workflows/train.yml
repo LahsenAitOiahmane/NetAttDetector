@@ -104,6 +104,8 @@ jobs:
         run: uv run --no-sync netatt train --data data/raw/nf-unsw-nb15-v2.zip --config configs/benchmark.json --output artifacts/original-baseline
       - name: Select and freeze using development data only
         run: uv run --no-sync netatt train-multisource --prepared data/processed/multisource --baseline artifacts/original-baseline/model.joblib --output artifacts/multisource
+      - name: Export frozen trees for inference across platforms
+        run: uv run --no-sync netatt export-portable --model artifacts/multisource/model.joblib --output artifacts/multisource-portable
       - name: Unseal the independent source after freeze
         run: uv run --no-sync netatt evaluate-frozen --run artifacts/multisource --prepared data/processed/multisource --data data/raw/nf-cse-cic-ids2018-v2.zip --baseline artifacts/original-baseline/model.joblib --output artifacts/multisource/holdout.json
       - name: Render report
@@ -119,6 +121,7 @@ jobs:
           name: multisource-${{ github.run_id }}
           path: |
             artifacts/multisource/
+            artifacts/multisource-portable/
             artifacts/original-baseline/metrics.json
             data/processed/multisource/audit.json
             data/processed/multisource/diagnostics.json

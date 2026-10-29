@@ -99,8 +99,6 @@ def export_portable(model_path, output):
         "model": convert(original["model"]),
         "export_origin_sha256": sha256_file(model_path),
     }
-    if not boosters:
-        raise ValueError("This export command requires an XGBoost classifier.")
     rng = np.random.default_rng(42)
     values = rng.lognormal(5, 5, (5000, len(bundle["features"]))).astype(np.float32)
     values[rng.random(values.shape) < 0.2] = 0
@@ -118,6 +116,9 @@ def export_portable(model_path, output):
         "original_model_sha256": sha256_file(model_path),
         "portable_model_sha256": sha256_file(output / "model.joblib"),
         "boosters": boosters,
+        "representation": "stable XGBoost UBJSON plus fitted preprocessing"
+        if boosters
+        else "existing fitted sklearn representation; no XGBoost component",
         "probe_rows": len(probes),
         "max_absolute_score_difference": float(np.max(np.abs(expected - actual))),
         "threshold_decisions_identical": True,

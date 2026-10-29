@@ -12,16 +12,17 @@ import numpy as np
 
 
 def percent(value):
-    return f"{100 * value:.2f}%"
+    return f"{100 * value:.4f}%" if 0 < abs(value) < 0.0001 else f"{100 * value:.2f}%"
 
 
-def render(prepared, run, output, holdout=None, diagnostic=None):
+def render(prepared, run, output, holdout=None, diagnostic=None, cloud=None):
     prepared, run, output = Path(prepared), Path(run), Path(output)
     audit = json.loads((prepared / "audit.json").read_text())
     diagnostics = json.loads((prepared / "diagnostics.json").read_text())
     freeze = json.loads((run / "freeze.json").read_text())
     report = json.loads(Path(holdout).read_text()) if holdout else None
     extra = json.loads(Path(diagnostic).read_text()) if diagnostic else None
+    cloud = json.loads(Path(cloud).read_text()) if cloud else None
     figures = output.parent / "figures"
     figures.mkdir(parents=True, exist_ok=True)
     plt.rcParams.update({"font.size": 10, "axes.spines.top": False, "axes.spines.right": False})
@@ -57,6 +58,8 @@ def render(prepared, run, output, holdout=None, diagnostic=None):
     plt.close(fig)
 
     text = "# Multi-source experiment and model card\n\n"
+    if report and not report["point_targets_met"]:
+        text += "**Release assessment: the selected candidate failed the independent-source quality gate. Do not deploy it for live protection.**\n\n"
     text += "Registered protocol: version 2, amended from the development audit before any candidate fit or fresh holdout access.\n\n"
     text += "## Data audit\n\n| Source | Full rows scanned | Benign | Attack | Label/name disagreements |\n|---|---:|---:|---:|---:|\n"
     for name, p in audit["sources"].items():
@@ -99,7 +102,12 @@ def render(prepared, run, output, holdout=None, diagnostic=None):
             m = item["metrics"]
             text += f"| {name} | {percent(m['accuracy'])} | {percent(m['attack_precision'])} | {percent(m['attack_recall'])} | {percent(m['false_positive_rate'])} | {m['average_precision']:.5f} |\n"
         new = report["models"]["multisource"]["metrics"]
+        text += f"\nThe all-benign accuracy baseline is {percent(1 - new['attack_prevalence'])}. The selected model's {percent(new['accuracy'])} accuracy does not establish attack detection; its confusion matrix is {new['confusion_matrix']}.\n\n"
         text += f"\nPoint precision/FPR targets met: **{report['point_targets_met']}**. This does not establish an acceptable production recall or alert/day budget. No parameter or threshold was changed after observing this result.\n\n"
+        if cloud:
+            c = cloud["models"]["multisource"]["metrics"]
+            text += "### Cross-environment reproduction did not match\n\nThe input checksums, global hash indexes and partition membership matched on Windows and Linux, but fitted XGBoost scores and the threshold differed. The Linux run found no feasible candidate and used the declared validation F1 fallback. The underlying cause is not established; numerical, stochastic or row-order differences require further investigation. Fixed seeds do not establish identical training across platforms.\n\n"
+            text += f"Linux fallback on the identical {c['rows']:,} CSE rows: precision **{percent(c['attack_precision'])}**, recall **{percent(c['attack_recall'])}**, FPR **{percent(c['false_positive_rate'])}**, threshold `{c['threshold']}`. This variant also fails the quality gate and is not a replacement chosen after seeing CSE. Both frozen results are retained.\n\n"
         text += "| New-model metric | Conditional Wilson 95% interval |\n|---|---|\n"
         for name, interval in new["conditional_wilson_95"].items():
             if isinstance(interval, list):
@@ -112,17 +120,27 @@ def render(prepared, run, output, holdout=None, diagnostic=None):
                 text += f"| {name} | {item['attack_rows']:,} | {percent(item['attack_recall'])} | {percent(low)}–{percent(high)} |\n"
         fig, axes = plt.subplots(1, 3, figsize=(12, 4), layout="constrained")
         fig.suptitle("Fresh CSE-CIC source — frozen comparison", fontsize=17, weight="bold")
-        names = list(report["models"])
-        labels = ["Multi-source" if n == "multisource" else "Original UNSW" for n in names]
+        plotted = {**report["models"]}
+        if cloud:
+            plotted["cloud_fallback"] = cloud["models"]["multisource"]
+        names = list(plotted)
+        labels = [
+            {
+                "multisource": "Multi-source\nWindows",
+                "original_unsw_baseline": "Original UNSW",
+                "cloud_fallback": "Multi-source\nLinux fallback",
+            }[n]
+            for n in names
+        ]
         for ax, key, title in zip(
             axes,
             ["attack_precision", "attack_recall", "false_positive_rate"],
             ["Attack precision", "Attack recall", "Benign false-positive rate"],
             strict=True,
         ):
-            values = [100 * report["models"][n]["metrics"][key] for n in names]
-            bars = ax.bar(labels, values, color=["#147d92", "#df813e"])
-            ax.bar_label(bars, labels=[f"{v:.2f}%" for v in values], padding=3)
+            values = [100 * plotted[n]["metrics"][key] for n in names]
+            bars = ax.bar(labels, values, color=["#147d92", "#df813e", "#7866a5"][: len(names)])
+            ax.bar_label(bars, labels=[percent(v / 100) for v in values], padding=3)
             ax.set_ylim(0, max(max(values) * 1.25, 0.1))
             ax.set_title(title)
             ax.set_ylabel("Percent")
@@ -142,6 +160,7 @@ if __name__ == "__main__":
     parser.add_argument("--run", required=True)
     parser.add_argument("--holdout")
     parser.add_argument("--diagnostic")
+    parser.add_argument("--cloud")
     parser.add_argument("--output", required=True)
     args = parser.parse_args()
-    render(args.prepared, args.run, args.output, args.holdout, args.diagnostic)
+    render(args.prepared, args.run, args.output, args.holdout, args.diagnostic, args.cloud)

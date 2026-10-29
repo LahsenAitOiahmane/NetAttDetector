@@ -33,3 +33,25 @@ def test_xgboost_portable_roundtrip(tmp_path, flows):
     )
     with pytest.raises(ValueError, match="frozen"):
         loaded["model"].steps[-1][1].fit(flows[FEATURES], flows["Label"])
+
+
+def test_export_also_handles_a_non_xgboost_winner(tmp_path, flows):
+    pytest.importorskip("xgboost")
+    from netattdetector.training import TrainConfig, make_model
+
+    model = make_model("hist", TrainConfig(boosting_iterations=5))
+    model.fit(flows[FEATURES], flows["Label"])
+    source = tmp_path / "model.joblib"
+    joblib.dump(
+        {
+            "format_version": 2,
+            "schema": SCHEMA_VERSION,
+            "features": FEATURES,
+            "model": model,
+            "threshold": 0.5,
+        },
+        source,
+    )
+    result = export_portable(source, tmp_path / "portable")
+    assert result["boosters"] == []
+    assert verify_portable(tmp_path / "portable")["threshold_decisions_identical"]

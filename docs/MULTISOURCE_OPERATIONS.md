@@ -59,3 +59,37 @@ not a second independent experiment. The job uses two threads, a 90-minute overa
 retains compact evidence/model artifacts for 14 days. It does not upload the large raw archives
 or global hash indexes. Preserve accepted evidence in the repository and regenerate indexes from
 the checksummed inputs when needed. A completed workflow does not imply a deployment pass.
+
+## Sharing the cloud model with Windows
+
+An XGBoost pickle/memory snapshot from the initial Linux multi-source run could not be loaded
+on Windows even with matching package versions. The explicit portable export converts existing
+fitted trees through stable UBJSON while retaining fitted preprocessing, selected fields and
+the frozen threshold. It performs no training and does not replace the original freeze/artifact.
+Use the new portable model for inference:
+
+```powershell
+uv run --no-sync netatt export-portable --model artifacts/multisource-local/model.joblib --output artifacts/multisource-portable
+uv run --no-sync netatt verify-portable artifacts/multisource-portable
+uv run --no-sync netatt predict --model artifacts/multisource-portable/model.joblib --data path/to/compatible-flows.csv --output reports/local/portable-predictions.csv
+```
+
+Conversion must run in the environment where the original snapshot loads. An `export` workflow
+mode converts an existing Linux run without refitting:
+
+```powershell
+gh workflow run train.yml --ref codex/multisource-generalization -f experiment=export -f source_run=40972007019
+```
+
+The export records original/new artifact hashes, the stable booster hashes, 5,000 synthetic parity
+probes and threshold-decision agreement. Preprocessing and calibration still use trusted pickle
+with pinned dependencies; this is not a claim that arbitrary Python pickles are portable or safe.
+The [XGBoost Model IO guide](https://xgboost.readthedocs.io/en/stable/tutorials/saving_model.html)
+distinguishes stable model exports from memory snapshots. Future multi-source workflow runs
+also produce a portable counterpart after the original freeze.
+
+Training itself did not reproduce identical XGBoost thresholds across Windows and Linux in
+the registered experiment, despite matching input hashes and partition membership. The cloud
+variant used the explicit validation fallback because no candidate met all constraints there.
+Portable export fixes replay of one existing model; it does not make retraining deterministic
+across platforms. Preserve both environments/results and do not tune using the observed CSE test.
