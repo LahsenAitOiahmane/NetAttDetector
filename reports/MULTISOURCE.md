@@ -128,3 +128,38 @@ These intervals assume independent labeled rows and exclude capture dependence, 
 Selection/training: 167.47 seconds, sampled peak process RSS 388.5 MiB, two configured threads. Selected bundle: 160,504 bytes. Warm inference median/p95: 9.76/11.90 ms per 2048 rows. Parsing, export and queueing are excluded. Audit preparation and holdout scanning are separate measurements.
 
 This is a research artifact. Live exporter parity, host/time robustness, minority support, local shadow testing, operational alert budgets and commercial-use permissions remain unresolved release gates.
+
+## Verified evidence and review
+
+The registered classifier search and both initial freezes used source commit `07e25ff`.
+[The Linux experiment](https://github.com/LahsenAitOiahmane/NetAttDetector/actions/runs/40972007019)
+completed successfully as execution while failing model-quality constraints. The local freeze
+was also complete before fresh-source scoring; no CSE-based retuning occurred. CSE is now an
+observed test source and cannot be reused as an untouched development holdout.
+
+Evidence: [global audit](evidence/multisource/audit.json),
+[feature diagnostics](evidence/multisource/feature-diagnostics.json),
+[baseline dependence diagnostics](evidence/multisource/baseline-diagnostic.json),
+[local freeze](evidence/multisource/local-freeze.json),
+[local holdout](evidence/multisource/local-holdout.json),
+[cloud freeze](evidence/multisource/cloud-freeze.json),
+[cloud holdout](evidence/multisource/cloud-holdout.json), and
+[CSE acquisition manifest](evidence/multisource/cse-download.manifest.json).
+
+The [export-only job](https://github.com/LahsenAitOiahmane/NetAttDetector/actions/runs/40974339706)
+converted the already fitted cloud model through stable UBJSON without refitting or changing its
+threshold. It then loaded on Windows and matched all 5,000 threshold decisions, with maximum
+probability difference 7.45e-9. A 1,000-real-flow inference check also completed. This fixes
+cross-platform loading of that artifact; it does not resolve training variability.
+See [conversion provenance](evidence/multisource/cloud-portable-conversion.json) and
+[Windows parity verification](evidence/multisource/windows-portable-verification.json).
+
+Validation: 35 local tests passed, with lint/format checks passing. [GitHub CI](https://github.com/LahsenAitOiahmane/NetAttDetector/actions/runs/40975439884)
+passed on Python 3.11/3.13 with 33 core tests and two optional-XGBoost tests skipped in the core
+environment; the export job separately exercised XGBoost portability on Linux, and the full
+optional suite passed locally. Both figures were visually inspected.
+
+Review: [draft PR #3](https://github.com/LahsenAitOiahmane/NetAttDetector/pull/3).
+The next research priority is targeted measurement/TTL validation, individual feature-family
+ablations, repeated-seed/threshold stability, and capture-aware/local data. The six-field ablation
+and simply combining more rows did not establish useful independent-source detection.

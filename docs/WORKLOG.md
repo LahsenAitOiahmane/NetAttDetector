@@ -164,6 +164,13 @@ then classified 1,000 real development flow rows successfully. The local portabl
 had zero probe difference. This fixes cross-platform inference export, not cross-platform
 training determinism. Manifests and both failed holdout results are checked in as evidence.
 
+Final validation: 35 local tests passed, lint/format checks passed, and local documentation links
+resolved. GitHub CI on Python 3.11 and 3.13 passed with 33 core tests/two optional tests skipped;
+the optional portable-export tests passed locally and the Linux export job exercised that path.
+Visually verified both phase-2 figures. Created [draft PR #3](https://github.com/LahsenAitOiahmane/NetAttDetector/pull/3)
+with the failed results, platform discrepancy, portability fix and remaining release gates.
+All changes are on `codex/multisource-generalization`; no phase-2 merge/deployment was performed.
+
 ## Outstanding work
 
 This work does not complete the production roadmap. Global audits cover the development inputs;
