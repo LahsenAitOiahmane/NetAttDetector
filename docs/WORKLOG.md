@@ -81,6 +81,10 @@ generated figures. The second figure prominently compares transfer failure with 
 in-domain scores. Prepared the modernization branch for a draft PR; no merge, release publication,
 live network capture, traffic blocking, or production deployment was performed.
 
+Created [draft PR #1](https://github.com/LahsenAitOiahmane/NetAttDetector/pull/1) with the final
+problem statement, implementation summary, validation links, measured failures and remaining
+release gates. All changes are on `codex/modernize-nids-foundation`; `main` is awaiting review.
+
 ## Outstanding work
 
 This foundation does not complete the production roadmap. Global data audits, robust capture/time
