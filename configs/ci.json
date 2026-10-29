@@ -1,0 +1,10 @@
+{
+  "max_rows": 2000,
+  "chunk_rows": 500,
+  "seed": 42,
+  "threads": 2,
+  "models": ["sgd", "hist", "extra_trees"],
+  "trees": 15,
+  "max_depth": 6,
+  "boosting_iterations": 20
+}
