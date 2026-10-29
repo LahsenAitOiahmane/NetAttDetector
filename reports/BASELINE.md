@@ -1,6 +1,6 @@
 # Initial research baseline and model card
 
-Evaluation date: 29 October 2026. This file is updated with verified experiment evidence below.
+Evaluation date: 29 October 2026. Local and GitHub experiment evidence is retained below.
 
 ## Intended use and limits
 
@@ -12,7 +12,7 @@ The first local result uses a uniform capped sample, sample-level deduplication 
 stratified random split. Model and threshold were chosen only on validation. Random splitting
 does not establish generalization across capture sessions, devices, time or deployment sites.
 Any external failure is reported alongside the in-domain result. Detailed results and acquisition
-records are appended once the corresponding runs finish.
+records follow.
 
 **Release assessment: do not deploy this champion.** The independent-source test below exposes
 severe transfer failure. The in-domain accuracy is not evidence of real-world readiness.
@@ -108,6 +108,8 @@ had zero detected attacks in this sample; scanning, DDoS and DoS recall were als
 The external average precision is below its 0.6352 attack-prevalence baseline. This is not just
 a reassuringly high-ranking model with an inconvenient operating point.
 
+![In-domain precision/recall and false alarms compared with independent-source failure](figures/baseline-transfer.png)
+
 This demonstrates transfer failure under the stated protocol. It does **not** identify a single
 cause. Traffic/attack distribution differences, source-specific feature-label shortcuts, export
 semantics and label quality all require investigation. Shared feature names do not establish
@@ -130,3 +132,27 @@ development across multiple sources. Establish a **new** untouched source or loc
 evaluation before adapting to UNSW and ToN together. Tune and calibrate within development
 data; gate any next candidate on minority recall, uncertainty, local false alarms and exporter
 parity. A larger merged dataset or a neural network is not by itself a remedy.
+
+## GitHub reproduction
+
+The [real-data workflow](https://github.com/LahsenAitOiahmane/NetAttDetector/actions/runs/40966749037)
+completed successfully against clean commit `e0a83524276c1810914240fe025de7226faca7bf`.
+It downloaded both official sources, passed 23 tests at that source revision, trained four
+candidates plus the dummy, and evaluated the external source. Download SHA-256 values,
+split fingerprints, selected champion, selected threshold, final test metrics and external metrics
+matched the local results exactly. The later source change adds a prediction thread-budget
+check and a clearer optional-dependency error; it does not tune the model after seeing test data.
+
+The Linux runner used Python 3.13.17 with the same recorded ML dependency versions and two
+training threads. The combined training/external scan took 78.44 seconds, sampled peak process
+RSS was 546.4 MiB, and the model was again 103,065 bytes. Download/setup/test time is excluded
+from that experiment timer. These resource numbers are for the runner, not the laptop.
+
+[Machine-readable GitHub metrics](evidence/github-metrics.json) retain the complete environment,
+validation leaderboard, test/external results and resource scope. The downloadable workflow
+artifact includes the model, profiles, configuration, runner inventory and acquisition manifests;
+its retention is 14 days. Compact JSON evidence is checked into the repository for longer-lived
+review. A successful workflow is a reproducibility result, **not** a deployment pass.
+
+The [updated CI run](https://github.com/LahsenAitOiahmane/NetAttDetector/actions/runs/40967625888)
+also passed on Python 3.11 and 3.13 with the 24-test suite and synthetic smoke training.

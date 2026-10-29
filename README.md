@@ -7,6 +7,10 @@ network **flows** and classifies compatible flow exports. A high benchmark score
 establish that a model is ready to protect a real network. Live sensing, deployment validation,
 alert management, and drift monitoring have explicit acceptance criteria in the roadmap.
 
+The initial champion reached 99.31% accuracy on its random UNSW holdout but detected only
+0.33% of attacks on the independent ToN-IoT sample. **It is unsuitable for deployment.**
+The [model card](reports/BASELINE.md) retains this failure and explains the next work priorities.
+
 ## What changed
 
 - A versioned feature contract replaces hand-built packet placeholders.

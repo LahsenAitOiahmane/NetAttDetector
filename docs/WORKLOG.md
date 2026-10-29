@@ -66,6 +66,21 @@ was removed after launch, leaving the final research workflow manual-only. Figur
 used standard Matplotlib from JSON evidence; the optional analysis extra documents reproduction
 without adding plotting dependencies to the prediction runtime.
 
+The [real-data GitHub run](https://github.com/LahsenAitOiahmane/NetAttDetector/actions/runs/40966749037)
+completed successfully. Downloaded its artifacts and compared them with the local experiment:
+both data hashes, all split fingerprints, model selection, threshold, test metrics and external
+metrics matched exactly. GitHub records a clean worktree at `e0a8352`, Python 3.13.17, the same
+ML package versions, 78.44-second combined experiment runtime and 546.4 MiB sampled peak
+process RSS. Preserved its metrics JSON in `reports/evidence/github-metrics.json`; large inputs
+and model artifacts remain ignored. Initial remote artifact files are also available locally under
+`artifacts/github-40966749037/`.
+
+The [updated CI run](https://github.com/LahsenAitOiahmane/NetAttDetector/actions/runs/40967625888)
+passed with 24 tests on Python 3.11 and 3.13 plus synthetic smoke training. Visually inspected both
+generated figures. The second figure prominently compares transfer failure with the much better
+in-domain scores. Prepared the modernization branch for a draft PR; no merge, release publication,
+live network capture, traffic blocking, or production deployment was performed.
+
 ## Outstanding work
 
 This foundation does not complete the production roadmap. Global data audits, robust capture/time
