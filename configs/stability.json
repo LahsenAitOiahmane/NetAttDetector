@@ -1,0 +1,18 @@
+{
+  "protocol_version": 1,
+  "split_seeds": [7, 42, 101],
+  "model_seed": 42,
+  "threads": 2,
+  "iterations": 150,
+  "search_budget_seconds": 3600,
+  "feature_policies": ["full", "no_ttl", "no_ports", "no_protocol_ids", "no_export_rates", "no_ttl_ports", "no_ttl_export_rates", "previous_reduced"],
+  "models": ["hist", "xgboost"],
+  "min_precision": 0.98,
+  "max_fpr": 0.005,
+  "precision_lower_bound": 0.95,
+  "min_alerts_per_source": 25,
+  "min_validation_recall": 0.8,
+  "control_repeats": 2,
+  "control_seed": 42,
+  "run_controls": true
+}
