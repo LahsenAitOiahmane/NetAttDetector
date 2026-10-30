@@ -63,6 +63,22 @@ def render(study, output, cloud=None, comparison=None):
         "No zero value was reinterpreted as missing, and no labels were repaired. Matching published "
         "field dictionaries do not prove matching exporters, timeouts, units or direction semantics.",
         "",
+        "| Source / binary label | Sample rows | Minimum TTL zero |",
+        "|---|---:|---:|",
+    ]
+    measurements = json.loads((Path(study) / "measurements.json").read_text())
+    for source in sorted({r["source"] for r in measurements["groups"]}):
+        for label in (0, 1):
+            rows = [
+                r for r in measurements["groups"] if r["source"] == source and r["label"] == label
+            ]
+            count = sum(r["rows"] for r in rows)
+            fraction = sum(r["rows"] * r["min_ttl_zero_fraction"] for r in rows) / count
+            lines.append(
+                f"| {source} / {'attack' if label else 'benign'} | {count:,} | {percent(fraction)} |"
+            )
+    lines += [
+        "",
         "## Feature-policy results",
         "",
         "Each value below is the worst source/partition seed except AP, which averages sources/seeds. "
@@ -79,6 +95,10 @@ def render(study, output, cloud=None, comparison=None):
             f"| {row['model']} / {row['policy']} | {row['feature_count']} | {percent(row['worst_source_seed_precision'])} | {percent(row['worst_source_seed_recall'])} | {percent(row['max_source_seed_fpr'])} | {row['mean_average_precision']:.4f} | {row['passes_all_seeds']} |"
         )
     lines += [
+        "",
+        f"Calibration feasibility: {sum(r['calibration_feasible'] for r in local['records'])}/{len(local['records'])}. "
+        "Infeasible cases use the declared worst-source F1 fallback. The reported high recalls are not "
+        "recalls achieved at the requested precision/FPR constraints.",
         "",
         f"**{sum(r['passes_all_seeds'] for r in local['summary'])} of {len(local['summary'])} "
         "model/policy combinations passed every seed.** No model is promoted by a development screen.",
@@ -121,6 +141,54 @@ def render(study, output, cloud=None, comparison=None):
             lines.append(
                 f"| {row['control']} | {row['max_probability_difference']:.9g} | {row['exact_score_match']} |"
             )
+        control_map = {r["control"]: r for r in parity["controls"]}
+        full_disagreements = max(
+            r["decision_disagreements_at_diagnostic_0_5"]
+            for r in parity["controls"]
+            if r["control"].startswith("full")
+        )
+        tree_matches = sum(r["stable_tree_bytes_match"] for r in parity["controls"])
+        lines += [
+            "",
+            f"Stable tree bytes matched in {tree_matches}/{len(parity['controls'])} controls. "
+            "Numeric score agreement and serialized-model identity are different checks. At the diagnostic "
+            f"threshold 0.5, full controls had at most {full_disagreements} decision disagreements; sampled one/two-thread "
+            f"controls had {control_map['stochastic-1t:0']['decision_disagreements_at_diagnostic_0_5']}/"
+            f"{control_map['stochastic-2t:0']['decision_disagreements_at_diagnostic_0_5']}. "
+            "This threshold is only a reproducibility probe, not a selected detector.",
+            "",
+            "| Platform | Sampled: 1 versus 2 threads | Full: 1 versus 2 threads |",
+            "|---|---:|---:|",
+        ]
+        for label, title in (("first", "Windows"), ("second", "Linux")):
+            differences = parity["within_run"][label][
+                "max_one_vs_two_thread_probability_difference"
+            ]
+            lines.append(
+                f"| {title} | {differences['stochastic']:.9g} | {differences['full']:.9g} |"
+            )
+        different = parity["ablation_metric_differences"]
+        decision_diff = [r for r in different if not r["same_source_confusion_matrices"]]
+        lines += [
+            "",
+            f"All three ordered partition payloads matched: `{parity['same_all_partition_payloads']}`. "
+            f"Of {parity['compared_ablation_fits']} matched ablations, "
+            f"{len(different)} had any source-metric difference and {len(decision_diff)} had different "
+            "source confusion matrices. The remaining discrepancy prevents a claim of fully resolved "
+            "training determinism. These controls changed ordering, weights, memory layout and sampling "
+            "from the previous phase; they do not isolate the old discrepancy's cause.",
+            "",
+        ]
+        for row in decision_diff:
+            delta = row["max_absolute_source_metric_difference"]
+            lines += [
+                f"Residual case: {row['model']} / {row['policy']}, seed {row['split_seed']}; "
+                f"thresholds {row['thresholds'][0]:.9f} versus {row['thresholds'][1]:.9f}. "
+                f"Maximum source recall difference {100 * delta['attack_recall']:.4f} percentage points; "
+                f"FPR difference {100 * delta['false_positive_rate']:.4f} points. "
+                "Both evaluations failed the registered quality screen.",
+                "",
+            ]
     lines += [
         "",
         "## Known-source transfer diagnostics",

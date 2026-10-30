@@ -17,6 +17,13 @@ source test. Its preregistered rules are in [the multi-source protocol](docs/MUL
 The [completed multi-source report](reports/MULTISOURCE.md) retains another failed independent
 test and a cross-platform training discrepancy. Both new model variants remain research-only.
 
+The [completed stability study](reports/STABILITY.md) adds eight targeted feature policies,
+three grouped development splits, source-transfer diagnostics and controlled XGBoost repeats.
+All 60 fits completed on both the laptop and GitHub. Full sampling reduced the observed
+control score discrepancy, but residual training differences remain. **No policy passed the
+per-source precision/FPR/recall screen.** See the [reproduction guide](docs/STABILITY_OPERATIONS.md)
+and [ordered next sprint](docs/ROADMAP.md#next-sprint-after-the-development-study).
+
 ## What changed
 
 - A versioned feature contract replaces hand-built packet placeholders.

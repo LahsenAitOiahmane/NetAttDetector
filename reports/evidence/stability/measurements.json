@@ -1,0 +1,7834 @@
+{
+  "scope": "checksummed bounded development cohort; not a full re-audit of every raw row",
+  "raw_source_audit": {
+    "unsw": {
+      "rows_scanned": 2390275,
+      "nonfinite_or_coerced_values": {
+        "L4_SRC_PORT": 0,
+        "L4_DST_PORT": 0,
+        "PROTOCOL": 0,
+        "L7_PROTO": 0,
+        "IN_BYTES": 0,
+        "IN_PKTS": 0,
+        "OUT_BYTES": 0,
+        "OUT_PKTS": 0,
+        "TCP_FLAGS": 0,
+        "CLIENT_TCP_FLAGS": 0,
+        "SERVER_TCP_FLAGS": 0,
+        "FLOW_DURATION_MILLISECONDS": 0,
+        "DURATION_IN": 0,
+        "DURATION_OUT": 0,
+        "MIN_TTL": 0,
+        "MAX_TTL": 0,
+        "LONGEST_FLOW_PKT": 0,
+        "SHORTEST_FLOW_PKT": 0,
+        "MIN_IP_PKT_LEN": 0,
+        "MAX_IP_PKT_LEN": 0,
+        "SRC_TO_DST_SECOND_BYTES": 0,
+        "DST_TO_SRC_SECOND_BYTES": 0,
+        "RETRANSMITTED_IN_BYTES": 0,
+        "RETRANSMITTED_IN_PKTS": 0,
+        "RETRANSMITTED_OUT_BYTES": 0,
+        "RETRANSMITTED_OUT_PKTS": 0,
+        "SRC_TO_DST_AVG_THROUGHPUT": 0,
+        "DST_TO_SRC_AVG_THROUGHPUT": 0,
+        "NUM_PKTS_UP_TO_128_BYTES": 0,
+        "NUM_PKTS_128_TO_256_BYTES": 0,
+        "NUM_PKTS_256_TO_512_BYTES": 0,
+        "NUM_PKTS_512_TO_1024_BYTES": 0,
+        "NUM_PKTS_1024_TO_1514_BYTES": 0,
+        "TCP_WIN_MAX_IN": 0,
+        "TCP_WIN_MAX_OUT": 0,
+        "ICMP_TYPE": 0,
+        "ICMP_IPV4_TYPE": 0,
+        "DNS_QUERY_TYPE": 0,
+        "DNS_TTL_ANSWER": 0,
+        "FTP_COMMAND_RET_CODE": 0
+      },
+      "out_of_range": {
+        "L4_SRC_PORT": 0,
+        "L4_DST_PORT": 0,
+        "PROTOCOL": 0,
+        "MIN_TTL": 0,
+        "MAX_TTL": 0
+      }
+    },
+    "ton": {
+      "rows_scanned": 16940496,
+      "nonfinite_or_coerced_values": {
+        "L4_SRC_PORT": 0,
+        "L4_DST_PORT": 0,
+        "PROTOCOL": 0,
+        "L7_PROTO": 0,
+        "IN_BYTES": 0,
+        "IN_PKTS": 0,
+        "OUT_BYTES": 0,
+        "OUT_PKTS": 0,
+        "TCP_FLAGS": 0,
+        "CLIENT_TCP_FLAGS": 0,
+        "SERVER_TCP_FLAGS": 0,
+        "FLOW_DURATION_MILLISECONDS": 0,
+        "DURATION_IN": 0,
+        "DURATION_OUT": 0,
+        "MIN_TTL": 0,
+        "MAX_TTL": 0,
+        "LONGEST_FLOW_PKT": 0,
+        "SHORTEST_FLOW_PKT": 0,
+        "MIN_IP_PKT_LEN": 0,
+        "MAX_IP_PKT_LEN": 0,
+        "SRC_TO_DST_SECOND_BYTES": 105,
+        "DST_TO_SRC_SECOND_BYTES": 111,
+        "RETRANSMITTED_IN_BYTES": 0,
+        "RETRANSMITTED_IN_PKTS": 0,
+        "RETRANSMITTED_OUT_BYTES": 0,
+        "RETRANSMITTED_OUT_PKTS": 0,
+        "SRC_TO_DST_AVG_THROUGHPUT": 0,
+        "DST_TO_SRC_AVG_THROUGHPUT": 0,
+        "NUM_PKTS_UP_TO_128_BYTES": 0,
+        "NUM_PKTS_128_TO_256_BYTES": 0,
+        "NUM_PKTS_256_TO_512_BYTES": 0,
+        "NUM_PKTS_512_TO_1024_BYTES": 0,
+        "NUM_PKTS_1024_TO_1514_BYTES": 0,
+        "TCP_WIN_MAX_IN": 0,
+        "TCP_WIN_MAX_OUT": 0,
+        "ICMP_TYPE": 0,
+        "ICMP_IPV4_TYPE": 0,
+        "DNS_QUERY_TYPE": 0,
+        "DNS_TTL_ANSWER": 0,
+        "FTP_COMMAND_RET_CODE": 0
+      },
+      "out_of_range": {
+        "L4_SRC_PORT": 0,
+        "L4_DST_PORT": 0,
+        "PROTOCOL": 0,
+        "MIN_TTL": 0,
+        "MAX_TTL": 0
+      }
+    }
+  },
+  "groups": [
+    {
+      "source": "nf-ton-iot-v2",
+      "label": 0,
+      "ip_protocol": 1.0,
+      "rows": 110,
+      "min_ttl_zero_fraction": 0.06363636363636363,
+      "max_ttl_zero_fraction": 0.06363636363636363,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 15,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          688000.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          86.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          24000.0,
+          21816719.999999955,
+          481760000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          1184520.0,
+          77620323942.39984,
+          9772821198667776.0
+        ]
+      }
+    },
+    {
+      "source": "nf-ton-iot-v2",
+      "label": 0,
+      "ip_protocol": 2.0,
+      "rows": 17,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 2,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          8000.0,
+          1198080.0,
+          1280000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          288.0,
+          107668607.99999999,
+          128128128.0
+        ]
+      }
+    },
+    {
+      "source": "nf-ton-iot-v2",
+      "label": 0,
+      "ip_protocol": 6.0,
+      "rows": 32436,
+      "min_ttl_zero_fraction": 0.8680170181280059,
+      "max_ttl_zero_fraction": 0.8680170181280059,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 29717,
+      "tcp_window_nonzero_rows": 32402,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          28782000.000000406,
+          3147879936.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          52164.0,
+          41753356.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          352000.0,
+          11952000.0,
+          748480000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          44.0,
+          52112.0,
+          1281512832.0
+        ]
+      }
+    },
+    {
+      "source": "nf-ton-iot-v2",
+      "label": 0,
+      "ip_protocol": 17.0,
+      "rows": 3137,
+      "min_ttl_zero_fraction": 0.6703857188396557,
+      "max_ttl_zero_fraction": 0.6703857188396557,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 3027,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          1072000.0,
+          86515519.99999964,
+          408048000.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          134.0,
+          5728711.719999992,
+          2.6132522807114008e+26
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          624000.0,
+          52527679.999999985,
+          285728000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          80.0,
+          1880545.2799999982,
+          7.801093053284667e+21
+        ]
+      }
+    },
+    {
+      "source": "nf-ton-iot-v2",
+      "label": 0,
+      "ip_protocol": 58.0,
+      "rows": 4,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 0,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          24000.0,
+          71280.0,
+          72000.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          864.0,
+          1863258.8799999994,
+          1920832.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          116000.0,
+          330239.99999999994,
+          336000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          3924.0,
+          2297920.3999999994,
+          2368832.0
+        ]
+      }
+    },
+    {
+      "source": "nf-ton-iot-v2",
+      "label": 1,
+      "ip_protocol": 6.0,
+      "rows": 51137,
+      "min_ttl_zero_fraction": 0.4142792889688484,
+      "max_ttl_zero_fraction": 0.4142792889688484,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 35827,
+      "tcp_window_nonzero_rows": 50303,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          320000.0,
+          60712000.0,
+          2684711936.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          112.0,
+          14941494.0,
+          1448173696.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          384000.0,
+          35561599.99999998,
+          2080967936.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          164.0,
+          3033388.479999993,
+          2706347008.0
+        ]
+      }
+    },
+    {
+      "source": "nf-ton-iot-v2",
+      "label": 1,
+      "ip_protocol": 17.0,
+      "rows": 11412,
+      "min_ttl_zero_fraction": 0.9963196635120926,
+      "max_ttl_zero_fraction": 0.9963196635120926,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 11292,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          568000.0,
+          1856000.0,
+          21592000.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          71.0,
+          232.0,
+          2.0641806324861625e+31
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          536000.0,
+          608000.0,
+          11376000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          67.0,
+          80.0,
+          1.1209802441308512e+29
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 0,
+      "ip_protocol": 1.0,
+      "rows": 17,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 15,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          16192000.0,
+          16192000.0,
+          16192000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          2024.0,
+          141709.11999999997,
+          168168.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 0,
+      "ip_protocol": 6.0,
+      "rows": 73884,
+      "min_ttl_zero_fraction": 8.120838070488874e-05,
+      "max_ttl_zero_fraction": 8.120838070488874e-05,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 68507,
+      "tcp_window_nonzero_rows": 73884,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          27040000.0,
+          737056000.0,
+          4293696000.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          3742.0,
+          1087890.0,
+          975082094592.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          13736000.0,
+          299856000.0,
+          4138575872.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          2506.0,
+          37590.0,
+          63838633984.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 0,
+      "ip_protocol": 17.0,
+      "rows": 20429,
+      "min_ttl_zero_fraction": 0.0012727005727152577,
+      "max_ttl_zero_fraction": 0.0012727005727152577,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 20364,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          1424000.0,
+          2560000.0,
+          2560000.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          178.0,
+          320.0,
+          104200.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1168000.0,
+          4544000.0,
+          34432000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          146.0,
+          568.0,
+          1574010240.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 0,
+      "ip_protocol": 89.0,
+      "rows": 17,
+      "min_ttl_zero_fraction": 0.058823529411764705,
+      "max_ttl_zero_fraction": 0.058823529411764705,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          24000.0,
+          440319.99999999994,
+          512000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          768640.0,
+          4506654.72,
+          5121024.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 0,
+      "ip_protocol": 132.0,
+      "rows": 3,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 2,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          728000.0,
+          3401440.0,
+          3456000.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          432.0,
+          1537.44,
+          1560.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          4544000.0,
+          40686400.0,
+          41424000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          568.0,
+          243584.47999999998,
+          248544.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 0.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1440000.0,
+          1440000.0,
+          1440000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          180.0,
+          180.0,
+          180.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 1.0,
+      "rows": 40,
+      "min_ttl_zero_fraction": 0.025,
+      "max_ttl_zero_fraction": 0.025,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 40,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          16192000.0,
+          16192000.0,
+          16192000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          2024.0,
+          2024.0,
+          2024.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 2.0,
+      "rows": 3,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 2,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1440000.0,
+          18029440.0,
+          18368000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          2296.0,
+          2296.0,
+          2296.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 4.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1440000.0,
+          1440000.0,
+          1440000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          180.0,
+          180.0,
+          180.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 5.0,
+      "rows": 2,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1528000.0,
+          2852960.0,
+          2880000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          360.0,
+          360.0,
+          360.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 6.0,
+      "rows": 2485,
+      "min_ttl_zero_fraction": 0.00040241448692152917,
+      "max_ttl_zero_fraction": 0.00040241448692152917,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 2072,
+      "tcp_window_nonzero_rows": 2485,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          3408000.0,
+          1113363199.9999986,
+          4017376000.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          706.0,
+          502235.99999999994,
+          14134042.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          6352000.0,
+          754401279.9999998,
+          3719695872.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          914.0,
+          336824.31999999576,
+          152235664.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 7.0,
+      "rows": 2,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1524000.0,
+          2852880.0,
+          2880000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          360.0,
+          360.0,
+          360.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 8.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1440000.0,
+          1440000.0,
+          1440000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          180.0,
+          180.0,
+          180.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 9.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1440000.0,
+          1440000.0,
+          1440000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          180.0,
+          180.0,
+          180.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 10.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1440000.0,
+          1440000.0,
+          1440000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          180.0,
+          180.0,
+          180.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 11.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1440000.0,
+          1440000.0,
+          1440000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          180.0,
+          180.0,
+          180.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 12.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1440000.0,
+          1440000.0,
+          1440000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          180.0,
+          180.0,
+          180.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 14.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1440000.0,
+          1440000.0,
+          1440000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          180.0,
+          180.0,
+          180.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 15.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1440000.0,
+          1440000.0,
+          1440000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          180.0,
+          180.0,
+          180.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 16.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 17.0,
+      "rows": 517,
+      "min_ttl_zero_fraction": 0.005802707930367505,
+      "max_ttl_zero_fraction": 0.005802707930367505,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 504,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          6076799.999999982,
+          27088000.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          759.5999999999977,
+          91846139904.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1344000.0,
+          23800959.999999996,
+          156880000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          168.0,
+          5282.07999999997,
+          74752114688.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 18.0,
+      "rows": 2,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1692000.0,
+          3169840.0,
+          3200000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          400.0,
+          400.0,
+          400.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 19.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 20.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 21.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 22.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 23.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 24.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 25.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 27.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 28.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 30.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 32.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 33.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 34.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 35.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 36.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 37.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 38.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 39.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 40.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 41.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          640000.0,
+          640000.0,
+          640000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          80.0,
+          80.0,
+          80.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 42.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 43.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 44.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 46.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 47.0,
+      "rows": 2,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 2,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1424000.0,
+          1596480.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          178.0,
+          199.56,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 48.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 49.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 50.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 51.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 52.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 53.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 54.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 55.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 56.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 60.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 61.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 62.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 63.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 64.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 65.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 66.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 68.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 70.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 71.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 72.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 73.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 74.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 75.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 76.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 77.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 78.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 79.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 80.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 81.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 82.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 83.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 84.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 85.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 86.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 87.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 88.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 89.0,
+      "rows": 25,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 5,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1568000.0,
+          23869439.999999996,
+          24192000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          3024.0,
+          52049.919999999984,
+          54400.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 90.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 91.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 92.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 93.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 94.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 95.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 96.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 98.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 99.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 100.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 101.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 102.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 103.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          3840000.0,
+          3840000.0,
+          3840000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          480.0,
+          480.0,
+          480.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 104.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 106.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 107.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 108.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 109.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 110.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 111.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 113.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 114.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 115.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 116.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 117.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 118.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 119.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 120.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 121.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 122.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 124.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 125.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 126.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 127.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 128.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 129.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 130.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 131.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 134.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 135.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 136.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 137.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 138.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 139.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 140.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 141.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 143.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 145.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 146.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 147.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 148.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 149.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 150.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 152.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 153.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 154.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 156.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 157.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 158.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 159.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 160.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 161.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 162.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 163.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 164.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 165.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 166.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 167.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 168.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 169.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 170.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 171.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 172.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 173.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 174.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 175.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 176.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 177.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 178.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 179.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 180.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 181.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 182.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 185.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 186.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 187.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 188.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 189.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 190.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 191.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 192.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 193.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 194.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 195.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 196.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 197.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 198.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 199.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 200.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 202.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 203.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 204.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 206.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 207.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 208.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 209.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 211.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 212.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 213.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 214.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 215.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 216.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 218.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 220.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 221.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 222.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 223.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 224.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 225.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 228.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 230.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 232.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 233.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 234.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 235.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 236.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 237.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 238.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 239.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 240.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 241.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 242.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 243.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 244.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 245.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 246.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 247.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 248.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 249.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 250.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 252.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 253.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "source": "nf-unsw-nb15-v2",
+      "label": 1,
+      "ip_protocol": 255.0,
+      "rows": 1,
+      "min_ttl_zero_fraction": 0.0,
+      "max_ttl_zero_fraction": 0.0,
+      "ttl_min_exceeds_max_rows": 0,
+      "zero_duration_with_positive_bytes_rows": 1,
+      "tcp_window_nonzero_rows": 0,
+      "export_rate_quantiles": {
+        "DST_TO_SRC_AVG_THROUGHPUT": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "DST_TO_SRC_SECOND_BYTES": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "SRC_TO_DST_AVG_THROUGHPUT": [
+          1600000.0,
+          1600000.0,
+          1600000.0
+        ],
+        "SRC_TO_DST_SECOND_BYTES": [
+          200.0,
+          200.0,
+          200.0
+        ]
+      }
+    }
+  ],
+  "interpretation": "Zero TTL/duration and unusual protocol/counter combinations are observations requiring PCAP/exporter validation; no values are relabeled or silently repaired. Zero duration can reflect quantization."
+}

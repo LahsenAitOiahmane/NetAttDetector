@@ -149,3 +149,60 @@ def test_registered_grid_limits(tmp_path):
     path.write_text(json.dumps(config))
     with pytest.raises(ValueError, match="nonempty"):
         load_study_config(path)
+
+
+def test_complete_control_comparison_and_score_integrity(tmp_path):
+    roots = [tmp_path / "a", tmp_path / "b"]
+    names = [
+        f"{mode}-{t}t:{r}" for mode in ("stochastic", "full") for t in (1, 2) for r in range(2)
+    ]
+    values = np.tile(np.array([0.1, 0.9], dtype=np.float32), (8, 1))
+    ids = np.array([10, 11], dtype=np.uint64)
+    labels = np.array([0, 1], dtype=np.int8)
+    report = {
+        "config": {"control_seed": 42},
+        "config_sha256": "same",
+        "source_sha256": {"source": "same"},
+        "partition_payloads": {
+            "42": {
+                "validation": {
+                    "ordered_full_hash_sha256": array_digest(ids),
+                    "ordered_labels_sha256": array_digest(labels),
+                }
+            }
+        },
+        "controls": [
+            {
+                "id": name.split(":")[0],
+                "repeat": int(name[-1]),
+                "score_sha256": array_digest(values[i]),
+                "stable_tree_sha256": "tree",
+                "transformed_train_sha256": "train",
+                "transformed_validation_sha256": "probe",
+            }
+            for i, name in enumerate(names)
+        ],
+    }
+    for root in roots:
+        root.mkdir()
+        (root / "study.json").write_text(json.dumps(report))
+        np.savez(
+            root / "control-scores.npz",
+            scores=values,
+            names=names,
+            validation_full_hash=ids,
+            validation_labels=labels,
+        )
+    result = compare_studies(*roots)
+    assert len(result["controls"]) == 8
+    assert all(c["exact_score_match"] for c in result["controls"])
+    values[0, 0] += 0.01
+    np.savez(
+        roots[1] / "control-scores.npz",
+        scores=values,
+        names=names,
+        validation_full_hash=ids,
+        validation_labels=labels,
+    )
+    with pytest.raises(ValueError, match="recorded hashes"):
+        compare_studies(*roots)

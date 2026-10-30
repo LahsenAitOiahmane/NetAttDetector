@@ -33,6 +33,13 @@ uv run --no-sync netatt compare-stability artifacts/stability artifacts/cloud/ar
 python scripts/report_stability.py --study artifacts/stability --cloud artifacts/cloud/artifacts/stability --comparison reports/local/stability-comparison.json --output reports/local/STABILITY.md
 ```
 
+To regenerate figures, sync `--extra analysis` as well, then run
+`uv run --no-sync python scripts/plot_stability.py --study artifacts/stability --comparison reports/local/stability-comparison.json --output reports/local/figures`.
+The checked-in report's evidence/validation appendix is maintained with its review references;
+the renderer regenerates the measured body. The comparison now also validates score-array
+hashes against recorded controls, reports within-platform thread/repeat differences, and lists
+all ablation metric/confusion-matrix differences. These analysis additions do not refit models.
+
 The comparison refuses mismatched raw-source/configuration hashes, ordered feature/label/
 weight payloads, post-preprocessing matrices, validation rows or incomplete control grids.
 It compares numeric scores on the same rows. ZIP/NPZ container bytes can differ due to metadata;
@@ -43,7 +50,7 @@ on a particular library/runtime cause without further evidence.
 recall, overlap counts, complete/incomplete screens, signatures, versions and hardware.
 `measurements.json` describes protocol/TTL/rate/duration patterns without repairing them.
 `progress.json` checkpoints completed ablations. `control-scores.npz` contains eight
-registered control score arrays and signed row identities; these are development data only.
+registered control score arrays and recorded row identities; these are development data only.
 Reported RSS samples the training process, not total computer memory or children; runtime
 excludes cache loading and includes partitioning/measurement/fit/scoring within the monitor.
 The original phase-2 frozen artifacts and holdout receipts are never modified.

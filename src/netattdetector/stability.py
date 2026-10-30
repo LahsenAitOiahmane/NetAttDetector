@@ -509,7 +509,7 @@ def compare_studies(first, second):
     seed = str(a["config"]["control_seed"])
     if a["config_sha256"] != b["config_sha256"] or a["source_sha256"] != b["source_sha256"]:
         raise ValueError("Study configurations or raw sources differ.")
-    same_input = a["partition_payloads"][seed] == b["partition_payloads"][seed]
+    same_input = a["partition_payloads"] == b["partition_payloads"]
     comparisons = []
     with (
         np.load(first / "control-scores.npz", allow_pickle=False) as x,
@@ -531,6 +531,18 @@ def compare_studies(first, second):
             raise ValueError("Both studies must contain all eight registered controls.")
         left_meta = {f"{r['id']}:{r['repeat']}": r for r in a["controls"]}
         right_meta = {f"{r['id']}:{r['repeat']}": r for r in b["controls"]}
+        for saved, report, metadata, scores in ((x, a, left_meta, left), (y, b, right_meta, right)):
+            payload = report["partition_payloads"][seed]["validation"]
+            if (
+                array_digest(saved["validation_full_hash"]) != payload["ordered_full_hash_sha256"]
+                or array_digest(saved["validation_labels"]) != payload["ordered_labels_sha256"]
+            ):
+                raise ValueError("Control row identities/labels do not match the recorded payload.")
+            if any(
+                array_digest(value) != metadata[name]["score_sha256"]
+                for name, value in scores.items()
+            ):
+                raise ValueError("Control scores do not match their recorded hashes.")
         for name in sorted(expected):
             for key in ("transformed_train_sha256", "transformed_validation_sha256"):
                 if left_meta[name][key] != right_meta[name][key]:
@@ -541,11 +553,68 @@ def compare_studies(first, second):
                     "max_probability_difference": float(np.max(np.abs(left[name] - right[name]))),
                     "mean_probability_difference": float(np.mean(np.abs(left[name] - right[name]))),
                     "exact_score_match": bool(np.array_equal(left[name], right[name])),
+                    "stable_tree_bytes_match": left_meta[name]["stable_tree_sha256"]
+                    == right_meta[name]["stable_tree_sha256"],
+                    "decision_disagreements_at_diagnostic_0_5": int(
+                        np.count_nonzero((left[name] >= 0.5) != (right[name] >= 0.5))
+                    ),
+                }
+            )
+    within_run = {}
+    for label, scores in (("first", left), ("second", right)):
+        within_run[label] = {
+            "max_repeat_probability_difference": {
+                f"{mode}-{t}t": float(
+                    np.max(np.abs(scores[f"{mode}-{t}t:0"] - scores[f"{mode}-{t}t:1"]))
+                )
+                for mode in ("stochastic", "full")
+                for t in (1, 2)
+            },
+            "max_one_vs_two_thread_probability_difference": {
+                mode: float(np.max(np.abs(scores[f"{mode}-1t:0"] - scores[f"{mode}-2t:0"])))
+                for mode in ("stochastic", "full")
+            },
+        }
+    key_fields = ("model", "policy", "split_seed")
+    a_rows = {tuple(r[k] for k in key_fields): r for r in a.get("records", [])}
+    b_rows = {tuple(r[k] for k in key_fields): r for r in b.get("records", [])}
+    ablation_differences = []
+    for key in sorted(a_rows.keys() & b_rows.keys()):
+        first_row, second_row = a_rows[key], b_rows[key]
+        if first_row["by_source"] != second_row["by_source"]:
+            ablation_differences.append(
+                {
+                    "model": key[0],
+                    "policy": key[1],
+                    "split_seed": key[2],
+                    "thresholds": [first_row["threshold"], second_row["threshold"]],
+                    "same_source_confusion_matrices": all(
+                        first_row["by_source"][s]["confusion_matrix"]
+                        == second_row["by_source"][s]["confusion_matrix"]
+                        for s in first_row["by_source"]
+                    ),
+                    "max_absolute_source_metric_difference": {
+                        m: max(
+                            abs(first_row["by_source"][s][m] - second_row["by_source"][s][m])
+                            for s in first_row["by_source"]
+                        )
+                        for m in (
+                            "attack_precision",
+                            "attack_recall",
+                            "false_positive_rate",
+                            "average_precision",
+                        )
+                    },
                 }
             )
     return {
         "same_canonical_inputs_order_labels_weights": same_input,
         "same_validation_rows": same_rows,
         "controls": comparisons,
+        "within_run": within_run,
+        "same_all_partition_payloads": a["partition_payloads"] == b["partition_payloads"],
+        "same_ablation_grid": a_rows.keys() == b_rows.keys(),
+        "compared_ablation_fits": len(a_rows.keys() & b_rows.keys()),
+        "ablation_metric_differences": ablation_differences,
         "scope": "controlled fitting comparison, not independent attack-detection evidence",
     }
