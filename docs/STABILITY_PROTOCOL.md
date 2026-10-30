@@ -9,7 +9,10 @@ source generalization. No further independent source is consumed by this study.
    Report zeros, nonfinite values and range issues by source, label and IP protocol. Zero TTLs
    remain recorded values: without PCAP/exporter evidence we cannot call them missing values
    or silently reinterpret them. Supplied dictionary agreement is not actual exporter parity.
-2. Recreate the existing group-isolated partitions at seeds 7, 42 and 101. Sort each partition
+2. Create group-isolated partitions at seeds 7, 42 and 101 using the common 30 numeric fields
+   retained by every ablation (the prior 34 grouping fields minus four exporter-rate fields).
+   This conservative regrouping changes partitions from the prior experiment. Retain ambiguous
+   groups and record their sizes; do not remove difficult observations. Sort each partition
    by its full numeric fingerprint, so selected rows and input order can be checked separately.
    Record ordered feature/label/weight digests, raw membership digests, and post-preprocessing
    training/probe digests. Retain source identity as metadata only.
@@ -23,11 +26,11 @@ source generalization. No further independent source is consumed by this study.
    to fitting; matching only sorted row membership cannot establish identical numerical inputs.
 5. Compare eight feature policies separately: full, no TTL, no ports, no protocol/application
    IDs, no four exporter-rate fields, no TTL/ports, no TTL/exporter-rate fields, and the previous
-   six-field reduction. They all retain the original reduced grouping fields, so the established
-   group isolation remains a common development protocol. No feature-family removal is claimed
+   six-field reduction. They all retain the common 30 grouping fields, keeping identical raw
+   ablated observations in a single partition. No feature-family removal is claimed
    to be beneficial in advance. Do not delete ambiguous reduced observations to improve scores.
 6. For each policy, fit histogram boosting and full-sampling XGBoost at three partition seeds:
-   at most 48 classifier fits plus eight controls. Use 150 iterations, two CPU threads, no
+   at most 48 classifier fits plus eight controls and four transfer diagnostics. Use 150 iterations, two CPU threads, no
    histogram early-stopping split, and equal-source weights. Do not search extra parameters.
 7. Choose each threshold on the calibration partition using the existing per-source precision,
    FPR confidence and support constraints. Evaluate that frozen threshold on validation. This
@@ -40,6 +43,11 @@ source generalization. No further independent source is consumed by this study.
 9. Stop starting new fits after one search hour; finish/record the active fit. Rank only complete
    three-seed results; mark incomplete studies explicitly. No deployment/promotion occurs from
    this development screen. All old failures and frozen artifacts remain unchanged.
+10. On seed 42, compare full/no-TTL XGBoost in both source-transfer directions. Train and
+    choose the threshold using only the originating source's training/calibration partitions;
+    score the other known development source's validation partition without target fitting.
+    These four diagnostics are not independent new-source evidence. They are registered before
+    fits together with the other controls and share the total search deadline.
 
 The 80% recall level is a research screen, not an operator-approved production SLO. Binomial
 intervals remain conditional on independent labeled rows. Source/capture dependence and the

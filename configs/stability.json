@@ -14,5 +14,6 @@
   "min_validation_recall": 0.8,
   "control_repeats": 2,
   "control_seed": 42,
-  "run_controls": true
+  "run_controls": true,
+  "run_source_transfer": true
 }
