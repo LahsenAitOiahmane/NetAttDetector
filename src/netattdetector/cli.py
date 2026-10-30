@@ -89,10 +89,74 @@ def parser():
     compare.add_argument("first")
     compare.add_argument("second")
     compare.add_argument("--output", required=True)
+    provenance = commands.add_parser(
+        "inspect-provenance", help="Inspect source metadata headers without training"
+    )
+    provenance.add_argument("--data", required=True)
+    provenance.add_argument("--source", required=True)
+    provenance.add_argument("--roles", default="configs/data/source_roles.json")
+    provenance.add_argument("--output", required=True)
+    plan = commands.add_parser(
+        "check-capture-plan", help="Validate declared capture/time/host split isolation"
+    )
+    plan.add_argument("--plan", default="configs/data/capture_plan.json")
+    plan.add_argument("--output", required=True)
+    export_flow = commands.add_parser(
+        "export-pcap", help="Export bounded offline NFStream lab measurements on Linux"
+    )
+    export_flow.add_argument("--pcap", required=True)
+    export_flow.add_argument("--output", required=True)
+    verify_flow = commands.add_parser(
+        "verify-measurements", help="Compare offline export with known synthetic fixture values"
+    )
+    verify_flow.add_argument("--export", required=True)
+    verify_flow.add_argument("--expected", required=True)
+    verify_flow.add_argument("--output", required=True)
+    contract = commands.add_parser(
+        "measurement-contract",
+        help="Describe the separate NFStream lab contract and unsupported UQ fields",
+    )
+    contract.add_argument("--output", required=True)
     return root
 
 
 def execute(args):
+    if args.command == "measurement-contract":
+        from netattdetector.measurement import contract_report
+
+        result = contract_report()
+        write_json(args.output, result)
+        return {"contract": args.output, "schema": result["schema"], "uq_model_compatible": False}
+    if args.command == "export-pcap":
+        from netattdetector.measurement import export_pcap
+
+        result = export_pcap(args.pcap, args.output)
+        return {
+            "export": args.output,
+            "schema": result["schema"],
+            "flows": len(result["rows"]),
+            "resources": result["resources"],
+        }
+    if args.command == "verify-measurements":
+        from netattdetector.measurement import verify_measurements
+
+        result = verify_measurements(args.export, args.expected, args.output)
+        if not result["passed"]:
+            raise ValueError(f"Measurement comparison failed; see {args.output}.")
+        return result
+    if args.command == "inspect-provenance":
+        from netattdetector.provenance import inspect_provenance
+
+        return inspect_provenance(args.data, args.source, args.roles, args.output)
+    if args.command == "check-capture-plan":
+        from netattdetector.provenance import validate_capture_plan
+
+        result = validate_capture_plan(args.plan, args.output)
+        if not result["structure_valid"]:
+            raise ValueError(
+                f"Capture plan blocked; see {args.output}: " + "; ".join(result["blockers"])
+            )
+        return result
     if args.command == "study-stability":
         from netattdetector.stability import run_stability_study
 

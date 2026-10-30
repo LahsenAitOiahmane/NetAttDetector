@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "source_roles": "configs/data/source_roles.json",
+  "feature_contract": "nfstream-core-v1",
+  "purge_seconds": 300,
+  "min_rows_per_class": 25,
+  "require_host_disjoint": true,
+  "captures": [],
+  "status": "blocked: existing UQ CSVs have no row-linked capture IDs or event timestamps; do not manufacture them from row order",
+  "training_enabled": false
+}

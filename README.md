@@ -13,7 +13,7 @@ The [model card](reports/BASELINE.md) retains this failure and explains the next
 
 The next experiment implements global development-data auditing, source-aware weighting,
 grouped train/calibration/validation partitions, feature ablations and an untouched CSE-CIC
-source test. Its preregistered rules are in [the multi-source protocol](docs/MULTISOURCE_PROTOCOL.md).
+source test. Its preregistered rules are in [the multi-source protocol](docs/research/MULTISOURCE_PROTOCOL.md).
 The [completed multi-source report](reports/MULTISOURCE.md) retains another failed independent
 test and a cross-platform training discrepancy. Both new model variants remain research-only.
 
@@ -21,8 +21,8 @@ The [completed stability study](reports/STABILITY.md) adds eight targeted featur
 three grouped development splits, source-transfer diagnostics and controlled XGBoost repeats.
 All 60 fits completed on both the laptop and GitHub. Full sampling reduced the observed
 control score discrepancy, but residual training differences remain. **No policy passed the
-per-source precision/FPR/recall screen.** See the [reproduction guide](docs/STABILITY_OPERATIONS.md)
-and [ordered next sprint](docs/ROADMAP.md#next-sprint-after-the-development-study).
+per-source precision/FPR/recall screen.** See the [reproduction guide](docs/guides/STABILITY_OPERATIONS.md)
+and [ordered next sprint](docs/project/ROADMAP.md#next-sprint-after-the-development-study).
 
 ## What changed
 
@@ -71,7 +71,7 @@ disk before increasing it. No archive is automatically expanded on disk.
 
 Without uv, create a virtual environment and run `python -m pip install -e ".[dev]"`;
 this resolves compatible dependencies but is **not** the frozen lockfile environment.
-`python main.py ...` forwards to the same CLI after package installation.
+`python -m netattdetector ...` invokes the same CLI after package installation.
 
 ## Use a trained model
 
@@ -86,9 +86,10 @@ Output contains a row number, attack score, binary prediction, and the stored th
 Scores are uncalibrated model estimates, not established probabilities of a real attack.
 Only load trusted joblib artifacts: deserializing untrusted pickle-based models can execute code.
 
-The old `app/app.py` packet sniffer has been retired. It now forwards to flow CSV prediction.
-Existing `saved_models/`, `models/`, `data/data_loader.py`, logs, and captured CSVs are historical
-material, outside the supported pipeline. Old artifacts are not compatible with the new contract.
+The unused 2024 modules, old model binaries, bytecode, logs and empty capture files have been
+removed from the active tree. They remain recoverable from Git history at `f1b2d59`.
+Downloaded datasets and current experiment evidence are retained. See the
+[repository guide](docs/project/REPOSITORY.md) and [documentation index](docs/README.md).
 
 ## Understand the results
 
@@ -103,23 +104,23 @@ reported separately. A successful command or green CI run is not a model-promoti
 
 The default split is a deduplicated, stratified 60/20/20 random split: useful for development,
 insufficient for real-world claims. Group and temporal split modes are supported in configuration.
-See [evaluation rules](docs/EVALUATION.md) before comparing experiments or publishing numbers.
+See [evaluation rules](docs/research/EVALUATION.md) before comparing experiments or publishing numbers.
 
 ## Documentation and ordered work
 
 | Document | Purpose |
 |---|---|
-| [Audit](docs/AUDIT.md) | What the old code did, evidence, defects, and hardware limits |
-| [Dataset research](docs/DATASETS.md) | Official sources, large datasets, terms, adapters and download policy |
-| [Architecture](docs/ARCHITECTURE.md) | Current modules, feature contract, future sensor and service boundaries |
-| [Evaluation](docs/EVALUATION.md) | Leakage controls, metrics, operating points, model-selection rules |
-| [Scrum plan](docs/ROADMAP.md) | Prioritized stories, dependencies, estimates, sprints and release gates |
-| [Operations](docs/OPERATIONS.md) | Local and GitHub training, reproducibility, recovery and budgets |
-| [Work log](docs/WORKLOG.md) | Actions taken, checks, decisions, results and outstanding work |
+| [Audit](docs/project/AUDIT.md) | What the old code did, evidence, defects, and hardware limits |
+| [Dataset research](docs/research/DATASETS.md) | Official sources, large datasets, terms, adapters and download policy |
+| [Architecture](docs/architecture/ARCHITECTURE.md) | Current modules, feature contract, future sensor and service boundaries |
+| [Evaluation](docs/research/EVALUATION.md) | Leakage controls, metrics, operating points, model-selection rules |
+| [Scrum plan](docs/project/ROADMAP.md) | Prioritized stories, dependencies, estimates, sprints and release gates |
+| [Operations](docs/guides/OPERATIONS.md) | Local and GitHub training, reproducibility, recovery and budgets |
+| [Work log](docs/project/WORKLOG.md) | Actions taken, checks, decisions, results and outstanding work |
 | [Baseline / model card](reports/BASELINE.md) | Measured results and limits of the first new model |
 | [Multi-source report](reports/MULTISOURCE.md) | Global data audit, ablations, calibration, fresh-source results and limits |
-| [Registered multi-source protocol](docs/MULTISOURCE_PROTOCOL.md) | Selection rules fixed before fresh-source scoring |
-| [Multi-source runbook](docs/MULTISOURCE_OPERATIONS.md) | Cache preparation, freezing, one-time evaluation and portable exports |
+| [Registered multi-source protocol](docs/research/MULTISOURCE_PROTOCOL.md) | Selection rules fixed before fresh-source scoring |
+| [Multi-source runbook](docs/guides/MULTISOURCE_OPERATIONS.md) | Cache preparation, freezing, one-time evaluation and portable exports |
 
 ## Development
 
