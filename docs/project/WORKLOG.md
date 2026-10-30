@@ -261,8 +261,10 @@ The integrated 59-test suite passed locally; 18 focused tests passed after the f
 support check, including its added counterexample. Lint, formatting, documentation links, ignore
 policy and deterministic fixture checks pass. Reports and evidence are in
 [CAPTURE_MEASUREMENTS.md](../../reports/CAPTURE_MEASUREMENTS.md). Review:
-[draft PR #5](https://github.com/LahsenAitOiahmane/NetAttDetector/pull/5), including the PR #2
-dependency branch. The next dependency is trustworthy development captures/labels with metadata,
+[PR #5](https://github.com/LahsenAitOiahmane/NetAttDetector/pull/5), including the PR #2
+dependency branch. PR #2 was merged to main separately during this work; incorporated its main
+update and the remote branch merge without rewriting or overwriting concurrent changes.
+The next dependency is trustworthy development captures/labels with metadata,
 followed by re-export, label joins and capture-held-out training. No new real-data model was fitted.
 
 ## Outstanding work

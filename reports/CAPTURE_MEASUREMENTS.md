@@ -102,5 +102,8 @@ Validation so far: the prior 42-test suite passed with pandas 3.1.0; the integra
 passed locally; 18 focused provenance/measurement tests passed after strengthening source support,
 including the added pooled-support counterexample. Linux CI and the actual exporter lab passed.
 Lint, formatting, fixture-byte checks, repository hygiene and local documentation links pass.
-The review is [draft PR #5](https://github.com/LahsenAitOiahmane/NetAttDetector/pull/5), which
-includes the dependency branch from PR #2. No main-branch merge or production promotion was performed.
+The review is [PR #5](https://github.com/LahsenAitOiahmane/NetAttDetector/pull/5). PR #2 was
+merged into main separately during this work; that main/branch update was incorporated without
+overwriting concurrent changes. The cleanup/sprint work has not been merged or promoted to production.
+The temporary ignored `.venv-pandas3` test environment remains because execution policy rejected
+its recursive deletion; the default `.venv` has been upgraded successfully.

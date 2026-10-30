@@ -84,7 +84,7 @@ the roadmap must not be read as an endorsement of the initial champion for live 
 | NAD-039 | P2 / 8 | Production candidate: pilot acceptance, reliability/load checks, failure handling, rollback drill and operator signoff | 026–032,037 | Backlog |
 | NAD-040 | P1 / 5 | Compare ordered raw/transformed payloads, weights, repeated fits, threads and platform controls | 014 | Measured: 60 fits/platform, matching inputs, reduced control discrepancy with full sampling; one larger ablation retained decision differences |
 | NAD-041 | P1 / 3 | Remove unused legacy/generated files, organize docs/scripts, enforce ignore and hygiene policy | 012 | Implemented with Git-history recovery, documentation link checks and LF/binary attributes |
-| NAD-042 | P1 / 3 | Validate the pandas major upgrade against tests, cached fingerprints and saved inference probes | 040 | PR #2 commits integrated into PR #5; pandas 3.1.0 compatibility evidence recorded; no old metric/artifact was rewritten |
+| NAD-042 | P1 / 3 | Validate the pandas major upgrade against tests, cached fingerprints and saved inference probes | 040 | PR #2 merged separately; PR #5 preserves that update and records pandas 3.1.0 compatibility; no old metric/artifact was rewritten |
 
 ## Next sprint after the development study
 
