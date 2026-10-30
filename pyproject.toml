@@ -21,6 +21,7 @@ dependencies = [
 [project.optional-dependencies]
 boosting = ["xgboost>=3.1,<4"]
 analysis = ["matplotlib>=3.10,<4"]
+measurement = ["nfstream==6.6.0; sys_platform == 'linux'"]
 dev = ["pytest>=8,<10", "ruff>=0.12,<1"]
 
 [project.scripts]

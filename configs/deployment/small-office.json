@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "recorded_date": "2026-10-30",
+  "environment": "small office / home network",
+  "source": "User selected this environment and up to 50 reviewed alerts/day in this chat",
+  "max_reviewed_alerts_per_day": 50,
+  "benign_flows_per_day": null,
+  "incident_aggregation_policy": null,
+  "mode": "offline preparation; passive shadow pilot is a future stage",
+  "automatic_blocking_enabled": false,
+  "pilot_quality_slo_approved": false,
+  "limitation": "Alert capacity is a planning ceiling. Flow volume, incident aggregation and a measured pilot operating threshold remain unknown; do not equate 50 alerts with 50 attack-labeled flows."
+}

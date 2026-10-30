@@ -146,7 +146,7 @@ jobs:
       - name: Unseal the independent source after freeze
         run: uv run --no-sync netatt evaluate-frozen --run artifacts/multisource --prepared data/processed/multisource --data data/raw/nf-cse-cic-ids2018-v2.zip --baseline artifacts/original-baseline/model.joblib --output artifacts/multisource/holdout.json
       - name: Render report
-        run: uv run --no-sync python scripts/report_multisource.py --prepared data/processed/multisource --run artifacts/multisource --holdout artifacts/multisource/holdout.json --output reports/local/MULTISOURCE.md
+        run: uv run --no-sync python scripts/reports/report_multisource.py --prepared data/processed/multisource --run artifacts/multisource --holdout artifacts/multisource/holdout.json --output reports/local/MULTISOURCE.md
       - name: Publish job summary
         if: success()
         shell: bash

@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "plan_sha256": "d2ebea2d3069bc5afa98bd8ff80ae9b9ada660b663170f32712aa061eefa5a77",
+  "source_roles_sha256": "6781d591230b7dea7299c3d89b78c5d3b4cb26631362abd48967d315b21261f6",
+  "capture_count": 0,
+  "structure_valid": false,
+  "training_authorized": false,
+  "declared_support": {},
+  "blockers": [
+    "Insufficient declared benign/attack support in train (minimum 25/class).",
+    "Insufficient declared benign/attack support in calibration (minimum 25/class).",
+    "Insufficient declared benign/attack support in validation (minimum 25/class).",
+    "Insufficient declared benign/attack support in test (minimum 25/class)."
+  ],
+  "limitation": "Validates declared metadata/checksums only. Does not prove label counts, endpoint identities, time semantics or row-to-capture linkage. These require raw-data/export audit before fitting."
+}

@@ -111,7 +111,7 @@ Only the origin source's train/calibration rows fit the model and choose its thr
 
 Keep the research artifacts and the earlier failed external results. Use the measured policies to prioritize further research; do not choose a production subset from these development results alone. First recover capture/time/host metadata and verify actual flow-export measurements on controlled PCAP fixtures, then reserve a fresh source before fitting. Agree an operator alert budget before a passive shadow pilot. More trees or a larger random sample cannot by themselves establish measurement parity or new-source robustness.
 
-See the preregistered [protocol](../docs/STABILITY_PROTOCOL.md), [reproduction guide](../docs/STABILITY_OPERATIONS.md) and [ordered backlog](../docs/ROADMAP.md). Full per-source metrics, confidence intervals, attack-family slices, input signatures and resource measurements are in the saved JSON evidence.
+See the preregistered [protocol](../docs/research/STABILITY_PROTOCOL.md), [reproduction guide](../docs/guides/STABILITY_OPERATIONS.md) and [ordered backlog](../docs/project/ROADMAP.md). Full per-source metrics, confidence intervals, attack-family slices, input signatures and resource measurements are in the saved JSON evidence.
 
 ## Evidence and validation
 

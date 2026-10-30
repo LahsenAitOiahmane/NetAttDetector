@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "schema": "nfstream-core-v1",
+  "export_sha256": "92c4251e036dfcbf5523f6938fc0ed93d2a07fae170a97ac7b02edbb8d8b2ba5",
+  "expected_sha256": "1793737989a40cec038ff2695b7e014014c9ed6045207e54a8ebe39d00ec330f",
+  "checked_fields": 85,
+  "flows": 5,
+  "errors": [],
+  "uq_model_compatible": false,
+  "scope": "synthetic offline measurement regression, not network-attack detection evidence"
+}

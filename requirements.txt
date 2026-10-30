@@ -1,2 +1,0 @@
-# For a frozen research environment use: uv sync --frozen --extra dev
--e .
