@@ -77,10 +77,38 @@ def parser():
         "verify-portable", help="Check a portable export's prediction probes"
     )
     verify.add_argument("path")
+    study = commands.add_parser(
+        "study-stability", help="Run bounded development-only ablations and repeat controls"
+    )
+    study.add_argument("--prepared", required=True)
+    study.add_argument("--config", default="configs/stability.json")
+    study.add_argument("--output", required=True)
+    compare = commands.add_parser(
+        "compare-stability", help="Compare identical canonical control payloads across runs"
+    )
+    compare.add_argument("first")
+    compare.add_argument("second")
+    compare.add_argument("--output", required=True)
     return root
 
 
 def execute(args):
+    if args.command == "study-stability":
+        from netattdetector.stability import run_stability_study
+
+        result = run_stability_study(args.prepared, args.config, args.output)
+        return {
+            "study": str(Path(args.output) / "study.json"),
+            "completed_ablation_fits": len(result["records"]),
+            "passes_all_seeds": sum(x["passes_all_seeds"] for x in result["summary"]),
+            "resources": result["resources"],
+        }
+    if args.command == "compare-stability":
+        from netattdetector.stability import compare_studies
+
+        result = compare_studies(args.first, args.second)
+        write_json(args.output, result)
+        return result
     if args.command == "export-portable":
         from netattdetector.portable import export_portable
 

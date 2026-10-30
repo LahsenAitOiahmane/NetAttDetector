@@ -171,11 +171,58 @@ Visually verified both phase-2 figures. Created [draft PR #3](https://github.com
 with the failed results, platform discrepancy, portability fix and remaining release gates.
 All changes are on `codex/multisource-generalization`; no phase-2 merge/deployment was performed.
 
+## 30 October 2026 — Development ablation and training stability
+
+Delivered this follow-up on `codex/development-stability` in
+[draft PR #4](https://github.com/LahsenAitOiahmane/NetAttDetector/pull/4), after phase 2 was
+merged through PR #3. The model fits retain their original source revision and provenance.
+Registered `configs/stability.json`/`STABILITY_PROTOCOL.md` in `b730df3`. Before fitting,
+amended the grouping to the 30 fields shared by every policy, because dropping four rate
+fields could otherwise create identical ablated observations in different partitions.
+Committed the implementation/amendment as `8313635`; both real runs used that clean revision.
+
+Reused the corrected 195,894-row UNSW/ToN cache. Preserved all observations in ambiguous
+reduced groups: 29,361 common-input groups, largest group 20,302 rows, 48,138 observations
+in mixed-label groups. Ran eight feature policies × two classifiers × three group partition
+seeds (48 fits), eight same-payload XGBoost controls and four known-source transfer diagnostics.
+Chose thresholds on calibration, then froze them for validation. No CSE file or new independent
+source was read in this phase. No previous freeze/test artifact was changed.
+
+Local completion: 714.2 seconds and sampled peak process RSS 424.5 MiB. The
+[GitHub study](https://github.com/LahsenAitOiahmane/NetAttDetector/actions/runs/40979423634)
+completed all 60 fits in 322.2 seconds with 551.7 MiB peak process RSS. Both used two-thread
+study budgets; controls deliberately used one/two threads. These measurements exclude raw
+archive preparation and cache loading; RSS includes the loaded cohort and is not whole-PC RAM.
+
+All 48 pooled calibration operating points were infeasible on both platforms, so the declared
+F1 fallbacks applied. None of the 16 model/policy combinations passed every source/seed.
+Every candidate's exact post-preprocessing cross-partition overlap count was zero. TTL zeros
+were source-dependent (84.77% of ToN benign versus 0.03% of UNSW benign); no zero was repaired
+or relabeled. TTL removal did not establish useful source transfer. Results block promotion.
+
+Canonical ordered feature/label/weight payloads and all partitions matched across platforms.
+Control post-preprocessing train/validation digests matched. Repeated modes had exact scores
+within each platform; Windows sampled one-versus-two-thread scores differed by up to 0.3438,
+while full controls matched across thread counts. Cross-platform sampled-control differences
+were up to 0.3907; full-control differences were at most 5.96e-8 with zero diagnostic-0.5
+decision disagreements. Tree bytes still differed. Of 48 ablations, 44 had exactly matching
+source metrics; three had minor score-metric differences and one XGBoost no-protocol-ID
+seed-7 ablation changed its threshold/confusion matrices. Training determinism remains open;
+these controls do not retroactively prove the old discrepancy's cause.
+
+Added CLI study/comparison commands, a development-only workflow mode, strict comparison
+payload/score integrity checks, saved JSON evidence, plot/report generators and reproduction
+instructions. Updated README and the ordered Scrum backlog. [STABILITY.md](../reports/STABILITY.md)
+contains the measured trade-offs and two visually verified figures. The local suite passes
+42 tests; lint/format checks pass. Source CI passed on Python 3.11/3.13 with 39 core tests
+and three optional tests skipped in each core environment. The next sprint prioritizes capture/host/time provenance,
+exporter/PCAP measurement parity and an operator alert budget before another model search.
+
 ## Outstanding work
 
 This work does not complete the production roadmap. Global audits cover the development inputs;
 conditional confidence intervals and a fresh-source test are now implemented. Robust capture/time
-holdouts, capture-level uncertainty, training stability, domain adaptation, exporter parity, a live bounded sensor,
+holdouts, capture-level uncertainty, residual training stability, domain adaptation, exporter parity, a live bounded sensor,
 operational alert budgets, shadow validation, serving/monitoring/rollback, and commercial release
 permissions remain explicit backlog items. No production accuracy or real-network alert quality
 is claimed.

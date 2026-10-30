@@ -58,11 +58,11 @@ the roadmap must not be read as an endorsement of the initial champion for live 
 | NAD-013 | P1 / 5 | Global duplicate/conflict analysis using partitioned hashes/DuckDB; reconcile counts by source | 004 | Done for all 19.33M development rows; disk partitions and checked indexes |
 | NAD-014 | P1 / 5 | Source/capture/session data cards and immutable split manifests; detect merged-source contamination | 013 | Source manifests, group fingerprints and contamination checks implemented; capture/session metadata unresolved |
 | NAD-015 | P1 / 8 | Capture/time/device-held-out benchmark with purging; both labels and adequate attack support per fold | 014 | Backlog; basic split modes exist |
-| NAD-016 | P1 / 5 | Port/TTL/protocol-ID ablations; retain only features robust across development sources | 015 | Six-field ablation and dependence diagnostics completed; no validated robust subset; targeted ablations remain |
+| NAD-016 | P1 / 5 | Port/TTL/protocol-ID ablations; retain only features robust across development sources | 015 | Eight targeted policies across three grouped development seeds measured in STABILITY.md; no subset passed; capture-aware acceptance remains |
 | NAD-017 | P1 / 5 | Training-only rate/ratio/log features with unit tests and documented exporter availability | 016 | Backlog |
 | NAD-018 | P1 / 5 | Bounded hyperparameter search (≤1 laptop-hour, 2 threads); select with development folds only | 015–017 | Registered nine-candidate comparison completed; broader/nested search remains |
 | NAD-019 | P1 / 5 | Compare class weights/train-only sampling and calibrate on disjoint development observations | 018 | Equal-source/class weights and sigmoid calibration compared; alternative sampling remains |
-| NAD-020 | P1 / 5 | Confidence intervals, predefined multiple development seeds, new frozen publication holdout | 015–019 | Conditional Wilson intervals and new-source frozen test completed; multiple seeds/capture-level uncertainty unresolved |
+| NAD-020 | P1 / 5 | Confidence intervals, predefined multiple development seeds, new frozen publication holdout | 015–019 | Conditional Wilson intervals, frozen CSE test and three registered development seeds measured; new untouched source and capture-level uncertainty remain |
 | NAD-021 | P1 / 3 | Agree site threat model, flow volume, retained metadata and analyst alert/day budget | 009 | Backlog; owner/operator input |
 | NAD-022 | P1 / 8 | Select exporter or retrain a reduced contract; demonstrate feature/units/direction/timeout parity on PCAP fixtures | 016,021 | Backlog |
 | NAD-023 | P1 / 8 | Authorized passive sensor with bounded flow cache, IPv4/IPv6, TCP/UDP/ICMP and dropped-flow counters | 022 | Backlog |
@@ -82,6 +82,32 @@ the roadmap must not be read as an endorsement of the initial champion for live 
 | NAD-037 | P1 / 3 | Resolve source-code license, commercial dataset permission, notices, privacy and retention before public product release | 021 | Backlog; owner decision |
 | NAD-038 | P2 / 5 | Research release: versioned source, model/data cards, clean-environment reproduction and evaluation artifacts | 011,020,037 | Backlog |
 | NAD-039 | P2 / 8 | Production candidate: pilot acceptance, reliability/load checks, failure handling, rollback drill and operator signoff | 026–032,037 | Backlog |
+| NAD-040 | P1 / 5 | Compare ordered raw/transformed payloads, weights, repeated fits, threads and platform controls | 014 | Measured: 60 fits/platform, matching inputs, reduced control discrepancy with full sampling; one larger ablation retained decision differences |
+
+## Next sprint after the development study
+
+The [registered stability study](../reports/STABILITY.md) completed all 48 ablations, eight
+controls and four transfer diagnostics on each platform. No calibration threshold met the
+per-source precision/FPR/support constraints in any pooled-development ablation; all used
+declared fallback thresholds. Removing TTL alone did not yield a robust cross-source detector.
+The 30-field common grouping retained 48,138 observations in label-ambiguous groups. Do not
+delete these observations or relax the quality gate to obtain an attractive score.
+
+Sprint goal: make the next generalization test scientifically interpretable. Proposed capacity:
+13 points over two weeks; these are backlog estimates, not a promise of delivery dates.
+
+| Order / story | Concrete work | Evidence for acceptance |
+|---|---|---|
+| 1 / NAD-014,015 (5 points) | Inspect publisher metadata for capture/day/host/session provenance; register a source/capture split manifest before fitting. Keep CSE observed, and keep prospective BoT/other independent captures out of tuning. Do not use the merged UQ set as independent evidence. | Versioned provenance/data card, source overlap map, immutable split rules and adequate benign/attack support; explicitly record unavailable metadata. |
+| 2 / NAD-022 (5 points) | Choose a domain-appropriate flow exporter and controlled benign PCAP fixtures; compare units, direction, duration quantization, TCP windows, TTL, protocol and derived rates with the published contract. | Reproducible export commands/version, fixture provenance and field comparison; unsupported fields fail explicitly. No production or live traffic capture is required for this task. |
+| 3 / NAD-021 (3 points) | Define the intended environment, relevant attack types, expected benign flow volume, retention and tolerable alerts/day with the operator. Translate this into a registered evaluation budget. | Written threat model and operator-approved operating budget; 98% precision/0.5% FPR/80% recall remain research screens until then. |
+
+Next, resolve the residual NAD-040 case with per-stage model/input instrumentation before
+claiming reproducible training. Only after measurement/split requirements are ready should
+NAD-017/018 explore training-only rate/ratio/log features, bounded search or domain adaptation.
+Reserve a fresh source before those fits and evaluate it only after freezing the selected model.
+Do not automatically run another broad search or acquire multi-gigabyte PCAP collections on
+the laptop. A pilot, service API and dashboard do not address the current model-quality failure.
 
 ## Sprint sequence
 

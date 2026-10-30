@@ -1,0 +1,166 @@
+{
+  "same_canonical_inputs_order_labels_weights": true,
+  "same_validation_rows": true,
+  "controls": [
+    {
+      "control": "full-1t:0",
+      "max_probability_difference": 5.960464477539063e-08,
+      "mean_probability_difference": 1.26777928433075e-12,
+      "exact_score_match": false,
+      "stable_tree_bytes_match": false,
+      "decision_disagreements_at_diagnostic_0_5": 0
+    },
+    {
+      "control": "full-1t:1",
+      "max_probability_difference": 5.960464477539063e-08,
+      "mean_probability_difference": 1.26777928433075e-12,
+      "exact_score_match": false,
+      "stable_tree_bytes_match": false,
+      "decision_disagreements_at_diagnostic_0_5": 0
+    },
+    {
+      "control": "full-2t:0",
+      "max_probability_difference": 5.960464477539063e-08,
+      "mean_probability_difference": 1.26777928433075e-12,
+      "exact_score_match": false,
+      "stable_tree_bytes_match": false,
+      "decision_disagreements_at_diagnostic_0_5": 0
+    },
+    {
+      "control": "full-2t:1",
+      "max_probability_difference": 5.960464477539063e-08,
+      "mean_probability_difference": 1.26777928433075e-12,
+      "exact_score_match": false,
+      "stable_tree_bytes_match": false,
+      "decision_disagreements_at_diagnostic_0_5": 0
+    },
+    {
+      "control": "stochastic-1t:0",
+      "max_probability_difference": 0.3906981348991394,
+      "mean_probability_difference": 0.005410425830632448,
+      "exact_score_match": false,
+      "stable_tree_bytes_match": false,
+      "decision_disagreements_at_diagnostic_0_5": 113
+    },
+    {
+      "control": "stochastic-1t:1",
+      "max_probability_difference": 0.3906981348991394,
+      "mean_probability_difference": 0.005410425830632448,
+      "exact_score_match": false,
+      "stable_tree_bytes_match": false,
+      "decision_disagreements_at_diagnostic_0_5": 113
+    },
+    {
+      "control": "stochastic-2t:0",
+      "max_probability_difference": 0.3427027463912964,
+      "mean_probability_difference": 0.007759116590023041,
+      "exact_score_match": false,
+      "stable_tree_bytes_match": false,
+      "decision_disagreements_at_diagnostic_0_5": 87
+    },
+    {
+      "control": "stochastic-2t:1",
+      "max_probability_difference": 0.3427027463912964,
+      "mean_probability_difference": 0.007759116590023041,
+      "exact_score_match": false,
+      "stable_tree_bytes_match": false,
+      "decision_disagreements_at_diagnostic_0_5": 87
+    }
+  ],
+  "within_run": {
+    "first": {
+      "max_repeat_probability_difference": {
+        "stochastic-1t": 0.0,
+        "stochastic-2t": 0.0,
+        "full-1t": 0.0,
+        "full-2t": 0.0
+      },
+      "max_one_vs_two_thread_probability_difference": {
+        "stochastic": 0.3438269793987274,
+        "full": 0.0
+      }
+    },
+    "second": {
+      "max_repeat_probability_difference": {
+        "stochastic-1t": 0.0,
+        "stochastic-2t": 0.0,
+        "full-1t": 0.0,
+        "full-2t": 0.0
+      },
+      "max_one_vs_two_thread_probability_difference": {
+        "stochastic": 0.0,
+        "full": 0.0
+      }
+    }
+  },
+  "same_all_partition_payloads": true,
+  "same_ablation_grid": true,
+  "compared_ablation_fits": 48,
+  "ablation_metric_differences": [
+    {
+      "model": "xgboost",
+      "policy": "full",
+      "split_seed": 7,
+      "thresholds": [
+        0.6617251634597778,
+        0.6617251634597778
+      ],
+      "same_source_confusion_matrices": true,
+      "max_absolute_source_metric_difference": {
+        "attack_precision": 0.0,
+        "attack_recall": 0.0,
+        "false_positive_rate": 0.0,
+        "average_precision": 6.347427816688622e-08
+      }
+    },
+    {
+      "model": "xgboost",
+      "policy": "no_export_rates",
+      "split_seed": 7,
+      "thresholds": [
+        0.8588915467262268,
+        0.8588915467262268
+      ],
+      "same_source_confusion_matrices": true,
+      "max_absolute_source_metric_difference": {
+        "attack_precision": 0.0,
+        "attack_recall": 0.0,
+        "false_positive_rate": 0.0,
+        "average_precision": 6.074994729488026e-09
+      }
+    },
+    {
+      "model": "xgboost",
+      "policy": "no_protocol_ids",
+      "split_seed": 7,
+      "thresholds": [
+        0.5221003293991089,
+        0.5233511924743652
+      ],
+      "same_source_confusion_matrices": false,
+      "max_absolute_source_metric_difference": {
+        "attack_precision": 0.000758195403038342,
+        "attack_recall": 0.0012345679012345512,
+        "false_positive_rate": 0.002258610954263135,
+        "average_precision": 0.0034765166749881615
+      }
+    },
+    {
+      "model": "xgboost",
+      "policy": "no_ttl_ports",
+      "split_seed": 101,
+      "thresholds": [
+        0.7108815312385559,
+        0.7108815312385559
+      ],
+      "same_source_confusion_matrices": true,
+      "max_absolute_source_metric_difference": {
+        "attack_precision": 0.0,
+        "attack_recall": 0.0,
+        "false_positive_rate": 0.0,
+        "average_precision": 4.434674849562725e-12
+      }
+    }
+  ],
+  "scope": "controlled fitting comparison, not independent attack-detection evidence"
+}
