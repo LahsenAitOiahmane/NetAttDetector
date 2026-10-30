@@ -36,8 +36,9 @@ The order below is the default priority. `Implemented` describes present code, n
 acceptance. `Measured` requires a linked result. Remaining stories are not claimed complete.
 
 The initial external test detected only 0.33% of ToN attacks at the frozen UNSW threshold.
-That blocks deployment and makes NAD-013–016 the immediate priority. Before using ToN to
-improve a multi-source model, reserve a new independent source/capture. See the baseline report;
+That blocked deployment and motivated NAD-013–020. The registered multi-source phase now
+also failed the fresh CSE source test; see `reports/MULTISOURCE.md`. Before further tuning,
+reserve another independent source/capture. See the baseline report;
 the roadmap must not be read as an endorsement of the initial champion for live protection.
 
 | ID | Priority / points | Story and measurable acceptance | Dependencies | State |
@@ -54,14 +55,14 @@ the roadmap must not be read as an endorsement of the initial champion for live 
 | NAD-010 | P0 / 3 | Strict flow-export inference; reject absent schema and retire fake live flow fields | 006 | Implemented and tested |
 | NAD-011 | P0 / 5 | CI on Python 3.11/3.13 plus bounded GitHub real-data training and retained evidence | 002–009 | Implemented; record remote outcomes |
 | NAD-012 | P0 / 3 | README, architecture, evaluation rules, operations, work log and honest model card | 001–011 | This documentation |
-| NAD-013 | P1 / 5 | Global duplicate/conflict analysis using partitioned hashes/DuckDB; reconcile counts by source | 004 | Backlog |
-| NAD-014 | P1 / 5 | Source/capture/session data cards and immutable split manifests; detect merged-source contamination | 013 | Backlog |
+| NAD-013 | P1 / 5 | Global duplicate/conflict analysis using partitioned hashes/DuckDB; reconcile counts by source | 004 | Done for all 19.33M development rows; disk partitions and checked indexes |
+| NAD-014 | P1 / 5 | Source/capture/session data cards and immutable split manifests; detect merged-source contamination | 013 | Source manifests, group fingerprints and contamination checks implemented; capture/session metadata unresolved |
 | NAD-015 | P1 / 8 | Capture/time/device-held-out benchmark with purging; both labels and adequate attack support per fold | 014 | Backlog; basic split modes exist |
-| NAD-016 | P1 / 5 | Port/TTL/protocol-ID ablations; retain only features robust across development sources | 015 | Backlog |
+| NAD-016 | P1 / 5 | Port/TTL/protocol-ID ablations; retain only features robust across development sources | 015 | Six-field ablation and dependence diagnostics completed; no validated robust subset; targeted ablations remain |
 | NAD-017 | P1 / 5 | Training-only rate/ratio/log features with unit tests and documented exporter availability | 016 | Backlog |
-| NAD-018 | P1 / 5 | Bounded hyperparameter search (≤1 laptop-hour, 2 threads); select with development folds only | 015–017 | Backlog |
-| NAD-019 | P1 / 5 | Compare class weights/train-only sampling and calibrate on disjoint development observations | 018 | Backlog |
-| NAD-020 | P1 / 5 | Confidence intervals, predefined multiple development seeds, new frozen publication holdout | 015–019 | Backlog |
+| NAD-018 | P1 / 5 | Bounded hyperparameter search (≤1 laptop-hour, 2 threads); select with development folds only | 015–017 | Registered nine-candidate comparison completed; broader/nested search remains |
+| NAD-019 | P1 / 5 | Compare class weights/train-only sampling and calibrate on disjoint development observations | 018 | Equal-source/class weights and sigmoid calibration compared; alternative sampling remains |
+| NAD-020 | P1 / 5 | Confidence intervals, predefined multiple development seeds, new frozen publication holdout | 015–019 | Conditional Wilson intervals and new-source frozen test completed; multiple seeds/capture-level uncertainty unresolved |
 | NAD-021 | P1 / 3 | Agree site threat model, flow volume, retained metadata and analyst alert/day budget | 009 | Backlog; owner/operator input |
 | NAD-022 | P1 / 8 | Select exporter or retrain a reduced contract; demonstrate feature/units/direction/timeout parity on PCAP fixtures | 016,021 | Backlog |
 | NAD-023 | P1 / 8 | Authorized passive sensor with bounded flow cache, IPv4/IPv6, TCP/UDP/ICMP and dropped-flow counters | 022 | Backlog |
@@ -99,6 +100,13 @@ estimate in real time. Split later bundles to fit actual velocity; do not force 
 | 7+ | Extend and publish | 033–039 as justified | Reviewed research release, then separate production-candidate review |
 
 ## Release gates and stop conditions
+
+The multi-source candidate is rejected for deployment. Its Windows freeze detected 1 of
+23,764 CSE attacks; the Linux fallback detected 39.03% with 37.92% benign FPR. Prioritize
+measurement/TTL semantics, targeted single-feature-family ablations, repeated development
+seeds and threshold stability, and capture-aware/local data. CSE is now observed and cannot
+be reused as an untouched tuning holdout. Portable export fixes loading an existing cloud
+model on Windows; it does not resolve training variability or generalization.
 
 Research alpha: deterministic ingestion/splits, data terms/citations, train-only preprocessing,
 dummy baseline, untouched independent holdout, external result, per-attack support, confidence

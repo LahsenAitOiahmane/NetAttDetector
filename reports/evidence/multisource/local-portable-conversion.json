@@ -1,0 +1,15 @@
+{
+  "original_model_sha256": "aa08786a5ba1f50c944b71adc19ba12a90c7202f64a5f890ec5554303ea87f42",
+  "portable_model_sha256": "09f38f4f88c9d68ff948c64b6491fd6e3380d381123c0fddf3898077cbc72db5",
+  "boosters": [
+    {
+      "path": "booster-0.ubj",
+      "sha256": "97e83c2119750140ad6ba89509ffa24f09acb5babf8e6977cdbcd9a6795ed4c6"
+    }
+  ],
+  "probe_rows": 5000,
+  "max_absolute_score_difference": 0.0,
+  "threshold_decisions_identical": true,
+  "scope": "serialization-only conversion and synthetic parity probes; no fitting or threshold change",
+  "limitation": "Preprocessing/calibration still use trusted pickle with pinned Python/ML dependencies; only XGBoost's Booster uses the stable model representation."
+}

@@ -11,6 +11,12 @@ The initial champion reached 99.31% accuracy on its random UNSW holdout but dete
 0.33% of attacks on the independent ToN-IoT sample. **It is unsuitable for deployment.**
 The [model card](reports/BASELINE.md) retains this failure and explains the next work priorities.
 
+The next experiment implements global development-data auditing, source-aware weighting,
+grouped train/calibration/validation partitions, feature ablations and an untouched CSE-CIC
+source test. Its preregistered rules are in [the multi-source protocol](docs/MULTISOURCE_PROTOCOL.md).
+The [completed multi-source report](reports/MULTISOURCE.md) retains another failed independent
+test and a cross-platform training discrepancy. Both new model variants remain research-only.
+
 ## What changed
 
 - A versioned feature contract replaces hand-built packet placeholders.
@@ -104,6 +110,9 @@ See [evaluation rules](docs/EVALUATION.md) before comparing experiments or publi
 | [Operations](docs/OPERATIONS.md) | Local and GitHub training, reproducibility, recovery and budgets |
 | [Work log](docs/WORKLOG.md) | Actions taken, checks, decisions, results and outstanding work |
 | [Baseline / model card](reports/BASELINE.md) | Measured results and limits of the first new model |
+| [Multi-source report](reports/MULTISOURCE.md) | Global data audit, ablations, calibration, fresh-source results and limits |
+| [Registered multi-source protocol](docs/MULTISOURCE_PROTOCOL.md) | Selection rules fixed before fresh-source scoring |
+| [Multi-source runbook](docs/MULTISOURCE_OPERATIONS.md) | Cache preparation, freezing, one-time evaluation and portable exports |
 
 ## Development
 

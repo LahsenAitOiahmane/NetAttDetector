@@ -15,6 +15,26 @@ from sklearn.metrics import (
 )
 
 
+def wilson_bounds(successes, totals):
+    """Vectorized 95% binomial intervals, conditional on independent labeled rows."""
+    totals = np.asarray(totals, dtype=float)
+    n = np.maximum(totals, 1)
+    p = np.asarray(successes, dtype=float) / n
+    z = 1.959963984540054
+    center = (p + z * z / (2 * n)) / (1 + z * z / n)
+    radius = z * np.sqrt(p * (1 - p) / n + z * z / (4 * n * n)) / (1 + z * z / n)
+    return np.where(
+        (totals > 0) & (np.asarray(successes) > 0), np.maximum(0, center - radius), 0
+    ), np.where((totals > 0) & (np.asarray(successes) < totals), np.minimum(1, center + radius), 1)
+
+
+def wilson_interval(successes, total):
+    if total == 0:
+        return None
+    low, high = wilson_bounds(successes, total)
+    return [float(low), float(high)]
+
+
 def metrics(y, scores, threshold):
     y = np.asarray(y)
     prediction = np.asarray(scores) >= threshold
@@ -36,6 +56,12 @@ def metrics(y, scores, threshold):
         "false_positive_rate": float(fp / (fp + tn)) if fp + tn else None,
         "false_alarms_per_10000_benign_flows": float(10000 * fp / (fp + tn)) if fp + tn else None,
         "confusion_matrix": {"tn": int(tn), "fp": int(fp), "fn": int(fn), "tp": int(tp)},
+        "conditional_wilson_95": {
+            "attack_precision": wilson_interval(tp, tp + fp),
+            "attack_recall": wilson_interval(tp, tp + fn),
+            "false_positive_rate": wilson_interval(fp, fp + tn),
+            "limitation": "Binomial intervals assume independent labels/rows; not capture-level or model-selection uncertainty.",
+        },
     }
 
 
@@ -77,5 +103,8 @@ def attack_slices(frame, scores, threshold):
             "attack_rows": int(y.sum()),
             "attack_recall": float(pred[y == 1].mean()) if (y == 1).any() else None,
             "benign_false_positive_rate": float(pred[y == 0].mean()) if (y == 0).any() else None,
+            "attack_recall_conditional_wilson_95": wilson_interval(
+                int(pred[y == 1].sum()), int((y == 1).sum())
+            ),
         }
     return result

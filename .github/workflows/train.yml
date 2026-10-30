@@ -3,6 +3,15 @@ name: Research dataset benchmark
 on:
   workflow_dispatch:
     inputs:
+      experiment:
+        description: Experiment to reproduce
+        type: choice
+        options: [baseline, multisource, export]
+        default: baseline
+      source_run:
+        description: Existing multi-source run to export without refitting
+        type: string
+        default: '40972007019'
       profile:
         description: CPU budget profile
         type: choice
@@ -18,6 +27,7 @@ concurrency:
 
 jobs:
   train:
+    if: inputs.experiment == 'baseline'
     runs-on: ubuntu-latest
     timeout-minutes: 45
     env:
@@ -63,4 +73,96 @@ jobs:
             reports/local/runner.json
             data/raw/*.manifest.json
           if-no-files-found: warn
+          retention-days: 14
+  multisource:
+    if: inputs.experiment == 'multisource'
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    env:
+      OMP_NUM_THREADS: '2'
+      OPENBLAS_NUM_THREADS: '2'
+      MKL_NUM_THREADS: '2'
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: '3.13'
+      - uses: astral-sh/setup-uv@68559e99cc807c1eb7e9238fd43a15bba460eec2 # v10.3.3
+        with:
+          version: '0.12.17'
+          enable-cache: true
+      - run: uv sync --frozen --extra dev --extra boosting --extra analysis
+      - run: uv run --no-sync pytest
+      - run: uv run --no-sync netatt download nf-unsw-nb15-v2 --max-mib 512
+      - run: uv run --no-sync netatt download nf-ton-iot-v2 --max-mib 512
+      - run: uv run --no-sync netatt download nf-cse-cic-ids2018-v2 --max-mib 768
+      - name: Audit and prepare development sources only
+        run: uv run --no-sync netatt prepare-multisource --output data/processed/multisource
+      - name: Reproduce the original fixed baseline for a paired comparison
+        run: uv run --no-sync netatt train --data data/raw/nf-unsw-nb15-v2.zip --config configs/benchmark.json --output artifacts/original-baseline
+      - name: Select and freeze using development data only
+        run: uv run --no-sync netatt train-multisource --prepared data/processed/multisource --baseline artifacts/original-baseline/model.joblib --output artifacts/multisource
+      - name: Export frozen trees for inference across platforms
+        run: uv run --no-sync netatt export-portable --model artifacts/multisource/model.joblib --output artifacts/multisource-portable
+      - name: Unseal the independent source after freeze
+        run: uv run --no-sync netatt evaluate-frozen --run artifacts/multisource --prepared data/processed/multisource --data data/raw/nf-cse-cic-ids2018-v2.zip --baseline artifacts/original-baseline/model.joblib --output artifacts/multisource/holdout.json
+      - name: Render report
+        run: uv run --no-sync python scripts/report_multisource.py --prepared data/processed/multisource --run artifacts/multisource --holdout artifacts/multisource/holdout.json --output reports/local/MULTISOURCE.md
+      - name: Publish job summary
+        if: success()
+        shell: bash
+        run: cat reports/local/MULTISOURCE.md >> "$GITHUB_STEP_SUMMARY"
+      - name: Retain reproducible evidence
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: multisource-${{ github.run_id }}
+          path: |
+            artifacts/multisource/
+            artifacts/multisource-portable/
+            artifacts/original-baseline/metrics.json
+            data/processed/multisource/audit.json
+            data/processed/multisource/diagnostics.json
+            data/processed/multisource/resources.json
+            data/raw/*.manifest.json
+            reports/local/
+          retention-days: 14
+  export:
+    if: inputs.experiment == 'export'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: read
+      actions: read
+    env:
+      SOURCE_RUN: ${{ inputs.source_run }}
+      GH_TOKEN: ${{ github.token }}
+      OMP_NUM_THREADS: '2'
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: '3.13'
+      - uses: astral-sh/setup-uv@68559e99cc807c1eb7e9238fd43a15bba460eec2 # v10.3.3
+        with:
+          version: '0.12.17'
+          enable-cache: true
+      - run: uv sync --frozen --extra dev --extra boosting
+      - run: uv run --no-sync pytest tests/test_portable.py
+      - name: Retrieve the original frozen artifact
+        shell: bash
+        run: |
+          [[ "$SOURCE_RUN" =~ ^[0-9]+$ ]]
+          gh run download "$SOURCE_RUN" --repo "$GITHUB_REPOSITORY" --dir artifacts/import
+      - name: Export existing trees, without training or threshold changes
+        shell: bash
+        run: uv run --no-sync netatt export-portable --model "artifacts/import/multisource-${SOURCE_RUN}/artifacts/multisource/model.joblib" --output artifacts/portable-cloud
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: portable-cloud-${{ github.run_id }}
+          path: artifacts/portable-cloud/
           retention-days: 14

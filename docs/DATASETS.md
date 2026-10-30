@@ -29,6 +29,12 @@ baseline report for the final acquisition ledger. No full PCAP collection is nee
 
 ## Additional and more recent sources
 
+The next phase also downloaded NF-CSE-CIC-IDS2018-v2: 612,059,380 compressed bytes, with
+an 18,893,708-row CSV verified by a full scan. The three local archives now total 38,224,479
+flows and 814,056,982 compressed bytes (about 776 MiB). CSE was used only after freezing the
+registered multi-source model; it is now an observed benchmark, not a fresh holdout for tuning.
+See the phase-2 model card and its manifest for exact source/checksum details.
+
 | Source | Why evaluate it | Integration work before training |
 |---|---|---|
 | [Original UNSW-NB15](https://research.unsw.edu.au/projects/unsw-nb15-dataset) | 2,540,044 original records; documented 175,341/82,332 training/testing partitions | Separate Argus/Bro schema adapter; do not treat as independent from NF-UNSW |

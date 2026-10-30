@@ -1,0 +1,5 @@
+{
+  "probe_rows": 5000,
+  "max_absolute_score_difference": 7.450580596923828e-09,
+  "threshold_decisions_identical": true
+}

@@ -1,0 +1,452 @@
+{
+  "status": "independent-source research test; no deployment validation",
+  "freeze_sha256": "3a122fb5b8ce1bfa0a72b2bfd81de9e38408a780e3623bdf4faebbfbc4b4454b",
+  "profile": {
+    "input": "data\\raw\\nf-cse-cic-ids2018-v2.zip",
+    "sha256": "ad6307995d08ff8825d0193d5a1cfa61cf3dc4c6f223962ba3762a7775b5dc24",
+    "member": null,
+    "schema": "uq-netflow-v2-numeric-1",
+    "rows_scanned": 18893708,
+    "invalid_label_rows": 0,
+    "full_label_counts": {
+      "0": 16635567,
+      "1": 2258141
+    },
+    "full_attack_counts": {
+      "Benign": 16635567,
+      "Bot": 143097,
+      "Brute Force -Web": 2143,
+      "Brute Force -XSS": 927,
+      "DDOS attack-HOIC": 1080858,
+      "DDOS attack-LOIC-UDP": 2112,
+      "DDoS attacks-LOIC-HTTP": 307300,
+      "DoS attacks-GoldenEye": 27723,
+      "DoS attacks-Hulk": 432648,
+      "DoS attacks-SlowHTTPTest": 14116,
+      "DoS attacks-Slowloris": 9512,
+      "FTP-BruteForce": 25933,
+      "Infilteration": 116361,
+      "SQL Injection": 432,
+      "SSH-Bruteforce": 94979
+    },
+    "sampling": "uniform random priorities over all valid rows; no class rebalancing",
+    "seed": 4242,
+    "requested_max_rows": 200000,
+    "sample_rows_before_deduplication": 200000,
+    "conflicting_feature_rows_removed": 12,
+    "duplicate_feature_rows_removed": 1823,
+    "sample_rows": 198165,
+    "sample_label_counts": {
+      "0": 174401,
+      "1": 23764
+    },
+    "sample_attack_counts": {
+      "Benign": 174401,
+      "DDOS attack-HOIC": 11429,
+      "DoS attacks-Hulk": 4580,
+      "DDoS attacks-LOIC-HTTP": 3163,
+      "Bot": 1441,
+      "Infilteration": 1259,
+      "SSH-Bruteforce": 1003,
+      "DoS attacks-GoldenEye": 304,
+      "FTP-BruteForce": 266,
+      "DoS attacks-SlowHTTPTest": 147,
+      "DoS attacks-Slowloris": 115,
+      "Brute Force -Web": 21,
+      "DDOS attack-LOIC-UDP": 19,
+      "Brute Force -XSS": 12,
+      "SQL Injection": 5
+    },
+    "duplicate_scope": "bounded sample, not full archive; float32 feature fingerprints"
+  },
+  "all_development_overlap_rows_excluded": 151,
+  "reduced_representation_overlap_rows_retained": 13648,
+  "reduced_ambiguous_groups_retained": 488,
+  "reduced_ambiguous_rows_retained": 35665,
+  "evaluated_rows": 198014,
+  "models": {
+    "multisource": {
+      "model_sha256": "aa08786a5ba1f50c944b71adc19ba12a90c7202f64a5f890ec5554303ea87f42",
+      "metrics": {
+        "rows": 198014,
+        "attack_prevalence": 0.12001171634328886,
+        "threshold": 0.9936622381210327,
+        "accuracy": 0.879654973890735,
+        "balanced_accuracy": 0.4998287877181573,
+        "attack_precision": 0.014705882352941176,
+        "attack_recall": 4.208045783538125e-05,
+        "attack_f1": 8.392077878482712e-05,
+        "macro_f1": 0.4680292574049434,
+        "average_precision": 0.2035111900695042,
+        "roc_auc": 0.5360374261297788,
+        "brier_score": 0.31305599212646484,
+        "false_positive_rate": 0.00038450502152080347,
+        "false_alarms_per_10000_benign_flows": 3.8450502152080346,
+        "confusion_matrix": {
+          "tn": 174183,
+          "fp": 67,
+          "fn": 23763,
+          "tp": 1
+        },
+        "conditional_wilson_95": {
+          "attack_precision": [
+            0.0026006835761068076,
+            0.07870973128160871
+          ],
+          "attack_recall": [
+            7.428272712026664e-06,
+            0.0002383432598360521
+          ],
+          "false_positive_rate": [
+            0.00030281241199419236,
+            0.00048822586679903897
+          ],
+          "limitation": "Binomial intervals assume independent labels/rows; not capture-level or model-selection uncertainty."
+        }
+      },
+      "attack_slices": {
+        "Benign": {
+          "support": 174250,
+          "attack_rows": 0,
+          "attack_recall": null,
+          "benign_false_positive_rate": 0.00038450502152080347,
+          "attack_recall_conditional_wilson_95": null
+        },
+        "Bot": {
+          "support": 1441,
+          "attack_rows": 1441,
+          "attack_recall": 0.0,
+          "benign_false_positive_rate": null,
+          "attack_recall_conditional_wilson_95": [
+            0.0,
+            0.0026587407201268945
+          ]
+        },
+        "Brute Force -Web": {
+          "support": 21,
+          "attack_rows": 21,
+          "attack_recall": 0.0,
+          "benign_false_positive_rate": null,
+          "attack_recall_conditional_wilson_95": [
+            0.0,
+            0.154639018924847
+          ]
+        },
+        "Brute Force -XSS": {
+          "support": 12,
+          "attack_rows": 12,
+          "attack_recall": 0.0,
+          "benign_false_positive_rate": null,
+          "attack_recall_conditional_wilson_95": [
+            0.0,
+            0.24249400665524085
+          ]
+        },
+        "DDOS attack-HOIC": {
+          "support": 11429,
+          "attack_rows": 11429,
+          "attack_recall": 0.0,
+          "benign_false_positive_rate": null,
+          "attack_recall_conditional_wilson_95": [
+            0.0,
+            0.000336002107134124
+          ]
+        },
+        "DDOS attack-LOIC-UDP": {
+          "support": 19,
+          "attack_rows": 19,
+          "attack_recall": 0.0,
+          "benign_false_positive_rate": null,
+          "attack_recall_conditional_wilson_95": [
+            0.0,
+            0.16817922405261626
+          ]
+        },
+        "DDoS attacks-LOIC-HTTP": {
+          "support": 3163,
+          "attack_rows": 3163,
+          "attack_recall": 0.0,
+          "benign_false_positive_rate": null,
+          "attack_recall_conditional_wilson_95": [
+            0.0,
+            0.0012130253031753138
+          ]
+        },
+        "DoS attacks-GoldenEye": {
+          "support": 304,
+          "attack_rows": 304,
+          "attack_recall": 0.0,
+          "benign_false_positive_rate": null,
+          "attack_recall_conditional_wilson_95": [
+            0.0,
+            0.012478692231417824
+          ]
+        },
+        "DoS attacks-Hulk": {
+          "support": 4580,
+          "attack_rows": 4580,
+          "attack_recall": 0.0002183406113537118,
+          "benign_false_positive_rate": null,
+          "attack_recall_conditional_wilson_95": [
+            3.8543519050543255e-05,
+            0.0012358153070937154
+          ]
+        },
+        "DoS attacks-SlowHTTPTest": {
+          "support": 147,
+          "attack_rows": 147,
+          "attack_recall": 0.0,
+          "benign_false_positive_rate": null,
+          "attack_recall_conditional_wilson_95": [
+            0.0,
+            0.02546686335923391
+          ]
+        },
+        "DoS attacks-Slowloris": {
+          "support": 115,
+          "attack_rows": 115,
+          "attack_recall": 0.0,
+          "benign_false_positive_rate": null,
+          "attack_recall_conditional_wilson_95": [
+            0.0,
+            0.03232423144931307
+          ]
+        },
+        "FTP-BruteForce": {
+          "support": 266,
+          "attack_rows": 266,
+          "attack_recall": 0.0,
+          "benign_false_positive_rate": null,
+          "attack_recall_conditional_wilson_95": [
+            0.0,
+            0.014235984483195078
+          ]
+        },
+        "Infilteration": {
+          "support": 1259,
+          "attack_rows": 1259,
+          "attack_recall": 0.0,
+          "benign_false_positive_rate": null,
+          "attack_recall_conditional_wilson_95": [
+            0.0,
+            0.0030419169357026616
+          ]
+        },
+        "SQL Injection": {
+          "support": 5,
+          "attack_rows": 5,
+          "attack_recall": 0.0,
+          "benign_false_positive_rate": null,
+          "attack_recall_conditional_wilson_95": [
+            0.0,
+            0.43448246478317476
+          ]
+        },
+        "SSH-Bruteforce": {
+          "support": 1003,
+          "attack_rows": 1003,
+          "attack_recall": 0.0,
+          "benign_false_positive_rate": null,
+          "attack_recall_conditional_wilson_95": [
+            0.0,
+            0.003815356218240752
+          ]
+        }
+      }
+    },
+    "original_unsw_baseline": {
+      "model_sha256": "7f0fe9da3b0296c7ec243e280e48212d4361ed886fe410c3f3736bcf33f4a525",
+      "metrics": {
+        "rows": 198014,
+        "attack_prevalence": 0.12001171634328886,
+        "threshold": 0.9957466410915312,
+        "accuracy": 0.818331027099094,
+        "balanced_accuracy": 0.46761993654967293,
+        "attack_precision": 0.01167906567474602,
+        "attack_recall": 0.006143746843965662,
+        "attack_f1": 0.008051840617675445,
+        "macro_f1": 0.45403050666151995,
+        "average_precision": 0.09755024102223184,
+        "roc_auc": 0.4287077821920332,
+        "brier_score": 0.4535989743804034,
+        "false_positive_rate": 0.0709038737446198,
+        "false_alarms_per_10000_benign_flows": 709.038737446198,
+        "confusion_matrix": {
+          "tn": 161895,
+          "fp": 12355,
+          "fn": 23618,
+          "tp": 146
+        },
+        "conditional_wilson_95": {
+          "attack_precision": [
+            0.00994006014241761,
+            0.013718093365159473
+          ],
+          "attack_recall": [
+            0.005226947305099963,
+            0.0072201846455762645
+          ],
+          "false_positive_rate": [
+            0.06970819853718076,
+            0.0721184679622262
+          ],
+          "limitation": "Binomial intervals assume independent labels/rows; not capture-level or model-selection uncertainty."
+        }
+      },
+      "attack_slices": {
+        "Benign": {
+          "support": 174250,
+          "attack_rows": 0,
+          "attack_recall": null,
+          "benign_false_positive_rate": 0.0709038737446198,
+          "attack_recall_conditional_wilson_95": null
+        },
+        "Bot": {
+          "support": 1441,
+          "attack_rows": 1441,
+          "attack_recall": 0.0,
+          "benign_false_positive_rate": null,
+          "attack_recall_conditional_wilson_95": [
+            0.0,
+            0.0026587407201268945
+          ]
+        },
+        "Brute Force -Web": {
+          "support": 21,
+          "attack_rows": 21,
+          "attack_recall": 0.0,
+          "benign_false_positive_rate": null,
+          "attack_recall_conditional_wilson_95": [
+            0.0,
+            0.154639018924847
+          ]
+        },
+        "Brute Force -XSS": {
+          "support": 12,
+          "attack_rows": 12,
+          "attack_recall": 0.0,
+          "benign_false_positive_rate": null,
+          "attack_recall_conditional_wilson_95": [
+            0.0,
+            0.24249400665524085
+          ]
+        },
+        "DDOS attack-HOIC": {
+          "support": 11429,
+          "attack_rows": 11429,
+          "attack_recall": 0.0,
+          "benign_false_positive_rate": null,
+          "attack_recall_conditional_wilson_95": [
+            0.0,
+            0.000336002107134124
+          ]
+        },
+        "DDOS attack-LOIC-UDP": {
+          "support": 19,
+          "attack_rows": 19,
+          "attack_recall": 0.0,
+          "benign_false_positive_rate": null,
+          "attack_recall_conditional_wilson_95": [
+            0.0,
+            0.16817922405261626
+          ]
+        },
+        "DDoS attacks-LOIC-HTTP": {
+          "support": 3163,
+          "attack_rows": 3163,
+          "attack_recall": 0.0,
+          "benign_false_positive_rate": null,
+          "attack_recall_conditional_wilson_95": [
+            0.0,
+            0.0012130253031753138
+          ]
+        },
+        "DoS attacks-GoldenEye": {
+          "support": 304,
+          "attack_rows": 304,
+          "attack_recall": 0.0,
+          "benign_false_positive_rate": null,
+          "attack_recall_conditional_wilson_95": [
+            0.0,
+            0.012478692231417824
+          ]
+        },
+        "DoS attacks-Hulk": {
+          "support": 4580,
+          "attack_rows": 4580,
+          "attack_recall": 0.0,
+          "benign_false_positive_rate": null,
+          "attack_recall_conditional_wilson_95": [
+            0.0,
+            0.000838043561323876
+          ]
+        },
+        "DoS attacks-SlowHTTPTest": {
+          "support": 147,
+          "attack_rows": 147,
+          "attack_recall": 0.0,
+          "benign_false_positive_rate": null,
+          "attack_recall_conditional_wilson_95": [
+            0.0,
+            0.02546686335923391
+          ]
+        },
+        "DoS attacks-Slowloris": {
+          "support": 115,
+          "attack_rows": 115,
+          "attack_recall": 0.0,
+          "benign_false_positive_rate": null,
+          "attack_recall_conditional_wilson_95": [
+            0.0,
+            0.03232423144931307
+          ]
+        },
+        "FTP-BruteForce": {
+          "support": 266,
+          "attack_rows": 266,
+          "attack_recall": 0.0,
+          "benign_false_positive_rate": null,
+          "attack_recall_conditional_wilson_95": [
+            0.0,
+            0.014235984483195078
+          ]
+        },
+        "Infilteration": {
+          "support": 1259,
+          "attack_rows": 1259,
+          "attack_recall": 0.11596505162827642,
+          "benign_false_positive_rate": null,
+          "attack_recall_conditional_wilson_95": [
+            0.09943541865692153,
+            0.1348310894263386
+          ]
+        },
+        "SQL Injection": {
+          "support": 5,
+          "attack_rows": 5,
+          "attack_recall": 0.0,
+          "benign_false_positive_rate": null,
+          "attack_recall_conditional_wilson_95": [
+            0.0,
+            0.43448246478317476
+          ]
+        },
+        "SSH-Bruteforce": {
+          "support": 1003,
+          "attack_rows": 1003,
+          "attack_recall": 0.0,
+          "benign_false_positive_rate": null,
+          "attack_recall_conditional_wilson_95": [
+            0.0,
+            0.003815356218240752
+          ]
+        }
+      }
+    }
+  },
+  "point_targets_met": false,
+  "resources": {
+    "wall_seconds": 211.76477439998416,
+    "sampled_peak_process_rss_mib": 317.44140625
+  }
+}

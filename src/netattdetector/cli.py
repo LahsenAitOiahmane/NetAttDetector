@@ -47,10 +47,89 @@ def parser():
     predict.add_argument("--output", required=True)
     predict.add_argument("--chunk-rows", type=int, default=10_000)
     predict.add_argument("--threads", type=int, default=2)
+    prepare = commands.add_parser(
+        "prepare-multisource", help="Audit all development rows and cache a bounded cohort"
+    )
+    prepare.add_argument("--config", default="configs/multisource.json")
+    prepare.add_argument("--data-root", default="data/raw")
+    prepare.add_argument("--output", required=True)
+    multi = commands.add_parser(
+        "train-multisource", help="Select and freeze a model using development data only"
+    )
+    multi.add_argument("--config", default="configs/multisource.json")
+    multi.add_argument("--prepared", required=True)
+    multi.add_argument("--baseline")
+    multi.add_argument("--output", required=True)
+    frozen = commands.add_parser(
+        "evaluate-frozen", help="Unseal the registered independent holdout once"
+    )
+    frozen.add_argument("--run", required=True)
+    frozen.add_argument("--prepared", required=True)
+    frozen.add_argument("--data", required=True)
+    frozen.add_argument("--baseline")
+    frozen.add_argument("--output", required=True)
+    export = commands.add_parser(
+        "export-portable", help="Convert XGBoost serialization without refitting"
+    )
+    export.add_argument("--model", required=True)
+    export.add_argument("--output", required=True)
+    verify = commands.add_parser(
+        "verify-portable", help="Check a portable export's prediction probes"
+    )
+    verify.add_argument("path")
     return root
 
 
 def execute(args):
+    if args.command == "export-portable":
+        from netattdetector.portable import export_portable
+
+        return export_portable(args.model, args.output)
+    if args.command == "verify-portable":
+        from netattdetector.portable import verify_portable
+
+        return verify_portable(args.path)
+    if args.command == "prepare-multisource":
+        from netattdetector.audit import prepare_sources
+        from netattdetector.multisource import load_protocol
+        from netattdetector.training import ResourceMonitor
+
+        config = load_protocol(args.config)
+        paths = {
+            name: str(Path(args.data_root) / f"{name}.zip")
+            for name in config["development_sources"]
+        }
+        with ResourceMonitor() as monitor:
+            result = prepare_sources(
+                paths,
+                args.output,
+                config["rows_per_source"],
+                config["chunk_rows"],
+                config["seed"],
+                config["audit_buckets"],
+            )
+        write_json(
+            Path(args.output) / "resources.json",
+            {"wall_seconds": monitor.elapsed, "sampled_peak_process_rss_mib": monitor.peak / 2**20},
+        )
+        return {
+            "audit": str(Path(args.output) / "audit.json"),
+            "cohort_rows": result["cohort_rows"],
+        }
+    if args.command == "train-multisource":
+        from netattdetector.multisource import train_multisource
+
+        result = train_multisource(args.prepared, args.config, args.output, args.baseline)
+        return {
+            "freeze": str(Path(args.output) / "freeze.json"),
+            "selected": result["selected"]["id"],
+            "constraints_met_each_source": result["selected"]["constraints_met_each_source"],
+        }
+    if args.command == "evaluate-frozen":
+        from netattdetector.multisource import evaluate_frozen
+
+        result = evaluate_frozen(args.run, args.prepared, args.data, args.output, args.baseline)
+        return {name: item["metrics"] for name, item in result["models"].items()}
     if args.command == "doctor":
         from netattdetector.hardware import inventory
 

@@ -10,6 +10,7 @@ import time
 import urllib.error
 import urllib.request
 import zipfile
+from concurrent.futures import ThreadPoolExecutor
 from datetime import UTC, datetime
 from pathlib import Path
 
@@ -63,9 +64,11 @@ def archive_members(path):
     return members
 
 
-def download(dataset, output="data/raw", max_mib=512):
+def download(dataset, output="data/raw", max_mib=512, workers=2, block_mib=4):
     if max_mib <= 0:
         raise ValueError("max-mib must be positive.")
+    if not 1 <= workers <= 4 or not 1 <= block_mib <= 8:
+        raise ValueError("Use 1..4 download workers and 1..8 MiB blocks.")
     root = Path(output)
     root.mkdir(parents=True, exist_ok=True)
     target = root / f"{dataset}.zip"
@@ -97,30 +100,46 @@ def download(dataset, output="data/raw", max_mib=512):
 
     partial = target.with_suffix(".zip.part")
     try:
-        # Fetch bounded ranges. Retry an interrupted block without duplicating bytes.
-        with partial.open("wb") as stream:
+        block_bytes = block_mib * 2**20
+
+        def fetch(start):
+            end = min(start + block_bytes, size) - 1
+            for attempt in range(3):
+                try:
+                    with open_url(url, {"Range": f"bytes={start}-{end}"}) as response:
+                        if (
+                            response.status != 206
+                            or response.headers.get("Content-Range")
+                            != f"bytes {start}-{end}/{size}"
+                        ):
+                            raise ValueError("Server did not honor the bounded range request.")
+                        chunk = response.read(end - start + 2)
+                    if len(chunk) != end - start + 1:
+                        raise ValueError("Incomplete range response.")
+                    return chunk
+                except (OSError, ValueError):
+                    if attempt == 2:
+                        raise
+                    time.sleep(2**attempt)
+
+        # A fixed window bounds buffered data; executor.map would eagerly queue all blocks.
+        with partial.open("wb") as stream, ThreadPoolExecutor(max_workers=workers) as pool:
+            starts = iter(range(0, size, block_bytes))
+            pending = [
+                (start, pool.submit(fetch, start))
+                for start in list(range(0, min(size, workers * block_bytes), block_bytes))
+            ]
+            for _ in pending:
+                next(starts)
             total = 0
-            while total < size:
-                end = min(total + 1024 * 1024, size) - 1
-                for attempt in range(3):
-                    try:
-                        with open_url(url, {"Range": f"bytes={total}-{end}"}) as response:
-                            expected_range = f"bytes {total}-{end}/{size}"
-                            if (
-                                response.status != 206
-                                or response.headers.get("Content-Range") != expected_range
-                            ):
-                                raise ValueError("Server did not honor the bounded range request.")
-                            chunk = response.read(end - total + 2)
-                        if len(chunk) != end - total + 1:
-                            raise ValueError("Incomplete range response.")
-                        break
-                    except (OSError, ValueError):
-                        if attempt == 2:
-                            raise
-                        time.sleep(2**attempt)
+            while pending:
+                _, future = pending.pop(0)
+                chunk = future.result()
                 stream.write(chunk)
                 total += len(chunk)
+                start = next(starts, None)
+                if start is not None:
+                    pending.append((start, pool.submit(fetch, start)))
         if total != size:
             raise ValueError(f"Incomplete download: {total} of {size} bytes.")
         members = archive_members(partial)

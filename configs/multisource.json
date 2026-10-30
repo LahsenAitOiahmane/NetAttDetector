@@ -1,0 +1,28 @@
+{
+  "protocol_version": 2,
+  "seed": 42,
+  "rows_per_source": 100000,
+  "chunk_rows": 50000,
+  "threads": 2,
+  "audit_buckets": 64,
+  "search_budget_seconds": 3600,
+  "min_precision": 0.98,
+  "max_fpr": 0.005,
+  "precision_lower_bound": 0.95,
+  "min_alerts_per_source": 25,
+  "development_sources": ["nf-unsw-nb15-v2", "nf-ton-iot-v2"],
+  "holdout_source": "nf-cse-cic-ids2018-v2",
+  "holdout_rows": 200000,
+  "holdout_seed": 4242,
+  "candidates": [
+    {"id": "hist-full-balanced", "model": "hist", "features": "full", "weighting": "source_class", "iterations": 150, "depth": 8},
+    {"id": "hist-stable-balanced", "model": "hist", "features": "stable", "weighting": "source_class", "iterations": 150, "depth": 8},
+    {"id": "hist-stable-natural", "model": "hist", "features": "stable", "weighting": "source", "iterations": 150, "depth": 8},
+    {"id": "hist-stable-shallow", "model": "hist", "features": "stable", "weighting": "source_class", "iterations": 200, "depth": 4},
+    {"id": "extra-full-balanced", "model": "extra_trees", "features": "full", "weighting": "source_class", "iterations": 100, "depth": 14},
+    {"id": "extra-stable-balanced", "model": "extra_trees", "features": "stable", "weighting": "source_class", "iterations": 100, "depth": 14},
+    {"id": "xgb-full-natural", "model": "xgboost", "features": "full", "weighting": "source", "iterations": 150, "depth": 6},
+    {"id": "xgb-stable-natural", "model": "xgboost", "features": "stable", "weighting": "source", "iterations": 150, "depth": 6},
+    {"id": "xgb-stable-balanced", "model": "xgboost", "features": "stable", "weighting": "source_class", "iterations": 200, "depth": 4}
+  ]
+}

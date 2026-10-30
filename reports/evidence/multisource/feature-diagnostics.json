@@ -1,0 +1,1089 @@
+{
+  "scope": "cleaned bounded development sample; KS is distribution distance, not proof of cause",
+  "source_order": [
+    "ton",
+    "unsw"
+  ],
+  "features": [
+    {
+      "feature": "SRC_TO_DST_AVG_THROUGHPUT",
+      "removed_in_stable_variant": false,
+      "sources": {
+        "ton": {
+          "missing_fraction": 0.0,
+          "quantiles": [
+            16000.0,
+            384000.0,
+            10512000.0
+          ],
+          "spearman_label_association": 0.3356493460409254
+        },
+        "unsw": {
+          "missing_fraction": 0.0,
+          "quantiles": [
+            1040000.0,
+            11664000.0,
+            100704000.0
+          ],
+          "spearman_label_association": -0.09471367797202208
+        }
+      },
+      "ks_all": 0.7754114270210266,
+      "ks_benign": 0.9071540832519531,
+      "ks_attack": 0.6075908541679382
+    },
+    {
+      "feature": "DST_TO_SRC_AVG_THROUGHPUT",
+      "removed_in_stable_variant": false,
+      "sources": {
+        "ton": {
+          "missing_fraction": 0.0,
+          "quantiles": [
+            0.0,
+            320000.0,
+            15123199.999999953
+          ],
+          "spearman_label_association": 0.3214603481947077
+        },
+        "unsw": {
+          "missing_fraction": 0.0,
+          "quantiles": [
+            1296000.0,
+            14976000.0,
+            471600000.0
+          ],
+          "spearman_label_association": -0.16109395241518623
+        }
+      },
+      "ks_all": 0.784278392791748,
+      "ks_benign": 0.9025761485099792,
+      "ks_attack": 0.4259659945964813
+    },
+    {
+      "feature": "OUT_PKTS",
+      "removed_in_stable_variant": false,
+      "sources": {
+        "ton": {
+          "missing_fraction": 0.0,
+          "quantiles": [
+            0.0,
+            1.0,
+            9.0
+          ],
+          "spearman_label_association": 0.36852270553247285
+        },
+        "unsw": {
+          "missing_fraction": 0.0,
+          "quantiles": [
+            2.0,
+            18.0,
+            126.0
+          ],
+          "spearman_label_association": -0.14792185983458037
+        }
+      },
+      "ks_all": 0.6618133783340454,
+      "ks_benign": 0.8771828413009644,
+      "ks_attack": 0.5460506677627563
+    },
+    {
+      "feature": "OUT_BYTES",
+      "removed_in_stable_variant": false,
+      "sources": {
+        "ton": {
+          "missing_fraction": 0.0,
+          "quantiles": [
+            0.0,
+            40.0,
+            3411.0
+          ],
+          "spearman_label_association": 0.3946274240041099
+        },
+        "unsw": {
+          "missing_fraction": 0.0,
+          "quantiles": [
+            162.0,
+            2511.0,
+            74896.0
+          ],
+          "spearman_label_association": -0.1507280070093917
+        }
+      },
+      "ks_all": 0.7076759338378906,
+      "ks_benign": 0.8741621971130371,
+      "ks_attack": 0.41670504212379456
+    },
+    {
+      "feature": "NUM_PKTS_UP_TO_128_BYTES",
+      "removed_in_stable_variant": false,
+      "sources": {
+        "ton": {
+          "missing_fraction": 0.0,
+          "quantiles": [
+            1.0,
+            2.0,
+            15.0
+          ],
+          "spearman_label_association": 0.3832775142443932
+        },
+        "unsw": {
+          "missing_fraction": 0.0,
+          "quantiles": [
+            4.0,
+            36.0,
+            222.0
+          ],
+          "spearman_label_association": -0.1373470686621808
+        }
+      },
+      "ks_all": 0.7070521712303162,
+      "ks_benign": 0.8735902309417725,
+      "ks_attack": 0.6542407870292664
+    },
+    {
+      "feature": "SRC_TO_DST_SECOND_BYTES",
+      "removed_in_stable_variant": false,
+      "sources": {
+        "ton": {
+          "missing_fraction": 0.0,
+          "quantiles": [
+            44.0,
+            59.0,
+            4800.0
+          ],
+          "spearman_label_association": 0.5237908287343214
+        },
+        "unsw": {
+          "missing_fraction": 0.0,
+          "quantiles": [
+            146.0,
+            1698.0,
+            19098.0
+          ],
+          "spearman_label_association": -0.08754853320233179
+        }
+      },
+      "ks_all": 0.6638109087944031,
+      "ks_benign": 0.8728485107421875,
+      "ks_attack": 0.5510411262512207
+    },
+    {
+      "feature": "DST_TO_SRC_SECOND_BYTES",
+      "removed_in_stable_variant": false,
+      "sources": {
+        "ton": {
+          "missing_fraction": 0.0,
+          "quantiles": [
+            0.0,
+            40.0,
+            5700.0
+          ],
+          "spearman_label_association": 0.39052053232638684
+        },
+        "unsw": {
+          "missing_fraction": 0.0,
+          "quantiles": [
+            164.0,
+            2584.0,
+            75600.0
+          ],
+          "spearman_label_association": -0.150680899114898
+        }
+      },
+      "ks_all": 0.698571503162384,
+      "ks_benign": 0.871589183807373,
+      "ks_attack": 0.420551598072052
+    },
+    {
+      "feature": "LONGEST_FLOW_PKT",
+      "removed_in_stable_variant": false,
+      "sources": {
+        "ton": {
+          "missing_fraction": 0.0,
+          "quantiles": [
+            44.0,
+            48.0,
+            1500.0
+          ],
+          "spearman_label_association": 0.5259588038513072
+        },
+        "unsw": {
+          "missing_fraction": 0.0,
+          "quantiles": [
+            82.0,
+            744.0,
+            1500.0
+          ],
+          "spearman_label_association": -0.03933268407414705
+        }
+      },
+      "ks_all": 0.70766681432724,
+      "ks_benign": 0.8693783283233643,
+      "ks_attack": 0.5812476873397827
+    },
+    {
+      "feature": "MAX_IP_PKT_LEN",
+      "removed_in_stable_variant": false,
+      "sources": {
+        "ton": {
+          "missing_fraction": 0.0,
+          "quantiles": [
+            44.0,
+            48.0,
+            1500.0
+          ],
+          "spearman_label_association": 0.5259588038513072
+        },
+        "unsw": {
+          "missing_fraction": 0.0,
+          "quantiles": [
+            82.0,
+            744.0,
+            1500.0
+          ],
+          "spearman_label_association": -0.03933268407414705
+        }
+      },
+      "ks_all": 0.70766681432724,
+      "ks_benign": 0.8693783283233643,
+      "ks_attack": 0.5812476873397827
+    },
+    {
+      "feature": "IN_BYTES",
+      "removed_in_stable_variant": false,
+      "sources": {
+        "ton": {
+          "missing_fraction": 0.0,
+          "quantiles": [
+            44.0,
+            54.0,
+            2379.399999999994
+          ],
+          "spearman_label_association": 0.5277167863614015
+        },
+        "unsw": {
+          "missing_fraction": 0.0,
+          "quantiles": [
+            130.0,
+            1684.0,
+            18890.0
+          ],
+          "spearman_label_association": -0.079656229286854
+        }
+      },
+      "ks_all": 0.6507339477539062,
+      "ks_benign": 0.8598408699035645,
+      "ks_attack": 0.5256567001342773
+    },
+    {
+      "feature": "MIN_TTL",
+      "removed_in_stable_variant": true,
+      "sources": {
+        "ton": {
+          "missing_fraction": 0.0,
+          "quantiles": [
+            0.0,
+            0.0,
+            64.0
+          ],
+          "spearman_label_association": 0.32303717336708887
+        },
+        "unsw": {
+          "missing_fraction": 0.0,
+          "quantiles": [
+            31.0,
+            31.0,
+            31.0
+          ],
+          "spearman_label_association": 0.8645789344970911
+        }
+      },
+      "ks_all": 0.6405673027038574,
+      "ks_benign": 0.8518781661987305,
+      "ks_attack": 0.691247284412384
+    },
+    {
+      "feature": "MAX_TTL",
+      "removed_in_stable_variant": true,
+      "sources": {
+        "ton": {
+          "missing_fraction": 0.0,
+          "quantiles": [
+            0.0,
+            0.0,
+            64.0
+          ],
+          "spearman_label_association": 0.3227987189892415
+        },
+        "unsw": {
+          "missing_fraction": 0.0,
+          "quantiles": [
+            31.0,
+            32.0,
+            32.0
+          ],
+          "spearman_label_association": 0.4593682152029609
+        }
+      },
+      "ks_all": 0.6405164003372192,
+      "ks_benign": 0.8517380952835083,
+      "ks_attack": 0.691247284412384
+    },
+    {
+      "feature": "MIN_IP_PKT_LEN",
+      "removed_in_stable_variant": false,
+      "sources": {
+        "ton": {
+          "missing_fraction": 0.0,
+          "quantiles": [
+            0.0,
+            40.0,
+            68.0
+          ],
+          "spearman_label_association": 0.36856014152461614
+        },
+        "unsw": {
+          "missing_fraction": 0.0,
+          "quantiles": [
+            52.0,
+            52.0,
+            73.0
+          ],
+          "spearman_label_association": -0.42547661355248756
+        }
+      },
+      "ks_all": 0.5537198185920715,
+      "ks_benign": 0.8373780846595764,
+      "ks_attack": 0.5441473722457886
+    },
+    {
+      "feature": "IN_PKTS",
+      "removed_in_stable_variant": false,
+      "sources": {
+        "ton": {
+          "missing_fraction": 0.0,
+          "quantiles": [
+            1.0,
+            1.0,
+            10.0
+          ],
+          "spearman_label_association": 0.33929992988634483
+        },
+        "unsw": {
+          "missing_fraction": 0.0,
+          "quantiles": [
+            2.0,
+            19.0,
+            122.0
+          ],
+          "spearman_label_association": -0.10934460583089216
+        }
+      },
+      "ks_all": 0.641021192073822,
+      "ks_benign": 0.8290971517562866,
+      "ks_attack": 0.5889989733695984
+    },
+    {
+      "feature": "SHORTEST_FLOW_PKT",
+      "removed_in_stable_variant": false,
+      "sources": {
+        "ton": {
+          "missing_fraction": 0.0,
+          "quantiles": [
+            40.0,
+            48.0,
+            68.0
+          ],
+          "spearman_label_association": 0.3235700566346485
+        },
+        "unsw": {
+          "missing_fraction": 0.0,
+          "quantiles": [
+            52.0,
+            52.0,
+            73.0
+          ],
+          "spearman_label_association": -0.24350497072870797
+        }
+      },
+      "ks_all": 0.5449569225311279,
+      "ks_benign": 0.8060864210128784,
+      "ks_attack": 0.45725589990615845
+    },
+    {
+      "feature": "RETRANSMITTED_OUT_BYTES",
+      "removed_in_stable_variant": false,
+      "sources": {
+        "ton": {
+          "missing_fraction": 0.0,
+          "quantiles": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "spearman_label_association": 0.09067165020376715
+        },
+        "unsw": {
+          "missing_fraction": 0.0,
+          "quantiles": [
+            0.0,
+            887.0,
+            36429.0
+          ],
+          "spearman_label_association": -0.14058312647695587
+        }
+      },
+      "ks_all": 0.7106564044952393,
+      "ks_benign": 0.7367100715637207,
+      "ks_attack": 0.4152401089668274
+    },
+    {
+      "feature": "RETRANSMITTED_OUT_PKTS",
+      "removed_in_stable_variant": false,
+      "sources": {
+        "ton": {
+          "missing_fraction": 0.0,
+          "quantiles": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "spearman_label_association": 0.09068927591875785
+        },
+        "unsw": {
+          "missing_fraction": 0.0,
+          "quantiles": [
+            0.0,
+            5.0,
+            35.0
+          ],
+          "spearman_label_association": -0.14272527883355446
+        }
+      },
+      "ks_all": 0.7106564044952393,
+      "ks_benign": 0.7367100715637207,
+      "ks_attack": 0.4152401089668274
+    },
+    {
+      "feature": "TCP_FLAGS",
+      "removed_in_stable_variant": false,
+      "sources": {
+        "ton": {
+          "missing_fraction": 0.0,
+          "quantiles": [
+            0.0,
+            18.0,
+            27.0
+          ],
+          "spearman_label_association": 0.1530714002112277
+        },
+        "unsw": {
+          "missing_fraction": 0.0,
+          "quantiles": [
+            0.0,
+            27.0,
+            27.0
+          ],
+          "spearman_label_association": -0.13649179834167768
+        }
+      },
+      "ks_all": 0.5440970659255981,
+      "ks_benign": 0.7179170846939087,
+      "ks_attack": 0.19749900698661804
+    },
+    {
+      "feature": "RETRANSMITTED_IN_BYTES",
+      "removed_in_stable_variant": false,
+      "sources": {
+        "ton": {
+          "missing_fraction": 0.0,
+          "quantiles": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "spearman_label_association": 0.04388528274062944
+        },
+        "unsw": {
+          "missing_fraction": 0.0,
+          "quantiles": [
+            0.0,
+            506.0,
+            4252.0
+          ],
+          "spearman_label_association": -0.07248779381215852
+        }
+      },
+      "ks_all": 0.7087011933326721,
+      "ks_benign": 0.7162185907363892,
+      "ks_attack": 0.6947877407073975
+    },
+    {
+      "feature": "RETRANSMITTED_IN_PKTS",
+      "removed_in_stable_variant": false,
+      "sources": {
+        "ton": {
+          "missing_fraction": 0.0,
+          "quantiles": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "spearman_label_association": 0.04385778532605735
+        },
+        "unsw": {
+          "missing_fraction": 0.0,
+          "quantiles": [
+            0.0,
+            4.0,
+            18.0
+          ],
+          "spearman_label_association": -0.09755668858699157
+        }
+      },
+      "ks_all": 0.7087011933326721,
+      "ks_benign": 0.7162185907363892,
+      "ks_attack": 0.6947877407073975
+    },
+    {
+      "feature": "ICMP_TYPE",
+      "removed_in_stable_variant": false,
+      "sources": {
+        "ton": {
+          "missing_fraction": 0.0,
+          "quantiles": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "spearman_label_association": 0.030602162019162327
+        },
+        "unsw": {
+          "missing_fraction": 0.0,
+          "quantiles": [
+            0.0,
+            11008.0,
+            63744.0
+          ],
+          "spearman_label_association": 0.03429164893881577
+        }
+      },
+      "ks_all": 0.7079758644104004,
+      "ks_benign": 0.7126123905181885,
+      "ks_attack": 0.7045272588729858
+    },
+    {
+      "feature": "ICMP_IPV4_TYPE",
+      "removed_in_stable_variant": false,
+      "sources": {
+        "ton": {
+          "missing_fraction": 0.0,
+          "quantiles": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "spearman_label_association": 0.030602275850405893
+        },
+        "unsw": {
+          "missing_fraction": 0.0,
+          "quantiles": [
+            0.0,
+            43.0,
+            249.0
+          ],
+          "spearman_label_association": 0.0342486487026829
+        }
+      },
+      "ks_all": 0.7079758644104004,
+      "ks_benign": 0.7126123905181885,
+      "ks_attack": 0.7042233943939209
+    },
+    {
+      "feature": "TCP_WIN_MAX_OUT",
+      "removed_in_stable_variant": false,
+      "sources": {
+        "ton": {
+          "missing_fraction": 0.0,
+          "quantiles": [
+            0.0,
+            0.0,
+            65535.0
+          ],
+          "spearman_label_association": 0.3375800576707941
+        },
+        "unsw": {
+          "missing_fraction": 0.0,
+          "quantiles": [
+            0.0,
+            13032.0,
+            31856.0
+          ],
+          "spearman_label_association": 0.09465725637331379
+        }
+      },
+      "ks_all": 0.4618770480155945,
+      "ks_benign": 0.6935680508613586,
+      "ks_attack": 0.39428287744522095
+    },
+    {
+      "feature": "SERVER_TCP_FLAGS",
+      "removed_in_stable_variant": false,
+      "sources": {
+        "ton": {
+          "missing_fraction": 0.0,
+          "quantiles": [
+            0.0,
+            0.0,
+            27.0
+          ],
+          "spearman_label_association": 0.23009303658524136
+        },
+        "unsw": {
+          "missing_fraction": 0.0,
+          "quantiles": [
+            0.0,
+            27.0,
+            27.0
+          ],
+          "spearman_label_association": -0.1964388817179046
+        }
+      },
+      "ks_all": 0.5053013563156128,
+      "ks_benign": 0.6898242235183716,
+      "ks_attack": 0.40197283029556274
+    },
+    {
+      "feature": "CLIENT_TCP_FLAGS",
+      "removed_in_stable_variant": false,
+      "sources": {
+        "ton": {
+          "missing_fraction": 0.0,
+          "quantiles": [
+            0.0,
+            2.0,
+            27.0
+          ],
+          "spearman_label_association": 0.23040280938289617
+        },
+        "unsw": {
+          "missing_fraction": 0.0,
+          "quantiles": [
+            0.0,
+            27.0,
+            27.0
+          ],
+          "spearman_label_association": -0.12374092361117424
+        }
+      },
+      "ks_all": 0.5371073484420776,
+      "ks_benign": 0.6842373013496399,
+      "ks_attack": 0.39519986510276794
+    },
+    {
+      "feature": "TCP_WIN_MAX_IN",
+      "removed_in_stable_variant": false,
+      "sources": {
+        "ton": {
+          "missing_fraction": 0.0,
+          "quantiles": [
+            0.0,
+            1024.0,
+            29200.0
+          ],
+          "spearman_label_association": 0.3733770351526887
+        },
+        "unsw": {
+          "missing_fraction": 0.0,
+          "quantiles": [
+            0.0,
+            14480.0,
+            56472.0
+          ],
+          "spearman_label_association": -0.01249929537593182
+        }
+      },
+      "ks_all": 0.42974817752838135,
+      "ks_benign": 0.653904378414154,
+      "ks_attack": 0.4589841365814209
+    },
+    {
+      "feature": "L4_DST_PORT",
+      "removed_in_stable_variant": true,
+      "sources": {
+        "ton": {
+          "missing_fraction": 0.0,
+          "quantiles": [
+            53.0,
+            443.0,
+            52498.399999999994
+          ],
+          "spearman_label_association": -0.35457854001486494
+        },
+        "unsw": {
+          "missing_fraction": 0.0,
+          "quantiles": [
+            21.0,
+            111.0,
+            55837.0
+          ],
+          "spearman_label_association": -0.05648943316562128
+        }
+      },
+      "ks_all": 0.2442885786294937,
+      "ks_benign": 0.42422589659690857,
+      "ks_attack": 0.2578854262828827
+    },
+    {
+      "feature": "NUM_PKTS_1024_TO_1514_BYTES",
+      "removed_in_stable_variant": false,
+      "sources": {
+        "ton": {
+          "missing_fraction": 0.0,
+          "quantiles": [
+            0.0,
+            0.0,
+            2.0
+          ],
+          "spearman_label_association": 0.21692029096048446
+        },
+        "unsw": {
+          "missing_fraction": 0.0,
+          "quantiles": [
+            0.0,
+            0.0,
+            54.0
+          ],
+          "spearman_label_association": -0.07226926949129202
+        }
+      },
+      "ks_all": 0.3718065023422241,
+      "ks_benign": 0.4240463972091675,
+      "ks_attack": 0.1399121880531311
+    },
+    {
+      "feature": "L4_SRC_PORT",
+      "removed_in_stable_variant": true,
+      "sources": {
+        "ton": {
+          "missing_fraction": 0.0,
+          "quantiles": [
+            4229.4000000000015,
+            45702.0,
+            61418.0
+          ],
+          "spearman_label_association": -0.06370021775857317
+        },
+        "unsw": {
+          "missing_fraction": 0.0,
+          "quantiles": [
+            2900.0,
+            32665.0,
+            62349.0
+          ],
+          "spearman_label_association": -0.013198015606558786
+        }
+      },
+      "ks_all": 0.37297874689102173,
+      "ks_benign": 0.38803258538246155,
+      "ks_attack": 0.3854328393936157
+    },
+    {
+      "feature": "NUM_PKTS_256_TO_512_BYTES",
+      "removed_in_stable_variant": false,
+      "sources": {
+        "ton": {
+          "missing_fraction": 0.0,
+          "quantiles": [
+            0.0,
+            0.0,
+            2.0
+          ],
+          "spearman_label_association": 0.20641575398863524
+        },
+        "unsw": {
+          "missing_fraction": 0.0,
+          "quantiles": [
+            0.0,
+            0.0,
+            6.0
+          ],
+          "spearman_label_association": -0.03551881398411358
+        }
+      },
+      "ks_all": 0.26459020376205444,
+      "ks_benign": 0.30656319856643677,
+      "ks_attack": 0.17248886823654175
+    },
+    {
+      "feature": "NUM_PKTS_128_TO_256_BYTES",
+      "removed_in_stable_variant": false,
+      "sources": {
+        "ton": {
+          "missing_fraction": 0.0,
+          "quantiles": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "spearman_label_association": 0.09081597816943157
+        },
+        "unsw": {
+          "missing_fraction": 0.0,
+          "quantiles": [
+            0.0,
+            0.0,
+            16.0
+          ],
+          "spearman_label_association": 0.02824906357419454
+        }
+      },
+      "ks_all": 0.22231286764144897,
+      "ks_benign": 0.23572802543640137,
+      "ks_attack": 0.29015225172042847
+    },
+    {
+      "feature": "NUM_PKTS_512_TO_1024_BYTES",
+      "removed_in_stable_variant": false,
+      "sources": {
+        "ton": {
+          "missing_fraction": 0.0,
+          "quantiles": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "spearman_label_association": 0.20424403935037586
+        },
+        "unsw": {
+          "missing_fraction": 0.0,
+          "quantiles": [
+            0.0,
+            0.0,
+            6.0
+          ],
+          "spearman_label_association": -0.01846247816203091
+        }
+      },
+      "ks_all": 0.19258618354797363,
+      "ks_benign": 0.2028786540031433,
+      "ks_attack": 0.15898776054382324
+    },
+    {
+      "feature": "L7_PROTO",
+      "removed_in_stable_variant": true,
+      "sources": {
+        "ton": {
+          "missing_fraction": 0.0,
+          "quantiles": [
+            0.0,
+            0.0,
+            91.0
+          ],
+          "spearman_label_association": 0.3088195360208981
+        },
+        "unsw": {
+          "missing_fraction": 0.0,
+          "quantiles": [
+            0.0,
+            0.0,
+            7.0
+          ],
+          "spearman_label_association": 0.057644556819280185
+        }
+      },
+      "ks_all": 0.25926703214645386,
+      "ks_benign": 0.20189672708511353,
+      "ks_attack": 0.17588859796524048
+    },
+    {
+      "feature": "FTP_COMMAND_RET_CODE",
+      "removed_in_stable_variant": false,
+      "sources": {
+        "ton": {
+          "missing_fraction": 0.0,
+          "quantiles": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "spearman_label_association": 0.040341462095022804
+        },
+        "unsw": {
+          "missing_fraction": 0.0,
+          "quantiles": [
+            0.0,
+            0.0,
+            230.0
+          ],
+          "spearman_label_association": -0.04147723472713613
+        }
+      },
+      "ks_all": 0.17971068620681763,
+      "ks_benign": 0.18597018718719482,
+      "ks_attack": 0.08861660957336426
+    },
+    {
+      "feature": "PROTOCOL",
+      "removed_in_stable_variant": true,
+      "sources": {
+        "ton": {
+          "missing_fraction": 0.0,
+          "quantiles": [
+            6.0,
+            6.0,
+            17.0
+          ],
+          "spearman_label_association": 0.13134610127645654
+        },
+        "unsw": {
+          "missing_fraction": 0.0,
+          "quantiles": [
+            6.0,
+            6.0,
+            17.0
+          ],
+          "spearman_label_association": 0.007613435165501398
+        }
+      },
+      "ks_all": 0.06908625364303589,
+      "ks_benign": 0.12876218557357788,
+      "ks_attack": 0.07049530744552612
+    },
+    {
+      "feature": "DNS_TTL_ANSWER",
+      "removed_in_stable_variant": false,
+      "sources": {
+        "ton": {
+          "missing_fraction": 0.0,
+          "quantiles": [
+            0.0,
+            0.0,
+            44.0
+          ],
+          "spearman_label_association": 0.012618196195373061
+        },
+        "unsw": {
+          "missing_fraction": 0.0,
+          "quantiles": [
+            0.0,
+            0.0,
+            60.0
+          ],
+          "spearman_label_association": -0.07247259670275423
+        }
+      },
+      "ks_all": 0.09487724304199219,
+      "ks_benign": 0.08608865737915039,
+      "ks_attack": 0.06617075204849243
+    },
+    {
+      "feature": "DNS_QUERY_TYPE",
+      "removed_in_stable_variant": false,
+      "sources": {
+        "ton": {
+          "missing_fraction": 0.0,
+          "quantiles": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "spearman_label_association": 0.15161649628458165
+        },
+        "unsw": {
+          "missing_fraction": 0.0,
+          "quantiles": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "spearman_label_association": -0.06997581192992694
+        }
+      },
+      "ks_all": 0.048689067363739014,
+      "ks_benign": 0.07100141048431396,
+      "ks_attack": 0.1733972430229187
+    },
+    {
+      "feature": "DURATION_IN",
+      "removed_in_stable_variant": false,
+      "sources": {
+        "ton": {
+          "missing_fraction": 0.0,
+          "quantiles": [
+            0.0,
+            0.0,
+            360.0
+          ],
+          "spearman_label_association": 0.17582723295681008
+        },
+        "unsw": {
+          "missing_fraction": 0.0,
+          "quantiles": [
+            0.0,
+            0.0,
+            15.0
+          ],
+          "spearman_label_association": 0.05857039134731346
+        }
+      },
+      "ks_all": 0.12591207027435303,
+      "ks_benign": 0.05861753225326538,
+      "ks_attack": 0.15299361944198608
+    },
+    {
+      "feature": "DURATION_OUT",
+      "removed_in_stable_variant": false,
+      "sources": {
+        "ton": {
+          "missing_fraction": 0.0,
+          "quantiles": [
+            0.0,
+            0.0,
+            344.0
+          ],
+          "spearman_label_association": 0.2075275623031515
+        },
+        "unsw": {
+          "missing_fraction": 0.0,
+          "quantiles": [
+            0.0,
+            0.0,
+            15.0
+          ],
+          "spearman_label_association": 0.04849846757520022
+        }
+      },
+      "ks_all": 0.12344247102737427,
+      "ks_benign": 0.04251515865325928,
+      "ks_attack": 0.1654503345489502
+    },
+    {
+      "feature": "FLOW_DURATION_MILLISECONDS",
+      "removed_in_stable_variant": false,
+      "sources": {
+        "ton": {
+          "missing_fraction": 0.0,
+          "quantiles": [
+            0.0,
+            0.0,
+            4294921.0
+          ],
+          "spearman_label_association": 0.20701121226089864
+        },
+        "unsw": {
+          "missing_fraction": 0.0,
+          "quantiles": [
+            0.0,
+            0.0,
+            4294951.0
+          ],
+          "spearman_label_association": 0.05964389591726069
+        }
+      },
+      "ks_all": 0.12645870447158813,
+      "ks_benign": 0.04201698303222656,
+      "ks_attack": 0.1099500060081482
+    }
+  ]
+}
