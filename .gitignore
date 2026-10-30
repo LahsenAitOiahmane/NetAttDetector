@@ -31,6 +31,7 @@ htmlcov/
 *.npy
 *.parquet
 *.feather
+*.log
 *.csv
 *.tsv
 *.pcap
@@ -52,6 +53,8 @@ htmlcov/
 !.env.example
 *.pem
 *.key
+id_rsa
+id_ed25519
 .vscode/
 .idea/
 .DS_Store

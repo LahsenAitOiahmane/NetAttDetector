@@ -37,6 +37,10 @@ are permitted only under `tests/fixtures/`. Reviewed JSON evidence and report PN
 An ignore rule does not untrack a previously committed file; cleanup explicitly removed them.
 Do not add a new output directory without updating this policy and the hygiene check.
 
+`.gitattributes` fixes text checkouts to LF across platforms and treats capture/image/model
+formats as binary. This prevents newline conversion from changing configuration/fixture hashes.
+Historical run hashes describe the original bytes; do not rewrite them after a dependency upgrade.
+
 CI checks repository hygiene and local documentation links in addition to lint, formatting,
 tests and synthetic smoke training. Source and documentation may contain old filenames as
 historical evidence; they must not refer to deleted files as current executable entry points.

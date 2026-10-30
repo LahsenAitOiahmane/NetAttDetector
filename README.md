@@ -24,6 +24,13 @@ control score discrepancy, but residual training differences remain. **No policy
 per-source precision/FPR/recall screen.** See the [reproduction guide](docs/guides/STABILITY_OPERATIONS.md)
 and [ordered next sprint](docs/project/ROADMAP.md#next-sprint-after-the-development-study).
 
+The current sprint adds [capture provenance checks](docs/research/PROVENANCE.md) and an
+[offline measurement lab](docs/guides/MEASUREMENTS.md). The Linux lab passed 85 known-value
+field checks on five synthetic flows. Its separate 11-feature contract requires a new labelled
+training dataset before model use. Our [initial deployment scope](docs/project/THREAT_MODEL.md)
+is a small office/home network with capacity for up to 50 reviewed alerts/day; traffic volume and
+the incident aggregation policy still need measurement. No live capture or blocking is enabled.
+
 ## What changed
 
 - A versioned feature contract replaces hand-built packet placeholders.
@@ -121,6 +128,11 @@ See [evaluation rules](docs/research/EVALUATION.md) before comparing experiments
 | [Multi-source report](reports/MULTISOURCE.md) | Global data audit, ablations, calibration, fresh-source results and limits |
 | [Registered multi-source protocol](docs/research/MULTISOURCE_PROTOCOL.md) | Selection rules fixed before fresh-source scoring |
 | [Multi-source runbook](docs/guides/MULTISOURCE_OPERATIONS.md) | Cache preparation, freezing, one-time evaluation and portable exports |
+| [Documentation index](docs/README.md) | All maintained guides grouped by purpose |
+| [Repository guide](docs/project/REPOSITORY.md) | Layout, cleanup and tracked/ignored file policy |
+| [Provenance and capture splits](docs/research/PROVENANCE.md) | Source reservation, metadata evidence and structural split checks |
+| [Offline measurement lab](docs/guides/MEASUREMENTS.md) | Synthetic PCAP checks and the separate NFStream contract |
+| [Threat model / alert budget](docs/project/THREAT_MODEL.md) | User-selected environment, 50/day planning capacity and missing pilot inputs |
 
 ## Development
 
@@ -129,6 +141,7 @@ uv sync --frozen --extra dev
 uv run --no-sync ruff check src tests scripts
 uv run --no-sync ruff format --check src tests scripts
 uv run --no-sync pytest
+uv run --no-sync python scripts/check_repository.py
 ```
 
 CI smoke data is synthetic and tests software plumbing only. Real research data and new model

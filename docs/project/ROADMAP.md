@@ -56,15 +56,15 @@ the roadmap must not be read as an endorsement of the initial champion for live 
 | NAD-011 | P0 / 5 | CI on Python 3.11/3.13 plus bounded GitHub real-data training and retained evidence | 002–009 | Implemented; record remote outcomes |
 | NAD-012 | P0 / 3 | README, architecture, evaluation rules, operations, work log and honest model card | 001–011 | This documentation |
 | NAD-013 | P1 / 5 | Global duplicate/conflict analysis using partitioned hashes/DuckDB; reconcile counts by source | 004 | Done for all 19.33M development rows; disk partitions and checked indexes |
-| NAD-014 | P1 / 5 | Source/capture/session data cards and immutable split manifests; detect merged-source contamination | 013 | Source manifests, group fingerprints and contamination checks implemented; capture/session metadata unresolved |
-| NAD-015 | P1 / 8 | Capture/time/device-held-out benchmark with purging; both labels and adequate attack support per fold | 014 | Backlog; basic split modes exist |
+| NAD-014 | P1 / 5 | Source/capture/session data cards and immutable split manifests; detect merged-source contamination | 013 | Source roles/lineages, header evidence and capture-plan preparation implemented; row-linked capture/time metadata absent in current CSVs |
+| NAD-015 | P1 / 8 | Capture/time/device-held-out benchmark with purging; both labels and adequate attack support per fold | 014 | Structural manifest validator implemented; actual benchmark blocked pending real metadata and compatible labeled exports |
 | NAD-016 | P1 / 5 | Port/TTL/protocol-ID ablations; retain only features robust across development sources | 015 | Eight targeted policies across three grouped development seeds measured in STABILITY.md; no subset passed; capture-aware acceptance remains |
 | NAD-017 | P1 / 5 | Training-only rate/ratio/log features with unit tests and documented exporter availability | 016 | Backlog |
 | NAD-018 | P1 / 5 | Bounded hyperparameter search (≤1 laptop-hour, 2 threads); select with development folds only | 015–017 | Registered nine-candidate comparison completed; broader/nested search remains |
 | NAD-019 | P1 / 5 | Compare class weights/train-only sampling and calibrate on disjoint development observations | 018 | Equal-source/class weights and sigmoid calibration compared; alternative sampling remains |
 | NAD-020 | P1 / 5 | Confidence intervals, predefined multiple development seeds, new frozen publication holdout | 015–019 | Conditional Wilson intervals, frozen CSE test and three registered development seeds measured; new untouched source and capture-level uncertainty remain |
-| NAD-021 | P1 / 3 | Agree site threat model, flow volume, retained metadata and analyst alert/day budget | 009 | Backlog; owner/operator input |
-| NAD-022 | P1 / 8 | Select exporter or retrain a reduced contract; demonstrate feature/units/direction/timeout parity on PCAP fixtures | 016,021 | Backlog |
+| NAD-021 | P1 / 3 | Agree site threat model, flow volume, retained metadata and analyst alert/day budget | 009 | User selected small office/home and up to 50 reviewed alerts/day; threat model recorded; volume/aggregation/pilot SLO remain |
+| NAD-022 | P1 / 8 | Select exporter or retrain a reduced contract; demonstrate feature/units/direction/timeout parity on PCAP fixtures | 016,021 | NFStream 6.6.0 offline candidate and 11-field contract measured on 85 fixture checks; UQ equivalence/new labeled training data remain unresolved |
 | NAD-023 | P1 / 8 | Authorized passive sensor with bounded flow cache, IPv4/IPv6, TCP/UDP/ICMP and dropped-flow counters | 022 | Backlog |
 | NAD-024 | P1 / 5 | Replay validation: same PCAP/export yields consistent online/offline predictions; measure end-to-end lag and loss | 023 | Backlog |
 | NAD-025 | P1 / 5 | Event aggregation, suppression and rule correlation; alert includes evidence and schema/model versions | 024 | Backlog |
@@ -83,6 +83,8 @@ the roadmap must not be read as an endorsement of the initial champion for live 
 | NAD-038 | P2 / 5 | Research release: versioned source, model/data cards, clean-environment reproduction and evaluation artifacts | 011,020,037 | Backlog |
 | NAD-039 | P2 / 8 | Production candidate: pilot acceptance, reliability/load checks, failure handling, rollback drill and operator signoff | 026–032,037 | Backlog |
 | NAD-040 | P1 / 5 | Compare ordered raw/transformed payloads, weights, repeated fits, threads and platform controls | 014 | Measured: 60 fits/platform, matching inputs, reduced control discrepancy with full sampling; one larger ablation retained decision differences |
+| NAD-041 | P1 / 3 | Remove unused legacy/generated files, organize docs/scripts, enforce ignore and hygiene policy | 012 | Implemented with Git-history recovery, documentation link checks and LF/binary attributes |
+| NAD-042 | P1 / 3 | Validate the pandas major upgrade against tests, cached fingerprints and saved inference probes | 040 | PR #2 commits integrated into PR #5; pandas 3.1.0 compatibility evidence recorded; no old metric/artifact was rewritten |
 
 ## Next sprint after the development study
 
@@ -102,7 +104,22 @@ Sprint goal: make the next generalization test scientifically interpretable. Pro
 | 2 / NAD-022 (5 points) | Choose a domain-appropriate flow exporter and controlled benign PCAP fixtures; compare units, direction, duration quantization, TCP windows, TTL, protocol and derived rates with the published contract. | Reproducible export commands/version, fixture provenance and field comparison; unsupported fields fail explicitly. No production or live traffic capture is required for this task. |
 | 3 / NAD-021 (3 points) | Define the intended environment, relevant attack types, expected benign flow volume, retention and tolerable alerts/day with the operator. Translate this into a registered evaluation budget. | Written threat model and operator-approved operating budget; 98% precision/0.5% FPR/80% recall remain research screens until then. |
 
-Next, resolve the residual NAD-040 case with per-stage model/input instrumentation before
+The [capture/measurement sprint report](../../reports/CAPTURE_MEASUREMENTS.md) now records the
+preparation deliverables for these stories. Both development archive headers lack event time and
+capture IDs; the registered capture plan correctly fails its gate. CICIDS2017 is reserved and
+unacquired. The offline NFStream lab passed 85 field checks on five synthetic flows, but it is not
+compatible with the current UQ models. The user supplied small-office/home scope and 50/day
+review capacity; a per-flow SLO cannot be derived before measuring volume and alert aggregation.
+
+The next concrete dependency is bounded acquisition of trustworthy **development** captures and
+label metadata from already observed source lineages, preserving timestamps/capture/device IDs
+during NFStream re-export. Do not fit on reserved CICIDS2017 data. Register label-join rules and
+report ambiguous/unlabeled flow coverage before fitting. Extend fixtures for active-timeout,
+fragmentation/retransmission and expected deployment protocols. Retain the input size cap until
+larger offline export memory/loss behavior is measured. No valid capture-held-out accuracy claim
+is possible until that work is complete.
+
+Also resolve the residual NAD-040 case with per-stage model/input instrumentation before
 claiming reproducible training. Only after measurement/split requirements are ready should
 NAD-017/018 explore training-only rate/ratio/log features, bounded search or domain adaptation.
 Reserve a fresh source before those fits and evaluate it only after freezing the selected model.

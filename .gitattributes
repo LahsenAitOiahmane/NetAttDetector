@@ -1,0 +1,9 @@
+# Keep hashed configuration/fixture text identical on Windows and Linux.
+* text=auto eol=lf
+*.pcap binary
+*.pcapng binary
+*.png binary
+*.jpg binary
+*.zip binary
+*.npz binary
+*.joblib binary

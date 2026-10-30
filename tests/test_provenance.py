@@ -100,3 +100,25 @@ def test_capture_plan_blocks_leakage_and_invalid_support(tmp_path, capture_plan,
 def test_capture_times_require_timezone():
     with pytest.raises(ValueError, match="UTC offset"):
         utc_time("2026-01-01T00:00:00")
+
+
+def test_pooled_support_cannot_hide_a_source_with_no_attacks(tmp_path, capture_plan):
+    plan = copy.deepcopy(capture_plan)
+    roles_path = Path(plan["source_roles"])
+    roles = json.loads(roles_path.read_text())
+    roles["sources"]["other"] = {"role": "development", "lineage": ["other"]}
+    roles_path.write_text(json.dumps(roles))
+    path = tmp_path / "other.csv"
+    path.write_text("independent synthetic declaration\n")
+    other = dict(
+        plan["captures"][0],
+        source_id="other",
+        path=str(path),
+        sha256=sha256_file(path),
+        host_groups=["other-device"],
+        attack_rows=0,
+    )
+    plan["captures"].append(other)
+    result = save_validate(tmp_path, plan)
+    assert not result["structure_valid"]
+    assert any("source/class support" in error for error in result["blockers"])

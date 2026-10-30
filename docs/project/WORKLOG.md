@@ -218,6 +218,53 @@ contains the measured trade-offs and two visually verified figures. The local su
 and three optional tests skipped in each core environment. The next sprint prioritizes capture/host/time provenance,
 exporter/PCAP measurement parity and an operator alert budget before another model search.
 
+## 30 October 2026 — Repository cleanup and capture/measurement sprint
+
+Started `codex/repository-and-measurements` from current main after PR #4 was merged.
+Merged the exact Dependabot PR #2 commits into this review branch, upgrading CPython pandas
+to 3.1.0. The prior 42 tests passed in an isolated upgrade environment. All 195,894 cached
+full/reduced fingerprints remained identical. Both existing portable model exports passed
+5,000 probes with identical threshold decisions (maximum score deltas 0 and 7.45e-9).
+Upgraded the default `.venv` after compatibility checks; old experiment artifacts/metrics retain
+their original versions and were not refit. The temporary `.venv-pandas3` environment remains
+ignored because automatic approval review blocked its recursive deletion with no further reason.
+
+Removed obsolete 2024 models/utilities/data loader, redundant wrappers/requirements shim, old
+editor settings/CSS sketch, tracked bytecode, five old model binaries, logs and eleven empty
+captures. Kept raw archives, corrected caches, frozen runs, receipts and reviewed evidence;
+Git history retains the removed originals. Grouped docs and scripts by purpose, rewrote links
+and workflow commands, added navigation/repository guides, expanded `.gitignore`, and added
+tracked-artifact/ignore/link checks. Added LF/binary attributes after observing Windows newline
+conversion change an expected JSON digest. Canonical fixture hashes now match Linux/Windows.
+
+Recorded the user's choices: small-office/home scope and up to 50 reviewed alerts/day. The
+threat model separates reviewed incidents from per-flow predictions and leaves traffic volume,
+aggregation, observation point, retention and pilot SLO open. No live capture or blocking occurred.
+
+Inspected only headers of existing UNSW/ToN archives: both have endpoint addresses but lack
+event timestamps, capture IDs and session IDs. Registered source roles/lineages, excluded merged
+source contamination and reserved CICIDS2017 without acquiring or inspecting its flow data.
+Added metadata inspection and declared capture-plan validation for checksums, host separation,
+role/lineage isolation, timezone-aware chronology/purging and source-wise class support. The
+actual plan remains empty/blocked; structural validation never authorizes training or proves labels.
+
+Implemented an offline-only Linux NFStream 6.6.0 lab with 16 MiB inputs, one meter and 10,000-flow
+cap. The separate 11-feature contract emits no UQ aliases/zero placeholders. Created a 948-byte
+12-packet synthetic IPv4/IPv6 UDP/TCP fixture with zero-duration and idle-expiration cases.
+The [Linux lab](https://github.com/LahsenAitOiahmane/NetAttDetector/actions/runs/41108865671)
+at `2c28e22` passed all 85 expected fields on five flows; Windows verified the downloaded JSON
+against the same expectations. Export loop: 0.093 seconds, sampled parent RSS 179.3 MiB;
+imports and meter child memory are excluded. This proves selected native measurements only,
+not nProbe parity, attack detection quality or production memory/throughput.
+
+The integrated 59-test suite passed locally; 18 focused tests passed after the final source-wise
+support check, including its added counterexample. Lint, formatting, documentation links, ignore
+policy and deterministic fixture checks pass. Reports and evidence are in
+[CAPTURE_MEASUREMENTS.md](../../reports/CAPTURE_MEASUREMENTS.md). Review:
+[draft PR #5](https://github.com/LahsenAitOiahmane/NetAttDetector/pull/5), including the PR #2
+dependency branch. The next dependency is trustworthy development captures/labels with metadata,
+followed by re-export, label joins and capture-held-out training. No new real-data model was fitted.
+
 ## Outstanding work
 
 This work does not complete the production roadmap. Global audits cover the development inputs;

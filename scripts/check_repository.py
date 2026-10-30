@@ -27,6 +27,9 @@ def check(root=Path(".")):
         ".zip",
         ".7z",
         ".gz",
+        ".pem",
+        ".key",
+        ".log",
     }
     for name in names:
         path = root / name
@@ -42,7 +45,7 @@ def check(root=Path(".")):
         private_root = name.startswith(
             ("artifacts/", "reports/local/", "logs/", "saved_models/", ".venv", ".vscode/")
         )
-        secret = path.name == ".env" or (
+        secret = path.name in {".env", "id_rsa", "id_ed25519"} or (
             path.name.startswith(".env.") and path.name != ".env.example"
         )
         if (

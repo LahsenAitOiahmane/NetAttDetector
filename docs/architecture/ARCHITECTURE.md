@@ -28,6 +28,8 @@ flowchart LR
 | `inference.py` | Trusted artifact loading, schema checks and atomic batched prediction |
 | `hardware.py` | Nonprivileged CPU/RAM/disk inventory |
 | `cli.py` | Explicit, scriptable command interface and nonzero failure exits |
+| `provenance.py` | Header-only source metadata inspection and declared capture/time/host plan validation |
+| `measurement.py` | Bounded Linux offline NFStream adapter, separate measurement contract and fixture comparisons |
 
 ## Contract version `uq-netflow-v2-numeric-1`
 
@@ -58,6 +60,10 @@ across dependency versions is not guaranteed; load trusted artifacts in the reco
 
 Authorized sensor → bounded bidirectional flow exporter → schema/units validation → batched
 classifier → event deduplication and rule correlation → analyst queue → labeled feedback.
+
+The [offline measurement lab](../guides/MEASUREMENTS.md) now verifies selected native NFStream
+counters/durations on controlled fixtures. This is not a live sensor or a replacement training
+contract for existing models. `nfstream-core-v1` remains incompatible with the UQ contract.
 
 Choose a maintained exporter after validating feature parity. UQ NetFlow fields are not a drop-in
 replacement for Zeek `conn.log`, CICFlowMeter features, or PyShark packet attributes. Either use

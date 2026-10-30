@@ -112,7 +112,15 @@ def validate_capture_plan(plan_path, output):
     captures = plan["captures"]
     if len(captures) > 10_000:
         raise ValueError("Capture manifest exceeds the bounded preparation limit.")
-    errors, seen, files, host_splits, intervals, support = [], {}, {}, {}, {}, {}
+    errors, seen, files, host_splits, intervals, support, source_support = (
+        [],
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+    )
     order = {name: i for i, name in enumerate(("train", "calibration", "validation", "test"))}
     used_lineages = {}
     for item in captures:
@@ -149,6 +157,7 @@ def validate_capture_plan(plan_path, output):
             if not isinstance(count, int) or count < 0:
                 raise ValueError("Declared class support must be nonnegative integers.")
             support.setdefault(split, {0: 0, 1: 0})[label] += count
+            source_support.setdefault(f"{source_id}:{split}", {0: 0, 1: 0})[label] += count
         for lineage in roles[source_id]["lineage"]:
             used_lineages.setdefault(lineage, set()).add(split == "test")
     for host, splits in host_splits.items():
@@ -167,6 +176,11 @@ def validate_capture_plan(plan_path, output):
             errors.append(
                 f"Insufficient declared benign/attack support in {split} (minimum {minimum}/class)."
             )
+    for key, counts in source_support.items():
+        if min(counts.values()) < minimum:
+            errors.append(
+                f"Insufficient declared source/class support in {key} (minimum {minimum}/class)."
+            )
     result = {
         "schema_version": 1,
         "plan_sha256": sha256_file(plan_path),
@@ -175,6 +189,7 @@ def validate_capture_plan(plan_path, output):
         "structure_valid": not errors,
         "training_authorized": False,
         "declared_support": support,
+        "declared_source_support": source_support,
         "blockers": errors,
         "limitation": "Validates declared metadata/checksums only. Does not prove label counts, endpoint identities, time semantics or row-to-capture linkage. These require raw-data/export audit before fitting.",
     }

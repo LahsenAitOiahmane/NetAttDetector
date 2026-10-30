@@ -1,0 +1,28 @@
+{
+  "scope": "dependency/input/inference compatibility, not a new classifier quality evaluation",
+  "pandas": "3.1.0",
+  "versions": {
+    "numpy": "2.5.4",
+    "pandas": "3.1.0",
+    "scikit-learn": "1.9.1",
+    "xgboost": "3.4.1"
+  },
+  "rows": 195894,
+  "cache_sha256": "6b66aecfbe5a32f34ac2fb88d0c6f29d9de8a1ab29170fa85a9548abcb17164f",
+  "full_fingerprints_identical": true,
+  "reduced_fingerprints_identical": true,
+  "portable_exports": {
+    "local": {
+      "probe_rows": 5000,
+      "max_absolute_score_difference": 0.0,
+      "threshold_decisions_identical": true,
+      "model_sha256": "09f38f4f88c9d68ff948c64b6491fd6e3380d381123c0fddf3898077cbc72db5"
+    },
+    "linux": {
+      "probe_rows": 5000,
+      "max_absolute_score_difference": 7.450580596923828e-09,
+      "threshold_decisions_identical": true,
+      "model_sha256": "48ea2061c5de38143ffc85e5c121aebf2721297fe146097b1c20df1a42d0df49"
+    }
+  }
+}
