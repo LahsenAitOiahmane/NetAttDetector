@@ -173,7 +173,9 @@ All changes are on `codex/multisource-generalization`; no phase-2 merge/deployme
 
 ## 30 October 2026 — Development ablation and training stability
 
-Continued the research phase on `codex/multisource-generalization` and draft PR #3.
+Delivered this follow-up on `codex/development-stability` in
+[draft PR #4](https://github.com/LahsenAitOiahmane/NetAttDetector/pull/4), after phase 2 was
+merged through PR #3. The model fits retain their original source revision and provenance.
 Registered `configs/stability.json`/`STABILITY_PROTOCOL.md` in `b730df3`. Before fitting,
 amended the grouping to the 30 fields shared by every policy, because dropping four rate
 fields could otherwise create identical ablated observations in different partitions.
@@ -212,7 +214,8 @@ Added CLI study/comparison commands, a development-only workflow mode, strict co
 payload/score integrity checks, saved JSON evidence, plot/report generators and reproduction
 instructions. Updated README and the ordered Scrum backlog. [STABILITY.md](../reports/STABILITY.md)
 contains the measured trade-offs and two visually verified figures. The local suite passes
-42 tests; lint/format checks pass. The next sprint prioritizes capture/host/time provenance,
+42 tests; lint/format checks pass. Source CI passed on Python 3.11/3.13 with 39 core tests
+and three optional tests skipped in each core environment. The next sprint prioritizes capture/host/time provenance,
 exporter/PCAP measurement parity and an operator alert budget before another model search.
 
 ## Outstanding work

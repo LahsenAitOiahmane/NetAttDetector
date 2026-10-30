@@ -136,4 +136,7 @@ includes the loaded cohort; raw archive preparation is a separate step.
 Validation: 42 local tests pass, including ambiguity-preserving grouping, source weights,
 isolation, low-recall rejection, mismatch/incomplete-control refusal and score-array integrity.
 Lint/format checks pass. Both figures were rendered and visually inspected. See
-[draft PR #3](https://github.com/LahsenAitOiahmane/NetAttDetector/pull/3) for review.
+[draft PR #4](https://github.com/LahsenAitOiahmane/NetAttDetector/pull/4) for review. Phase 2
+was already merged through PR #3; this study is a separate change on `codex/development-stability`.
+The [source CI](https://github.com/LahsenAitOiahmane/NetAttDetector/actions/runs/40981337704)
+passed on Python 3.11/3.13 with 39 core tests and three optional tests skipped per environment.
