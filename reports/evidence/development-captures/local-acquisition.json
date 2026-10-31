@@ -1,0 +1,101 @@
+{
+  "config_sha256": "632faea7483c2a0ae4edcf48705253967352e9304e07bb9c18cb08b23a321b77",
+  "platform": "Windows",
+  "records": [
+    {
+      "capture_id": "CTU-IoT-Malware-Capture-20-1",
+      "directory": "data/raw/iot23-development/CTU-IoT-Malware-Capture-20-1",
+      "bytes": 4478791,
+      "registered_hashes_verified": true,
+      "files": {
+        "2018-10-02-13-12-30-192.168.100.103.pcap": {
+          "url": "https://mcfp.felk.cvut.cz/publicDatasets/IoT-23-Dataset/IndividualScenarios/CTU-IoT-Malware-Capture-20-1/2018-10-02-13-12-30-192.168.100.103.pcap",
+          "bytes": 4057401,
+          "sha256": "4d0a00c33a4bf11228158baddd47c38f702731ea8d75ef1201061fc8bbd878b9"
+        },
+        "bro/conn.log.labeled": {
+          "url": "https://mcfp.felk.cvut.cz/publicDatasets/IoT-23-Dataset/IndividualScenarios/CTU-IoT-Malware-Capture-20-1/bro/conn.log.labeled",
+          "bytes": 419604,
+          "sha256": "ef48ad72f65efd13d517223e61e4d877ba53a082ddb8159324b18d3f310d0711"
+        },
+        "README.md": {
+          "url": "https://mcfp.felk.cvut.cz/publicDatasets/IoT-23-Dataset/IndividualScenarios/CTU-IoT-Malware-Capture-20-1/README.md",
+          "bytes": 1786,
+          "sha256": "67a196f4c4203865df1e5ffe767551590d611d60aaab1b2df0ff865cfaee3e3c"
+        }
+      },
+      "label_log_counts": {
+        "rows": 3209,
+        "coarse:Benign": 3193,
+        "detail:-": 3193,
+        "coarse:Malicious": 16,
+        "detail:C&C-Torii": 16
+      }
+    },
+    {
+      "capture_id": "CTU-IoT-Malware-Capture-21-1",
+      "directory": "data/raw/iot23-development/CTU-IoT-Malware-Capture-21-1",
+      "bytes": 4494727,
+      "registered_hashes_verified": true,
+      "files": {
+        "2018-10-03-15-22-32-192.168.100.113.pcap": {
+          "url": "https://mcfp.felk.cvut.cz/publicDatasets/IoT-23-Dataset/IndividualScenarios/CTU-IoT-Malware-Capture-21-1/2018-10-03-15-22-32-192.168.100.113.pcap",
+          "bytes": 4063997,
+          "sha256": "40b6928cedcda03fe5ded8a9994ec007a6d784028f37cbc00bbe3a26a7893023"
+        },
+        "bro/conn.log.labeled": {
+          "url": "https://mcfp.felk.cvut.cz/publicDatasets/IoT-23-Dataset/IndividualScenarios/CTU-IoT-Malware-Capture-21-1/bro/conn.log.labeled",
+          "bytes": 428943,
+          "sha256": "b63db259aead078f50fc150aa97ace4d1f69576e1245334962759d978ce437eb"
+        },
+        "README.md": {
+          "url": "https://mcfp.felk.cvut.cz/publicDatasets/IoT-23-Dataset/IndividualScenarios/CTU-IoT-Malware-Capture-21-1/README.md",
+          "bytes": 1787,
+          "sha256": "bfbafe60b85f7425f888ebfb5a2c37cc5beb9eb2a98cb76bc17e4f5b52143c0b"
+        }
+      },
+      "label_log_counts": {
+        "rows": 3286,
+        "coarse:Benign": 3272,
+        "detail:-": 3272,
+        "coarse:Malicious": 14,
+        "detail:C&C-Torii": 14,
+        "unsupported_protocol_rows": 1
+      }
+    },
+    {
+      "capture_id": "CTU-IoT-Malware-Capture-42-1",
+      "directory": "data/raw/iot23-development/CTU-IoT-Malware-Capture-42-1",
+      "bytes": 3495517,
+      "registered_hashes_verified": true,
+      "files": {
+        "2019-01-10-14-34-38-192.168.1.197.pcap": {
+          "url": "https://mcfp.felk.cvut.cz/publicDatasets/IoT-23-Dataset/IndividualScenarios/CTU-IoT-Malware-Capture-42-1/2019-01-10-14-34-38-192.168.1.197.pcap",
+          "bytes": 2908160,
+          "sha256": "7573797f17aae96e3804a3cfb22d531b74c17bbae740de1e14048f89130fba37"
+        },
+        "bro/conn.log.labeled": {
+          "url": "https://mcfp.felk.cvut.cz/publicDatasets/IoT-23-Dataset/IndividualScenarios/CTU-IoT-Malware-Capture-42-1/bro/conn.log.labeled",
+          "bytes": 585829,
+          "sha256": "269fa1b22d9a37e159cf41b81a213a0032d21306f5d39b4c20cb0d211b04e8aa"
+        },
+        "README.md": {
+          "url": "https://mcfp.felk.cvut.cz/publicDatasets/IoT-23-Dataset/IndividualScenarios/CTU-IoT-Malware-Capture-42-1/README.md",
+          "bytes": 1528,
+          "sha256": "3b3ca5b655db82a93e7f69fcbba76bb9de3f4fff3ea2938726062abe4ff889b3"
+        }
+      },
+      "label_log_counts": {
+        "rows": 4426,
+        "coarse:Malicious": 6,
+        "detail:FileDownload": 3,
+        "detail:C&C-FileDownload": 3,
+        "coarse:Benign": 4420,
+        "detail:-": 4420
+      }
+    }
+  ],
+  "bytes": 12469035,
+  "training_authorized": false,
+  "scope": "Pinned download and Zeek parser verification only; no local NFStream driver or flow export."
+}

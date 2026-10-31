@@ -11,6 +11,10 @@ interface name. It uses one meter process, IP-layer byte accounting, a two-secon
 post-mortem statistical analysis. A 10,000-flow export limit causes an error rather than reporting
 a potentially partial file as complete. These are lab limits, not a live sensor design.
 
+The [real development-capture audit](CAPTURE_LABELS.md) is a separate streaming consumer with
+a 100,000-flow hard stop and the same 16 MiB PCAP cap. It emits aggregate label coverage, not
+feature rows or predictions. Its measured results do not change the original fixture export limit.
+
 ## Reproduce on Linux
 
 ```bash

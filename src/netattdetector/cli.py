@@ -135,10 +135,21 @@ def parser():
     labels.add_argument("--capture-dir", required=True)
     labels.add_argument("--config", default="configs/data/iot23-development.json")
     labels.add_argument("--output", required=True)
+    stream_labels = commands.add_parser(
+        "audit-pcap-labels",
+        help="Stream a pinned offline IoT-23 PCAP into aggregate label coverage on Linux",
+    )
+    stream_labels.add_argument("--capture-dir", required=True)
+    stream_labels.add_argument("--config", default="configs/data/iot23-development.json")
+    stream_labels.add_argument("--output", required=True)
     return root
 
 
 def execute(args):
+    if args.command == "audit-pcap-labels":
+        from netattdetector.capture_labels import audit_pcap_labels
+
+        return audit_pcap_labels(args.capture_dir, args.output, args.config)
     if args.command == "download-capture":
         from netattdetector.capture_labels import acquire_capture
 

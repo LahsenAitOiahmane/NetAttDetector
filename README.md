@@ -31,6 +31,12 @@ training dataset before model use. Our [initial deployment scope](docs/project/T
 is a small office/home network with capacity for up to 50 reviewed alerts/day; traffic volume and
 the incident aggregation policy still need measurement. No live capture or blocking is enabled.
 
+The [development capture sprint](reports/DEVELOPMENT_CAPTURES.md) downloaded three complete
+IoT-23 capture/label bundles onto the laptop and audited 45,588 flows on GitHub using a bounded
+streaming path. It found only 21 distinct matched attack connections despite thousands of attack
+segments. These captures are useful for label-linkage diagnostics and do not qualify a new model
+for training or deployment. See the [capture runbook](docs/guides/CAPTURE_LABELS.md).
+
 ## What changed
 
 - A versioned feature contract replaces hand-built packet placeholders.
@@ -132,6 +138,7 @@ See [evaluation rules](docs/research/EVALUATION.md) before comparing experiments
 | [Repository guide](docs/project/REPOSITORY.md) | Layout, cleanup and tracked/ignored file policy |
 | [Provenance and capture splits](docs/research/PROVENANCE.md) | Source reservation, metadata evidence and structural split checks |
 | [Offline measurement lab](docs/guides/MEASUREMENTS.md) | Synthetic PCAP checks and the separate NFStream contract |
+| [Development capture audit](docs/guides/CAPTURE_LABELS.md) | Pinned bounded PCAP acquisition, conservative label matching and measured support limits |
 | [Threat model / alert budget](docs/project/THREAT_MODEL.md) | User-selected environment, 50/day planning capacity and missing pilot inputs |
 
 ## Development

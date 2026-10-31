@@ -12,7 +12,10 @@ from netattdetector.capture_labels import (
     connection_key,
     match_flow,
     read_zeek_labels,
+    summarize_flows,
 )
+from netattdetector.io import sha256_file
+from netattdetector.measurement import CORE_FEATURES, SCHEMA, SETTINGS
 
 
 def zeek_log(tmp_path, rows):
@@ -168,3 +171,67 @@ def test_audit_refuses_overwriting_evidence(tmp_path):
     with pytest.raises(FileExistsError):
         audit_capture_labels("missing", "missing", path)
     assert path.read_text() == "existing"
+
+
+def synthetic_audit_inputs(tmp_path):
+    capture_id = "CTU-IoT-Malware-Capture-20-1"
+    config = json.loads(Path("configs/data/iot23-development.json").read_text())
+    capture = config["captures"][capture_id]
+    root = tmp_path / "capture"
+    root.mkdir()
+    label_path = zeek_log(
+        root, ["1.000293\tu1\t192.0.2.1\t50000\t198.51.100.1\t443\ttcp\t0.1\t-   Malicious   C&C"]
+    )
+    (root / "bro").mkdir()
+    label_path.rename(root / "bro/conn.log.labeled")
+    (root / capture["pcap"]).write_bytes(Path("tests/fixtures/pcap/core.pcap").read_bytes())
+    (root / "README.md").write_text("Synthetic audit input, not real traffic")
+    pins = {
+        name: sha256_file(root / name)
+        for name in (capture["pcap"], "bro/conn.log.labeled", "README.md")
+    }
+    capture["sha256"] = pins
+    config_path = tmp_path / "config.json"
+    config_path.write_text(json.dumps(config))
+    receipt = {
+        "source_id": "iot23",
+        "capture_id": capture_id,
+        "role": "development",
+        "files": {name: {"sha256": digest} for name, digest in pins.items()},
+    }
+    (root / "receipt.json").write_text(json.dumps(receipt))
+    return root, config_path, config, receipt
+
+
+def test_stream_counts_separate_flow_support_from_connection_support(tmp_path):
+    root, config_path, config, receipt = synthetic_audit_inputs(tmp_path)
+    # Consume a one-shot generator, including two NFStream segments linked to one Zeek UID.
+    rows = (row for row in [flow(), flow(1050, 1090), flow(2000, 2001)])
+    result = summarize_flows(rows, root, config_path, config, receipt)
+    assert result["flow_status_counts"] == {"matched": 2, "unmatched": 1}
+    assert result["matched_flow_class_counts"] == {"1": 2}
+    assert result["matched_zeek_connection_class_counts"] == {"1": 1}
+    assert not result["training_authorized"]
+    with pytest.raises(ValueError, match="Duplicate exported"):
+        summarize_flows(iter([flow(), flow()]), root, config_path, config, receipt)
+
+
+def test_materialized_audit_verifies_pinned_label_and_pcap_identity(tmp_path):
+    root, config_path, config, receipt = synthetic_audit_inputs(tmp_path)
+    capture = config["captures"][receipt["capture_id"]]
+    exported = {
+        "schema": SCHEMA,
+        "features": CORE_FEATURES,
+        "settings": SETTINGS,
+        "exporter_version": "6.6.0",
+        "pcap_sha256": capture["sha256"][capture["pcap"]],
+        "rows": [flow()],
+    }
+    export_path = tmp_path / "export.json"
+    export_path.write_text(json.dumps(exported))
+    result = audit_capture_labels(export_path, root, tmp_path / "audit.json", config_path)
+    assert result["matched_zeek_connection_class_counts"] == {"1": 1}
+    with (root / "bro/conn.log.labeled").open("a") as stream:
+        stream.write("\n")
+    with pytest.raises(ValueError, match="pinned"):
+        audit_capture_labels(export_path, root, tmp_path / "changed.json", config_path)

@@ -267,6 +267,40 @@ update and the remote branch merge without rewriting or overwriting concurrent c
 The next dependency is trustworthy development captures/labels with metadata,
 followed by re-export, label joins and capture-held-out training. No new real-data model was fitted.
 
+## 31 October 2026 — Bounded development PCAPs and label-linkage audit
+
+Fast-forwarded local main to merged PR #5 (`c38b80b`) and started
+`codex/labelled-development-captures`. Checked original UNSW/ToN publisher downloads; their
+SharePoint links redirected to sign-in. Registered IoT-23 as additional development data at
+`a9534b4` before inspecting PCAP bytes/label logs. CICIDS2017 remains reserved and unacquired.
+
+Added three-scenario bounded acquisition, observed input pins and a conservative TCP/UDP
+five-tuple/interval matcher. Missing/unknown labels, durations, multiple candidates, partial
+intervals and unsupported protocols remain unlabelled. Acquired all bundles on GitHub, then
+retried successfully on Windows after transient DNS failures. All nine local file hashes match;
+three bundles occupy 12,469,035 bytes under ignored `data/raw/iot23-development/`.
+
+The first cloud run `41235768705` correctly stopped at the existing 10,000-flow export limit.
+Introduced a separate one-pass aggregate audit with a 100,000-flow stop and unchanged 16 MiB
+PCAP cap. Moved RSS sampling to a lightweight module, preserving the training import interface,
+and sampled child RSS sums for the audit. Pinned replay `41235993410` at `a80dd43` passed:
+45,588 flows, 41,613 candidate matches, 90.8 MiB peak sampled parent RSS and under 159 MiB
+sampled parent/child sum. Original fixture checks also passed (85 fields). No feature rows or
+raw traffic are uploaded as workflow artifacts.
+
+Found a material data issue: 32,691 matched Torii attack segments in captures 20/21 map to only
+16 distinct labelled connections. Total distinct matched attack UIDs across all three captures
+is 21, with 8/8/5 per capture, below the planned support requirement. Capture 42-1's README
+also disagrees with the PCAP's capture name/year. Kept training disabled and recorded the
+license discrepancy between Zenodo metadata and individual mirror READMEs. No new model,
+accuracy claim, live sensing or traffic blocking was introduced. Results, hashes, limitations,
+run commands and ordered next work are in [DEVELOPMENT_CAPTURES.md](../../reports/DEVELOPMENT_CAPTURES.md).
+
+All 83 tests then present passed locally in 67.23 seconds with two native threads. A subsequent
+focused run passed 41 tests and skipped the added Linux-only exporter regression on Windows.
+The Linux measurement workflow exercises both flow-cap settings against known fixture fields.
+Lint, format, links, ignore/tracked-file hygiene and deterministic fixture bytes pass.
+
 ## Outstanding work
 
 This work does not complete the production roadmap. Global audits cover the development inputs;
