@@ -6,6 +6,7 @@
     "nf-ton-iot-v2": {"role": "development", "lineage": ["ton-iot"], "publisher": "https://www.cyber.uq.edu.au/project/machine-learning-based-nids-datasets"},
     "nf-cse-cic-ids2018-v2": {"role": "observed_evaluation", "lineage": ["cse-cic-ids2018"], "publisher": "https://www.cyber.uq.edu.au/project/machine-learning-based-nids-datasets"},
     "nf-uq-nids-v2": {"role": "excluded_merged", "lineage": ["unsw-nb15", "ton-iot", "cse-cic-ids2018", "bot-iot"], "publisher": "https://www.cyber.uq.edu.au/project/machine-learning-based-nids-datasets"},
+    "iot23": {"role": "development", "lineage": ["iot23"], "publisher": "https://www.stratosphereips.org/datasets-iot23", "registered_date": "2026-10-31", "restriction": "Registered as development before inspecting capture bytes or label logs. Bounded individual PCAP and conn.log.labeled acquisition only. Never treat this source as an untouched final test. No malware binaries or whole archives. UNSW/ToN publisher links currently redirect to sign-in; this is an explicit alternative development lineage, not an independent validation claim."},
     "cicids2017": {"role": "reserved_unacquired", "lineage": ["cicids2017"], "publisher": "https://www.unb.ca/cic/datasets/ids-2017.html", "restriction": "Publisher metadata only inspected. Do not acquire or use for fitting/threshold choice. PCAP re-export and label provenance required before a frozen test."}
   }
 }
