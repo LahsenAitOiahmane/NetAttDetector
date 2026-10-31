@@ -1,0 +1,8 @@
+{
+  "run": "https://github.com/LahsenAitOiahmane/NetAttDetector/actions/runs/41235768705",
+  "source_commit": "65bb5c7",
+  "acquisition_complete": true,
+  "completed_label_audit": false,
+  "reason": "The materializing fixture exporter hit its 10000-flow cap on capture 20-1. No complete export or audit was emitted.",
+  "response": "Preserved observed input hashes; added separate aggregate streaming audit with 100000-flow cap, same 16 MiB PCAP cap and process-tree resource measurement. No model fitted or quality gate relaxed."
+}

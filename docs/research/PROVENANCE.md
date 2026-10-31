@@ -10,6 +10,7 @@ in each header-inspection and split-plan report. Do not silently change source r
 | NF-ToN-IoT-v2 | Development | Same metadata limitation; matching headers do not establish compatible exporters |
 | NF-CSE-CIC-IDS2018-v2 | Observed evaluation | Already scored after the previous freeze; cannot become an untouched holdout |
 | NF-UQ-NIDS-v2 | Excluded merged collection | Contains constituent source lineages; cannot supply independent testing of those constituents |
+| IoT-23 | Development, registered 31 October before acquisition | Three pinned raw PCAP/Zeek-label bundles acquired; candidate linkage measured; sparse attack support and a README metadata discrepancy block a benchmark |
 | CICIDS2017 | Reserved, not acquired | Publisher documents day-specific PCAPs, labeled flow timestamps and endpoints; a distinct adapter/re-export is required |
 
 The actual development archive headers and hashes are in
@@ -24,6 +25,13 @@ and [CICIDS2017 publisher](https://www.unb.ca/cic/datasets/ids-2017.html). The l
 five capture days, including a benign-only Monday. A day split that omits attacks cannot be
 treated as a complete detection-quality fold. No large PCAP collection was downloaded here.
 Reservation is not label-quality validation or commercial-use clearance.
+
+The [next sprint](../../reports/DEVELOPMENT_CAPTURES.md) explicitly added IoT-23 development
+data after the original UNSW/ToN raw download links redirected to sign-in. The role change was
+committed before reading traffic/labels; historical header reports retain the old role-map hash.
+All three IoT-23 bundles are now downloaded locally and checked against pinned hashes. The 42-1
+README conflicts with its PCAP on capture name/year, and distinct matched attack support is only
+8/8/5 connections. Do not copy exported-segment counts into a supposedly independent split.
 
 ## Manifest and validation
 

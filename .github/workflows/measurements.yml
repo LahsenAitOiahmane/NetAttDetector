@@ -2,11 +2,22 @@ name: Offline flow measurement lab
 
 on:
   workflow_dispatch:
+    inputs:
+      capture_label_audit:
+        description: 'Also acquire and audit bounded IoT-23 development captures'
+        type: boolean
+        default: false
+      record_first:
+        description: 'Record first capture acquisition hashes (no training)'
+        type: boolean
+        default: false
   pull_request:
     paths:
       - 'pyproject.toml'
       - 'uv.lock'
       - 'src/netattdetector/measurement.py'
+      - 'src/netattdetector/resources.py'
+      - 'tests/test_measurement.py'
       - 'scripts/data/make_pcap_fixtures.py'
       - 'tests/fixtures/pcap/**'
       - '.github/workflows/measurements.yml'
@@ -16,6 +27,8 @@ on:
       - 'pyproject.toml'
       - 'uv.lock'
       - 'src/netattdetector/measurement.py'
+      - 'src/netattdetector/resources.py'
+      - 'tests/test_measurement.py'
       - 'scripts/data/make_pcap_fixtures.py'
       - 'tests/fixtures/pcap/**'
       - '.github/workflows/measurements.yml'
@@ -28,6 +41,11 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  development-labels:
+    if: github.event_name == 'workflow_dispatch' && inputs.capture_label_audit
+    uses: ./.github/workflows/capture-labels.yml
+    with:
+      record_first: ${{ inputs.record_first }}
   fixture-parity:
     runs-on: ubuntu-latest
     timeout-minutes: 15
@@ -47,6 +65,7 @@ jobs:
           version: '0.12.17'
           enable-cache: true
       - run: uv sync --frozen --extra dev --extra measurement
+      - run: uv run --no-sync pytest tests/test_measurement.py
       - run: uv run --no-sync python scripts/data/make_pcap_fixtures.py --check
       - run: uv run --no-sync netatt export-pcap --pcap tests/fixtures/pcap/core.pcap --output artifacts/measurements/export.json
       - run: uv run --no-sync netatt verify-measurements --export artifacts/measurements/export.json --expected tests/fixtures/pcap/expected.json --output artifacts/measurements/verification.json

@@ -117,10 +117,47 @@ def parser():
         help="Describe the separate NFStream lab contract and unsupported UQ fields",
     )
     contract.add_argument("--output", required=True)
+    capture = commands.add_parser(
+        "download-capture", help="Acquire a bounded registered IoT-23 development capture"
+    )
+    capture.add_argument("capture_id")
+    capture.add_argument("--output", required=True)
+    capture.add_argument("--config", default="configs/data/iot23-development.json")
+    capture.add_argument(
+        "--record-first",
+        action="store_true",
+        help="Record first acquisition before pinning its observed digests",
+    )
+    labels = commands.add_parser(
+        "audit-capture-labels", help="Audit native flows against pinned IoT-23 connection labels"
+    )
+    labels.add_argument("--export", required=True)
+    labels.add_argument("--capture-dir", required=True)
+    labels.add_argument("--config", default="configs/data/iot23-development.json")
+    labels.add_argument("--output", required=True)
+    stream_labels = commands.add_parser(
+        "audit-pcap-labels",
+        help="Stream a pinned offline IoT-23 PCAP into aggregate label coverage on Linux",
+    )
+    stream_labels.add_argument("--capture-dir", required=True)
+    stream_labels.add_argument("--config", default="configs/data/iot23-development.json")
+    stream_labels.add_argument("--output", required=True)
     return root
 
 
 def execute(args):
+    if args.command == "audit-pcap-labels":
+        from netattdetector.capture_labels import audit_pcap_labels
+
+        return audit_pcap_labels(args.capture_dir, args.output, args.config)
+    if args.command == "download-capture":
+        from netattdetector.capture_labels import acquire_capture
+
+        return acquire_capture(args.capture_id, args.output, args.config, not args.record_first)
+    if args.command == "audit-capture-labels":
+        from netattdetector.capture_labels import audit_capture_labels
+
+        return audit_capture_labels(args.export, args.capture_dir, args.output, args.config)
     if args.command == "measurement-contract":
         from netattdetector.measurement import contract_report
 

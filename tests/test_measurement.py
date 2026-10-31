@@ -1,5 +1,8 @@
 import json
+import platform
+import sys
 from pathlib import Path
+from types import SimpleNamespace
 
 import pandas as pd
 import pytest
@@ -11,6 +14,8 @@ from netattdetector.measurement import (
     SETTINGS,
     contract_report,
     export_pcap,
+    flow_key,
+    iter_pcap_rows,
     verify_measurements,
 )
 
@@ -68,3 +73,44 @@ def test_offline_adapter_refuses_interface_sources_and_overwrite(tmp_path):
     with pytest.raises(FileExistsError):
         export_pcap("tests/fixtures/pcap/core.pcap", path)
     assert path.read_text() == "existing evidence"
+
+
+def test_streaming_limit_fails_and_closes_meter_iterator(monkeypatch):
+    row = json.loads(Path("tests/fixtures/pcap/expected.json").read_text())["rows"][0]
+    closed, requested_settings = [], []
+
+    def streamer(**settings):
+        requested_settings.append(settings)
+
+        def records():
+            try:
+                for _ in range(10_000):
+                    yield SimpleNamespace(**row)
+            finally:
+                closed.append(True)
+
+        return records()
+
+    monkeypatch.setitem(sys.modules, "nfstream", SimpleNamespace(NFStreamer=streamer))
+    monkeypatch.setattr("netattdetector.measurement.platform.system", lambda: "Linux")
+    monkeypatch.setattr(
+        "netattdetector.measurement.importlib.metadata.version", lambda name: "6.6.0"
+    )
+    consumed = 0
+    with pytest.raises(ValueError, match="Flow limit reached"):
+        for actual in iter_pcap_rows("tests/fixtures/pcap/core.pcap"):
+            assert actual == row
+            consumed += 1
+    assert consumed == 9999 and closed == [True]
+    assert requested_settings[0]["n_meters"] == 1
+    assert requested_settings[0]["max_nflows"] == 10_000
+
+
+def test_linux_streaming_audit_settings_preserve_known_fixture_fields():
+    if platform.system() != "Linux":
+        pytest.skip("Verified exporter is Linux-only")
+    pytest.importorskip("nfstream")
+    expected = json.loads(Path("tests/fixtures/pcap/expected.json").read_text())["rows"]
+    actual = list(iter_pcap_rows("tests/fixtures/pcap/core.pcap", max_nflows=100_000))
+    assert len(actual) == len(expected) == 5
+    assert {flow_key(row): row for row in actual} == {flow_key(row): row for row in expected}

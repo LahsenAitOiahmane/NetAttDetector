@@ -85,6 +85,7 @@ the roadmap must not be read as an endorsement of the initial champion for live 
 | NAD-040 | P1 / 5 | Compare ordered raw/transformed payloads, weights, repeated fits, threads and platform controls | 014 | Measured: 60 fits/platform, matching inputs, reduced control discrepancy with full sampling; one larger ablation retained decision differences |
 | NAD-041 | P1 / 3 | Remove unused legacy/generated files, organize docs/scripts, enforce ignore and hygiene policy | 012 | Implemented with Git-history recovery, documentation link checks and LF/binary attributes |
 | NAD-042 | P1 / 3 | Validate the pandas major upgrade against tests, cached fingerprints and saved inference probes | 040 | PR #2 merged separately; PR #5 preserves that update and records pandas 3.1.0 compatibility; no old metric/artifact was rewritten |
+| NAD-043 | P1 / 5 | Acquire bounded development PCAP/label bundles, pin inputs and audit interval linkage with streaming memory/resource evidence | 014,022 | Measured: three IoT-23 bundles local/cloud, 45,588 exported flows, 21 distinct matched attack connections; metadata/support gates prevent training |
 
 ## Next sprint after the development study
 
@@ -118,6 +119,16 @@ report ambiguous/unlabeled flow coverage before fitting. Extend fixtures for act
 fragmentation/retransmission and expected deployment protocols. Retain the input size cap until
 larger offline export memory/loss behavior is measured. No valid capture-held-out accuracy claim
 is possible until that work is complete.
+
+The [development capture sprint](../../reports/DEVELOPMENT_CAPTURES.md) now implements NAD-043.
+IoT-23 was explicitly registered as additional development data before acquisition because the
+original raw-source download links redirected to sign-in. Three complete pinned bundles are
+local, with matching Linux replay evidence. Streaming avoids accumulating feature rows and
+measured below 159 MiB sampled tree RSS sum. Capture 42-1 has a README name/year discrepancy;
+matched attack-connection support is only 8/8/5 despite thousands of timeout segments. Thus the
+next benchmark remains blocked: acquire adequate distinct development attack support, reconcile
+metadata/terms, and group all segments of a Zeek connection before preparing partitions. Retain
+the reserved source, quality requirements and disabled-training plan.
 
 Also resolve the residual NAD-040 case with per-stage model/input instrumentation before
 claiming reproducible training. Only after measurement/split requirements are ready should

@@ -3,9 +3,9 @@
 import importlib.metadata
 import json
 import platform
+from contextlib import closing
 from pathlib import Path
 
-from netattdetector.data import FEATURES
 from netattdetector.io import sha256_file, write_json
 
 SCHEMA = "nfstream-core-v1"
@@ -46,6 +46,8 @@ SETTINGS = {
 
 
 def contract_report():
+    from netattdetector.data import FEATURES
+
     candidate = {
         "L4_SRC_PORT": "src_port",
         "L4_DST_PORT": "dst_port",
@@ -72,10 +74,11 @@ def contract_report():
     }
 
 
-def export_pcap(path, output):
-    path, output = Path(path), Path(output)
-    if output.exists():
-        raise FileExistsError(output)
+def iter_pcap_rows(path, max_nflows=10_000):
+    """One meter, bounded input/flow count, no materialization or model imports."""
+    if max_nflows not in (10_000, 100_000):
+        raise ValueError("Use a registered lab or streaming-audit flow limit.")
+    path = Path(path)
     if not path.is_file() or path.suffix.casefold() not in {".pcap", ".pcapng"}:
         raise ValueError(
             "Provide an existing offline .pcap/.pcapng file; network interfaces are not accepted."
@@ -90,26 +93,34 @@ def export_pcap(path, output):
         from nfstream import NFStreamer
     except ImportError as error:
         raise ValueError("Install the locked Linux measurement extra.") from error
-    from netattdetector.training import ResourceMonitor
-
     version = importlib.metadata.version("nfstream")
     if version != "6.6.0":
         raise ValueError("Measurement settings are registered for NFStream 6.6.0 only.")
-    rows = []
-    with ResourceMonitor() as resources:
-        for flow in NFStreamer(source=str(path.resolve()), **SETTINGS):
-            rows.append({name: getattr(flow, name) for name in [*CORE_FEATURES, *METADATA]})
-            if len(rows) >= SETTINGS["max_nflows"]:
+    settings = {**SETTINGS, "max_nflows": max_nflows}
+    with closing(iter(NFStreamer(source=str(path.resolve()), **settings))) as flows:
+        for count, flow in enumerate(flows, 1):
+            if count >= max_nflows:
                 raise ValueError(
                     "Flow limit reached; refuse to label a potentially partial export complete."
                 )
+            yield {name: getattr(flow, name) for name in [*CORE_FEATURES, *METADATA]}
+
+
+def export_pcap(path, output):
+    path, output = Path(path), Path(output)
+    if output.exists():
+        raise FileExistsError(output)
+    from netattdetector.resources import ResourceMonitor
+
+    with ResourceMonitor() as resources:
+        rows = list(iter_pcap_rows(path))
     if not rows:
         raise ValueError("No supported flows were exported.")
     result = {
         "schema": SCHEMA,
         "pcap_sha256": sha256_file(path),
         "exporter": "nfstream",
-        "exporter_version": version,
+        "exporter_version": "6.6.0",
         "settings": SETTINGS,
         "features": CORE_FEATURES,
         "rows": rows,
