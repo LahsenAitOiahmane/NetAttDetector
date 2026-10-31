@@ -19,7 +19,7 @@ def test_disk_and_memory_matchers_agree_at_exact_boundaries(tmp_path):
             row = {
                 "uid": str(i),
                 "start": start,
-                "end": start + 20 if i % 7 else None,
+                "end": None if i in (21, 43, 86) else start + 20,
                 "label": i % 2 if i % 5 else None,
                 "detail": "test",
             }

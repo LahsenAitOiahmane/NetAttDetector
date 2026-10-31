@@ -301,6 +301,49 @@ focused run passed 41 tests and skipped the added Linux-only exporter regression
 The Linux measurement workflow exercises both flow-cap settings against known fixture fields.
 Lint, format, links, ignore/tracked-file hygiene and deterministic fixture bytes pass.
 
+## 31 October 2026 — Expanded captures, disk label index and coverage diagnostics
+
+Continued above open PR #6 on `codex/capture-support-expansion`. Registered new development
+capture inputs/budgets in `e6e597a` and `95855ed` before acquiring scenarios 8/34/3. Added
+streamed immutable downloads, explicit size/row/flow limits, exact-nanosecond SQLite label
+lookup with an 8 MiB cache target and bounded main-file size, and driver-free label inspection.
+Private databases, journals and partials are ignored and rejected by repository hygiene.
+
+Original-profile replay `41237931445` preserved all saved aggregate linkage/status counts and
+event ranges. The first expansion `41238058053` acquired all files and audited 8-1, then
+stopped on 34-1's `det_label` header. Added the explicit alias, rejecting both names together,
+pinned all nine files and replayed. Later runs completed all captures. Missing durations stay
+unknown, intervals are not invented and the binary label policy is unchanged.
+
+All new bundles are now local and SHA-256 verified: 215,084,316 bytes. A local transfer first
+timed out at 300 seconds; the expansion profile now permits a 1,200-second download deadline,
+with audit resource limits unchanged. Automatic approval review rejected removal of the earlier
+interrupted 34-1 partial, reporting only “blocked by policy.” Kept that file ignored and acquired
+a complete verified copy in a fresh directory; did not use another method to delete the blocked
+file. Actual paths are recorded in the local acquisition evidence.
+
+Final measured replay `41239527703` at `70c22da` exported 250,819 flows and linked 161,949
+segments to 4,611 distinct benign and 83,418 distinct attack Zeek UIDs. All three captures pass
+the simple support/resource screens. The largest normal audit sampled 274.1 MiB process-tree
+RSS sum and took 35.47 seconds. A separate fresh-process reference comparison agreed on the
+ordered assignment digest and every compared count: SQLite sampled 245.7 MiB tree RSS versus
+436.6 MiB in memory (43.7% lower), with 24.20/25.28-second times. One trial per mode does not
+prove a general speed improvement. Driver-free inspection of 156,103 labels on the laptop
+used 45.8 MiB sampled parent RSS and 4.22 seconds in the recorded local sequence.
+
+Added per-attack connection coverage, not just segment totals: DDoS is only 1/14,394 matched,
+with 14,381 publisher DDoS durations absent. This blocks a broad detection claim despite better
+total support. Device independence also remains unverified. Retained the reserved source,
+disabled training and existing detector-quality requirements. Saved full aggregate evidence,
+source pins, failure history, a visually checked coverage chart and reproduction scripts in
+[CAPTURE_EXPANSION.md](../../reports/CAPTURE_EXPANSION.md). Updated the ordered roadmap with
+NAD-044 and the packet/label timing work in NAD-045.
+
+Validation: full local suite before the inspection addition passed 89 tests and skipped two
+Linux-only cases; the later capture/index/measurement suite passed 37 and skipped those two.
+Linux CI runs the real exporter fixtures with both streaming flow limits. No real-data model
+was fitted, and no live sensing, traffic transmission, blocking or model promotion occurred.
+
 ## Outstanding work
 
 This work does not complete the production roadmap. Global audits cover the development inputs;

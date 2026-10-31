@@ -21,12 +21,15 @@ are acquired. Pins record observed bytes, not a publisher per-file checksum. Kee
 | Exported-flow hard stop | 100,000 | 250,000 |
 | Downloaded bundle | 20 MiB | 160 MiB |
 | Free-disk reserve before acquisition | 2 GiB | 2 GiB |
+| Download deadline checked between reads | 300 seconds | 1,200 seconds |
 | SQLite cache / main database bound | 8 MiB / 512 MiB | 8 MiB / 512 MiB |
 
 The materializing fixture exporter retains its 16 MiB/10,000-flow defaults. Expanded bounds
 require an explicit registered profile. Downloads hash/write in chunks of at most 64 KiB and
 publish the target only after byte-count/checksum verification; failures remove their partial
 file. Atomic destination creation refuses to replace existing inputs.
+Each blocking network operation also uses a 45-second timeout. The larger download deadline
+was added after the first local 34-1 transfer timed out; it does not relax the audit resource gate.
 
 Label indexes use local SQLite with exact int64 nanoseconds, a tuple/start-time index, unique
 capture-scoped UIDs, an 8 MiB cache and a 512 MiB main-database cap. Journals/temporary index
@@ -64,6 +67,12 @@ Passing a support/resource screen never authorizes training. Metadata/device ide
 semantics, capture/time/host isolation, attack diversity, terms and a compatible labelled
 training contract still require review. The existing global capture plan stays disabled. Do not
 weaken the precision/FPR/recall requirements to manufacture a new champion.
+
+Implementation amendments: capture 34-1 uses the explicit `det_label` header alias; both aliases
+together are rejected. Per-detail matched UID counts expose selective label coverage. An ordered
+flow/status/UID/label digest supports a fresh-process in-memory/SQLite comparison on the largest
+registered label log. Resource results are one trial per mode. See the
+[completed sprint evidence](../../reports/CAPTURE_EXPANSION.md).
 
 ## Reproduce
 

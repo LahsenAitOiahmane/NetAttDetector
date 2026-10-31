@@ -1,0 +1,127 @@
+{
+  "source_id": "iot23",
+  "capture_id": "CTU-IoT-Malware-Capture-3-1",
+  "policy": "iot23-interval-v1",
+  "config_sha256": "07da83d07774cf61b31037ff7d949ac5f465db76c5e6eb9955fc824347013116",
+  "receipt_sha256": "0a5e4151cc0803f51fcc5d4d0b92a5a6418f8d862d72a9e598207cf405412b95",
+  "input_files": {
+    "2018-05-21_capture.pcap": {
+      "url": "https://mcfp.felk.cvut.cz/publicDatasets/IoT-23-Dataset/IndividualScenarios/CTU-IoT-Malware-Capture-3-1/2018-05-21_capture.pcap",
+      "bytes": 57919772,
+      "sha256": "c674dc0c8d584fa66e6f00c60df973c5fbacad551c850a76d75ec9952641d00b"
+    },
+    "bro/conn.log.labeled": {
+      "url": "https://mcfp.felk.cvut.cz/publicDatasets/IoT-23-Dataset/IndividualScenarios/CTU-IoT-Malware-Capture-3-1/bro/conn.log.labeled",
+      "bytes": 24383537,
+      "sha256": "9851009bbca03e15089fa1a356dd4b5eee4a98161a51703626058a0b507f50d0"
+    },
+    "README.md": {
+      "url": "https://mcfp.felk.cvut.cz/publicDatasets/IoT-23-Dataset/IndividualScenarios/CTU-IoT-Malware-Capture-3-1/README.md",
+      "bytes": 3663,
+      "sha256": "426f8ce8680c2593815f6d8bdc4f1f9cf183210a26d9459f135d4d100e91558f"
+    }
+  },
+  "exported_flows": 224388,
+  "ordered_assignment_sha256": "1cffad74345e4ccbe034253d8e36e8d36248e30d9bd9d347980b0ca7efcd7da2",
+  "flow_status_counts": {
+    "matched": 146738,
+    "unknown_label_or_duration": 71621,
+    "unsupported_protocol": 1325,
+    "partial_interval": 319,
+    "ambiguous": 4383,
+    "unmatched": 2
+  },
+  "matched_flow_class_counts": {
+    "0": 3617,
+    "1": 143121
+  },
+  "matched_zeek_connection_class_counts": {
+    "0": 2818,
+    "1": 77067
+  },
+  "connection_support_screen": {
+    "minimum_per_class": 25,
+    "both_classes_supported": true,
+    "scope": "distinct capture-scoped Zeek UIDs, not independent events or a training authorization"
+  },
+  "matched_detailed_labels": {
+    "-": 3617,
+    "PartOfAHorizontalPortScan": 131043,
+    "C&C": 4143,
+    "Attack": 7935
+  },
+  "matched_connections_by_detail": {
+    "-": 2818,
+    "PartOfAHorizontalPortScan": 71317,
+    "C&C": 8,
+    "Attack": 5742
+  },
+  "connection_coverage_by_detail": {
+    "PartOfAHorizontalPortScan": {
+      "publisher_connections": 145597,
+      "candidate_matched_connections": 71317
+    },
+    "-": {
+      "publisher_connections": 4536,
+      "candidate_matched_connections": 2818
+    },
+    "C&C": {
+      "publisher_connections": 8,
+      "candidate_matched_connections": 8
+    },
+    "Attack": {
+      "publisher_connections": 5962,
+      "candidate_matched_connections": 5742
+    }
+  },
+  "label_log_counts": {
+    "rows": 156103,
+    "coarse:Malicious": 151567,
+    "detail:PartOfAHorizontalPortScan": 145597,
+    "missing_duration:Malicious": 72947,
+    "coarse:Benign": 4536,
+    "detail:-": 4536,
+    "detail:C&C": 8,
+    "missing_duration:Benign": 997,
+    "unsupported_protocol_rows": 1207,
+    "detail:Attack": 5962
+  },
+  "event_start_utc": "2018-05-19T18:57:19.958000+00:00",
+  "event_end_utc": "2018-05-21T07:04:47.960000+00:00",
+  "training_authorized": false,
+  "limitations": [
+    "Matching is a conservative candidate linkage, not independent ground-truth verification.",
+    "NFStream timeout splits may share one Zeek UID; flow counts are not independent label support.",
+    "Unknown/ambiguous/partial/unmatched records are never assigned benign labels.",
+    "Device identity and capture-held-out splits are not established by this audit.",
+    "Zenodo release metadata lists CC-BY-4.0. Individual mirror READMEs additionally request authorization; this discrepancy remains unresolved. Do not redistribute raw/derived rows or claim commercial clearance. Retain attribution and resolve terms before a public data/model release."
+  ],
+  "export_settings": {
+    "decode_tunnels": false,
+    "promiscuous_mode": false,
+    "snapshot_length": 65535,
+    "idle_timeout": 2,
+    "active_timeout": 1800,
+    "accounting_mode": 1,
+    "n_dissections": 0,
+    "statistical_analysis": false,
+    "n_meters": 1,
+    "max_nflows": 250000,
+    "system_visibility_mode": 0
+  },
+  "label_index": {
+    "backend": "sqlite",
+    "cache_kib": 8192,
+    "file_bytes": 31211520,
+    "max_file_bytes": 536870912,
+    "exact_time_unit": "nanoseconds"
+  },
+  "schema": "nfstream-core-v1",
+  "exporter_version": "6.6.0",
+  "resources": {
+    "wall_seconds": 24.201267167999987,
+    "sampled_peak_process_rss_mib": 173.77734375,
+    "sampled_peak_process_tree_rss_sum_mib": 245.69140625,
+    "measurement_scope": "50 ms samples covering label parsing, exporter imports, iteration and matching; child RSS sums may double-count shared pages; not an exact peak or hard OS memory limit"
+  }
+}

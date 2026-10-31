@@ -1,0 +1,37 @@
+{
+  "capture_id": "CTU-IoT-Malware-Capture-3-1",
+  "config_sha256": "07da83d07774cf61b31037ff7d949ac5f465db76c5e6eb9955fc824347013116",
+  "fresh_process_per_backend": true,
+  "matching_results_identical": true,
+  "checks": {
+    "schema": true,
+    "exporter_version": true,
+    "config_sha256": true,
+    "export_settings": true,
+    "input_files": true,
+    "exported_flows": true,
+    "ordered_assignment_sha256": true,
+    "flow_status_counts": true,
+    "matched_flow_class_counts": true,
+    "matched_zeek_connection_class_counts": true,
+    "matched_connections_by_detail": true,
+    "event_start_utc": true,
+    "event_end_utc": true
+  },
+  "resources": {
+    "memory": {
+      "wall_seconds": 25.28450676899999,
+      "sampled_peak_process_rss_mib": 271.0234375,
+      "sampled_peak_process_tree_rss_sum_mib": 436.625,
+      "measurement_scope": "50 ms samples covering label parsing, exporter imports, iteration and matching; child RSS sums may double-count shared pages; not an exact peak or hard OS memory limit"
+    },
+    "sqlite": {
+      "wall_seconds": 24.201267167999987,
+      "sampled_peak_process_rss_mib": 173.77734375,
+      "sampled_peak_process_tree_rss_sum_mib": 245.69140625,
+      "measurement_scope": "50 ms samples covering label parsing, exporter imports, iteration and matching; child RSS sums may double-count shared pages; not an exact peak or hard OS memory limit"
+    }
+  },
+  "training_authorized": false,
+  "scope": "Offline index trade-off and ordered assignment comparison; no model training or detection metrics. One run per mode, not a repeated performance benchmark."
+}

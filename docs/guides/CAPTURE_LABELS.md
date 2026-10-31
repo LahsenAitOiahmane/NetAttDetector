@@ -11,6 +11,11 @@ each capture bundle to 20 MiB, with a 2 GiB free-disk reserve. Publisher HTTP re
 previously observed SHA-256 pins are checked; no publisher per-member checksum is available.
 It does not fetch binaries, recursively crawl folders or unpack the full 21.5 GB release.
 
+The explicit [expansion profile](../research/CAPTURE_EXPANSION.md) adds scenarios 8/34/3 with
+128 MiB PCAP and 32 MiB label-log limits, a 250,000-flow stop and an 8 MiB SQLite cache target.
+The original profile and fixture defaults retain their limits. See the
+[results and actual local directories](../../reports/CAPTURE_EXPANSION.md).
+
 ## Local acquisition and Linux audit
 
 Windows can download and parse labels without capture drivers:
@@ -18,6 +23,15 @@ Windows can download and parse labels without capture drivers:
 ```powershell
 uv run --no-sync netatt download-capture CTU-IoT-Malware-Capture-20-1 --output data/raw/iot23-local/CTU-IoT-Malware-Capture-20-1
 ```
+
+Inspect an already downloaded expansion bundle on Windows or Linux:
+
+```powershell
+uv run --no-sync netatt inspect-capture-labels --config configs/data/iot23-expansion.json --capture-dir data/raw/iot23-expansion-verified/CTU-IoT-Malware-Capture-3-1 --output reports/local/capture3-labels.json
+```
+
+This verifies pins and builds a temporary private SQLite label index; it produces log statistics,
+not flow exports. The recorded 156,103-row laptop inspection used 45.8 MiB sampled parent RSS.
 
 Use a fresh output directory. Partial acquisition may leave downloaded files; no receipt is
 written until all three files succeed. `--record-first` is for an explicitly registered new
@@ -57,11 +71,18 @@ partial interval, missing duration, unknown label or absent match remains unlabe
 end can block later same-tuple candidates. ICMP is unsupported because exporter port conventions
 have not been reconciled. There is no nearest-flow guess or benign default.
 
-The separate real-capture audit uses the fixture exporter's settings with a **100,000-flow**
+The original real-capture profile uses the fixture exporter's settings with a **100,000-flow**
 hard stop and consumes one flow at a time. The original JSON fixture exporter retains its 10,000
 limit. Input PCAPs remain capped at 16 MiB. The audit retains bounded identity keys, label indexes,
 UID sets and counters, rather than every feature row. Hitting the limit fails instead of claiming
 a complete audit. No training CSV or model is produced.
+
+The expansion profile's larger bounds require `--config configs/data/iot23-expansion.json`.
+`--label-index-backend memory` on `audit-pcap-labels` is a bounded reference implementation
+for diagnostics; the default is SQLite. The expansion workflow compares both backends in fresh
+processes on the largest label log, checking the ordered assignment digest and resource use.
+`det_label` is accepted as an explicit publisher alias for `detailed-label`; both names together
+are rejected. No binary class labels are inferred from the detailed label.
 
 NFStream's two-second idle timeout can split one Zeek connection into many segments. Report
 matched exported-flow counts and distinct matched Zeek-connection counts separately. Segments

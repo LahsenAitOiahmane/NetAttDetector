@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "source_id": "iot23",
+  "registered_date": "2026-10-31",
+  "purpose": "Development-only exporter/label-linkage audit; no model selection or final evaluation",
+  "publisher": "https://www.stratosphereips.org/datasets-iot23",
+  "release": "https://doi.org/10.5281/zenodo.4743746",
+  "license_note": "Zenodo release metadata lists CC-BY-4.0. Individual mirror READMEs additionally request authorization; this discrepancy remains unresolved. Do not redistribute raw/derived rows or claim commercial clearance. Retain attribution and resolve terms before a public data/model release.",
+  "base_url": "https://mcfp.felk.cvut.cz/publicDatasets/IoT-23-Dataset/IndividualScenarios/",
+  "max_file_bytes": 16777216,
+  "max_capture_bytes": 20971520,
+  "disk_reserve_bytes": 2147483648,
+  "join_policy": "iot23-interval-v1",
+  "time_tolerance_ms": 1,
+  "training_enabled": false,
+  "captures": {
+    "CTU-IoT-Malware-Capture-20-1": {
+      "pcap": "2018-10-02-13-12-30-192.168.100.103.pcap",
+      "host_group": "iot23:RPi-01",
+      "sha256": {
+        "2018-10-02-13-12-30-192.168.100.103.pcap": "4d0a00c33a4bf11228158baddd47c38f702731ea8d75ef1201061fc8bbd878b9",
+        "bro/conn.log.labeled": "ef48ad72f65efd13d517223e61e4d877ba53a082ddb8159324b18d3f310d0711",
+        "README.md": "67a196f4c4203865df1e5ffe767551590d611d60aaab1b2df0ff865cfaee3e3c"
+      }
+    },
+    "CTU-IoT-Malware-Capture-21-1": {
+      "pcap": "2018-10-03-15-22-32-192.168.100.113.pcap",
+      "host_group": null,
+      "sha256": {
+        "2018-10-03-15-22-32-192.168.100.113.pcap": "40b6928cedcda03fe5ded8a9994ec007a6d784028f37cbc00bbe3a26a7893023",
+        "bro/conn.log.labeled": "b63db259aead078f50fc150aa97ace4d1f69576e1245334962759d978ce437eb",
+        "README.md": "bfbafe60b85f7425f888ebfb5a2c37cc5beb9eb2a98cb76bc17e4f5b52143c0b"
+      }
+    },
+    "CTU-IoT-Malware-Capture-42-1": {
+      "pcap": "2019-01-10-14-34-38-192.168.1.197.pcap",
+      "host_group": null,
+      "sha256": {
+        "2019-01-10-14-34-38-192.168.1.197.pcap": "7573797f17aae96e3804a3cfb22d531b74c17bbae740de1e14048f89130fba37",
+        "bro/conn.log.labeled": "269fa1b22d9a37e159cf41b81a213a0032d21306f5d39b4c20cb0d211b04e8aa",
+        "README.md": "3b3ca5b655db82a93e7f69fcbba76bb9de3f4fff3ea2938726062abe4ff889b3"
+      }
+    }
+  },
+  "max_audit_flows": 100000
+}

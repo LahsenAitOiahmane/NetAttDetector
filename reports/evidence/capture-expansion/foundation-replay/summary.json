@@ -1,0 +1,91 @@
+{
+  "source_id": "iot23",
+  "role": "development",
+  "training_authorized": false,
+  "first_acquisition": false,
+  "registered_config_sha256": "632faea7483c2a0ae4edcf48705253967352e9304e07bb9c18cb08b23a321b77",
+  "frozen_config_sha256": "632faea7483c2a0ae4edcf48705253967352e9304e07bb9c18cb08b23a321b77",
+  "records": [
+    {
+      "capture_id": "CTU-IoT-Malware-Capture-20-1",
+      "flows": 19777,
+      "statuses": {
+        "matched": 18456,
+        "unknown_label_or_duration": 103,
+        "ambiguous": 1217,
+        "partial_interval": 1
+      },
+      "matched_zeek_connections": {
+        "0": 1892,
+        "1": 8
+      },
+      "connection_support_screen": {
+        "minimum_per_class": 25,
+        "both_classes_supported": false,
+        "scope": "distinct capture-scoped Zeek UIDs, not independent events or a training authorization"
+      },
+      "resource_screen_met": true,
+      "resources": {
+        "wall_seconds": 2.834101105000002,
+        "sampled_peak_process_rss_mib": 86.3828125,
+        "sampled_peak_process_tree_rss_sum_mib": 150.95703125,
+        "measurement_scope": "50 ms samples covering label parsing, exporter imports, iteration and matching; child RSS sums may double-count shared pages; not an exact peak or hard OS memory limit"
+      }
+    },
+    {
+      "capture_id": "CTU-IoT-Malware-Capture-21-1",
+      "flows": 20328,
+      "statuses": {
+        "unknown_label_or_duration": 187,
+        "matched": 18917,
+        "ambiguous": 1172,
+        "partial_interval": 1,
+        "unsupported_protocol": 51
+      },
+      "matched_zeek_connections": {
+        "0": 1931,
+        "1": 8
+      },
+      "connection_support_screen": {
+        "minimum_per_class": 25,
+        "both_classes_supported": false,
+        "scope": "distinct capture-scoped Zeek UIDs, not independent events or a training authorization"
+      },
+      "resource_screen_met": true,
+      "resources": {
+        "wall_seconds": 3.5841566579999835,
+        "sampled_peak_process_rss_mib": 88.9375,
+        "sampled_peak_process_tree_rss_sum_mib": 153.53515625,
+        "measurement_scope": "50 ms samples covering label parsing, exporter imports, iteration and matching; child RSS sums may double-count shared pages; not an exact peak or hard OS memory limit"
+      }
+    },
+    {
+      "capture_id": "CTU-IoT-Malware-Capture-42-1",
+      "flows": 5483,
+      "statuses": {
+        "matched": 4240,
+        "unknown_label_or_duration": 516,
+        "ambiguous": 727
+      },
+      "matched_zeek_connections": {
+        "1": 5,
+        "0": 3191
+      },
+      "connection_support_screen": {
+        "minimum_per_class": 25,
+        "both_classes_supported": false,
+        "scope": "distinct capture-scoped Zeek UIDs, not independent events or a training authorization"
+      },
+      "resource_screen_met": true,
+      "resources": {
+        "wall_seconds": 1.2194214079999597,
+        "sampled_peak_process_rss_mib": 88.97265625,
+        "sampled_peak_process_tree_rss_sum_mib": 153.73828125,
+        "measurement_scope": "50 ms samples covering label parsing, exporter imports, iteration and matching; child RSS sums may double-count shared pages; not an exact peak or hard OS memory limit"
+      }
+    }
+  ],
+  "raw_or_derived_rows_published": false,
+  "all_connection_support_screens_met": false,
+  "all_resource_screens_met": true
+}
