@@ -3,6 +3,10 @@ name: Offline flow measurement lab
 on:
   workflow_dispatch:
     inputs:
+      packet_label_audit:
+        description: 'Run the registered development packet-witness experiment'
+        type: boolean
+        default: false
       capture_label_audit:
         description: 'Also acquire and audit bounded IoT-23 development captures'
         type: boolean
@@ -46,6 +50,9 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  packet-labels:
+    if: github.event_name == 'workflow_dispatch' && inputs.packet_label_audit
+    uses: ./.github/workflows/packet-labels.yml
   development-labels:
     if: github.event_name == 'workflow_dispatch' && inputs.capture_label_audit
     uses: ./.github/workflows/capture-labels.yml
