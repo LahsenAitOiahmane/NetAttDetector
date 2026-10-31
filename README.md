@@ -37,6 +37,18 @@ streaming path. It found only 21 distinct matched attack connections despite tho
 segments. These captures are useful for label-linkage diagnostics and do not qualify a new model
 for training or deployment. See the [capture runbook](docs/guides/CAPTURE_LABELS.md).
 
+The [capture expansion](reports/CAPTURE_EXPANSION.md) adds 215 MB of verified local data and
+audits 250,819 flows with 83,418 distinct matched attack connections. Its disk index reduced
+sampled process-tree RSS by 43.7% in a fresh-process comparison with identical assignment hashes.
+Per-attack coverage reveals that DDoS linkage is still inadequate. Label timing and device/split
+provenance are the next gates before a new model experiment.
+
+The [packet-witness study](reports/PACKET_LABELS.md) now links 248,997 native flows while
+preserving every previously accepted match. Exact packet evidence improves C&C/scan label
+coverage; contradictory zero-packet DDoS records remain excluded. The proposed capture/time
+partitions pass chronology/support checks, while device isolation and native cohort preparation
+remain open. [Run the packet audit](docs/guides/PACKET_LABELS.md) on Windows or Linux.
+
 ## What changed
 
 - A versioned feature contract replaces hand-built packet placeholders.

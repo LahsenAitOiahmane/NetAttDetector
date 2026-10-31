@@ -106,11 +106,12 @@ def test_streaming_limit_fails_and_closes_meter_iterator(monkeypatch):
     assert requested_settings[0]["max_nflows"] == 10_000
 
 
-def test_linux_streaming_audit_settings_preserve_known_fixture_fields():
+@pytest.mark.parametrize("flow_limit", [100_000, 250_000])
+def test_linux_streaming_audit_settings_preserve_known_fixture_fields(flow_limit):
     if platform.system() != "Linux":
         pytest.skip("Verified exporter is Linux-only")
     pytest.importorskip("nfstream")
     expected = json.loads(Path("tests/fixtures/pcap/expected.json").read_text())["rows"]
-    actual = list(iter_pcap_rows("tests/fixtures/pcap/core.pcap", max_nflows=100_000))
+    actual = list(iter_pcap_rows("tests/fixtures/pcap/core.pcap", max_nflows=flow_limit))
     assert len(actual) == len(expected) == 5
     assert {flow_key(row): row for row in actual} == {flow_key(row): row for row in expected}

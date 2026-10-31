@@ -30,6 +30,9 @@ def check(root=Path(".")):
         ".pem",
         ".key",
         ".log",
+        ".sqlite",
+        ".db",
+        ".partial",
     }
     for name in names:
         path = root / name
@@ -51,6 +54,7 @@ def check(root=Path(".")):
         if (
             private_root
             or secret
+            or ".sqlite-" in path.name
             or "__pycache__" in path.parts
             or (path.suffix in generated and not fixture)
             or (name.startswith("data/") and name != "data/README.md")
@@ -72,6 +76,9 @@ def check(root=Path(".")):
         "reports/local/private.json",
         "private.pcap",
         "traffic.csv",
+        "labels.sqlite",
+        "labels.sqlite-journal",
+        "traffic.pcap.partial",
         ".env.local",
     ]
     public = [

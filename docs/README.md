@@ -11,6 +11,8 @@ and [current backlog](project/ROADMAP.md).
 | Measured evidence | [Baseline](../reports/BASELINE.md), [multi-source study](../reports/MULTISOURCE.md), [stability study](../reports/STABILITY.md) |
 | Current sprint | [Capture provenance](research/PROVENANCE.md), [measurement lab](guides/MEASUREMENTS.md), [development capture audit](guides/CAPTURE_LABELS.md), [small-office scope](project/THREAT_MODEL.md) |
 | Sprint results | [Repository/capture/measurement report](../reports/CAPTURE_MEASUREMENTS.md), [development capture measurements](../reports/DEVELOPMENT_CAPTURES.md) |
+| Capture expansion | [Registered protocol](research/CAPTURE_EXPANSION.md), [measured support, coverage and resource report](../reports/CAPTURE_EXPANSION.md) |
+| Packet label evidence | [Protocol](research/PACKET_LABELS.md), [operations](guides/PACKET_LABELS.md), [results and native-data readiness](../reports/PACKET_LABELS.md) |
 
 Historical reports retain the dependency versions and failed results from their own runs.
 Reorganizing files or upgrading dependencies does not turn those models into production candidates.

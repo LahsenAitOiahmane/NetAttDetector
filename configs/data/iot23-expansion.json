@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "source_id": "iot23",
+  "registered_date": "2026-10-31",
+  "purpose": "Development expansion of full captures 8, 34 and 3, registered before inspection; audit support, label coverage and resources before any training decision.",
+  "publisher": "https://www.stratosphereips.org/datasets-iot23",
+  "release": "https://doi.org/10.5281/zenodo.4743746",
+  "license_note": "Zenodo release metadata lists CC-BY-4.0. Individual mirror READMEs additionally request authorization; this discrepancy remains unresolved. Do not redistribute raw/derived rows or claim commercial clearance. Retain attribution and resolve terms before a public data/model release.",
+  "base_url": "https://mcfp.felk.cvut.cz/publicDatasets/IoT-23-Dataset/IndividualScenarios/",
+  "max_file_bytes": 134217728,
+  "max_capture_bytes": 167772160,
+  "disk_reserve_bytes": 2147483648,
+  "join_policy": "iot23-interval-v1",
+  "time_tolerance_ms": 1,
+  "training_enabled": false,
+  "captures": {
+    "CTU-IoT-Malware-Capture-8-1": {
+      "pcap": "2018-07-31-15-15-09-192.168.100.113.pcap",
+      "host_group": null,
+      "sha256": {
+        "2018-07-31-15-15-09-192.168.100.113.pcap": "80dcc2602519479ddcde889fa902fee19a76696630811452f8df38888af894f2",
+        "bro/conn.log.labeled": "4877ca8f0f01902fbd18d28b7d06cb3d0be082355b7f2c8862c9deef1782eb8a",
+        "README.md": "1788755a075f580c3628e4698ba4dad699f91c058dede73bae3f480bb5cba840"
+      }
+    },
+    "CTU-IoT-Malware-Capture-34-1": {
+      "pcap": "2018-12-21-15-50-14-192.168.1.195.pcap",
+      "host_group": null,
+      "sha256": {
+        "2018-12-21-15-50-14-192.168.1.195.pcap": "92ec7e2f6658ee4b007d0b816986c46cc0338bc5e2bec6ceaaca566c695e4699",
+        "bro/conn.log.labeled": "d69e49b2aae8c1bd33286936531658202dec47d989f0439bad3f8be180467a6e",
+        "README.md": "940e8778cba292b4c9d2f8b7e10d77976c8eccfc8b6b8bfa79faa53230203f7f"
+      }
+    },
+    "CTU-IoT-Malware-Capture-3-1": {
+      "pcap": "2018-05-21_capture.pcap",
+      "host_group": null,
+      "sha256": {
+        "2018-05-21_capture.pcap": "c674dc0c8d584fa66e6f00c60df973c5fbacad551c850a76d75ec9952641d00b",
+        "bro/conn.log.labeled": "9851009bbca03e15089fa1a356dd4b5eee4a98161a51703626058a0b507f50d0",
+        "README.md": "426f8ce8680c2593815f6d8bdc4f1f9cf183210a26d9459f135d4d100e91558f"
+      }
+    }
+  },
+  "max_audit_flows": 250000,
+  "selection_note": "Adaptive development expansion after sparse 20/21/42 support. Capture 3 is included under an explicit 32 MiB label-log / 250k-row disk-index budget; captures 7/9 and whole archives remain excluded. No model selection or fresh-test claim.",
+  "max_pcap_bytes": 134217728,
+  "max_label_bytes": 33554432,
+  "max_label_rows": 250000,
+  "label_index_backend": "sqlite",
+  "download_timeout_seconds": 1200
+}

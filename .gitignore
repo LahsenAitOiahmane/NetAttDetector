@@ -40,6 +40,10 @@ htmlcov/
 *.7z
 *.tar
 *.gz
+*.sqlite
+*.sqlite-*
+*.db
+*.partial
 
 # Only reviewed synthetic fixtures may contain capture/tabular inputs
 !/tests/fixtures/**/*.pcap

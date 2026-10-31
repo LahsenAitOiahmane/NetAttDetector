@@ -33,6 +33,19 @@ All three IoT-23 bundles are now downloaded locally and checked against pinned h
 README conflicts with its PCAP on capture name/year, and distinct matched attack support is only
 8/8/5 connections. Do not copy exported-segment counts into a supposedly independent split.
 
+The [registered expansion](CAPTURE_EXPANSION.md) subsequently acquired three more full bundles,
+8/34/3, adding 215 MB locally and 83,418 candidate-matched attack UIDs. Each passes the simple
+support screen, but per-attack coverage is selective and device independence remains unverified.
+See the [measured expansion](../../reports/CAPTURE_EXPANSION.md); no training partition or
+untouched-source role was changed. Source roles and historical configuration hashes remain intact.
+
+The subsequent [packet-witness study](../../reports/PACKET_LABELS.md) provides a more complete
+candidate label linkage and an explicit [native dataset plan](../../configs/data/native-dataset-plan.json).
+Capture/time chronology and UID support pass; host/device independence, a materialized native
+cohort and a frozen independent test remain unavailable. The existing capture plan is still
+blocked and the new plan cannot authorize fitting. Do not interpret namespaced UID groups as
+proof that physical hosts differ across captures.
+
 ## Manifest and validation
 
 [capture_plan.json](../../configs/data/capture_plan.json) deliberately contains no invented captures.

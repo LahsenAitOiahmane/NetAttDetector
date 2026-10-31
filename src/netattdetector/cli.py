@@ -142,14 +142,52 @@ def parser():
     stream_labels.add_argument("--capture-dir", required=True)
     stream_labels.add_argument("--config", default="configs/data/iot23-development.json")
     stream_labels.add_argument("--output", required=True)
+    stream_labels.add_argument(
+        "--label-index-backend", choices=["sqlite", "memory"], default="sqlite"
+    )
+    inspect_labels = commands.add_parser(
+        "inspect-capture-labels",
+        help="Inspect pinned capture labels on Windows/Linux without a driver",
+    )
+    inspect_labels.add_argument("--capture-dir", required=True)
+    inspect_labels.add_argument("--config", default="configs/data/iot23-development.json")
+    inspect_labels.add_argument("--output", required=True)
+    packets = commands.add_parser(
+        "audit-packet-labels",
+        help="Validate exact packet witnesses; optionally compare candidate flow labels on Linux",
+    )
+    packets.add_argument("--capture-dir", required=True)
+    packets.add_argument("--output", required=True)
+    packets.add_argument("--config", default="configs/data/packet-evidence.json")
+    packets.add_argument("--compare-flows", action="store_true")
     return root
 
 
 def execute(args):
+    if args.command == "audit-packet-labels":
+        from netattdetector.packet_evidence import audit_packet_labels
+
+        result = audit_packet_labels(
+            args.capture_dir, args.output, compare_flows=args.compare_flows, config_path=args.config
+        )
+        return {
+            "report": args.output,
+            "capture_id": result["capture_id"],
+            "point_evidence": result["point_evidence"],
+            "resources": result["resources"],
+            "flows_compared": result["flows_compared"],
+            "training_authorized": False,
+        }
+    if args.command == "inspect-capture-labels":
+        from netattdetector.capture_labels import inspect_capture_labels
+
+        return inspect_capture_labels(args.capture_dir, args.output, args.config)
     if args.command == "audit-pcap-labels":
         from netattdetector.capture_labels import audit_pcap_labels
 
-        return audit_pcap_labels(args.capture_dir, args.output, args.config)
+        return audit_pcap_labels(
+            args.capture_dir, args.output, args.config, index_backend=args.label_index_backend
+        )
     if args.command == "download-capture":
         from netattdetector.capture_labels import acquire_capture
 

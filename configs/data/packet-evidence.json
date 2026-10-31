@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "registered_date": "2026-10-31",
+  "source_config": "configs/data/iot23-expansion.json",
+  "policy": "iot23-packet-point-candidate-v1",
+  "training_enabled": false,
+  "max_pcap_bytes": 134217728,
+  "max_packets": 2000000,
+  "max_database_bytes": 536870912,
+  "cache_kib": 8192,
+  "packet_timestamp_tolerance_ns": 0,
+  "flow_timestamp_tolerance_ms": 1,
+  "point_proof": "Exactly one structurally decoded TCP/UDP packet at the exact label timestamp and bidirectional tuple, with matching directional packet count and IP bytes. Missing-duration labels must declare one packet; zero/multiple/unknown counts are excluded. Reject packet claims shared by multiple UIDs, including known-duration claims.",
+  "candidate_flow_rule": "Resolve only proven missing ends to their witnessed instant. Point matches additionally require a one-packet, zero-duration NFStream flow with the same direction, IP-byte count and quantized timestamp. All other missing ends remain blockers; the original interval rule is preserved for known ends.",
+  "acceptance": "Preserve every previous accepted v1 match; replay saved v1 aggregate counts and assignment digest. Report per-detail coverage and packet-structure failures. Support/coverage gains are not detection metrics or training authorization. Resource screen: sampled RSS tree sum <1 GiB, wall <600 seconds/capture excluding downloads.",
+  "parser_scope": "Classic PCAP Ethernet, micro/nanosecond timestamps, IPv4/IPv6 base headers, up to two VLAN tags, TCP/UDP header structure. Fragments, IPv6 extensions, other transport protocols and unsupported links remain explicit. No checksum validation, reassembly, payload inspection, transmission or live capture."
+}

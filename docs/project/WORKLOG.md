@@ -301,6 +301,86 @@ focused run passed 41 tests and skipped the added Linux-only exporter regression
 The Linux measurement workflow exercises both flow-cap settings against known fixture fields.
 Lint, format, links, ignore/tracked-file hygiene and deterministic fixture bytes pass.
 
+## 31 October 2026 — Expanded captures, disk label index and coverage diagnostics
+
+Continued above open PR #6 on `codex/capture-support-expansion`. Registered new development
+capture inputs/budgets in `e6e597a` and `95855ed` before acquiring scenarios 8/34/3. Added
+streamed immutable downloads, explicit size/row/flow limits, exact-nanosecond SQLite label
+lookup with an 8 MiB cache target and bounded main-file size, and driver-free label inspection.
+Private databases, journals and partials are ignored and rejected by repository hygiene.
+
+Original-profile replay `41237931445` preserved all saved aggregate linkage/status counts and
+event ranges. The first expansion `41238058053` acquired all files and audited 8-1, then
+stopped on 34-1's `det_label` header. Added the explicit alias, rejecting both names together,
+pinned all nine files and replayed. Later runs completed all captures. Missing durations stay
+unknown, intervals are not invented and the binary label policy is unchanged.
+
+All new bundles are now local and SHA-256 verified: 215,084,316 bytes. A local transfer first
+timed out at 300 seconds; the expansion profile now permits a 1,200-second download deadline,
+with audit resource limits unchanged. Automatic approval review rejected removal of the earlier
+interrupted 34-1 partial, reporting only “blocked by policy.” Kept that file ignored and acquired
+a complete verified copy in a fresh directory; did not use another method to delete the blocked
+file. Actual paths are recorded in the local acquisition evidence.
+
+Final measured replay `41239527703` at `70c22da` exported 250,819 flows and linked 161,949
+segments to 4,611 distinct benign and 83,418 distinct attack Zeek UIDs. All three captures pass
+the simple support/resource screens. The largest normal audit sampled 274.1 MiB process-tree
+RSS sum and took 35.47 seconds. A separate fresh-process reference comparison agreed on the
+ordered assignment digest and every compared count: SQLite sampled 245.7 MiB tree RSS versus
+436.6 MiB in memory (43.7% lower), with 24.20/25.28-second times. One trial per mode does not
+prove a general speed improvement. Driver-free inspection of 156,103 labels on the laptop
+used 45.8 MiB sampled parent RSS and 4.22 seconds in the recorded local sequence.
+
+Added per-attack connection coverage, not just segment totals: DDoS is only 1/14,394 matched,
+with 14,381 publisher DDoS durations absent. This blocks a broad detection claim despite better
+total support. Device independence also remains unverified. Retained the reserved source,
+disabled training and existing detector-quality requirements. Saved full aggregate evidence,
+source pins, failure history, a visually checked coverage chart and reproduction scripts in
+[CAPTURE_EXPANSION.md](../../reports/CAPTURE_EXPANSION.md). Updated the ordered roadmap with
+NAD-044 and the packet/label timing work in NAD-045.
+
+Validation: full local suite before the inspection addition passed 89 tests and skipped two
+Linux-only cases; the later capture/index/measurement suite passed 37 and skipped those two.
+Linux CI runs the real exporter fixtures with both streaming flow limits. No real-data model
+was fitted, and no live sensing, traffic transmission, blocking or model promotion occurred.
+
+## 31 October 2026 — Packet witnesses and native partition preparation
+
+The owner merged PR #7 into the previous sprint branch at `0aeaf35`; main contained merged
+PR #6 at `bb410b8`. Started `codex/packet-label-evidence` from the merged sprint state and
+targeted integration at main so the earlier expansion and this phase reach the primary branch.
+
+Inspected excluded log counters: 14,260 missing-duration DDoS records claim zero packets,
+while 121 claim one. Registered exact packet-witness criteria and resource bounds at `9df84d7`
+before independent packet inspection. Implemented a bounded classic-PCAP Ethernet/IPv4/IPv6
+structural reader, explicit fragment/transport/error counts, private packet/claim indexes,
+collision rejection and a paired point-candidate/baseline audit. No checksums, reassembly or
+payload contents are inspected; no interfaces are accepted or packets transmitted.
+
+Cloud run `41242568757` at `653e8d6` preserved all accepted baseline UID/class/detail matches
+and all archived aggregate/digest checks. Candidate linkage rose from 161,949 to 248,997 flows
+(87,048 additions), with 166,491 distinct matched attack and 7,254 benign UIDs. C&C covers
+14,936/14,936 publisher connections; scans 145,699/145,719; DDoS remains 114/14,394. Exact
+witnesses also exist for the 14,260 zero-counter DDoS records, all with TCP flags 0x3a and
+nonzero header-derived payload length. Kept these contradictory records excluded; did not
+invent counts/intervals. The capture contains 57,489 unsupported IPv4 fragments.
+
+Largest cloud audit: 65.63 seconds, sampled parent/child RSS sum 329.7 MiB, largest temporary
+packet index 98,136,064 bytes. Windows independently reproduced packet counts and point evidence
+without a driver or NFStream export, using at most 55.2 MiB sampled process memory. Temporary
+indexes were closed/removed; original data and prior frozen reports were retained.
+
+Added proposed capture/time partitions (May capture 3 train, July capture 8 calibration,
+December capture 34 validation) with explicit UID grouping, 300-second purging and support
+readiness checks. Device isolation remains unverified; the candidate is not promoted and no
+row-level cohort/model is created. Added the packet operations guide, measured report, saved
+aggregate evidence and a visually checked coverage figure. Primary format/semantics references
+and remaining gates are recorded in [PACKET_LABELS.md](../../reports/PACKET_LABELS.md).
+
+Full local suite: 111 passed, two Linux-only skips. The final packet-focused suite passed 22,
+including a further known-interval tail regression. Lint, formatting, deterministic fixture,
+repository hygiene and documentation links are checked. No detector was fitted or promoted.
+
 ## Outstanding work
 
 This work does not complete the production roadmap. Global audits cover the development inputs;

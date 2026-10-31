@@ -10,6 +10,8 @@ from netattdetector.capture_labels import (
     audit_capture_labels,
     bounded_fetch,
     connection_key,
+    indexed_labels,
+    inspect_capture_labels,
     match_flow,
     read_zeek_labels,
     summarize_flows,
@@ -124,6 +126,18 @@ def test_duplicate_uid_rejected(tmp_path):
         read_zeek_labels(zeek_log(tmp_path, [row, row]))
 
 
+def test_explicit_publisher_detailed_label_alias(tmp_path):
+    path = zeek_log(tmp_path, ["1\tu1\t192.0.2.1\t1\t198.51.100.1\t2\ttcp\t1\t- Malicious C&C"])
+    path.write_text(path.read_text().replace("detailed-label", "det_label"))
+    index, counts = read_zeek_labels(path)
+    key = connection_key("192.0.2.1", 1, "198.51.100.1", 2, 6)
+    assert index[key][0]["label"] == 1 and index[key][0]["detail"] == "C&C"
+    assert counts["header_alias:det_label"] == 1
+    path.write_text(path.read_text().replace("det_label", "det_label detailed-label"))
+    with pytest.raises(ValueError, match="Ambiguous"):
+        read_zeek_labels(path)
+
+
 def test_unpinned_download_and_unknown_capture_refused_before_network(tmp_path):
     config = json.loads(Path("configs/data/iot23-development.json").read_text())
     config["captures"]["CTU-IoT-Malware-Capture-20-1"]["sha256"] = {}
@@ -211,6 +225,11 @@ def test_stream_counts_separate_flow_support_from_connection_support(tmp_path):
     assert result["flow_status_counts"] == {"matched": 2, "unmatched": 1}
     assert result["matched_flow_class_counts"] == {"1": 2}
     assert result["matched_zeek_connection_class_counts"] == {"1": 1}
+    assert result["matched_connections_by_detail"] == {"C&C": 1}
+    assert result["connection_coverage_by_detail"]["C&C"] == {
+        "publisher_connections": 1,
+        "candidate_matched_connections": 1,
+    }
     assert not result["training_authorized"]
     with pytest.raises(ValueError, match="Duplicate exported"):
         summarize_flows(iter([flow(), flow()]), root, config_path, config, receipt)
@@ -235,3 +254,17 @@ def test_materialized_audit_verifies_pinned_label_and_pcap_identity(tmp_path):
         stream.write("\n")
     with pytest.raises(ValueError, match="pinned"):
         audit_capture_labels(export_path, root, tmp_path / "changed.json", config_path)
+
+
+def test_driver_free_inspection_preserves_inputs_and_cleans_private_index(tmp_path):
+    root, config_path, config, _ = synthetic_audit_inputs(tmp_path)
+    result = inspect_capture_labels(root, tmp_path / "inspection.json", config_path)
+    assert result["label_log_counts"]["coarse:Malicious"] == 1
+    assert result["index_file_bytes"] > 0 and not result["training_authorized"]
+    assert not list(root.glob(".label-index-*"))
+    assert (root / "receipt.json").exists()
+    (root / "bro/conn.log.labeled").write_text("invalid label input\n")
+    with pytest.raises(ValueError, match="Malformed"):
+        with indexed_labels(root, config):
+            pytest.fail("Malformed labels should fail before an index can be used")
+    assert not list(root.glob(".label-index-*"))

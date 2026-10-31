@@ -86,6 +86,9 @@ the roadmap must not be read as an endorsement of the initial champion for live 
 | NAD-041 | P1 / 3 | Remove unused legacy/generated files, organize docs/scripts, enforce ignore and hygiene policy | 012 | Implemented with Git-history recovery, documentation link checks and LF/binary attributes |
 | NAD-042 | P1 / 3 | Validate the pandas major upgrade against tests, cached fingerprints and saved inference probes | 040 | PR #2 merged separately; PR #5 preserves that update and records pandas 3.1.0 compatibility; no old metric/artifact was rewritten |
 | NAD-043 | P1 / 5 | Acquire bounded development PCAP/label bundles, pin inputs and audit interval linkage with streaming memory/resource evidence | 014,022 | Measured: three IoT-23 bundles local/cloud, 45,588 exported flows, 21 distinct matched attack connections; metadata/support gates prevent training |
+| NAD-044 | P1 / 5 | Expand complete development captures under registered bounds; use a disk index and measure decision parity, attack coverage and process resources | 043 | Measured: another 215 MB local, 250,819 flows, 83,418 matched attack UIDs; SQLite assignment digest identical to memory reference with 43.7% lower sampled tree RSS in one comparison |
+| NAD-045 | P1 / 5 | Validate missing-duration/trailing-packet label linkage on controlled and real PCAP evidence; report per-attack UID coverage before freezing a new rule | 044 | Measured point candidate: 87,048 additional matched flows, all old matches preserved, DDoS 114/14,394; zero-packet contradictions and packet-tail semantics remain unresolved |
+| NAD-046 | P1 / 5 | Materialize a bounded native-feature cohort with source/capture/UID groups, immutable inclusion/overlap audits and validated partition manifests | 014,045 | Proposed capture/time partition readiness passes support/purge; device identities, candidate-rule promotion and row-level cohort remain open; no training authorization |
 
 ## Next sprint after the development study
 
@@ -129,6 +132,27 @@ matched attack-connection support is only 8/8/5 despite thousands of timeout seg
 next benchmark remains blocked: acquire adequate distinct development attack support, reconcile
 metadata/terms, and group all segments of a Zeek connection before preparing partitions. Retain
 the reserved source, quality requirements and disabled-training plan.
+
+NAD-044 now resolves the initial data-volume/support limitation: the
+[expanded capture report](../../reports/CAPTURE_EXPANSION.md) records three further complete
+bundles, each with at least 25 matched connections per binary class and measured resource use
+within the registered screen. Original linkage aggregates remain identical after disk indexing;
+a fresh-process comparison on the largest new capture also matches the ordered assignment hash.
+The remaining label-coverage problem is material: only one DDoS connection links successfully,
+while 14,381 DDoS records lack duration. Prioritize NAD-045, device provenance and actual
+capture/time/UID partitions before producing a native-feature training dataset. Dataset terms
+and site operating-budget inputs remain unresolved. Do not treat passed support screens as
+training authorization or as proof of independent devices/attacks.
+
+The [packet-witness sprint](../../reports/PACKET_LABELS.md) has now compared a candidate point
+rule against the unchanged interval baseline on the same native flow streams. It links 248,997
+flows, preserves every old match and replays archived baseline digests. C&C/scan coverage is
+substantially better. However, 14,260 DDoS labels claim zero packets despite exact packet
+witnesses, so the candidate excludes them rather than repairing their counters. The proposed
+May/July/December capture partitions pass chronological/support screens; device independence
+is unverified and no native cohort exists yet. Next: review the point rule/remaining label
+contradictions, implement NAD-046, then register the bounded model/calibration study. Keep
+training disabled until its declared measurement, label and partition gates are satisfied.
 
 Also resolve the residual NAD-040 case with per-stage model/input instrumentation before
 claiming reproducible training. Only after measurement/split requirements are ready should
