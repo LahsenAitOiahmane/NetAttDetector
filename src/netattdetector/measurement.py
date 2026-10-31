@@ -74,17 +74,20 @@ def contract_report():
     }
 
 
-def iter_pcap_rows(path, max_nflows=10_000):
+def iter_pcap_rows(path, max_nflows=10_000, *, max_pcap_bytes=16 * 2**20):
     """One meter, bounded input/flow count, no materialization or model imports."""
-    if max_nflows not in (10_000, 100_000):
+    if max_nflows not in (10_000, 100_000, 250_000) or max_pcap_bytes not in (
+        16 * 2**20,
+        128 * 2**20,
+    ):
         raise ValueError("Use a registered lab or streaming-audit flow limit.")
     path = Path(path)
     if not path.is_file() or path.suffix.casefold() not in {".pcap", ".pcapng"}:
         raise ValueError(
             "Provide an existing offline .pcap/.pcapng file; network interfaces are not accepted."
         )
-    if not 0 < path.stat().st_size <= 16 * 2**20:
-        raise ValueError("Measurement lab inputs must be nonempty and at most 16 MiB.")
+    if not 0 < path.stat().st_size <= max_pcap_bytes:
+        raise ValueError("Offline PCAP exceeds the registered nonempty input byte limit.")
     if platform.system() != "Linux":
         raise ValueError(
             "The verified NFStream adapter runs on Linux. Use the offline GitHub measurement workflow; no Windows capture driver is installed by this project."

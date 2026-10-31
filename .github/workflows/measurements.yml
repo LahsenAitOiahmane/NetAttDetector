@@ -11,6 +11,11 @@ on:
         description: 'Record first capture acquisition hashes (no training)'
         type: boolean
         default: false
+      capture_profile:
+        description: 'Registered development acquisition profile'
+        type: choice
+        options: [foundation, expansion]
+        default: foundation
   pull_request:
     paths:
       - 'pyproject.toml'
@@ -46,6 +51,7 @@ jobs:
     uses: ./.github/workflows/capture-labels.yml
     with:
       record_first: ${{ inputs.record_first }}
+      profile: ${{ inputs.capture_profile }}
   fixture-parity:
     runs-on: ubuntu-latest
     timeout-minutes: 15

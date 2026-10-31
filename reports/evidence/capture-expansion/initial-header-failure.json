@@ -1,0 +1,9 @@
+{
+  "run": "41238058053",
+  "source_commit": "2cebf05",
+  "acquisition_complete": true,
+  "capture8_audit_complete": true,
+  "remaining_audits_complete": false,
+  "reason": "Capture34 uses the explicit publisher column det_label; parser refused the unsupported header before using its labels.",
+  "resolution": "Added an explicit det_label to detailed-label header mapping, reject both aliases together, pin all input hashes and replay. Binary label semantics and interval matching were unchanged."
+}

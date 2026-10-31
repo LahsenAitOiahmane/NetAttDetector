@@ -1,0 +1,44 @@
+{
+  "old_run": "41235993410",
+  "new_run": "41237931445",
+  "all_aggregate_checks_identical": true,
+  "captures": [
+    {
+      "capture_id": "CTU-IoT-Malware-Capture-20-1",
+      "checks": {
+        "exported_flows": true,
+        "flow_status_counts": true,
+        "matched_flow_class_counts": true,
+        "matched_zeek_connection_class_counts": true,
+        "matched_detailed_labels": true,
+        "event_start_utc": true,
+        "event_end_utc": true
+      }
+    },
+    {
+      "capture_id": "CTU-IoT-Malware-Capture-21-1",
+      "checks": {
+        "exported_flows": true,
+        "flow_status_counts": true,
+        "matched_flow_class_counts": true,
+        "matched_zeek_connection_class_counts": true,
+        "matched_detailed_labels": true,
+        "event_start_utc": true,
+        "event_end_utc": true
+      }
+    },
+    {
+      "capture_id": "CTU-IoT-Malware-Capture-42-1",
+      "checks": {
+        "exported_flows": true,
+        "flow_status_counts": true,
+        "matched_flow_class_counts": true,
+        "matched_zeek_connection_class_counts": true,
+        "matched_detailed_labels": true,
+        "event_start_utc": true,
+        "event_end_utc": true
+      }
+    }
+  ],
+  "limitation": "Historical runs did not retain assignment digests; matching aggregate counts alone cannot prove per-flow identity. Fresh-process index comparison on the expanded capture separately verifies an ordered assignment digest."
+}

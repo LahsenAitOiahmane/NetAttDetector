@@ -1,18 +1,24 @@
 """Bounded IoT-23 acquisition and conservative offline Zeek/NFStream label linkage."""
 
+import hashlib
 import ipaddress
 import json
 import math
+import os
 import re
 import shutil
+import time
 import urllib.request
 from collections import Counter, defaultdict
+from contextlib import contextmanager
 from datetime import UTC, datetime
 from decimal import Decimal, InvalidOperation
 from pathlib import Path
 from urllib.parse import urlsplit
+from uuid import uuid4
 
 from netattdetector.io import sha256_file, write_json
+from netattdetector.label_index import SQLiteLabelIndex
 from netattdetector.measurement import CORE_FEATURES, SCHEMA, SETTINGS, flow_key, iter_pcap_rows
 from netattdetector.resources import ResourceMonitor
 
@@ -30,9 +36,23 @@ def configuration(config_path, capture_id):
         or config.get("join_policy") != POLICY
         or config.get("time_tolerance_ms") != 1
         or config.get("training_enabled") is not False
-        or config.get("max_audit_flows") != 100_000
+        or config.get("max_audit_flows") not in (100_000, 250_000)
     ):
         raise ValueError("Use the registered, training-disabled IoT-23 audit policy.")
+    for name, minimum, maximum in (
+        ("max_file_bytes", 1, 128 * 2**20),
+        ("max_capture_bytes", 1, 160 * 2**20),
+        ("disk_reserve_bytes", 2 * 2**30, 100 * 2**30),
+    ):
+        value = config.get(name)
+        if type(value) is not int or not minimum <= value <= maximum:
+            raise ValueError(f"Invalid registered budget: {name}.")
+    if (
+        config.get("max_pcap_bytes", 16 * 2**20) not in (16 * 2**20, 128 * 2**20)
+        or config.get("max_label_bytes", 16 * 2**20) not in (16 * 2**20, 32 * 2**20)
+        or config.get("max_label_rows", 100_000) not in (100_000, 250_000)
+    ):
+        raise ValueError("Use registered PCAP/label-size/label-row budgets.")
     if capture_id not in config["captures"] or not re.fullmatch(
         r"CTU-IoT-Malware-Capture-\d+-1", capture_id
     ):
@@ -43,7 +63,7 @@ def configuration(config_path, capture_id):
     return config, capture
 
 
-def bounded_fetch(url, target, limit, expected_sha256=None):
+def bounded_fetch(url, target, limit, expected_sha256=None, *, timeout_seconds=300):
     """Read at most limit+1 response bytes; never follow a redirect off the publisher host."""
 
     class PublisherRedirect(urllib.request.HTTPRedirectHandler):
@@ -57,24 +77,52 @@ def bounded_fetch(url, target, limit, expected_sha256=None):
     if target.exists():
         raise FileExistsError(target)
     request = urllib.request.Request(url, headers={"User-Agent": "NetAttDetector-research/0.3"})
-    with urllib.request.build_opener(PublisherRedirect()).open(request, timeout=45) as response:
-        if response.status != 200:
-            raise ValueError("Expected a complete publisher response.")
-        length = response.headers.get("Content-Length")
-        if length is not None and (not length.isdigit() or not 0 < int(length) <= limit):
-            raise ValueError("Publisher file exceeds the registered byte budget.")
-        content = response.read(limit + 1)
-        if not content or len(content) > limit or (length and len(content) != int(length)):
-            raise ValueError("Empty, truncated or over-budget publisher response.")
-    import hashlib
-
-    digest = hashlib.sha256(content).hexdigest()
-    if expected_sha256 is not None and digest != expected_sha256:
-        raise ValueError("Publisher bytes changed from the registered SHA-256.")
+    if (
+        type(limit) is not int
+        or not 0 < limit <= 128 * 2**20
+        or type(timeout_seconds) is not int
+        or not 1 <= timeout_seconds <= 1200
+    ):
+        raise ValueError("Invalid bounded download budget.")
     target.parent.mkdir(parents=True, exist_ok=True)
-    with target.open("xb") as stream:
-        stream.write(content)
-    return {"url": url, "bytes": len(content), "sha256": digest}
+    partial = target.with_name(target.name + ".partial")
+    created = False
+    deadline = time.monotonic() + timeout_seconds
+    try:
+        with urllib.request.build_opener(PublisherRedirect()).open(request, timeout=45) as response:
+            if response.status != 200:
+                raise ValueError("Expected a complete publisher response.")
+            length = response.headers.get("Content-Length")
+            if length is not None and (not length.isdigit() or not 0 < int(length) <= limit):
+                raise ValueError("Publisher file exceeds the registered byte budget.")
+            digest, total = hashlib.sha256(), 0
+            with partial.open("xb") as stream:
+                created = True
+                read_chunk = getattr(response, "read1", response.read)
+                while True:
+                    if time.monotonic() > deadline:
+                        raise TimeoutError(
+                            f"Publisher download exceeded its {timeout_seconds}-second deadline."
+                        )
+                    chunk = read_chunk(min(65536, limit + 1 - total))
+                    if not chunk:
+                        break
+                    total += len(chunk)
+                    if total > limit:
+                        raise ValueError("Over-budget publisher response.")
+                    digest.update(chunk)
+                    stream.write(chunk)
+            if not total or (length and total != int(length)):
+                raise ValueError("Empty or truncated publisher response.")
+        checksum = digest.hexdigest()
+        if expected_sha256 is not None and checksum != expected_sha256:
+            raise ValueError("Publisher bytes changed from the registered SHA-256.")
+        # Atomic creation refuses an existing destination on Windows and Linux.
+        os.link(partial, target)
+        return {"url": url, "bytes": total, "sha256": checksum}
+    finally:
+        if created:
+            partial.unlink(missing_ok=True)
 
 
 def acquire_capture(capture_id, output, config_path=CATALOG, require_pins=True):
@@ -98,9 +146,20 @@ def acquire_capture(capture_id, output, config_path=CATALOG, require_pins=True):
     output.mkdir(parents=True)
     files, total = {}, 0
     for name in names:
-        limit = min(config["max_file_bytes"], config["max_capture_bytes"] - total)
+        file_budget = (
+            config.get("max_pcap_bytes", 16 * 2**20)
+            if name == capture["pcap"]
+            else config.get("max_label_bytes", 16 * 2**20)
+            if name == "bro/conn.log.labeled"
+            else 65536
+        )
+        limit = min(config["max_file_bytes"], config["max_capture_bytes"] - total, file_budget)
         files[name] = bounded_fetch(
-            f"{BASE}{capture_id}/{name}", output / name, limit, capture["sha256"].get(name)
+            f"{BASE}{capture_id}/{name}",
+            output / name,
+            limit,
+            capture["sha256"].get(name),
+            timeout_seconds=config.get("download_timeout_seconds", 300),
         )
         total += files[name]["bytes"]
     receipt = {
@@ -133,12 +192,19 @@ def connection_key(src, sport, dst, dport, protocol):
     return (protocol, *sorted(endpoints))
 
 
-def read_zeek_labels(path):
+def read_zeek_labels(path, *, index=None, max_bytes=16 * 2**20, max_rows=100_000):
     """IoT-23 uses tabs plus spaces in its last three fields; no inferred binary labels."""
     path = Path(path)
-    if not 0 < path.stat().st_size <= 16 * 2**20:
-        raise ValueError("Label log must be nonempty and at most 16 MiB.")
-    columns, index, counts, uids = None, defaultdict(list), Counter(), set()
+    if (
+        max_bytes not in (16 * 2**20, 32 * 2**20)
+        or max_rows not in (100_000, 250_000)
+        or not 0 < path.stat().st_size <= max_bytes
+    ):
+        raise ValueError("Label log exceeds the registered nonempty size/row budget.")
+    columns, counts, uids = None, Counter(), set()
+    disk_index = index is not None
+    if index is None:
+        index = defaultdict(list)
     required = {
         "ts",
         "uid",
@@ -159,6 +225,11 @@ def read_zeek_labels(path):
                 if columns is not None:
                     raise ValueError("Repeated label header.")
                 columns = line.split()[1:]
+                if "det_label" in columns:
+                    if "detailed-label" in columns:
+                        raise ValueError("Ambiguous detailed-label header aliases.")
+                    columns[columns.index("det_label")] = "detailed-label"
+                    counts["header_alias:det_label"] = 1
                 if len(columns) != len(set(columns)) or not required <= set(columns):
                     raise ValueError("Unsupported label-log header.")
                 continue
@@ -168,18 +239,21 @@ def read_zeek_labels(path):
             if columns is None or len(values) != len(columns):
                 raise ValueError(f"Malformed label row at line {number}.")
             counts["rows"] += 1
-            if counts["rows"] > 100_000:
+            if counts["rows"] > max_rows:
                 raise ValueError("Label-log row limit exceeded.")
             row = dict(zip(columns, values, strict=True))
-            if row["uid"] in uids:
+            if not disk_index and row["uid"] in uids:
                 raise ValueError("Duplicate Zeek UID within a capture.")
-            uids.add(row["uid"])
+            if not disk_index:
+                uids.add(row["uid"])
             label = {"Benign": 0, "Malicious": 1}.get(row["label"])
             counts[f"coarse:{row['label']}"] += 1
             counts[f"detail:{row['detailed-label']}"] += 1
             try:
                 start = Decimal(row["ts"]) * 1000
                 duration = Decimal(row["duration"]) * 1000 if row["duration"] != "-" else None
+                if duration is None:
+                    counts[f"missing_duration:{row['label']}"] += 1
                 if (
                     not start.is_finite()
                     or start < 0
@@ -195,21 +269,25 @@ def read_zeek_labels(path):
                 row["id.resp_p"],
                 {"tcp": 6, "udp": 17}.get(row["proto"]),
             )
+            # Unknown labels and unknown durations stay in the index as blockers.
+            candidate = {
+                "uid": row["uid"],
+                "start": start,
+                "end": start + duration if duration is not None else None,
+                "label": label,
+                "detail": row["detailed-label"],
+            }
+            if disk_index:
+                index.add(key, candidate)
             if key is None:
                 counts["unsupported_protocol_rows"] += 1
                 continue
-            # Unknown labels and unknown durations stay in the index as blockers.
-            index[key].append(
-                {
-                    "uid": row["uid"],
-                    "start": start,
-                    "end": start + duration if duration is not None else None,
-                    "label": label,
-                    "detail": row["detailed-label"],
-                }
-            )
+            if not disk_index:
+                index[key].append(candidate)
     if columns is None or not counts["rows"]:
         raise ValueError("No label records found.")
+    if disk_index:
+        index.finish()
     return index, dict(counts)
 
 
@@ -231,7 +309,12 @@ def match_flow(flow, index):
     # Decimal preserves publisher timestamps; only one registered millisecond of quantization slack.
     start, end, slack = Decimal(str(start)), Decimal(str(end)), Decimal(1)
     candidates = []
-    for row in index.get(key, []):
+    overlaps = (
+        index.overlapping(key, start, end, slack)
+        if isinstance(index, SQLiteLabelIndex)
+        else index.get(key, [])
+    )
+    for row in overlaps:
         # An unknown end can span later same-tuple flows; exclude it only when it starts after this flow.
         if row["start"] <= end + slack and (row["end"] is None or row["end"] >= start - slack):
             candidates.append(row)
@@ -284,14 +367,20 @@ def audit_capture_labels(export_path, capture_dir, output, config_path=CATALOG):
     return result
 
 
-def summarize_flows(flows, capture_dir, config_path, config, receipt):
+def summarize_flows(flows, capture_dir, config_path, config, receipt, *, parsed_labels=None):
     capture_dir = Path(capture_dir)
-    index, log_counts = read_zeek_labels(capture_dir / "bro/conn.log.labeled")
+    index, log_counts = (
+        parsed_labels
+        if parsed_labels is not None
+        else read_zeek_labels(capture_dir / "bro/conn.log.labeled")
+    )
     statuses, classes, details, matched_uids = Counter(), Counter(), Counter(), defaultdict(set)
+    detailed_uids = defaultdict(set)
     first, last, count, identities = math.inf, -math.inf, 0, set()
+    assignment_digest = hashlib.sha256()
     for flow in flows:
         count += 1
-        if count >= 100_000:
+        if count >= config["max_audit_flows"]:
             raise ValueError(
                 "Streaming audit flow limit reached; completeness cannot be established."
             )
@@ -300,6 +389,22 @@ def summarize_flows(flows, capture_dir, config_path, config, receipt):
             raise ValueError("Duplicate exported flow identity.")
         identities.add(identity)
         status, label = match_flow(flow, index)
+        assignment_digest.update(
+            (
+                json.dumps(
+                    [
+                        identity,
+                        status,
+                        label["uid"] if label else None,
+                        label["label"] if label else None,
+                        label["detail"] if label else None,
+                    ],
+                    separators=(",", ":"),
+                    allow_nan=False,
+                )
+                + "\n"
+            ).encode()
+        )
         statuses[status] += 1
         first = min(first, flow["bidirectional_first_seen_ms"])
         last = max(last, flow["bidirectional_last_seen_ms"])
@@ -307,6 +412,7 @@ def summarize_flows(flows, capture_dir, config_path, config, receipt):
             classes[str(label["label"])] += 1
             details[label["detail"]] += 1
             matched_uids[str(label["label"])].add(label["uid"])
+            detailed_uids[label["detail"]].add(label["uid"])
     if not count:
         raise ValueError("No supported flows were exported.")
     return {
@@ -317,12 +423,31 @@ def summarize_flows(flows, capture_dir, config_path, config, receipt):
         "receipt_sha256": sha256_file(capture_dir / "receipt.json"),
         "input_files": receipt["files"],
         "exported_flows": count,
+        "ordered_assignment_sha256": assignment_digest.hexdigest(),
         "flow_status_counts": dict(statuses),
         "matched_flow_class_counts": dict(classes),
         "matched_zeek_connection_class_counts": {
             key: len(value) for key, value in matched_uids.items()
         },
+        "connection_support_screen": {
+            "minimum_per_class": 25,
+            "both_classes_supported": min(len(matched_uids["0"]), len(matched_uids["1"])) >= 25,
+            "scope": "distinct capture-scoped Zeek UIDs, not independent events or a training authorization",
+        },
         "matched_detailed_labels": dict(details),
+        "matched_connections_by_detail": {
+            detail: len(uids) for detail, uids in detailed_uids.items()
+        },
+        "connection_coverage_by_detail": {
+            name.removeprefix("detail:"): {
+                "publisher_connections": total,
+                "candidate_matched_connections": len(
+                    detailed_uids.get(name.removeprefix("detail:"), set())
+                ),
+            }
+            for name, total in log_counts.items()
+            if name.startswith("detail:")
+        },
         "label_log_counts": log_counts,
         "event_start_utc": datetime.fromtimestamp(first / 1000, UTC).isoformat(),
         "event_end_utc": datetime.fromtimestamp(last / 1000, UTC).isoformat(),
@@ -337,19 +462,93 @@ def summarize_flows(flows, capture_dir, config_path, config, receipt):
     }
 
 
-def audit_pcap_labels(capture_dir, output, config_path=CATALOG):
+@contextmanager
+def indexed_labels(capture_dir, config, backend="sqlite"):
+    if backend == "memory":
+        parsed = read_zeek_labels(
+            Path(capture_dir) / "bro/conn.log.labeled",
+            max_bytes=config.get("max_label_bytes", 16 * 2**20),
+            max_rows=config.get("max_label_rows", 100_000),
+        )
+        yield parsed, 0
+        return
+    if backend != "sqlite":
+        raise ValueError("Unknown label-index backend.")
+    index_path = Path(capture_dir) / f".label-index-{uuid4().hex}.sqlite"
+    index = SQLiteLabelIndex(index_path)
+    try:
+        parsed = read_zeek_labels(
+            Path(capture_dir) / "bro/conn.log.labeled",
+            index=index,
+            max_bytes=config.get("max_label_bytes", 16 * 2**20),
+            max_rows=config.get("max_label_rows", 100_000),
+        )
+        yield parsed, index_path.stat().st_size
+    finally:
+        index.close()
+        index_path.unlink(missing_ok=True)
+
+
+def inspect_capture_labels(capture_dir, output, config_path=CATALOG):
+    """Inspect pinned label metadata on Windows or Linux without a capture driver."""
+    if Path(output).exists():
+        raise FileExistsError(output)
+    config, _, receipt = verified_inputs(capture_dir, config_path)
+    with (
+        ResourceMonitor() as resources,
+        indexed_labels(capture_dir, config) as (parsed, index_bytes),
+    ):
+        counts = parsed[1]
+    result = {
+        "source_id": "iot23",
+        "capture_id": receipt["capture_id"],
+        "config_sha256": sha256_file(config_path),
+        "input_files": receipt["files"],
+        "label_log_counts": counts,
+        "index_file_bytes": index_bytes,
+        "resources": {
+            "wall_seconds": resources.elapsed,
+            "sampled_peak_process_rss_mib": resources.peak / 2**20,
+        },
+        "training_authorized": False,
+        "scope": "Pinned label-log statistics and disk-index validation only; no flow export, matched labels or detection scores.",
+    }
+    write_json(output, result)
+    return result
+
+
+def audit_pcap_labels(capture_dir, output, config_path=CATALOG, *, index_backend="sqlite"):
     """Streaming development audit; rows are never accumulated or written to output."""
     if Path(output).exists():
         raise FileExistsError(output)
     config, capture, receipt = verified_inputs(capture_dir, config_path)
     pcap = Path(capture_dir) / capture["pcap"]
     # The fixture exporter retains its 10k materialization limit. This distinct audit
-    # consumes at most 100k flows one by one, while retaining only keys/UIDs/counts.
-    with ResourceMonitor(include_children=True) as resources:
+    # consumes the profile's bounded flow count, retaining only keys/UIDs/counts.
+    with (
+        ResourceMonitor(include_children=True) as resources,
+        indexed_labels(capture_dir, config, index_backend) as (parsed, index_bytes),
+    ):
         result = summarize_flows(
-            iter_pcap_rows(pcap, max_nflows=100_000), capture_dir, config_path, config, receipt
+            iter_pcap_rows(
+                pcap,
+                max_nflows=config["max_audit_flows"],
+                max_pcap_bytes=config.get("max_pcap_bytes", 16 * 2**20),
+            ),
+            capture_dir,
+            config_path,
+            config,
+            receipt,
+            parsed_labels=parsed,
         )
-    result["export_settings"] = {**SETTINGS, "max_nflows": 100_000}
+    result["export_settings"] = {**SETTINGS, "max_nflows": config["max_audit_flows"]}
+    result["label_index"] = {
+        "backend": index_backend,
+        "cache_kib": 8192 if index_backend == "sqlite" else None,
+        "file_bytes": index_bytes,
+        "max_file_bytes": 512 * 2**20 if index_backend == "sqlite" else 0,
+        "exact_time_unit": "nanoseconds" if index_backend == "sqlite" else "decimal_milliseconds",
+    }
     result["schema"] = SCHEMA
     result["exporter_version"] = "6.6.0"
     result["resources"] = {

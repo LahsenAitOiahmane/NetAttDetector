@@ -35,6 +35,8 @@ corrected caches, frozen models and holdout receipts under ignored local directo
 models, caches, credentials and local output folders. Curated synthetic capture/CSV fixtures
 are permitted only under `tests/fixtures/`. Reviewed JSON evidence and report PNGs are tracked.
 An ignore rule does not untrack a previously committed file; cleanup explicitly removed them.
+SQLite/database files, SQLite journals and download partials are also ignored and rejected by
+the tracked-file hygiene check; private label indexes never belong in reviewed artifacts.
 Do not add a new output directory without updating this policy and the hygiene check.
 
 `.gitattributes` fixes text checkouts to LF across platforms and treats capture/image/model
