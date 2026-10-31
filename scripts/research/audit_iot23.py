@@ -4,9 +4,8 @@ import argparse
 import json
 from pathlib import Path
 
-from netattdetector.capture_labels import CATALOG, acquire_capture, audit_capture_labels
+from netattdetector.capture_labels import CATALOG, acquire_capture, audit_pcap_labels
 from netattdetector.io import sha256_file, write_json
-from netattdetector.measurement import export_pcap
 
 
 def run(output, data_root, record_first=False):
@@ -23,20 +22,16 @@ def run(output, data_root, record_first=False):
     frozen_config = output / "inputs-frozen.json"
     write_json(frozen_config, config)
     records = []
-    for capture_id, capture in config["captures"].items():
+    for capture_id in config["captures"]:
         capture_dir = data_root / capture_id
-        export_path = capture_dir / "export.json"
-        exported = export_pcap(capture_dir / capture["pcap"], export_path)
-        result = audit_capture_labels(
-            export_path, capture_dir, output / f"{capture_id}-audit.json", frozen_config
-        )
+        result = audit_pcap_labels(capture_dir, output / f"{capture_id}-audit.json", frozen_config)
         records.append(
             {
                 "capture_id": capture_id,
                 "flows": result["exported_flows"],
                 "statuses": result["flow_status_counts"],
                 "matched_zeek_connections": result["matched_zeek_connection_class_counts"],
-                "resources": exported["resources"],
+                "resources": result["resources"],
             }
         )
     summary = {

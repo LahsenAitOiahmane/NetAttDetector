@@ -4,7 +4,6 @@ import hashlib
 import importlib.metadata
 import platform
 import subprocess
-import threading
 import time
 from dataclasses import asdict, dataclass
 from datetime import UTC, datetime
@@ -13,7 +12,6 @@ from pathlib import Path
 import joblib
 import numpy as np
 import pandas as pd
-import psutil
 from sklearn.dummy import DummyClassifier
 from sklearn.ensemble import ExtraTreesClassifier, HistGradientBoostingClassifier
 from sklearn.feature_selection import VarianceThreshold
@@ -28,6 +26,7 @@ from netattdetector.data import FEATURES, SCHEMA_VERSION, describe_sample, load_
 from netattdetector.evaluation import attack_slices, choose_threshold, metrics
 from netattdetector.hardware import inventory
 from netattdetector.io import write_json
+from netattdetector.resources import ResourceMonitor as ResourceMonitor
 
 
 @dataclass
@@ -62,30 +61,6 @@ class TrainConfig:
             raise ValueError("Choose models from sgd, hist, extra_trees, xgboost.")
         if min(self.trees, self.max_depth, self.min_samples_leaf, self.boosting_iterations) < 1:
             raise ValueError("Estimator sizes must be positive.")
-
-
-class ResourceMonitor:
-    """Sample this process's RSS; not an OS-wide or exact peak-memory measurement."""
-
-    def __enter__(self):
-        self.process = psutil.Process()
-        self.peak = self.process.memory_info().rss
-        self.start = time.perf_counter()
-        self.done = threading.Event()
-
-        def sample():
-            while not self.done.wait(0.05):
-                self.peak = max(self.peak, self.process.memory_info().rss)
-
-        self.worker = threading.Thread(target=sample, daemon=True)
-        self.worker.start()
-        return self
-
-    def __exit__(self, *args):
-        self.peak = max(self.peak, self.process.memory_info().rss)
-        self.done.set()
-        self.worker.join()
-        self.elapsed = time.perf_counter() - self.start
 
 
 def split_data(frame, config):

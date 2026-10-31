@@ -13,7 +13,8 @@ from pathlib import Path
 from urllib.parse import urlsplit
 
 from netattdetector.io import sha256_file, write_json
-from netattdetector.measurement import CORE_FEATURES, SCHEMA, SETTINGS
+from netattdetector.measurement import CORE_FEATURES, SCHEMA, SETTINGS, flow_key, iter_pcap_rows
+from netattdetector.resources import ResourceMonitor
 
 CATALOG = Path("configs/data/iot23-development.json")
 BASE = "https://mcfp.felk.cvut.cz/publicDatasets/IoT-23-Dataset/IndividualScenarios/"
@@ -29,6 +30,7 @@ def configuration(config_path, capture_id):
         or config.get("join_policy") != POLICY
         or config.get("time_tolerance_ms") != 1
         or config.get("training_enabled") is not False
+        or config.get("max_audit_flows") != 100_000
     ):
         raise ValueError("Use the registered, training-disabled IoT-23 audit policy.")
     if capture_id not in config["captures"] or not re.fullmatch(
@@ -245,9 +247,7 @@ def match_flow(flow, index):
     return "matched", row
 
 
-def audit_capture_labels(export_path, capture_dir, output, config_path=CATALOG):
-    if Path(output).exists():
-        raise FileExistsError(output)
+def verified_inputs(capture_dir, config_path):
     capture_dir = Path(capture_dir)
     receipt = json.loads((capture_dir / "receipt.json").read_text(encoding="utf-8"))
     config, capture = configuration(config_path, receipt["capture_id"])
@@ -257,6 +257,13 @@ def audit_capture_labels(export_path, capture_dir, output, config_path=CATALOG):
         digest = sha256_file(capture_dir / name)
         if digest != receipt["files"][name]["sha256"] or digest != capture["sha256"].get(name):
             raise ValueError("Capture/label bytes differ from the pinned development inputs.")
+    return config, capture, receipt
+
+
+def audit_capture_labels(export_path, capture_dir, output, config_path=CATALOG):
+    if Path(output).exists():
+        raise FileExistsError(output)
+    config, capture, receipt = verified_inputs(capture_dir, config_path)
     if Path(export_path).stat().st_size > 16 * 2**20:
         raise ValueError("Export JSON exceeds the audit byte limit.")
     exported = json.loads(Path(export_path).read_text(encoding="utf-8"))
@@ -270,31 +277,46 @@ def audit_capture_labels(export_path, capture_dir, output, config_path=CATALOG):
         raise ValueError("Export contract/settings/input identity mismatch.")
     if not 0 < len(exported["rows"]) < SETTINGS["max_nflows"]:
         raise ValueError("Export must contain a bounded complete set of flows.")
+    result = summarize_flows(exported["rows"], capture_dir, config_path, config, receipt)
+    result["export_sha256"] = sha256_file(export_path)
+    result["export_settings"] = SETTINGS
+    write_json(output, result)
+    return result
+
+
+def summarize_flows(flows, capture_dir, config_path, config, receipt):
+    capture_dir = Path(capture_dir)
     index, log_counts = read_zeek_labels(capture_dir / "bro/conn.log.labeled")
-    statuses, classes, details, matched_uids, times = (
-        Counter(),
-        Counter(),
-        Counter(),
-        defaultdict(set),
-        [],
-    )
-    for flow in exported["rows"]:
+    statuses, classes, details, matched_uids = Counter(), Counter(), Counter(), defaultdict(set)
+    first, last, count, identities = math.inf, -math.inf, 0, set()
+    for flow in flows:
+        count += 1
+        if count >= 100_000:
+            raise ValueError(
+                "Streaming audit flow limit reached; completeness cannot be established."
+            )
+        identity = flow_key(flow)
+        if identity in identities:
+            raise ValueError("Duplicate exported flow identity.")
+        identities.add(identity)
         status, label = match_flow(flow, index)
         statuses[status] += 1
-        times.extend((flow["bidirectional_first_seen_ms"], flow["bidirectional_last_seen_ms"]))
+        first = min(first, flow["bidirectional_first_seen_ms"])
+        last = max(last, flow["bidirectional_last_seen_ms"])
         if label is not None:
             classes[str(label["label"])] += 1
             details[label["detail"]] += 1
             matched_uids[str(label["label"])].add(label["uid"])
-    result = {
+    if not count:
+        raise ValueError("No supported flows were exported.")
+    return {
         "source_id": "iot23",
         "capture_id": receipt["capture_id"],
         "policy": POLICY,
         "config_sha256": sha256_file(config_path),
-        "export_sha256": sha256_file(export_path),
         "receipt_sha256": sha256_file(capture_dir / "receipt.json"),
         "input_files": receipt["files"],
-        "exported_flows": len(exported["rows"]),
+        "exported_flows": count,
         "flow_status_counts": dict(statuses),
         "matched_flow_class_counts": dict(classes),
         "matched_zeek_connection_class_counts": {
@@ -302,8 +324,8 @@ def audit_capture_labels(export_path, capture_dir, output, config_path=CATALOG):
         },
         "matched_detailed_labels": dict(details),
         "label_log_counts": log_counts,
-        "event_start_utc": datetime.fromtimestamp(min(times) / 1000, UTC).isoformat(),
-        "event_end_utc": datetime.fromtimestamp(max(times) / 1000, UTC).isoformat(),
+        "event_start_utc": datetime.fromtimestamp(first / 1000, UTC).isoformat(),
+        "event_end_utc": datetime.fromtimestamp(last / 1000, UTC).isoformat(),
         "training_authorized": False,
         "limitations": [
             "Matching is a conservative candidate linkage, not independent ground-truth verification.",
@@ -312,6 +334,29 @@ def audit_capture_labels(export_path, capture_dir, output, config_path=CATALOG):
             "Device identity and capture-held-out splits are not established by this audit.",
             config["license_note"],
         ],
+    }
+
+
+def audit_pcap_labels(capture_dir, output, config_path=CATALOG):
+    """Streaming development audit; rows are never accumulated or written to output."""
+    if Path(output).exists():
+        raise FileExistsError(output)
+    config, capture, receipt = verified_inputs(capture_dir, config_path)
+    pcap = Path(capture_dir) / capture["pcap"]
+    # The fixture exporter retains its 10k materialization limit. This distinct audit
+    # consumes at most 100k flows one by one, while retaining only keys/UIDs/counts.
+    with ResourceMonitor(include_children=True) as resources:
+        result = summarize_flows(
+            iter_pcap_rows(pcap, max_nflows=100_000), capture_dir, config_path, config, receipt
+        )
+    result["export_settings"] = {**SETTINGS, "max_nflows": 100_000}
+    result["schema"] = SCHEMA
+    result["exporter_version"] = "6.6.0"
+    result["resources"] = {
+        "wall_seconds": resources.elapsed,
+        "sampled_peak_process_rss_mib": resources.peak / 2**20,
+        "sampled_peak_process_tree_rss_sum_mib": resources.peak_tree / 2**20,
+        "measurement_scope": "50 ms samples covering label parsing, exporter imports, iteration and matching; child RSS sums may double-count shared pages; not an exact peak or hard OS memory limit",
     }
     write_json(output, result)
     return result
