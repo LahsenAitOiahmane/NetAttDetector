@@ -8,7 +8,7 @@
   "license_note": "Zenodo release metadata lists CC-BY-4.0. Individual mirror READMEs additionally request authorization; this discrepancy remains unresolved. Do not redistribute raw/derived rows or claim commercial clearance. Retain attribution and resolve terms before a public data/model release.",
   "base_url": "https://mcfp.felk.cvut.cz/publicDatasets/IoT-23-Dataset/IndividualScenarios/",
   "max_file_bytes": 134217728,
-  "max_capture_bytes": 150994944,
+  "max_capture_bytes": 167772160,
   "disk_reserve_bytes": 2147483648,
   "join_policy": "iot23-interval-v1",
   "time_tolerance_ms": 1,
@@ -23,10 +23,17 @@
       "pcap": "2018-12-21-15-50-14-192.168.1.195.pcap",
       "host_group": null,
       "sha256": {}
+    },
+    "CTU-IoT-Malware-Capture-3-1": {
+      "pcap": "2018-05-21_capture.pcap",
+      "host_group": null,
+      "sha256": {}
     }
   },
-  "max_audit_flows": 100000,
-  "selection_note": "The initial 20/21/42 audit had only 21 matched attack UIDs. Scenario 8 and 34 publisher tables list more attack connections. Scenario 3 exceeds the 16 MiB label-log cap; larger collections are excluded from this bounded sprint. Selection is adaptive development, never fresh-test evidence.",
+  "max_audit_flows": 250000,
+  "selection_note": "Adaptive development expansion after sparse 20/21/42 support. Capture 3 is included under an explicit 32 MiB label-log / 250k-row disk-index budget; captures 7/9 and whole archives remain excluded. No model selection or fresh-test claim.",
   "max_pcap_bytes": 134217728,
-  "max_label_bytes": 16777216
+  "max_label_bytes": 33554432,
+  "max_label_rows": 250000,
+  "label_index_backend": "sqlite"
 }
