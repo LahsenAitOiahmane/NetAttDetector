@@ -344,6 +344,43 @@ Linux-only cases; the later capture/index/measurement suite passed 37 and skippe
 Linux CI runs the real exporter fixtures with both streaming flow limits. No real-data model
 was fitted, and no live sensing, traffic transmission, blocking or model promotion occurred.
 
+## 31 October 2026 — Packet witnesses and native partition preparation
+
+The owner merged PR #7 into the previous sprint branch at `0aeaf35`; main contained merged
+PR #6 at `bb410b8`. Started `codex/packet-label-evidence` from the merged sprint state and
+targeted integration at main so the earlier expansion and this phase reach the primary branch.
+
+Inspected excluded log counters: 14,260 missing-duration DDoS records claim zero packets,
+while 121 claim one. Registered exact packet-witness criteria and resource bounds at `9df84d7`
+before independent packet inspection. Implemented a bounded classic-PCAP Ethernet/IPv4/IPv6
+structural reader, explicit fragment/transport/error counts, private packet/claim indexes,
+collision rejection and a paired point-candidate/baseline audit. No checksums, reassembly or
+payload contents are inspected; no interfaces are accepted or packets transmitted.
+
+Cloud run `41242568757` at `653e8d6` preserved all accepted baseline UID/class/detail matches
+and all archived aggregate/digest checks. Candidate linkage rose from 161,949 to 248,997 flows
+(87,048 additions), with 166,491 distinct matched attack and 7,254 benign UIDs. C&C covers
+14,936/14,936 publisher connections; scans 145,699/145,719; DDoS remains 114/14,394. Exact
+witnesses also exist for the 14,260 zero-counter DDoS records, all with TCP flags 0x3a and
+nonzero header-derived payload length. Kept these contradictory records excluded; did not
+invent counts/intervals. The capture contains 57,489 unsupported IPv4 fragments.
+
+Largest cloud audit: 65.63 seconds, sampled parent/child RSS sum 329.7 MiB, largest temporary
+packet index 98,136,064 bytes. Windows independently reproduced packet counts and point evidence
+without a driver or NFStream export, using at most 55.2 MiB sampled process memory. Temporary
+indexes were closed/removed; original data and prior frozen reports were retained.
+
+Added proposed capture/time partitions (May capture 3 train, July capture 8 calibration,
+December capture 34 validation) with explicit UID grouping, 300-second purging and support
+readiness checks. Device isolation remains unverified; the candidate is not promoted and no
+row-level cohort/model is created. Added the packet operations guide, measured report, saved
+aggregate evidence and a visually checked coverage figure. Primary format/semantics references
+and remaining gates are recorded in [PACKET_LABELS.md](../../reports/PACKET_LABELS.md).
+
+Full local suite: 111 passed, two Linux-only skips. The final packet-focused suite passed 22,
+including a further known-interval tail regression. Lint, formatting, deterministic fixture,
+repository hygiene and documentation links are checked. No detector was fitted or promoted.
+
 ## Outstanding work
 
 This work does not complete the production roadmap. Global audits cover the development inputs;

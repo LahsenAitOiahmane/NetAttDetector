@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "status": "proposed_capture_time_partitions_not_training_authorization",
+  "source_id": "iot23",
+  "source_config": "configs/data/iot23-expansion.json",
+  "feature_contract": "nfstream-core-v1",
+  "label_policy": "iot23-packet-point-candidate-v1",
+  "partitions": {
+    "train": "CTU-IoT-Malware-Capture-3-1",
+    "calibration": "CTU-IoT-Malware-Capture-8-1",
+    "validation": "CTU-IoT-Malware-Capture-34-1"
+  },
+  "purge_seconds": 300,
+  "minimum_distinct_connections_per_class": 25,
+  "group_unit": "source_id + capture_id + Zeek UID; all segments of a UID must stay together",
+  "device_isolation_verified": false,
+  "reserved_external_source": "cicids2017",
+  "external_test_acquired": false,
+  "training_enabled": false,
+  "note": "Capture event ranges and UID support can be checked now. Persistent device identities, candidate-label promotion, native cohort materialization and release terms remain unresolved. Do not replace the existing blocked capture plan or claim host-disjoint evaluation."
+}

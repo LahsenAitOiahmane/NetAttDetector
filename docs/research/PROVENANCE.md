@@ -39,6 +39,13 @@ support screen, but per-attack coverage is selective and device independence rem
 See the [measured expansion](../../reports/CAPTURE_EXPANSION.md); no training partition or
 untouched-source role was changed. Source roles and historical configuration hashes remain intact.
 
+The subsequent [packet-witness study](../../reports/PACKET_LABELS.md) provides a more complete
+candidate label linkage and an explicit [native dataset plan](../../configs/data/native-dataset-plan.json).
+Capture/time chronology and UID support pass; host/device independence, a materialized native
+cohort and a frozen independent test remain unavailable. The existing capture plan is still
+blocked and the new plan cannot authorize fitting. Do not interpret namespaced UID groups as
+proof that physical hosts differ across captures.
+
 ## Manifest and validation
 
 [capture_plan.json](../../configs/data/capture_plan.json) deliberately contains no invented captures.

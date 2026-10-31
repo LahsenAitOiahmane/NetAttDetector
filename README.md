@@ -43,6 +43,12 @@ sampled process-tree RSS by 43.7% in a fresh-process comparison with identical a
 Per-attack coverage reveals that DDoS linkage is still inadequate. Label timing and device/split
 provenance are the next gates before a new model experiment.
 
+The [packet-witness study](reports/PACKET_LABELS.md) now links 248,997 native flows while
+preserving every previously accepted match. Exact packet evidence improves C&C/scan label
+coverage; contradictory zero-packet DDoS records remain excluded. The proposed capture/time
+partitions pass chronology/support checks, while device isolation and native cohort preparation
+remain open. [Run the packet audit](docs/guides/PACKET_LABELS.md) on Windows or Linux.
+
 ## What changed
 
 - A versioned feature contract replaces hand-built packet placeholders.

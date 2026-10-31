@@ -65,6 +65,13 @@ The [offline measurement lab](../guides/MEASUREMENTS.md) now verifies selected n
 counters/durations on controlled fixtures. This is not a live sensor or a replacement training
 contract for existing models. `nfstream-core-v1` remains incompatible with the UQ contract.
 
+The offline label-validation path additionally uses a bounded structural PCAP reader and
+private SQLite packet/label indexes. An experimental candidate resolves missing ends only
+with exact single-packet witnesses and compares every assignment against the original rule.
+It outputs aggregate evidence, not a training cohort or detector predictions. See the
+[packet audit guide](../guides/PACKET_LABELS.md). Proposed capture/time partitions retain
+unverified device isolation and disabled training.
+
 Choose a maintained exporter after validating feature parity. UQ NetFlow fields are not a drop-in
 replacement for Zeek `conn.log`, CICFlowMeter features, or PyShark packet attributes. Either use
 the same compatible exporter/configuration as the benchmark, or build a new training dataset
