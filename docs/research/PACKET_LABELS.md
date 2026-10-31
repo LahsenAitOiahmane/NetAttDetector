@@ -41,6 +41,12 @@ counts only. Raw packets, endpoint rows, claims, label UIDs and indexes stay loc
 This phase does not authorize model fitting, change source roles, prove device independence,
 or certify a label as a true attack. Those gates still apply after a successful coverage audit.
 
+The [proposed native dataset plan](../../configs/data/native-dataset-plan.json) assigns capture
+3 to training, 8 to calibration and 34 to validation, in verified event-time order. The experiment
+checks connection support and a 300-second inter-capture purge. Device isolation stays false,
+the independent source is unacquired, and no row-level training cohort is materialized by this
+phase. The plan is explicit preparation and does not replace the blocked global capture plan.
+
 Primary format/semantics references: [PCAP format draft](https://www.ietf.org/ietf-ftp/internet-drafts/draft-ietf-opsawg-pcap-09.html),
 [Zeek connection fields](https://docs.zeek.org/en/current/scripts/base/protocols/conn/main.zeek.html),
 [NFStream API](https://www.nfstream.org/docs/api). Current exporter documentation is context;

@@ -8,6 +8,7 @@ from pathlib import Path
 from netattdetector.capture_labels import acquire_capture
 from netattdetector.io import write_json
 from netattdetector.packet_evidence import audit_packet_labels
+from netattdetector.provenance import utc_time
 
 
 def run(data_root, output):
@@ -56,6 +57,52 @@ def run(data_root, output):
         "training_authorized": False,
         "candidate_policy_promoted": False,
     }
+    plan_path = Path("configs/data/native-dataset-plan.json")
+    plan = json.loads(plan_path.read_text(encoding="utf-8"))
+    by_capture = {item["capture_id"]: item for item in records}
+    timeline = []
+    support = True
+    for split in ("train", "calibration", "validation"):
+        capture_id = plan["partitions"][split]
+        original = json.loads(
+            (
+                Path("reports/evidence/capture-expansion/expanded") / f"{capture_id}-audit.json"
+            ).read_text()
+        )
+        timeline.append(
+            {
+                "split": split,
+                "capture_id": capture_id,
+                "start_utc": original["event_start_utc"],
+                "end_utc": original["event_end_utc"],
+            }
+        )
+        counts = by_capture[capture_id]["candidate"]["matched_zeek_connection_class_counts"]
+        support = (
+            support
+            and min(counts.get("0", 0), counts.get("1", 0))
+            >= plan["minimum_distinct_connections_per_class"]
+        )
+    chronology = all(
+        utc_time(left["end_utc"]) + plan["purge_seconds"] <= utc_time(right["start_utc"])
+        for left, right in zip(timeline, timeline[1:])
+    )
+    summary["native_partition_readiness"] = {
+        "timeline": timeline,
+        "capture_time_order_and_purge_valid": chronology,
+        "connection_support_screen_met": support,
+        "device_isolation_verified": False,
+        "native_cohort_materialized": False,
+        "external_test_acquired": False,
+        "training_authorized": False,
+        "blockers": [
+            "Device identities are not verified across captures.",
+            "Point-label rule remains a candidate after this experiment.",
+            "A compatible row-level native training cohort with UID groups is not yet materialized.",
+            "Dataset mirror/release terms require resolution before a public model/data release.",
+        ],
+    }
+    write_json(output / "native-dataset-plan.json", plan)
     write_json(output / "summary.json", summary)
     print(json.dumps(summary, indent=2))
     if not summary["all_acceptance_screens_met"]:

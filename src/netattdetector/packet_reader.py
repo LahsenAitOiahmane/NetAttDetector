@@ -64,14 +64,17 @@ def decode_frame(frame):
         "ip_bytes": length,
     }
     if protocol == 6:
+        result["tcp_flags"] = transport[13] if len(transport) >= 14 else None
         if len(transport) < 20 or not 20 <= (transport[12] >> 4) * 4 <= len(transport):
             result["status"] = "invalid_tcp_header_length"
         else:
             result["status"] = "decoded_tcp_udp"
+            result["transport_payload_bytes"] = len(transport) - (transport[12] >> 4) * 4
     elif len(transport) < 8 or not 8 <= int.from_bytes(transport[4:6], "big") <= len(transport):
         result["status"] = "invalid_udp_length"
     else:
         result["status"] = "decoded_tcp_udp"
+        result["transport_payload_bytes"] = int.from_bytes(transport[4:6], "big") - 8
     return result
 
 

@@ -56,7 +56,7 @@ class PacketIndex:
         self.db.execute("PRAGMA temp_store=FILE")
         self.db.execute("PRAGMA max_page_count=131072")
         self.db.execute(
-            "CREATE TABLE packets(id INTEGER PRIMARY KEY, tuple_key TEXT, ts INTEGER, source TEXT, ip_bytes INTEGER, status TEXT)"
+            "CREATE TABLE packets(id INTEGER PRIMARY KEY, tuple_key TEXT, ts INTEGER, source TEXT, ip_bytes INTEGER, status TEXT, tcp_flags INTEGER, payload_bytes INTEGER)"
         )
         self.db.execute(
             "CREATE TABLE claims(uid TEXT PRIMARY KEY, packet_id INTEGER, ts INTEGER, source TEXT, ip_bytes INTEGER, missing INTEGER, detail TEXT)"
@@ -76,7 +76,7 @@ class PacketIndex:
                 packet["protocol"],
             )
             self.db.execute(
-                "INSERT INTO packets VALUES (?, ?, ?, ?, ?, ?)",
+                "INSERT INTO packets VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
                 (
                     packet["packet_id"],
                     json.dumps(key, separators=(",", ":")),
@@ -84,6 +84,8 @@ class PacketIndex:
                     endpoint(packet["src_ip"], packet["src_port"]),
                     packet["ip_bytes"],
                     packet["status"],
+                    packet.get("tcp_flags"),
+                    packet.get("transport_payload_bytes"),
                 ),
             )
         self.db.execute("CREATE INDEX packet_lookup ON packets(tuple_key, ts)")
@@ -91,7 +93,11 @@ class PacketIndex:
         return dict(counts)
 
     def establish_points(self, path):
-        statuses, witnesses = defaultdict(Counter), defaultdict(Counter)
+        statuses, witnesses, zero_packet_headers = (
+            defaultdict(Counter),
+            defaultdict(Counter),
+            defaultdict(Counter),
+        )
         for row in label_rows(path):
             missing, detail = row["duration"] == "-", row["detailed-label"]
             counters = [
@@ -116,7 +122,7 @@ class PacketIndex:
                 continue
             timestamp = nanoseconds(Decimal(row["ts"]) * 1000)
             packets = self.db.execute(
-                "SELECT id, ts, source, ip_bytes, status FROM packets WHERE tuple_key=? AND ts=? LIMIT 2",
+                "SELECT id, ts, source, ip_bytes, status, tcp_flags, payload_bytes FROM packets WHERE tuple_key=? AND ts=? LIMIT 2",
                 (json.dumps(key, separators=(",", ":")), timestamp),
             ).fetchall()
             witness = (
@@ -133,6 +139,19 @@ class PacketIndex:
                 reason = "unknown_packet_or_byte_counts"
             elif sum(counts[:2]) == 0:
                 reason = "zero_packet_claim"
+                if missing and len(packets) == 1:
+                    flags, payload = packets[0][5], packets[0][6]
+                    flags_text = f"0x{flags:02x}" if flags is not None else "unavailable"
+                    payload_text = (
+                        "none"
+                        if payload == 0
+                        else "present"
+                        if payload is not None
+                        else "unavailable"
+                    )
+                    zero_packet_headers[detail][
+                        f"tcp_flags={flags_text}; payload={payload_text}"
+                    ] += 1
             elif sum(counts[:2]) != 1:
                 reason = "multi_packet_claim"
             elif len(packets) != 1:
@@ -172,6 +191,9 @@ class PacketIndex:
         proven = dict(self.db.execute("SELECT detail, COUNT(*) FROM points GROUP BY detail"))
         self.db.commit()
         return {
+            "zero_packet_claim_header_counts_by_detail": {
+                key: dict(value) for key, value in zero_packet_headers.items()
+            },
             "proven_points_by_detail": proven,
             "excluded_missing_records_by_detail": {
                 key: dict(value) for key, value in statuses.items()

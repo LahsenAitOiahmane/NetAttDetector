@@ -154,6 +154,8 @@ def test_packet_backed_point_is_not_blind_zero_fill(tmp_path):
     "case,reason",
     [
         ("zero", "zero_packet_claim"),
+        ("multi", "multi_packet_claim"),
+        ("unknown_bytes", "unknown_packet_or_byte_counts"),
         ("bytes", "direction_or_ip_bytes_mismatch"),
         ("timestamp", "no_exact_packet"),
         ("duplicate_packet", "multiple_exact_packets"),
@@ -167,6 +169,10 @@ def test_uncertain_packet_claims_stay_unproven(tmp_path, case, reason):
     changes = (
         {"orig_pkts": "0", "orig_ip_bytes": "0"}
         if case == "zero"
+        else {"orig_pkts": "2", "orig_ip_bytes": "64"}
+        if case == "multi"
+        else {"orig_ip_bytes": "-"}
+        if case == "unknown_bytes"
         else {"orig_ip_bytes": "46"}
         if case == "bytes"
         else {"ts": "1600000001.123457"}
@@ -185,3 +191,34 @@ def test_uncertain_packet_claims_stay_unproven(tmp_path, case, reason):
         assert report["excluded_missing_records_by_detail"]["DDoS"][reason] >= 1
     finally:
         index.close()
+
+
+def test_response_direction_and_unknown_binary_label_remain_explicit(tmp_path):
+    pcap = write_pcap(tmp_path / "known.pcap", [packet()])
+    labels = log(
+        tmp_path / "labels.log",
+        [
+            {
+                "id.orig_h": "198.51.100.1",
+                "id.orig_p": "53",
+                "id.resp_h": "192.0.2.1",
+                "id.resp_p": "1234",
+                "orig_pkts": "0",
+                "resp_pkts": "1",
+                "orig_ip_bytes": "0",
+                "resp_ip_bytes": "32",
+                "label": "Unknown",
+            }
+        ],
+    )
+    packets = PacketIndex(tmp_path / "packets.sqlite")
+    base = SQLiteLabelIndex(tmp_path / "labels.sqlite")
+    try:
+        packets.build(pcap)
+        assert packets.establish_points(labels)["proven_points_by_detail"] == {"DDoS": 1}
+        read_zeek_labels(labels, index=base)
+        status, row = candidate_match(flow(), PointLabels(base, packets))
+        assert status == "unknown_label_or_duration" and row is None
+    finally:
+        base.close()
+        packets.close()
