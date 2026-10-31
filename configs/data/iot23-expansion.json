@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "source_id": "iot23",
+  "registered_date": "2026-10-31",
+  "purpose": "Development expansion registered before capture inspection. Select full captures 8 and 34 using publisher file sizes/class metadata; measure support, label coverage and resources before any training decision.",
+  "publisher": "https://www.stratosphereips.org/datasets-iot23",
+  "release": "https://doi.org/10.5281/zenodo.4743746",
+  "license_note": "Zenodo release metadata lists CC-BY-4.0. Individual mirror READMEs additionally request authorization; this discrepancy remains unresolved. Do not redistribute raw/derived rows or claim commercial clearance. Retain attribution and resolve terms before a public data/model release.",
+  "base_url": "https://mcfp.felk.cvut.cz/publicDatasets/IoT-23-Dataset/IndividualScenarios/",
+  "max_file_bytes": 134217728,
+  "max_capture_bytes": 150994944,
+  "disk_reserve_bytes": 2147483648,
+  "join_policy": "iot23-interval-v1",
+  "time_tolerance_ms": 1,
+  "training_enabled": false,
+  "captures": {
+    "CTU-IoT-Malware-Capture-8-1": {
+      "pcap": "2018-07-31-15-15-09-192.168.100.113.pcap",
+      "host_group": null,
+      "sha256": {}
+    },
+    "CTU-IoT-Malware-Capture-34-1": {
+      "pcap": "2018-12-21-15-50-14-192.168.1.195.pcap",
+      "host_group": null,
+      "sha256": {}
+    }
+  },
+  "max_audit_flows": 100000,
+  "selection_note": "The initial 20/21/42 audit had only 21 matched attack UIDs. Scenario 8 and 34 publisher tables list more attack connections. Scenario 3 exceeds the 16 MiB label-log cap; larger collections are excluded from this bounded sprint. Selection is adaptive development, never fresh-test evidence.",
+  "max_pcap_bytes": 134217728,
+  "max_label_bytes": 16777216
+}
