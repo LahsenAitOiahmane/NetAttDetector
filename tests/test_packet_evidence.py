@@ -222,3 +222,22 @@ def test_response_direction_and_unknown_binary_label_remain_explicit(tmp_path):
     finally:
         base.close()
         packets.close()
+
+
+def test_known_interval_is_not_extended_to_cover_a_packet_tail(tmp_path):
+    labels = log(tmp_path / "labels.log", [{"duration": "0.001"}])
+    pcap = write_pcap(tmp_path / "known.pcap", [packet()])
+    packets = PacketIndex(tmp_path / "packets.sqlite")
+    base = SQLiteLabelIndex(tmp_path / "labels.sqlite")
+    try:
+        packets.build(pcap)
+        assert not packets.establish_points(labels)["proven_points_by_detail"]
+        read_zeek_labels(labels, index=base)
+        actual = flow()
+        actual["bidirectional_last_seen_ms"] += 10
+        actual["bidirectional_duration_ms"] = 10
+        assert match_flow(actual, base) == ("partial_interval", None)
+        assert candidate_match(actual, PointLabels(base, packets)) == ("partial_interval", None)
+    finally:
+        base.close()
+        packets.close()

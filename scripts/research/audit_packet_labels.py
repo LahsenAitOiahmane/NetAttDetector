@@ -3,6 +3,7 @@
 import argparse
 import json
 import subprocess
+from itertools import pairwise
 from pathlib import Path
 
 from netattdetector.capture_labels import acquire_capture
@@ -85,7 +86,7 @@ def run(data_root, output):
         )
     chronology = all(
         utc_time(left["end_utc"]) + plan["purge_seconds"] <= utc_time(right["start_utc"])
-        for left, right in zip(timeline, timeline[1:])
+        for left, right in pairwise(timeline)
     )
     summary["native_partition_readiness"] = {
         "timeline": timeline,
