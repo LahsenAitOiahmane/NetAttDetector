@@ -2,7 +2,7 @@
   "schema_version": 1,
   "source_id": "iot23",
   "registered_date": "2026-10-31",
-  "purpose": "Development expansion registered before capture inspection. Select full captures 8 and 34 using publisher file sizes/class metadata; measure support, label coverage and resources before any training decision.",
+  "purpose": "Development expansion of full captures 8, 34 and 3, registered before inspection; audit support, label coverage and resources before any training decision.",
   "publisher": "https://www.stratosphereips.org/datasets-iot23",
   "release": "https://doi.org/10.5281/zenodo.4743746",
   "license_note": "Zenodo release metadata lists CC-BY-4.0. Individual mirror READMEs additionally request authorization; this discrepancy remains unresolved. Do not redistribute raw/derived rows or claim commercial clearance. Retain attribution and resolve terms before a public data/model release.",
@@ -47,5 +47,6 @@
   "max_pcap_bytes": 134217728,
   "max_label_bytes": 33554432,
   "max_label_rows": 250000,
-  "label_index_backend": "sqlite"
+  "label_index_backend": "sqlite",
+  "download_timeout_seconds": 1200
 }

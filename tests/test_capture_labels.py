@@ -223,6 +223,11 @@ def test_stream_counts_separate_flow_support_from_connection_support(tmp_path):
     assert result["flow_status_counts"] == {"matched": 2, "unmatched": 1}
     assert result["matched_flow_class_counts"] == {"1": 2}
     assert result["matched_zeek_connection_class_counts"] == {"1": 1}
+    assert result["matched_connections_by_detail"] == {"C&C": 1}
+    assert result["connection_coverage_by_detail"]["C&C"] == {
+        "publisher_connections": 1,
+        "candidate_matched_connections": 1,
+    }
     assert not result["training_authorized"]
     with pytest.raises(ValueError, match="Duplicate exported"):
         summarize_flows(iter([flow(), flow()]), root, config_path, config, receipt)

@@ -62,7 +62,7 @@ def configuration(config_path, capture_id):
     return config, capture
 
 
-def bounded_fetch(url, target, limit, expected_sha256=None):
+def bounded_fetch(url, target, limit, expected_sha256=None, *, timeout_seconds=300):
     """Read at most limit+1 response bytes; never follow a redirect off the publisher host."""
 
     class PublisherRedirect(urllib.request.HTTPRedirectHandler):
@@ -76,12 +76,17 @@ def bounded_fetch(url, target, limit, expected_sha256=None):
     if target.exists():
         raise FileExistsError(target)
     request = urllib.request.Request(url, headers={"User-Agent": "NetAttDetector-research/0.3"})
-    if type(limit) is not int or not 0 < limit <= 128 * 2**20:
+    if (
+        type(limit) is not int
+        or not 0 < limit <= 128 * 2**20
+        or type(timeout_seconds) is not int
+        or not 1 <= timeout_seconds <= 1200
+    ):
         raise ValueError("Invalid bounded download budget.")
     target.parent.mkdir(parents=True, exist_ok=True)
     partial = target.with_name(target.name + ".partial")
     created = False
-    deadline = time.monotonic() + 300
+    deadline = time.monotonic() + timeout_seconds
     try:
         with urllib.request.build_opener(PublisherRedirect()).open(request, timeout=45) as response:
             if response.status != 200:
@@ -95,7 +100,9 @@ def bounded_fetch(url, target, limit, expected_sha256=None):
                 read_chunk = getattr(response, "read1", response.read)
                 while True:
                     if time.monotonic() > deadline:
-                        raise TimeoutError("Publisher download exceeded the five-minute deadline.")
+                        raise TimeoutError(
+                            f"Publisher download exceeded its {timeout_seconds}-second deadline."
+                        )
                     chunk = read_chunk(min(65536, limit + 1 - total))
                     if not chunk:
                         break
@@ -147,7 +154,11 @@ def acquire_capture(capture_id, output, config_path=CATALOG, require_pins=True):
         )
         limit = min(config["max_file_bytes"], config["max_capture_bytes"] - total, file_budget)
         files[name] = bounded_fetch(
-            f"{BASE}{capture_id}/{name}", output / name, limit, capture["sha256"].get(name)
+            f"{BASE}{capture_id}/{name}",
+            output / name,
+            limit,
+            capture["sha256"].get(name),
+            timeout_seconds=config.get("download_timeout_seconds", 300),
         )
         total += files[name]["bytes"]
     receipt = {
@@ -363,6 +374,7 @@ def summarize_flows(flows, capture_dir, config_path, config, receipt, *, parsed_
         else read_zeek_labels(capture_dir / "bro/conn.log.labeled")
     )
     statuses, classes, details, matched_uids = Counter(), Counter(), Counter(), defaultdict(set)
+    detailed_uids = defaultdict(set)
     first, last, count, identities = math.inf, -math.inf, 0, set()
     for flow in flows:
         count += 1
@@ -382,6 +394,7 @@ def summarize_flows(flows, capture_dir, config_path, config, receipt, *, parsed_
             classes[str(label["label"])] += 1
             details[label["detail"]] += 1
             matched_uids[str(label["label"])].add(label["uid"])
+            detailed_uids[label["detail"]].add(label["uid"])
     if not count:
         raise ValueError("No supported flows were exported.")
     return {
@@ -403,6 +416,19 @@ def summarize_flows(flows, capture_dir, config_path, config, receipt, *, parsed_
             "scope": "distinct capture-scoped Zeek UIDs, not independent events or a training authorization",
         },
         "matched_detailed_labels": dict(details),
+        "matched_connections_by_detail": {
+            detail: len(uids) for detail, uids in detailed_uids.items()
+        },
+        "connection_coverage_by_detail": {
+            name.removeprefix("detail:"): {
+                "publisher_connections": total,
+                "candidate_matched_connections": len(
+                    detailed_uids.get(name.removeprefix("detail:"), set())
+                ),
+            }
+            for name, total in log_counts.items()
+            if name.startswith("detail:")
+        },
         "label_log_counts": log_counts,
         "event_start_utc": datetime.fromtimestamp(first / 1000, UTC).isoformat(),
         "event_end_utc": datetime.fromtimestamp(last / 1000, UTC).isoformat(),

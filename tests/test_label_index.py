@@ -102,3 +102,24 @@ def test_large_download_is_chunked_and_hash_verified(tmp_path, monkeypatch):
     result = bounded_fetch("https://mcfp.felk.cvut.cz/test.pcap", target, len(content), digest)
     assert target.read_bytes() == content and result["sha256"] == digest
     assert len(read_sizes) >= 4 and not target.with_name(target.name + ".partial").exists()
+
+
+def test_download_deadline_removes_only_its_own_partial(tmp_path, monkeypatch):
+    class Response(io.BytesIO):
+        status = 200
+        headers = {"Content-Length": "3"}
+
+    class Opener:
+        def open(self, request, timeout):
+            return Response(b"abc")
+
+    ticks = iter([0, 0, 301])
+    monkeypatch.setattr("urllib.request.build_opener", lambda *args: Opener())
+    monkeypatch.setattr("netattdetector.capture_labels.time.monotonic", lambda: next(ticks))
+    target = tmp_path / "capture.pcap"
+    unrelated = tmp_path / "another.partial"
+    unrelated.write_text("retained")
+    with pytest.raises(TimeoutError, match="300-second"):
+        bounded_fetch("https://mcfp.felk.cvut.cz/test.pcap", target, 3)
+    assert not target.exists() and not target.with_name(target.name + ".partial").exists()
+    assert unrelated.read_text() == "retained"
