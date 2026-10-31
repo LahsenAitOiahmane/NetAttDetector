@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "source_id": "iot23",
+  "registered_date": "2026-10-31",
+  "purpose": "Development-only exporter/label-linkage audit; no model selection or final evaluation",
+  "publisher": "https://www.stratosphereips.org/datasets-iot23",
+  "release": "https://doi.org/10.5281/zenodo.4743746",
+  "license_note": "Zenodo release metadata lists CC-BY-4.0. Individual mirror READMEs additionally request authorization; this discrepancy remains unresolved. Do not redistribute raw/derived rows or claim commercial clearance. Retain attribution and resolve terms before a public data/model release.",
+  "base_url": "https://mcfp.felk.cvut.cz/publicDatasets/IoT-23-Dataset/IndividualScenarios/",
+  "max_file_bytes": 16777216,
+  "max_capture_bytes": 20971520,
+  "disk_reserve_bytes": 2147483648,
+  "join_policy": "iot23-interval-v1",
+  "time_tolerance_ms": 1,
+  "training_enabled": false,
+  "captures": {
+    "CTU-IoT-Malware-Capture-20-1": {"pcap": "2018-10-02-13-12-30-192.168.100.103.pcap", "host_group": "iot23:RPi-01", "sha256": {}},
+    "CTU-IoT-Malware-Capture-21-1": {"pcap": "2018-10-03-15-22-32-192.168.100.113.pcap", "host_group": "iot23:RPi-unknown-21", "sha256": {}},
+    "CTU-IoT-Malware-Capture-42-1": {"pcap": "2019-01-10-14-34-38-192.168.1.197.pcap", "host_group": "iot23:RPi-unknown-42", "sha256": {}}
+  }
+}

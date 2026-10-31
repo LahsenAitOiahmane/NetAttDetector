@@ -1,0 +1,57 @@
+name: Development capture label audit
+
+on:
+  workflow_call:
+    inputs:
+      record_first:
+        type: boolean
+        default: false
+  workflow_dispatch:
+    inputs:
+      record_first:
+        description: 'Record first acquisition hashes; no training or evaluation'
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+concurrency:
+  group: development-capture-audit-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  label-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      OMP_NUM_THREADS: '2'
+      OPENBLAS_NUM_THREADS: '2'
+      MKL_NUM_THREADS: '2'
+      RECORD_FIRST: ${{ inputs.record_first }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: '3.13'
+      - uses: astral-sh/setup-uv@68559e99cc807c1eb7e9238fd43a15bba460eec2 # v10.3.3
+        with:
+          version: '0.12.17'
+          enable-cache: true
+      - run: uv sync --frozen --extra dev --extra measurement
+      - run: uv run --no-sync pytest tests/test_capture_labels.py tests/test_measurement.py
+      - name: Audit bounded development inputs sequentially
+        shell: bash
+        run: |
+          extra=()
+          if [[ "$RECORD_FIRST" == "true" ]]; then extra+=(--record-first); fi
+          uv run --no-sync python scripts/research/audit_iot23.py --output artifacts/capture-labels --data-root data/raw/iot23-audit "${extra[@]}"
+      - name: Retain aggregate provenance and label-coverage evidence
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: capture-label-audit-${{ github.run_id }}
+          path: artifacts/capture-labels/
+          retention-days: 14

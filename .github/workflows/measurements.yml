@@ -2,6 +2,15 @@ name: Offline flow measurement lab
 
 on:
   workflow_dispatch:
+    inputs:
+      capture_label_audit:
+        description: 'Also acquire and audit bounded IoT-23 development captures'
+        type: boolean
+        default: false
+      record_first:
+        description: 'Record first capture acquisition hashes (no training)'
+        type: boolean
+        default: false
   pull_request:
     paths:
       - 'pyproject.toml'
@@ -28,6 +37,11 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  development-labels:
+    if: github.event_name == 'workflow_dispatch' && inputs.capture_label_audit
+    uses: ./.github/workflows/capture-labels.yml
+    with:
+      record_first: ${{ inputs.record_first }}
   fixture-parity:
     runs-on: ubuntu-latest
     timeout-minutes: 15
