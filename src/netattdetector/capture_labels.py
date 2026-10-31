@@ -10,6 +10,7 @@ import shutil
 import time
 import urllib.request
 from collections import Counter, defaultdict
+from contextlib import contextmanager
 from datetime import UTC, datetime
 from decimal import Decimal, InvalidOperation
 from pathlib import Path
@@ -376,6 +377,7 @@ def summarize_flows(flows, capture_dir, config_path, config, receipt, *, parsed_
     statuses, classes, details, matched_uids = Counter(), Counter(), Counter(), defaultdict(set)
     detailed_uids = defaultdict(set)
     first, last, count, identities = math.inf, -math.inf, 0, set()
+    assignment_digest = hashlib.sha256()
     for flow in flows:
         count += 1
         if count >= config["max_audit_flows"]:
@@ -387,6 +389,22 @@ def summarize_flows(flows, capture_dir, config_path, config, receipt, *, parsed_
             raise ValueError("Duplicate exported flow identity.")
         identities.add(identity)
         status, label = match_flow(flow, index)
+        assignment_digest.update(
+            (
+                json.dumps(
+                    [
+                        identity,
+                        status,
+                        label["uid"] if label else None,
+                        label["label"] if label else None,
+                        label["detail"] if label else None,
+                    ],
+                    separators=(",", ":"),
+                    allow_nan=False,
+                )
+                + "\n"
+            ).encode()
+        )
         statuses[status] += 1
         first = min(first, flow["bidirectional_first_seen_ms"])
         last = max(last, flow["bidirectional_last_seen_ms"])
@@ -405,6 +423,7 @@ def summarize_flows(flows, capture_dir, config_path, config, receipt, *, parsed_
         "receipt_sha256": sha256_file(capture_dir / "receipt.json"),
         "input_files": receipt["files"],
         "exported_flows": count,
+        "ordered_assignment_sha256": assignment_digest.hexdigest(),
         "flow_status_counts": dict(statuses),
         "matched_flow_class_counts": dict(classes),
         "matched_zeek_connection_class_counts": {
@@ -443,47 +462,92 @@ def summarize_flows(flows, capture_dir, config_path, config, receipt, *, parsed_
     }
 
 
-def audit_pcap_labels(capture_dir, output, config_path=CATALOG):
+@contextmanager
+def indexed_labels(capture_dir, config, backend="sqlite"):
+    if backend == "memory":
+        parsed = read_zeek_labels(
+            Path(capture_dir) / "bro/conn.log.labeled",
+            max_bytes=config.get("max_label_bytes", 16 * 2**20),
+            max_rows=config.get("max_label_rows", 100_000),
+        )
+        yield parsed, 0
+        return
+    if backend != "sqlite":
+        raise ValueError("Unknown label-index backend.")
+    index_path = Path(capture_dir) / f".label-index-{uuid4().hex}.sqlite"
+    index = SQLiteLabelIndex(index_path)
+    try:
+        parsed = read_zeek_labels(
+            Path(capture_dir) / "bro/conn.log.labeled",
+            index=index,
+            max_bytes=config.get("max_label_bytes", 16 * 2**20),
+            max_rows=config.get("max_label_rows", 100_000),
+        )
+        yield parsed, index_path.stat().st_size
+    finally:
+        index.close()
+        index_path.unlink(missing_ok=True)
+
+
+def inspect_capture_labels(capture_dir, output, config_path=CATALOG):
+    """Inspect pinned label metadata on Windows or Linux without a capture driver."""
+    if Path(output).exists():
+        raise FileExistsError(output)
+    config, _, receipt = verified_inputs(capture_dir, config_path)
+    with (
+        ResourceMonitor() as resources,
+        indexed_labels(capture_dir, config) as (parsed, index_bytes),
+    ):
+        counts = parsed[1]
+    result = {
+        "source_id": "iot23",
+        "capture_id": receipt["capture_id"],
+        "config_sha256": sha256_file(config_path),
+        "input_files": receipt["files"],
+        "label_log_counts": counts,
+        "index_file_bytes": index_bytes,
+        "resources": {
+            "wall_seconds": resources.elapsed,
+            "sampled_peak_process_rss_mib": resources.peak / 2**20,
+        },
+        "training_authorized": False,
+        "scope": "Pinned label-log statistics and disk-index validation only; no flow export, matched labels or detection scores.",
+    }
+    write_json(output, result)
+    return result
+
+
+def audit_pcap_labels(capture_dir, output, config_path=CATALOG, *, index_backend="sqlite"):
     """Streaming development audit; rows are never accumulated or written to output."""
     if Path(output).exists():
         raise FileExistsError(output)
     config, capture, receipt = verified_inputs(capture_dir, config_path)
     pcap = Path(capture_dir) / capture["pcap"]
     # The fixture exporter retains its 10k materialization limit. This distinct audit
-    # consumes at most 100k flows one by one, while retaining only keys/UIDs/counts.
-    with ResourceMonitor(include_children=True) as resources:
-        index_path = Path(capture_dir) / f".label-index-{uuid4().hex}.sqlite"
-        index = SQLiteLabelIndex(index_path)
-        try:
-            parsed = read_zeek_labels(
-                Path(capture_dir) / "bro/conn.log.labeled",
-                index=index,
-                max_bytes=config.get("max_label_bytes", 16 * 2**20),
-                max_rows=config.get("max_label_rows", 100_000),
-            )
-            index_bytes = index_path.stat().st_size
-            result = summarize_flows(
-                iter_pcap_rows(
-                    pcap,
-                    max_nflows=config["max_audit_flows"],
-                    max_pcap_bytes=config.get("max_pcap_bytes", 16 * 2**20),
-                ),
-                capture_dir,
-                config_path,
-                config,
-                receipt,
-                parsed_labels=parsed,
-            )
-        finally:
-            index.close()
-            index_path.unlink(missing_ok=True)
+    # consumes the profile's bounded flow count, retaining only keys/UIDs/counts.
+    with (
+        ResourceMonitor(include_children=True) as resources,
+        indexed_labels(capture_dir, config, index_backend) as (parsed, index_bytes),
+    ):
+        result = summarize_flows(
+            iter_pcap_rows(
+                pcap,
+                max_nflows=config["max_audit_flows"],
+                max_pcap_bytes=config.get("max_pcap_bytes", 16 * 2**20),
+            ),
+            capture_dir,
+            config_path,
+            config,
+            receipt,
+            parsed_labels=parsed,
+        )
     result["export_settings"] = {**SETTINGS, "max_nflows": config["max_audit_flows"]}
     result["label_index"] = {
-        "backend": "sqlite",
-        "cache_kib": 8192,
+        "backend": index_backend,
+        "cache_kib": 8192 if index_backend == "sqlite" else None,
         "file_bytes": index_bytes,
-        "max_file_bytes": 512 * 2**20,
-        "exact_time_unit": "nanoseconds",
+        "max_file_bytes": 512 * 2**20 if index_backend == "sqlite" else 0,
+        "exact_time_unit": "nanoseconds" if index_backend == "sqlite" else "decimal_milliseconds",
     }
     result["schema"] = SCHEMA
     result["exporter_version"] = "6.6.0"

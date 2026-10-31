@@ -10,6 +10,8 @@ from netattdetector.capture_labels import (
     audit_capture_labels,
     bounded_fetch,
     connection_key,
+    indexed_labels,
+    inspect_capture_labels,
     match_flow,
     read_zeek_labels,
     summarize_flows,
@@ -252,3 +254,17 @@ def test_materialized_audit_verifies_pinned_label_and_pcap_identity(tmp_path):
         stream.write("\n")
     with pytest.raises(ValueError, match="pinned"):
         audit_capture_labels(export_path, root, tmp_path / "changed.json", config_path)
+
+
+def test_driver_free_inspection_preserves_inputs_and_cleans_private_index(tmp_path):
+    root, config_path, config, _ = synthetic_audit_inputs(tmp_path)
+    result = inspect_capture_labels(root, tmp_path / "inspection.json", config_path)
+    assert result["label_log_counts"]["coarse:Malicious"] == 1
+    assert result["index_file_bytes"] > 0 and not result["training_authorized"]
+    assert not list(root.glob(".label-index-*"))
+    assert (root / "receipt.json").exists()
+    (root / "bro/conn.log.labeled").write_text("invalid label input\n")
+    with pytest.raises(ValueError, match="Malformed"):
+        with indexed_labels(root, config):
+            pytest.fail("Malformed labels should fail before an index can be used")
+    assert not list(root.glob(".label-index-*"))
