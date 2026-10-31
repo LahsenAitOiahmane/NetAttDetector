@@ -17,17 +17,29 @@
     "CTU-IoT-Malware-Capture-8-1": {
       "pcap": "2018-07-31-15-15-09-192.168.100.113.pcap",
       "host_group": null,
-      "sha256": {}
+      "sha256": {
+        "2018-07-31-15-15-09-192.168.100.113.pcap": "80dcc2602519479ddcde889fa902fee19a76696630811452f8df38888af894f2",
+        "bro/conn.log.labeled": "4877ca8f0f01902fbd18d28b7d06cb3d0be082355b7f2c8862c9deef1782eb8a",
+        "README.md": "1788755a075f580c3628e4698ba4dad699f91c058dede73bae3f480bb5cba840"
+      }
     },
     "CTU-IoT-Malware-Capture-34-1": {
       "pcap": "2018-12-21-15-50-14-192.168.1.195.pcap",
       "host_group": null,
-      "sha256": {}
+      "sha256": {
+        "2018-12-21-15-50-14-192.168.1.195.pcap": "92ec7e2f6658ee4b007d0b816986c46cc0338bc5e2bec6ceaaca566c695e4699",
+        "bro/conn.log.labeled": "d69e49b2aae8c1bd33286936531658202dec47d989f0439bad3f8be180467a6e",
+        "README.md": "940e8778cba292b4c9d2f8b7e10d77976c8eccfc8b6b8bfa79faa53230203f7f"
+      }
     },
     "CTU-IoT-Malware-Capture-3-1": {
       "pcap": "2018-05-21_capture.pcap",
       "host_group": null,
-      "sha256": {}
+      "sha256": {
+        "2018-05-21_capture.pcap": "c674dc0c8d584fa66e6f00c60df973c5fbacad551c850a76d75ec9952641d00b",
+        "bro/conn.log.labeled": "9851009bbca03e15089fa1a356dd4b5eee4a98161a51703626058a0b507f50d0",
+        "README.md": "426f8ce8680c2593815f6d8bdc4f1f9cf183210a26d9459f135d4d100e91558f"
+      }
     }
   },
   "max_audit_flows": 250000,

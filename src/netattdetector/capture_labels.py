@@ -7,6 +7,7 @@ import math
 import os
 import re
 import shutil
+import time
 import urllib.request
 from collections import Counter, defaultdict
 from datetime import UTC, datetime
@@ -80,6 +81,7 @@ def bounded_fetch(url, target, limit, expected_sha256=None):
     target.parent.mkdir(parents=True, exist_ok=True)
     partial = target.with_name(target.name + ".partial")
     created = False
+    deadline = time.monotonic() + 300
     try:
         with urllib.request.build_opener(PublisherRedirect()).open(request, timeout=45) as response:
             if response.status != 200:
@@ -90,7 +92,13 @@ def bounded_fetch(url, target, limit, expected_sha256=None):
             digest, total = hashlib.sha256(), 0
             with partial.open("xb") as stream:
                 created = True
-                while chunk := response.read(min(65536, limit + 1 - total)):
+                read_chunk = getattr(response, "read1", response.read)
+                while True:
+                    if time.monotonic() > deadline:
+                        raise TimeoutError("Publisher download exceeded the five-minute deadline.")
+                    chunk = read_chunk(min(65536, limit + 1 - total))
+                    if not chunk:
+                        break
                     total += len(chunk)
                     if total > limit:
                         raise ValueError("Over-budget publisher response.")
@@ -205,6 +213,11 @@ def read_zeek_labels(path, *, index=None, max_bytes=16 * 2**20, max_rows=100_000
                 if columns is not None:
                     raise ValueError("Repeated label header.")
                 columns = line.split()[1:]
+                if "det_label" in columns:
+                    if "detailed-label" in columns:
+                        raise ValueError("Ambiguous detailed-label header aliases.")
+                    columns[columns.index("det_label")] = "detailed-label"
+                    counts["header_alias:det_label"] = 1
                 if len(columns) != len(set(columns)) or not required <= set(columns):
                     raise ValueError("Unsupported label-log header.")
                 continue

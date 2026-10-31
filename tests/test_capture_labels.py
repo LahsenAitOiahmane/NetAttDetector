@@ -124,6 +124,18 @@ def test_duplicate_uid_rejected(tmp_path):
         read_zeek_labels(zeek_log(tmp_path, [row, row]))
 
 
+def test_explicit_publisher_detailed_label_alias(tmp_path):
+    path = zeek_log(tmp_path, ["1\tu1\t192.0.2.1\t1\t198.51.100.1\t2\ttcp\t1\t- Malicious C&C"])
+    path.write_text(path.read_text().replace("detailed-label", "det_label"))
+    index, counts = read_zeek_labels(path)
+    key = connection_key("192.0.2.1", 1, "198.51.100.1", 2, 6)
+    assert index[key][0]["label"] == 1 and index[key][0]["detail"] == "C&C"
+    assert counts["header_alias:det_label"] == 1
+    path.write_text(path.read_text().replace("det_label", "det_label detailed-label"))
+    with pytest.raises(ValueError, match="Ambiguous"):
+        read_zeek_labels(path)
+
+
 def test_unpinned_download_and_unknown_capture_refused_before_network(tmp_path):
     config = json.loads(Path("configs/data/iot23-development.json").read_text())
     config["captures"]["CTU-IoT-Malware-Capture-20-1"]["sha256"] = {}

@@ -89,6 +89,9 @@ def test_large_download_is_chunked_and_hash_verified(tmp_path, monkeypatch):
             read_sizes.append(size)
             return super().read(size)
 
+        def read1(self, size):
+            return self.read(size)
+
     class Opener:
         def open(self, request, timeout):
             return Response(content)
