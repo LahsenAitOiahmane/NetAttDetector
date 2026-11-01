@@ -46,6 +46,10 @@ one start in 10/60 seconds, zero in 1 second and one distinct peer/port. No atta
 
 On real captures, compare all core/statistical values and flow identities to the verified
 cohorts. Require complete labels/groups by the same identity join, with no new rule. Record
+core/count/metadata values exactly; compare statistical means/deviations with their existing
+1e-9 absolute/relative fixture tolerance and disclose nonexact values. The sidecar joins retain
+the original verified statistical columns, never overwrite them with a new export.
+Record
 actual callback initialization order privately, then replay every event in that order through
 the tested window routine. Validate contiguous sequence/prefix watermarks and identical values.
 Additionally check 100 evenly spaced starts/capture with direct, independent SQL count/distinct
