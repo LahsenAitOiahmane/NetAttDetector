@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "study_id": "context-capture-diagnostic-v1",
+  "registered_date": "2026-11-01",
+  "expected_core_logical_sha256": "9be2a2d5c39b3cb78a31fec40118971ba03b0e62b398e1151f7480ce8c312d59",
+  "expected_statistical_logical_sha256": "a4e6d0ff836814acadd4cc778b0b63320fe5dc38cc080f040caaeb95db189259",
+  "expected_context_logical_sha256": "7a5960b15ce59d56955c3975289bbef6e9cacbbad16c78c8336109589092c897",
+  "statistical_config": "configs/data/statistical-features.json",
+  "context_config": "configs/data/causal-context.json",
+  "feature_contract": "nfstream-context-v1",
+  "label_policy": "iot23-packet-point-candidate-v1",
+  "research_diagnostic_fitting_authorized": true,
+  "candidate_policy_promoted": false,
+  "deployment_authorized": false,
+  "public_model_release_authorized": false,
+  "seed": 42,
+  "threads": 1,
+  "maximum_fits": 15,
+  "maximum_wall_seconds": 3600,
+  "sampled_memory_screen_mib": 1536,
+  "models": ["logistic", "histogram"],
+  "feature_policies": ["statistics27_control", "context36", "context34_no_ports"],
+  "weight_policies": ["flow_natural", "connection_class_balanced"],
+  "research_screen": {
+    "minimum_precision": 0.98,
+    "maximum_fpr": 0.005,
+    "minimum_recall": 0.8,
+    "minimum_true_positive_connections": 25
+  },
+  "family_screen": {
+    "required_validation_families": ["C&C", "DDoS", "PartOfAHorizontalPortScan"],
+    "minimum_connections": 25,
+    "minimum_recall": 0.8
+  },
+  "artifact_recipient": "configs/security/model-recipient.json",
+  "selection": "Calibration-only thresholds and unchanged binary screens. Add a prespecified >=80% recall guard for each required validation family with >=25 connections. Prefer candidates passing both binary and family screens, then validation F1/recall/precision/lower FPR/smaller artifact/stable ID. Twelve candidates, dummy and two identical one-thread repeats. No external test or new search.",
+  "scope": "Experimental accepted-label capture/time comparison only; all warm-up/excluded rows retained, only accepted labels fit. No metadata/endpoint identities enter model inputs. Device independence and DDoS label coverage remain unresolved. Research models may be exported privately under the separate encrypted-transfer protocol; no public weights or raw/derived real rows."
+}

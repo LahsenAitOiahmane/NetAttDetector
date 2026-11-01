@@ -33,7 +33,7 @@ jobs:
         with:
           version: '0.12.17'
           enable-cache: true
-      - run: uv sync --frozen --extra dev --python ${{ matrix.python }}
+      - run: uv sync --frozen --extra dev --extra artifacts --python ${{ matrix.python }}
       - run: uv run --no-sync ruff check src tests scripts
       - run: uv run --no-sync ruff format --check src tests scripts
       - run: uv run --no-sync python scripts/check_repository.py

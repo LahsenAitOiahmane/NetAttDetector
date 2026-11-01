@@ -71,6 +71,45 @@ def load_config(path):
     return config
 
 
+def verify_context_inputs(cohort, statistics, context, output, config):
+    cohort, statistics, context, output = map(Path, (cohort, statistics, context, output))
+    verified, stat_manifest = verify_statistical_inputs(cohort, statistics, output, config)
+    manifest = json.loads((context / "manifest.json").read_text(encoding="utf-8"))
+    policy = load_config(config["context_config"])
+    path = context / "context.sqlite"
+    if (
+        manifest["schema"] != SCHEMA
+        or manifest["features"] != FEATURES
+        or manifest["context_policy"] != policy
+        or manifest["config_sha256"] != sha256_file(config["context_config"])
+        or manifest["settings"] != {**STAT_SETTINGS, "max_nflows": 250_000}
+        or manifest["exporter_version"] != "6.6.0"
+        or manifest["training_authorized"] is not False
+        or manifest["core_logical_sha256"] != config["expected_core_logical_sha256"]
+        or manifest["statistical_logical_sha256"] != config["expected_statistical_logical_sha256"]
+        or manifest["core_database_sha256"] != verified["database_sha256"]
+        or manifest["statistical_database_sha256"] != stat_manifest["sidecar"]["sha256"]
+        or manifest["database"] != {"bytes": path.stat().st_size, "sha256": sha256_file(path)}
+    ):
+        raise ValueError("Context provenance, bytes or measurement contract changed.")
+    audit = joined_context_audit(path, cohort, statistics)
+    if (
+        audit != manifest["audit"]
+        or audit["ordered_context_rows_sha256"] != config["expected_context_logical_sha256"]
+    ):
+        raise ValueError("Context logical measurements changed from registration.")
+    write_json(
+        output / "context-verification.json",
+        {
+            "verified": True,
+            "context_logical_sha256": config["expected_context_logical_sha256"],
+            "database_sha256": manifest["database"]["sha256"],
+            "training_authorized": False,
+        },
+    )
+    return verified, stat_manifest, manifest
+
+
 def create_database(path, *, targets=False):
     with Path(path).open("xb"):
         pass

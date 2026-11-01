@@ -1,0 +1,6 @@
+{
+  "algorithm": "X25519-HKDF-SHA256-AES256GCM-v1",
+  "recipient": "ac4f3198369b5faeba053bbf2053e6f5610f0b17da7951e407fad5a226273195",
+  "artifact_sha256": "a504167cf9dbd384c17b192d2f1209714c8f4ef5c27e6b892b64fcbe04e19cc7",
+  "ciphertext_bytes": 14607
+}

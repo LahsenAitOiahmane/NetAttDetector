@@ -33,6 +33,7 @@ def check(root=Path(".")):
         ".sqlite",
         ".db",
         ".partial",
+        ".nadenc",
     }
     for name in names:
         path = root / name
@@ -46,7 +47,15 @@ def check(root=Path(".")):
             ".pcapng",
         }
         private_root = name.startswith(
-            ("artifacts/", "reports/local/", "logs/", "saved_models/", ".venv", ".vscode/")
+            (
+                "artifacts/",
+                "reports/local/",
+                "logs/",
+                "saved_models/",
+                ".venv",
+                ".vscode/",
+                ".netatt-keys/",
+            )
         )
         secret = path.name in {".env", "id_rsa", "id_ed25519"} or (
             path.name.startswith(".env.") and path.name != ".env.example"
@@ -80,6 +89,8 @@ def check(root=Path(".")):
         "labels.sqlite-journal",
         "traffic.pcap.partial",
         ".env.local",
+        ".netatt-keys/recipient-v1.key",
+        "private.nadenc",
     ]
     public = [
         "uv.lock",

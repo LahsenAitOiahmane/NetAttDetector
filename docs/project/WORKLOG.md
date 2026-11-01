@@ -607,6 +607,35 @@ Only aggregate fixture/manifests are retained. Python 3.11/3.13 CI passed 189 wi
 local focused checks passed 36 with 4 Linux skips. Next NAD-053 compares the new fixed rows
 against statistical controls, preserving one-thread repeats and adding a minority-family guard.
 
+## 1 November 2026 — Family-aware context study and private portability
+
+Registered NAD-053 at `ac54ffc` and implemented it at `0631310` before fitting. Cloud run
+`41325831336` completed fifteen fits at one thread with twelve fixed candidates, dummy and
+two selected repeats. Every reload and repeat score/threshold is exact. All source digests,
+excluded rows and warm-up handling remain unchanged. No candidate passes the binary FPR
+screen or the combined family guard. Natural logistic context lowers FP77 to58 relative to
+statistics27, but DDoS detection falls75/114 to1/114. The selected diagnostic remains the
+statistics-only natural logistic control, with99.44% recall and4.04% benign FPR; rejected.
+
+Made family support prominent: training has zero explicitly DDoS-labeled UIDs, only8 C&C,
+5,742 generic Attack and145,596 scan UIDs; calibration attacks are exclusively C&C. Generic
+Attack is not relabeled. The next data work must address this coverage/shift limitation rather
+than launch an unrestricted search. All original negative experiments remain documented.
+
+Implemented an optional bounded X25519/HKDF/AES-GCM research transfer using cryptography50.0.2.
+Fresh local key directory ACL was checked and tightened to exactly owner+SYSTEM. Only public
+recipient metadata enters GitHub; the private key never leaves ignored local storage. Tests
+reject corrupted/truncated/oversized envelopes, wrong keys, mismatched trusted freezes/models
+and overwrites. Decryption does not identify the sender: a separately committed model digest
+is checked before joblib loading. Payloads contain no real rows, only the private model, public
+freeze and45 synthetic probes. The synthetic Windows recovery reproduces Linux scores exactly.
+
+The measured model interval is29.93s /728.0MiB sampled tree RSS; selected artifact2,471bytes.
+CI Python3.11/3.13 passed213 with7 skips each; real Linux focused suite passed64. Registered
+protocols, runbook, all-candidate report, freeze and aggregate Windows evidence retained.
+Kali WSL was found working; Ubuntu still has the previously recorded missing VHD. No system
+repair, live capture, pilot or deployment was performed. MIT and offline-only choices persist.
+
 ## Outstanding work
 
 This work does not complete the production roadmap. Global audits cover the development inputs;

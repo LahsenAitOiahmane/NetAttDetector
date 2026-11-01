@@ -1,0 +1,21 @@
+{
+  "study_id": "context-capture-diagnostic-v1",
+  "selected_diagnostic_id": "logistic-statistics27_control-flow_natural",
+  "specification": {
+    "id": "logistic-statistics27_control-flow_natural",
+    "model": "logistic",
+    "features": "statistics27_control",
+    "weights": "flow_natural"
+  },
+  "artifact_sha256": "a504167cf9dbd384c17b192d2f1209714c8f4ef5c27e6b892b64fcbe04e19cc7",
+  "threshold": 0.9999190519374116,
+  "study_sha256": "d22182fcd7a555ac5c6bec20d5aa880b75b86eb58e81354c343907b035c4a907",
+  "passes_development_research_screen": false,
+  "repeatability_screen_met": true,
+  "deployment_authorized": false,
+  "public_model_release_authorized": false,
+  "external_test_accessed": false,
+  "core_logical_sha256": "9be2a2d5c39b3cb78a31fec40118971ba03b0e62b398e1151f7480ce8c312d59",
+  "statistical_logical_sha256": "a4e6d0ff836814acadd4cc778b0b63320fe5dc38cc080f040caaeb95db189259",
+  "context_logical_sha256": "7a5960b15ce59d56955c3975289bbef6e9cacbbad16c78c8336109589092c897"
+}
