@@ -6,7 +6,7 @@
   "max_reviewed_alerts_per_day": 50,
   "benign_flows_per_day": null,
   "incident_aggregation_policy": null,
-  "mode": "offline preparation; passive shadow pilot is a future stage",
+  "mode": "offline research; user deferred selecting a pilot traffic source on 2026-11-01",
   "automatic_blocking_enabled": false,
   "pilot_quality_slo_approved": false,
   "limitation": "Alert capacity is a planning ceiling. Flow volume, incident aggregation and a measured pilot operating threshold remain unknown; do not equate 50 alerts with 50 attack-labeled flows."
