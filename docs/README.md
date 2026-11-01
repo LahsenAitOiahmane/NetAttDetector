@@ -20,6 +20,7 @@ and [current backlog](project/ROADMAP.md).
 | Statistical model study | [Registered comparison](research/STATISTICAL_STUDY.md), [operations](guides/STATISTICAL_STUDY.md), [measured tradeoff and failed FPR](../reports/STATISTICAL_STUDY.md) |
 | Input information limits | [Registered proof](research/INFORMATION_BOUND.md), [operations](guides/INFORMATION_BOUND.md), [measured no-port ceiling](../reports/INFORMATION_BOUND.md) |
 | Causal traffic context | [Registered lab](research/CAUSAL_CONTEXT.md), [operations](guides/CAUSAL_CONTEXT.md), [measured parity and information gain](../reports/CAUSAL_CONTEXT.md) |
+| Context model comparison | [Registered study](research/CONTEXT_STUDY.md), [operations](guides/CONTEXT_STUDY.md), [measured rejection](../reports/CONTEXT_STUDY.md), [private artifact retention](research/PRIVATE_ARTIFACTS.md) |
 
 Historical reports retain the dependency versions and failed results from their own runs.
 Reorganizing files or upgrading dependencies does not turn those models into production candidates.

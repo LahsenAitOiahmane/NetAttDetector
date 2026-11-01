@@ -11,7 +11,8 @@ twelve native model candidates fail acceptance, with a further cross-thread scor
 NAD-048 identified fixed-thread stability and HTTP/single-packet error slices; NAD-049 now
 validated richer measured inputs; NAD-050 measured their tradeoff and still rejected every
 candidate. NAD-051 proves a no-port observed limit; NAD-052 validates added causal context.
-NAD-053 now tests that information under fixed-thread/family-aware model screens. The owner selected
+NAD-053 measured that information under fixed-thread/family-aware screens: no candidate qualifies,
+and the statistical control remains selected. The owner selected
 MIT for code and deferred the pilot; continue offline research. Historical sprint narratives
 below retain the original rationale and failed results; they are not current deployment claims.
 
@@ -104,7 +105,7 @@ the roadmap must not be read as an endorsement of the initial champion for live 
 | NAD-050 | P1 / 5 | Compare statistical/core/no-port inputs with fixed-thread fitting, calibration-only thresholds and held capture diagnostics | 049 | Measured fifteen fits, exact fixed-thread/reload checks; no candidate qualifies. Natural logistic DDoS recall 1/114 to 75/114 but FP57 to77; selected FPR 4.04% |
 | NAD-051 | P1 / 3 | Quantify optimistic connection operating-point limits from indistinguishable feature sets before further tuning/context work | 050 | Measured zero-fit exact bound: no-port validation ceiling 60.71% recall at 9 benign flags; at least 39 needed for 80%, even in an optimistic relaxation. Not a trained model |
 | NAD-052 | P1 / 5 | Validate causal flow-start context, timestamp ordering/state bounds and online-style/offline feature parity before fitting | 051 | Measured: 235 fixture values, all 250,819 flows preserved/replayed, 300 independent SQL checks, no-port conflicting rows 206,075 to 190; no fit |
-| NAD-053 | P1 / 5 | Compare context/statistical/no-port models on fixed rows with calibration-only thresholds, family support guards and fixed-thread controls | 052 | Next preregistered bounded experiment; causal information gain does not yet establish detector quality |
+| NAD-053 | P1 / 5 | Compare context/statistical/no-port models on fixed rows with calibration-only thresholds, family support guards and fixed-thread controls | 052 | Measured fifteen fits, exact reload/repeats, no qualifying candidate; context can reduce FP while DDoS detection collapses. Selected statistical control retained encrypted for private verification |
 
 ## Next sprint after the development study
 

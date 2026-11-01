@@ -15,7 +15,9 @@ owner deferred the live pilot. No live sensing, blocking or product promotion is
 The [information-bound study](reports/INFORMATION_BOUND.md) now proves an observed no-port
 ceiling of 60.71% recall at the validation FPR budget. The new
 [causal context lab](reports/CAUSAL_CONTEXT.md) passes full replay/SQL checks and reduces
-no-port conflicting rows from 206,075 to 190; model value is the next registered comparison.
+no-port conflicting rows from 206,075 to 190. The subsequent
+[context comparison](reports/CONTEXT_STUDY.md) still rejects every candidate: fewer false
+positives sometimes come with much worse minority-attack recall.
 See the [ordered backlog](docs/project/ROADMAP.md).
 
 ## Measured research stages
@@ -34,12 +36,14 @@ See the [ordered backlog](docs/project/ROADMAP.md).
 | [Statistical models](reports/STATISTICAL_STUDY.md) | Fifteen fixed-thread fits; natural logistic DDoS 1/114 to 75/114, but false positives 57 to 77 |
 | [Input information bound](reports/INFORMATION_BOUND.md) | No-port validation ceiling 60.71% at 9 benign flags; even an optimistic relaxation needs 39 flags for 80% recall |
 | [Causal context](reports/CAUSAL_CONTEXT.md) | 235 fixture values, every flow preserved/replayed, 300 independent SQL snapshots and substantially fewer input conflicts |
+| [Context models](reports/CONTEXT_STUDY.md) | Fifteen fixed-thread fits, no qualifying candidate; statistics-only control remains selected, with private encrypted retention |
 
 Native contracts (`nfstream-core-v1`, `nfstream-statistical-v1`, `nfstream-context-v1`) are separate from the historical
 UQ models. They are not column aliases. Addresses, labels, capture IDs and timestamps stay out
 of model inputs. Candidate labels, device independence, exclusions and data terms remain
-explicit limitations. CI retains aggregate evidence; private native models/rows stay on the
-ephemeral runner. Reproduction commands are indexed in [docs](docs/README.md).
+explicit limitations. CI retains aggregate evidence; context-study research models may also
+be retained as recipient-encrypted artifacts. Real rows and plaintext model weights stay
+private. Reproduction commands are indexed in [docs](docs/README.md).
 
 Project code is [MIT](LICENSE), selected by the owner on 1 November 2026. Dataset permissions
 and third-party dependency licenses remain separate; see [data sources](docs/research/DATASETS.md).
@@ -78,12 +82,12 @@ and the current branch pushed, run the bounded study:
 
 ```powershell
 $studyBranch = git branch --show-current
-gh workflow run measurements.yml --ref $studyBranch -f statistical_study=true
+gh workflow run measurements.yml --ref $studyBranch -f context_study=true
 ```
 
-The workflow retains aggregate evidence, not real model/row binaries. Use the
+The workflow retains aggregate evidence and an encrypted diagnostic model. Use the
 [native cohort](docs/guides/NATIVE_COHORT.md), [statistical measurement](docs/guides/STATISTICAL_FEATURES.md)
-and [model comparison](docs/guides/STATISTICAL_STUDY.md) runbooks for private local Linux
+and [context comparison](docs/guides/CONTEXT_STUDY.md) runbooks for private local Linux
 reproduction. Windows does not need a capture driver for setup, tests or report verification.
 
 ### Historical UQ experiments
