@@ -2,7 +2,16 @@ name: Statistical diagnostic comparison
 
 on:
   workflow_call:
+    inputs:
+      information_bound:
+        type: boolean
+        default: false
   workflow_dispatch:
+    inputs:
+      information_bound:
+        description: 'Compute no-fit information bounds instead of model selection'
+        type: boolean
+        default: false
 
 permissions:
   contents: read
@@ -27,8 +36,11 @@ jobs:
           version: '0.12.17'
           enable-cache: true
       - run: uv sync --frozen --extra dev --extra measurement
-      - run: uv run --no-sync pytest tests/test_statistical_study.py tests/test_statistical.py tests/test_measurement.py tests/test_native_study.py
-      - run: uv run --no-sync python scripts/research/run_statistical_study.py
+      - run: uv run --no-sync pytest tests/test_information_bound.py tests/test_statistical_study.py tests/test_statistical.py tests/test_measurement.py tests/test_native_study.py
+      - if: ${{ !inputs.information_bound }}
+        run: uv run --no-sync python scripts/research/run_statistical_study.py
+      - if: ${{ inputs.information_bound }}
+        run: uv run --no-sync python scripts/research/run_statistical_study.py --information-bound
       - name: Retain measured aggregates and diagnostic comparison only
         if: always()
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
@@ -44,4 +56,6 @@ jobs:
             artifacts/statistical-study/study.json
             artifacts/statistical-study/freeze.json
             artifacts/statistical-study/progress.json
+            artifacts/statistical-study/information-bound.json
+            artifacts/statistical-study/configuration.json
           retention-days: 14

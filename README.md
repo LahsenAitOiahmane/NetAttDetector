@@ -1,93 +1,55 @@
 # NetAttDetector
 
-Resource-conscious network intrusion detection research, rebuilt from the 2024 prototype.
+CPU-conscious network intrusion detection research, rebuilt from the 2024 prototype with
+bounded data processing, measured flow contracts and reproducible experiments.
 
-**Current stage: reproducible offline research baseline.** This repository trains on labeled
-network **flows** and classifies compatible flow exports. A high benchmark score does not
-establish that a model is ready to protect a real network. Live sensing, deployment validation,
-alert management, and drift monitoring have explicit acceptance criteria in the roadmap.
+**Current stage: offline research; no detector qualifies for deployment.** The latest
+[statistical diagnostic](reports/STATISTICAL_STUDY.md) reaches 98.89% connection precision and
+99.44% recall on its accepted validation subset, but its **4.04% benign FPR** fails the 0.5%
+research screen. DDoS detection improves to 75/114 accepted UIDs, while label linkage covers
+only 114/14,394 publisher DDoS UIDs. Validation selected that model; it is not a fresh test.
 
-The initial champion reached 99.31% accuracy on its random UNSW holdout but detected only
-0.33% of attacks on the independent ToN-IoT sample. **It is unsuitable for deployment.**
-The [model card](reports/BASELINE.md) retains this failure and explains the next work priorities.
+The intended environment is a [small office/home network](docs/project/THREAT_MODEL.md) with
+up to 50 reviewed alerts/day. Traffic volume and incident aggregation remain unmeasured; the
+owner deferred the live pilot. No live sensing, blocking or product promotion is enabled.
+The [information-bound study](reports/INFORMATION_BOUND.md) now proves an observed no-port
+ceiling of 60.71% recall at the validation FPR budget. Next work adds validated causal traffic
+context before further fitting. See the [ordered backlog](docs/project/ROADMAP.md).
 
-The next experiment implements global development-data auditing, source-aware weighting,
-grouped train/calibration/validation partitions, feature ablations and an untouched CSE-CIC
-source test. Its preregistered rules are in [the multi-source protocol](docs/research/MULTISOURCE_PROTOCOL.md).
-The [completed multi-source report](reports/MULTISOURCE.md) retains another failed independent
-test and a cross-platform training discrepancy. Both new model variants remain research-only.
+## Measured research stages
 
-The [completed stability study](reports/STABILITY.md) adds eight targeted feature policies,
-three grouped development splits, source-transfer diagnostics and controlled XGBoost repeats.
-All 60 fits completed on both the laptop and GitHub. Full sampling reduced the observed
-control score discrepancy, but residual training differences remain. **No policy passed the
-per-source precision/FPR/recall screen.** See the [reproduction guide](docs/guides/STABILITY_OPERATIONS.md)
-and [ordered next sprint](docs/project/ROADMAP.md#next-sprint-after-the-development-study).
+| Stage | Result and evidence |
+|---|---|
+| [Original UQ baseline](reports/BASELINE.md) | 99.31% random-split accuracy, but only 0.33% independent ToN attack recall; rejected |
+| [Multi-source study](reports/MULTISOURCE.md) | Independent CSE test also fails; CSE is now observed evaluation, not a fresh tuning holdout |
+| [Stability study](reports/STABILITY.md) | Sixty fits/platform; no policy passes the full source screen; residual differences retained |
+| [Capture acquisition](reports/CAPTURE_EXPANSION.md) | Six bounded IoT-23 bundles available locally, with verified publisher inputs and disk-backed label audits |
+| [Packet linkage](reports/PACKET_LABELS.md) | 248,997/250,819 flows link under an experimental candidate; not detector accuracy |
+| [Native cohort](reports/NATIVE_COHORT.md) | All rows/exclusions retained, connection/time partitions verified, repeated builds byte-identical |
+| [Native models](reports/NATIVE_STUDY.md) | Fifteen fits; best diagnostic FPR 2.89%, DDoS 1/114; no qualifying model |
+| [Error/repeat diagnostics](reports/NATIVE_ERRORS.md) | Fixed-one-thread scores/coefficients repeat exactly; cross-thread differences remain |
+| [Statistical measurement](reports/STATISTICAL_FEATURES.md) | 165 independent fixture values, 27 measured fields, unchanged core/label joins for every flow |
+| [Statistical models](reports/STATISTICAL_STUDY.md) | Fifteen fixed-thread fits; natural logistic DDoS 1/114 to 75/114, but false positives 57 to 77 |
+| [Input information bound](reports/INFORMATION_BOUND.md) | No-port validation ceiling 60.71% at 9 benign flags; even an optimistic relaxation needs 39 flags for 80% recall |
 
-The current sprint adds [capture provenance checks](docs/research/PROVENANCE.md) and an
-[offline measurement lab](docs/guides/MEASUREMENTS.md). The Linux lab passed 85 known-value
-field checks on five synthetic flows. Its separate 11-feature contract requires a new labelled
-training dataset before model use. Our [initial deployment scope](docs/project/THREAT_MODEL.md)
-is a small office/home network with capacity for up to 50 reviewed alerts/day; traffic volume and
-the incident aggregation policy still need measurement. No live capture or blocking is enabled.
+Native contracts (`nfstream-core-v1`, `nfstream-statistical-v1`) are separate from the historical
+UQ models. They are not column aliases. Addresses, labels, capture IDs and timestamps stay out
+of model inputs. Candidate labels, device independence, exclusions and data terms remain
+explicit limitations. CI retains aggregate evidence; private native models/rows stay on the
+ephemeral runner. Reproduction commands are indexed in [docs](docs/README.md).
 
-The [development capture sprint](reports/DEVELOPMENT_CAPTURES.md) downloaded three complete
-IoT-23 capture/label bundles onto the laptop and audited 45,588 flows on GitHub using a bounded
-streaming path. It found only 21 distinct matched attack connections despite thousands of attack
-segments. These captures are useful for label-linkage diagnostics and do not qualify a new model
-for training or deployment. See the [capture runbook](docs/guides/CAPTURE_LABELS.md).
-
-The [capture expansion](reports/CAPTURE_EXPANSION.md) adds 215 MB of verified local data and
-audits 250,819 flows with 83,418 distinct matched attack connections. Its disk index reduced
-sampled process-tree RSS by 43.7% in a fresh-process comparison with identical assignment hashes.
-Per-attack coverage reveals that DDoS linkage is still inadequate. Label timing and device/split
-provenance are the next gates before a new model experiment.
-
-The [packet-witness study](reports/PACKET_LABELS.md) now links 248,997 native flows while
-preserving every previously accepted match. Exact packet evidence improves C&C/scan label
-coverage; contradictory zero-packet DDoS records remain excluded. The proposed capture/time
-partitions pass chronology/support checks, while device isolation and native cohort preparation
-remain open. [Run the packet audit](docs/guides/PACKET_LABELS.md) on Windows or Linux.
-
-The [native-cohort sprint](reports/NATIVE_COHORT.md) materializes all 250,819 flows in a private
-173.4 MiB experimental database, preserving exclusions and verifying connection groups,
-chronology and archived assignments. Repeated/conflicting feature patterns remain reported.
-Only aggregate manifests are retained from CI; no native detector has been trained by this
-phase. See the [native preparation guide](docs/guides/NATIVE_COHORT.md).
-
-The [native baseline study](reports/NATIVE_STUDY.md) completed fifteen CPU fits. Its best
-diagnostic reaches 99.20% connection precision and 98.37% recall, but fails the FPR screen at
-2.89% and detects only 1/114 accepted DDoS UIDs. A training-thread control also exceeds its
-registered score tolerance. **No native candidate qualifies.** See the
-[registered protocol](docs/research/NATIVE_STUDY.md) and [runbook](docs/guides/NATIVE_STUDY.md).
-
-The [error follow-up](reports/NATIVE_ERRORS.md) finds exact repeatability when logistic training
-stays on one thread. Cross-thread variation and the failed quality result remain. HTTP-port,
-single-packet and zero-duration error slices motivate validating richer packet-state/statistical
-measurements before another fit.
-
-The [statistical measurement lab](reports/STATISTICAL_FEATURES.md) validates 16 additional
-size/timing/TCP-flag fields while preserving all 250,819 core rows and label joins. Its 165
-independent fixture checks pass, but behavioral feature ambiguity remains substantial. These
-measurements feed the [completed statistical comparison](reports/STATISTICAL_STUDY.md):
-accepted DDoS detections improve from 1/114 to 75/114 in the natural-weight logistic control,
-but false positives rise from 57 to 77. All fifteen fits/repeats complete within resource
-screens, and **no statistical candidate qualifies**.
-
-Project code is licensed under [MIT](LICENSE), selected by the owner on 1 November 2026.
-Dataset permissions and third-party dependency licenses are separate; see the
-[dataset catalog](docs/research/DATASETS.md). The real-network pilot is deferred by the owner
-while offline research continues.
+Project code is [MIT](LICENSE), selected by the owner on 1 November 2026. Dataset permissions
+and third-party dependency licenses remain separate; see [data sources](docs/research/DATASETS.md).
 
 ## What changed
 
 - A versioned feature contract replaces hand-built packet placeholders.
 - Chunked CSV/ZIP ingestion samples across the entire file without loading it all into RAM.
 - Labels, addresses, dataset names, and DNS query identifiers cannot become model inputs.
-- Duplicate feature rows and contradictory binary labels are removed from the sampled data.
+- Historical UQ cleaning is documented; native cohorts retain exclusions and conflicting patterns.
 - Training, validation, and test data are separate; preprocessing fits training data only.
 - SGD logistic regression, histogram gradient boosting, Extra Trees, and optional XGBoost
-  compete against a dummy baseline. Only validation chooses the model and attack threshold.
+  compete against a dummy baseline. Native thresholds use calibration only; validation chooses models.
 - Reports include precision, recall, macro F1, average precision, false alarms, attack slices,
   input checksums, dependencies, model size, inference timing, and sampled peak process memory.
 - A second dataset can test generalization with the model and threshold frozen.
@@ -96,7 +58,8 @@ while offline research continues.
 ## Start on Windows / PowerShell
 
 The audited machine has an Intel i5-1135G7, 4 cores / 8 threads, and 15.74 GiB RAM.
-Use two training threads and start with 100k–200k sampled flows. No GPU is required.
+Native/statistical fits use one thread; historical UQ profiles allow two. Start with bounded
+100k–200k samples and check available RAM with `doctor`. No GPU is required.
 About 14 GiB disk was free at the initial audit; use compressed archives, not full PCAP downloads.
 
 With [uv](https://docs.astral.sh/uv/):
@@ -105,6 +68,26 @@ With [uv](https://docs.astral.sh/uv/):
 uv sync --frozen --extra dev
 uv run --no-sync netatt doctor
 uv run --no-sync netatt datasets
+```
+
+Current native research uses the verified Linux exporter. With an authenticated GitHub CLI
+and the current branch pushed, run the bounded study:
+
+```powershell
+$studyBranch = git branch --show-current
+gh workflow run measurements.yml --ref $studyBranch -f statistical_study=true
+```
+
+The workflow retains aggregate evidence, not real model/row binaries. Use the
+[native cohort](docs/guides/NATIVE_COHORT.md), [statistical measurement](docs/guides/STATISTICAL_FEATURES.md)
+and [model comparison](docs/guides/STATISTICAL_STUDY.md) runbooks for private local Linux
+reproduction. Windows does not need a capture driver for setup, tests or report verification.
+
+### Historical UQ experiments
+
+These commands reproduce the original CSV experiments and their documented limitations:
+
+```powershell
 uv run --no-sync netatt download nf-unsw-nb15-v2 --max-mib 512
 uv run --no-sync netatt profile --data data/raw/nf-unsw-nb15-v2.zip --output reports/local/unsw-profile.json
 uv run --no-sync netatt train --data data/raw/nf-unsw-nb15-v2.zip --config configs/laptop.json --output artifacts/my-first-run
@@ -128,7 +111,7 @@ Without uv, create a virtual environment and run `python -m pip install -e ".[de
 this resolves compatible dependencies but is **not** the frozen lockfile environment.
 `python -m netattdetector ...` invokes the same CLI after package installation.
 
-## Use a trained model
+## Use a trained UQ model
 
 ```powershell
 uv run --no-sync netatt predict --model artifacts/my-first-run/model.joblib --data path/to/compatible-flows.csv --output reports/local/predictions.csv
@@ -146,7 +129,7 @@ removed from the active tree. They remain recoverable from Git history at `f1b2d
 Downloaded datasets and current experiment evidence are retained. See the
 [repository guide](docs/project/REPOSITORY.md) and [documentation index](docs/README.md).
 
-## Understand the results
+## Understand historical UQ results
 
 An experiment writes `metrics.json`, `data-profile.json`, `config.json`, `summary.md`, and
 `model.joblib` under its output directory. Download provenance lives in `data/raw/*.manifest.json`.

@@ -3,6 +3,10 @@ name: Offline flow measurement lab
 on:
   workflow_dispatch:
     inputs:
+      information_bound:
+        description: 'Compute exact no-fit connection information ceilings'
+        type: boolean
+        default: false
       statistical_study:
         description: 'Run registered fixed-thread core versus richer statistical models'
         type: boolean
@@ -76,6 +80,11 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  information-bound:
+    if: github.event_name == 'workflow_dispatch' && inputs.information_bound
+    uses: ./.github/workflows/statistical-study.yml
+    with:
+      information_bound: true
   statistical-study:
     if: github.event_name == 'workflow_dispatch' && inputs.statistical_study
     uses: ./.github/workflows/statistical-study.yml

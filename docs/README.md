@@ -18,6 +18,7 @@ and [current backlog](project/ROADMAP.md).
 | Native error follow-up | [Registered protocol](research/NATIVE_ERRORS.md), [operations](guides/NATIVE_ERRORS.md), [measured repeat/error slices](../reports/NATIVE_ERRORS.md) |
 | Statistical measurements | [Registered protocol](research/STATISTICAL_FEATURES.md), [operations](guides/STATISTICAL_FEATURES.md), [core-preservation and information report](../reports/STATISTICAL_FEATURES.md) |
 | Statistical model study | [Registered comparison](research/STATISTICAL_STUDY.md), [operations](guides/STATISTICAL_STUDY.md), [measured tradeoff and failed FPR](../reports/STATISTICAL_STUDY.md) |
+| Input information limits | [Registered proof](research/INFORMATION_BOUND.md), [operations](guides/INFORMATION_BOUND.md), [measured no-port ceiling](../reports/INFORMATION_BOUND.md) |
 
 Historical reports retain the dependency versions and failed results from their own runs.
 Reorganizing files or upgrading dependencies does not turn those models into production candidates.

@@ -1,0 +1,861 @@
+{
+  "study_id": "connection-information-bound-v1",
+  "source_commit": "faf9e26c35f9941d143398fa96b5f805b05d02c6",
+  "config_sha256": "d56fa13b01b22aa3aa66c1687c9fc4b6a7b7dfddb866b11535b179b12f2ec7f9",
+  "core_logical_sha256": "9be2a2d5c39b3cb78a31fec40118971ba03b0e62b398e1151f7480ce8c312d59",
+  "statistical_logical_sha256": "a4e6d0ff836814acadd4cc778b0b63320fe5dc38cc080f040caaeb95db189259",
+  "records": [
+    {
+      "split": "calibration",
+      "feature_policy": "core11_control",
+      "representation": "float64",
+      "accepted_connections": 10403,
+      "benign_connections": 2181,
+      "attack_connections": 8222,
+      "exact_vector_set_clusters": 4131,
+      "mixed_label_clusters": 0,
+      "benign_connections_in_mixed_clusters": 0,
+      "attack_connections_in_mixed_clusters": 0,
+      "optimistic_free_attack_connections": 8222,
+      "maximum_fpr": 0.005,
+      "exact_budget_fraction": "1/200",
+      "benign_flag_budget": 10,
+      "optimistic_max_true_positives_at_budget": 8222,
+      "optimistic_max_recall_at_budget": 1.0,
+      "minimum_recall": 0.8,
+      "exact_recall_fraction": "4/5",
+      "required_true_positives": 6578,
+      "minimum_benign_flags_for_target_in_relaxation": 0,
+      "minimum_fpr_for_target_in_relaxation": 0.0,
+      "target_not_ruled_out_by_relaxation": true,
+      "learnable_operating_point_proven": false,
+      "precision_constraints_ignored": true,
+      "dp_updates": 0,
+      "aggregate_upper_frontier": [
+        {
+          "benign_flag_budget": 0,
+          "optimistic_max_true_positives": 8222,
+          "optimistic_max_recall": 1.0
+        }
+      ],
+      "scope": "Optimistic upper bound for this exact observed representation and UID-max family only; distinct feature-set groups choose independently even when they share vectors. Not a trained classifier, threshold, attack truth or generalization estimate."
+    },
+    {
+      "split": "calibration",
+      "feature_policy": "core11_control",
+      "representation": "float32",
+      "accepted_connections": 10403,
+      "benign_connections": 2181,
+      "attack_connections": 8222,
+      "exact_vector_set_clusters": 4131,
+      "mixed_label_clusters": 0,
+      "benign_connections_in_mixed_clusters": 0,
+      "attack_connections_in_mixed_clusters": 0,
+      "optimistic_free_attack_connections": 8222,
+      "maximum_fpr": 0.005,
+      "exact_budget_fraction": "1/200",
+      "benign_flag_budget": 10,
+      "optimistic_max_true_positives_at_budget": 8222,
+      "optimistic_max_recall_at_budget": 1.0,
+      "minimum_recall": 0.8,
+      "exact_recall_fraction": "4/5",
+      "required_true_positives": 6578,
+      "minimum_benign_flags_for_target_in_relaxation": 0,
+      "minimum_fpr_for_target_in_relaxation": 0.0,
+      "target_not_ruled_out_by_relaxation": true,
+      "learnable_operating_point_proven": false,
+      "precision_constraints_ignored": true,
+      "dp_updates": 0,
+      "aggregate_upper_frontier": [
+        {
+          "benign_flag_budget": 0,
+          "optimistic_max_true_positives": 8222,
+          "optimistic_max_recall": 1.0
+        }
+      ],
+      "scope": "Optimistic upper bound for this exact observed representation and UID-max family only; distinct feature-set groups choose independently even when they share vectors. Not a trained classifier, threshold, attack truth or generalization estimate."
+    },
+    {
+      "split": "calibration",
+      "feature_policy": "statistics27",
+      "representation": "float64",
+      "accepted_connections": 10403,
+      "benign_connections": 2181,
+      "attack_connections": 8222,
+      "exact_vector_set_clusters": 4131,
+      "mixed_label_clusters": 0,
+      "benign_connections_in_mixed_clusters": 0,
+      "attack_connections_in_mixed_clusters": 0,
+      "optimistic_free_attack_connections": 8222,
+      "maximum_fpr": 0.005,
+      "exact_budget_fraction": "1/200",
+      "benign_flag_budget": 10,
+      "optimistic_max_true_positives_at_budget": 8222,
+      "optimistic_max_recall_at_budget": 1.0,
+      "minimum_recall": 0.8,
+      "exact_recall_fraction": "4/5",
+      "required_true_positives": 6578,
+      "minimum_benign_flags_for_target_in_relaxation": 0,
+      "minimum_fpr_for_target_in_relaxation": 0.0,
+      "target_not_ruled_out_by_relaxation": true,
+      "learnable_operating_point_proven": false,
+      "precision_constraints_ignored": true,
+      "dp_updates": 0,
+      "aggregate_upper_frontier": [
+        {
+          "benign_flag_budget": 0,
+          "optimistic_max_true_positives": 8222,
+          "optimistic_max_recall": 1.0
+        }
+      ],
+      "scope": "Optimistic upper bound for this exact observed representation and UID-max family only; distinct feature-set groups choose independently even when they share vectors. Not a trained classifier, threshold, attack truth or generalization estimate."
+    },
+    {
+      "split": "calibration",
+      "feature_policy": "statistics27",
+      "representation": "float32",
+      "accepted_connections": 10403,
+      "benign_connections": 2181,
+      "attack_connections": 8222,
+      "exact_vector_set_clusters": 4131,
+      "mixed_label_clusters": 0,
+      "benign_connections_in_mixed_clusters": 0,
+      "attack_connections_in_mixed_clusters": 0,
+      "optimistic_free_attack_connections": 8222,
+      "maximum_fpr": 0.005,
+      "exact_budget_fraction": "1/200",
+      "benign_flag_budget": 10,
+      "optimistic_max_true_positives_at_budget": 8222,
+      "optimistic_max_recall_at_budget": 1.0,
+      "minimum_recall": 0.8,
+      "exact_recall_fraction": "4/5",
+      "required_true_positives": 6578,
+      "minimum_benign_flags_for_target_in_relaxation": 0,
+      "minimum_fpr_for_target_in_relaxation": 0.0,
+      "target_not_ruled_out_by_relaxation": true,
+      "learnable_operating_point_proven": false,
+      "precision_constraints_ignored": true,
+      "dp_updates": 0,
+      "aggregate_upper_frontier": [
+        {
+          "benign_flag_budget": 0,
+          "optimistic_max_true_positives": 8222,
+          "optimistic_max_recall": 1.0
+        }
+      ],
+      "scope": "Optimistic upper bound for this exact observed representation and UID-max family only; distinct feature-set groups choose independently even when they share vectors. Not a trained classifier, threshold, attack truth or generalization estimate."
+    },
+    {
+      "split": "calibration",
+      "feature_policy": "statistics25_no_ports",
+      "representation": "float64",
+      "accepted_connections": 10403,
+      "benign_connections": 2181,
+      "attack_connections": 8222,
+      "exact_vector_set_clusters": 100,
+      "mixed_label_clusters": 0,
+      "benign_connections_in_mixed_clusters": 0,
+      "attack_connections_in_mixed_clusters": 0,
+      "optimistic_free_attack_connections": 8222,
+      "maximum_fpr": 0.005,
+      "exact_budget_fraction": "1/200",
+      "benign_flag_budget": 10,
+      "optimistic_max_true_positives_at_budget": 8222,
+      "optimistic_max_recall_at_budget": 1.0,
+      "minimum_recall": 0.8,
+      "exact_recall_fraction": "4/5",
+      "required_true_positives": 6578,
+      "minimum_benign_flags_for_target_in_relaxation": 0,
+      "minimum_fpr_for_target_in_relaxation": 0.0,
+      "target_not_ruled_out_by_relaxation": true,
+      "learnable_operating_point_proven": false,
+      "precision_constraints_ignored": true,
+      "dp_updates": 0,
+      "aggregate_upper_frontier": [
+        {
+          "benign_flag_budget": 0,
+          "optimistic_max_true_positives": 8222,
+          "optimistic_max_recall": 1.0
+        }
+      ],
+      "scope": "Optimistic upper bound for this exact observed representation and UID-max family only; distinct feature-set groups choose independently even when they share vectors. Not a trained classifier, threshold, attack truth or generalization estimate."
+    },
+    {
+      "split": "calibration",
+      "feature_policy": "statistics25_no_ports",
+      "representation": "float32",
+      "accepted_connections": 10403,
+      "benign_connections": 2181,
+      "attack_connections": 8222,
+      "exact_vector_set_clusters": 100,
+      "mixed_label_clusters": 0,
+      "benign_connections_in_mixed_clusters": 0,
+      "attack_connections_in_mixed_clusters": 0,
+      "optimistic_free_attack_connections": 8222,
+      "maximum_fpr": 0.005,
+      "exact_budget_fraction": "1/200",
+      "benign_flag_budget": 10,
+      "optimistic_max_true_positives_at_budget": 8222,
+      "optimistic_max_recall_at_budget": 1.0,
+      "minimum_recall": 0.8,
+      "exact_recall_fraction": "4/5",
+      "required_true_positives": 6578,
+      "minimum_benign_flags_for_target_in_relaxation": 0,
+      "minimum_fpr_for_target_in_relaxation": 0.0,
+      "target_not_ruled_out_by_relaxation": true,
+      "learnable_operating_point_proven": false,
+      "precision_constraints_ignored": true,
+      "dp_updates": 0,
+      "aggregate_upper_frontier": [
+        {
+          "benign_flag_budget": 0,
+          "optimistic_max_true_positives": 8222,
+          "optimistic_max_recall": 1.0
+        }
+      ],
+      "scope": "Optimistic upper bound for this exact observed representation and UID-max family only; distinct feature-set groups choose independently even when they share vectors. Not a trained classifier, threshold, attack truth or generalization estimate."
+    },
+    {
+      "split": "validation",
+      "feature_policy": "core11_control",
+      "representation": "float64",
+      "accepted_connections": 8827,
+      "benign_connections": 1904,
+      "attack_connections": 6923,
+      "exact_vector_set_clusters": 7348,
+      "mixed_label_clusters": 0,
+      "benign_connections_in_mixed_clusters": 0,
+      "attack_connections_in_mixed_clusters": 0,
+      "optimistic_free_attack_connections": 6923,
+      "maximum_fpr": 0.005,
+      "exact_budget_fraction": "1/200",
+      "benign_flag_budget": 9,
+      "optimistic_max_true_positives_at_budget": 6923,
+      "optimistic_max_recall_at_budget": 1.0,
+      "minimum_recall": 0.8,
+      "exact_recall_fraction": "4/5",
+      "required_true_positives": 5539,
+      "minimum_benign_flags_for_target_in_relaxation": 0,
+      "minimum_fpr_for_target_in_relaxation": 0.0,
+      "target_not_ruled_out_by_relaxation": true,
+      "learnable_operating_point_proven": false,
+      "precision_constraints_ignored": true,
+      "dp_updates": 0,
+      "aggregate_upper_frontier": [
+        {
+          "benign_flag_budget": 0,
+          "optimistic_max_true_positives": 6923,
+          "optimistic_max_recall": 1.0
+        }
+      ],
+      "scope": "Optimistic upper bound for this exact observed representation and UID-max family only; distinct feature-set groups choose independently even when they share vectors. Not a trained classifier, threshold, attack truth or generalization estimate."
+    },
+    {
+      "split": "validation",
+      "feature_policy": "core11_control",
+      "representation": "float32",
+      "accepted_connections": 8827,
+      "benign_connections": 1904,
+      "attack_connections": 6923,
+      "exact_vector_set_clusters": 7348,
+      "mixed_label_clusters": 0,
+      "benign_connections_in_mixed_clusters": 0,
+      "attack_connections_in_mixed_clusters": 0,
+      "optimistic_free_attack_connections": 6923,
+      "maximum_fpr": 0.005,
+      "exact_budget_fraction": "1/200",
+      "benign_flag_budget": 9,
+      "optimistic_max_true_positives_at_budget": 6923,
+      "optimistic_max_recall_at_budget": 1.0,
+      "minimum_recall": 0.8,
+      "exact_recall_fraction": "4/5",
+      "required_true_positives": 5539,
+      "minimum_benign_flags_for_target_in_relaxation": 0,
+      "minimum_fpr_for_target_in_relaxation": 0.0,
+      "target_not_ruled_out_by_relaxation": true,
+      "learnable_operating_point_proven": false,
+      "precision_constraints_ignored": true,
+      "dp_updates": 0,
+      "aggregate_upper_frontier": [
+        {
+          "benign_flag_budget": 0,
+          "optimistic_max_true_positives": 6923,
+          "optimistic_max_recall": 1.0
+        }
+      ],
+      "scope": "Optimistic upper bound for this exact observed representation and UID-max family only; distinct feature-set groups choose independently even when they share vectors. Not a trained classifier, threshold, attack truth or generalization estimate."
+    },
+    {
+      "split": "validation",
+      "feature_policy": "statistics27",
+      "representation": "float64",
+      "accepted_connections": 8827,
+      "benign_connections": 1904,
+      "attack_connections": 6923,
+      "exact_vector_set_clusters": 7350,
+      "mixed_label_clusters": 0,
+      "benign_connections_in_mixed_clusters": 0,
+      "attack_connections_in_mixed_clusters": 0,
+      "optimistic_free_attack_connections": 6923,
+      "maximum_fpr": 0.005,
+      "exact_budget_fraction": "1/200",
+      "benign_flag_budget": 9,
+      "optimistic_max_true_positives_at_budget": 6923,
+      "optimistic_max_recall_at_budget": 1.0,
+      "minimum_recall": 0.8,
+      "exact_recall_fraction": "4/5",
+      "required_true_positives": 5539,
+      "minimum_benign_flags_for_target_in_relaxation": 0,
+      "minimum_fpr_for_target_in_relaxation": 0.0,
+      "target_not_ruled_out_by_relaxation": true,
+      "learnable_operating_point_proven": false,
+      "precision_constraints_ignored": true,
+      "dp_updates": 0,
+      "aggregate_upper_frontier": [
+        {
+          "benign_flag_budget": 0,
+          "optimistic_max_true_positives": 6923,
+          "optimistic_max_recall": 1.0
+        }
+      ],
+      "scope": "Optimistic upper bound for this exact observed representation and UID-max family only; distinct feature-set groups choose independently even when they share vectors. Not a trained classifier, threshold, attack truth or generalization estimate."
+    },
+    {
+      "split": "validation",
+      "feature_policy": "statistics27",
+      "representation": "float32",
+      "accepted_connections": 8827,
+      "benign_connections": 1904,
+      "attack_connections": 6923,
+      "exact_vector_set_clusters": 7350,
+      "mixed_label_clusters": 0,
+      "benign_connections_in_mixed_clusters": 0,
+      "attack_connections_in_mixed_clusters": 0,
+      "optimistic_free_attack_connections": 6923,
+      "maximum_fpr": 0.005,
+      "exact_budget_fraction": "1/200",
+      "benign_flag_budget": 9,
+      "optimistic_max_true_positives_at_budget": 6923,
+      "optimistic_max_recall_at_budget": 1.0,
+      "minimum_recall": 0.8,
+      "exact_recall_fraction": "4/5",
+      "required_true_positives": 5539,
+      "minimum_benign_flags_for_target_in_relaxation": 0,
+      "minimum_fpr_for_target_in_relaxation": 0.0,
+      "target_not_ruled_out_by_relaxation": true,
+      "learnable_operating_point_proven": false,
+      "precision_constraints_ignored": true,
+      "dp_updates": 0,
+      "aggregate_upper_frontier": [
+        {
+          "benign_flag_budget": 0,
+          "optimistic_max_true_positives": 6923,
+          "optimistic_max_recall": 1.0
+        }
+      ],
+      "scope": "Optimistic upper bound for this exact observed representation and UID-max family only; distinct feature-set groups choose independently even when they share vectors. Not a trained classifier, threshold, attack truth or generalization estimate."
+    },
+    {
+      "split": "validation",
+      "feature_policy": "statistics25_no_ports",
+      "representation": "float64",
+      "accepted_connections": 8827,
+      "benign_connections": 1904,
+      "attack_connections": 6923,
+      "exact_vector_set_clusters": 1941,
+      "mixed_label_clusters": 12,
+      "benign_connections_in_mixed_clusters": 86,
+      "attack_connections_in_mixed_clusters": 2994,
+      "optimistic_free_attack_connections": 3929,
+      "maximum_fpr": 0.005,
+      "exact_budget_fraction": "1/200",
+      "benign_flag_budget": 9,
+      "optimistic_max_true_positives_at_budget": 4203,
+      "optimistic_max_recall_at_budget": 0.607106745630507,
+      "minimum_recall": 0.8,
+      "exact_recall_fraction": "4/5",
+      "required_true_positives": 5539,
+      "minimum_benign_flags_for_target_in_relaxation": 39,
+      "minimum_fpr_for_target_in_relaxation": 0.020483193277310924,
+      "target_not_ruled_out_by_relaxation": false,
+      "learnable_operating_point_proven": false,
+      "precision_constraints_ignored": true,
+      "dp_updates": 22774,
+      "aggregate_upper_frontier": [
+        {
+          "benign_flag_budget": 0,
+          "optimistic_max_true_positives": 3929,
+          "optimistic_max_recall": 0.5675285280947566
+        },
+        {
+          "benign_flag_budget": 1,
+          "optimistic_max_true_positives": 3972,
+          "optimistic_max_recall": 0.5737397082189802
+        },
+        {
+          "benign_flag_budget": 2,
+          "optimistic_max_true_positives": 4014,
+          "optimistic_max_recall": 0.5798064422938033
+        },
+        {
+          "benign_flag_budget": 3,
+          "optimistic_max_true_positives": 4056,
+          "optimistic_max_recall": 0.5858731763686263
+        },
+        {
+          "benign_flag_budget": 4,
+          "optimistic_max_true_positives": 4095,
+          "optimistic_max_recall": 0.5915065722952477
+        },
+        {
+          "benign_flag_budget": 5,
+          "optimistic_max_true_positives": 4119,
+          "optimistic_max_recall": 0.5949732774808609
+        },
+        {
+          "benign_flag_budget": 6,
+          "optimistic_max_true_positives": 4142,
+          "optimistic_max_recall": 0.5982955366170736
+        },
+        {
+          "benign_flag_budget": 7,
+          "optimistic_max_true_positives": 4161,
+          "optimistic_max_recall": 0.601040011555684
+        },
+        {
+          "benign_flag_budget": 8,
+          "optimistic_max_true_positives": 4184,
+          "optimistic_max_recall": 0.6043622706918966
+        },
+        {
+          "benign_flag_budget": 9,
+          "optimistic_max_true_positives": 4203,
+          "optimistic_max_recall": 0.607106745630507
+        },
+        {
+          "benign_flag_budget": 10,
+          "optimistic_max_true_positives": 4222,
+          "optimistic_max_recall": 0.6098512205691174
+        },
+        {
+          "benign_flag_budget": 11,
+          "optimistic_max_true_positives": 4241,
+          "optimistic_max_recall": 0.6125956955077279
+        },
+        {
+          "benign_flag_budget": 12,
+          "optimistic_max_true_positives": 4256,
+          "optimistic_max_recall": 0.6147623862487361
+        },
+        {
+          "benign_flag_budget": 13,
+          "optimistic_max_true_positives": 4275,
+          "optimistic_max_recall": 0.6175068611873465
+        },
+        {
+          "benign_flag_budget": 14,
+          "optimistic_max_true_positives": 4294,
+          "optimistic_max_recall": 0.620251336125957
+        },
+        {
+          "benign_flag_budget": 37,
+          "optimistic_max_true_positives": 4311,
+          "optimistic_max_recall": 0.6227069189657662
+        },
+        {
+          "benign_flag_budget": 38,
+          "optimistic_max_true_positives": 4335,
+          "optimistic_max_recall": 0.6261736241513794
+        },
+        {
+          "benign_flag_budget": 39,
+          "optimistic_max_true_positives": 6342,
+          "optimistic_max_recall": 0.916076845298281
+        },
+        {
+          "benign_flag_budget": 40,
+          "optimistic_max_true_positives": 6385,
+          "optimistic_max_recall": 0.9222880254225047
+        },
+        {
+          "benign_flag_budget": 41,
+          "optimistic_max_true_positives": 6427,
+          "optimistic_max_recall": 0.9283547594973277
+        },
+        {
+          "benign_flag_budget": 42,
+          "optimistic_max_true_positives": 6469,
+          "optimistic_max_recall": 0.9344214935721508
+        },
+        {
+          "benign_flag_budget": 43,
+          "optimistic_max_true_positives": 6508,
+          "optimistic_max_recall": 0.9400548894987723
+        },
+        {
+          "benign_flag_budget": 44,
+          "optimistic_max_true_positives": 6532,
+          "optimistic_max_recall": 0.9435215946843853
+        },
+        {
+          "benign_flag_budget": 45,
+          "optimistic_max_true_positives": 6555,
+          "optimistic_max_recall": 0.946843853820598
+        },
+        {
+          "benign_flag_budget": 46,
+          "optimistic_max_true_positives": 6574,
+          "optimistic_max_recall": 0.9495883287592084
+        },
+        {
+          "benign_flag_budget": 47,
+          "optimistic_max_true_positives": 6597,
+          "optimistic_max_recall": 0.952910587895421
+        },
+        {
+          "benign_flag_budget": 48,
+          "optimistic_max_true_positives": 6616,
+          "optimistic_max_recall": 0.9556550628340315
+        },
+        {
+          "benign_flag_budget": 49,
+          "optimistic_max_true_positives": 6635,
+          "optimistic_max_recall": 0.9583995377726419
+        },
+        {
+          "benign_flag_budget": 50,
+          "optimistic_max_true_positives": 6654,
+          "optimistic_max_recall": 0.9611440127112524
+        },
+        {
+          "benign_flag_budget": 51,
+          "optimistic_max_true_positives": 6669,
+          "optimistic_max_recall": 0.9633107034522606
+        },
+        {
+          "benign_flag_budget": 52,
+          "optimistic_max_true_positives": 6688,
+          "optimistic_max_recall": 0.966055178390871
+        },
+        {
+          "benign_flag_budget": 53,
+          "optimistic_max_true_positives": 6707,
+          "optimistic_max_recall": 0.9687996533294815
+        },
+        {
+          "benign_flag_budget": 76,
+          "optimistic_max_true_positives": 6724,
+          "optimistic_max_recall": 0.9712552361692908
+        },
+        {
+          "benign_flag_budget": 77,
+          "optimistic_max_true_positives": 6748,
+          "optimistic_max_recall": 0.974721941354904
+        },
+        {
+          "benign_flag_budget": 78,
+          "optimistic_max_true_positives": 6771,
+          "optimistic_max_recall": 0.9780442004911166
+        },
+        {
+          "benign_flag_budget": 79,
+          "optimistic_max_true_positives": 6790,
+          "optimistic_max_recall": 0.980788675429727
+        },
+        {
+          "benign_flag_budget": 80,
+          "optimistic_max_true_positives": 6813,
+          "optimistic_max_recall": 0.9841109345659397
+        },
+        {
+          "benign_flag_budget": 81,
+          "optimistic_max_true_positives": 6832,
+          "optimistic_max_recall": 0.9868554095045501
+        },
+        {
+          "benign_flag_budget": 82,
+          "optimistic_max_true_positives": 6851,
+          "optimistic_max_recall": 0.9895998844431605
+        },
+        {
+          "benign_flag_budget": 83,
+          "optimistic_max_true_positives": 6870,
+          "optimistic_max_recall": 0.9923443593817709
+        },
+        {
+          "benign_flag_budget": 84,
+          "optimistic_max_true_positives": 6885,
+          "optimistic_max_recall": 0.9945110501227792
+        },
+        {
+          "benign_flag_budget": 85,
+          "optimistic_max_true_positives": 6904,
+          "optimistic_max_recall": 0.9972555250613896
+        },
+        {
+          "benign_flag_budget": 86,
+          "optimistic_max_true_positives": 6923,
+          "optimistic_max_recall": 1.0
+        }
+      ],
+      "scope": "Optimistic upper bound for this exact observed representation and UID-max family only; distinct feature-set groups choose independently even when they share vectors. Not a trained classifier, threshold, attack truth or generalization estimate."
+    },
+    {
+      "split": "validation",
+      "feature_policy": "statistics25_no_ports",
+      "representation": "float32",
+      "accepted_connections": 8827,
+      "benign_connections": 1904,
+      "attack_connections": 6923,
+      "exact_vector_set_clusters": 1941,
+      "mixed_label_clusters": 12,
+      "benign_connections_in_mixed_clusters": 86,
+      "attack_connections_in_mixed_clusters": 2994,
+      "optimistic_free_attack_connections": 3929,
+      "maximum_fpr": 0.005,
+      "exact_budget_fraction": "1/200",
+      "benign_flag_budget": 9,
+      "optimistic_max_true_positives_at_budget": 4203,
+      "optimistic_max_recall_at_budget": 0.607106745630507,
+      "minimum_recall": 0.8,
+      "exact_recall_fraction": "4/5",
+      "required_true_positives": 5539,
+      "minimum_benign_flags_for_target_in_relaxation": 39,
+      "minimum_fpr_for_target_in_relaxation": 0.020483193277310924,
+      "target_not_ruled_out_by_relaxation": false,
+      "learnable_operating_point_proven": false,
+      "precision_constraints_ignored": true,
+      "dp_updates": 22774,
+      "aggregate_upper_frontier": [
+        {
+          "benign_flag_budget": 0,
+          "optimistic_max_true_positives": 3929,
+          "optimistic_max_recall": 0.5675285280947566
+        },
+        {
+          "benign_flag_budget": 1,
+          "optimistic_max_true_positives": 3972,
+          "optimistic_max_recall": 0.5737397082189802
+        },
+        {
+          "benign_flag_budget": 2,
+          "optimistic_max_true_positives": 4014,
+          "optimistic_max_recall": 0.5798064422938033
+        },
+        {
+          "benign_flag_budget": 3,
+          "optimistic_max_true_positives": 4056,
+          "optimistic_max_recall": 0.5858731763686263
+        },
+        {
+          "benign_flag_budget": 4,
+          "optimistic_max_true_positives": 4095,
+          "optimistic_max_recall": 0.5915065722952477
+        },
+        {
+          "benign_flag_budget": 5,
+          "optimistic_max_true_positives": 4119,
+          "optimistic_max_recall": 0.5949732774808609
+        },
+        {
+          "benign_flag_budget": 6,
+          "optimistic_max_true_positives": 4142,
+          "optimistic_max_recall": 0.5982955366170736
+        },
+        {
+          "benign_flag_budget": 7,
+          "optimistic_max_true_positives": 4161,
+          "optimistic_max_recall": 0.601040011555684
+        },
+        {
+          "benign_flag_budget": 8,
+          "optimistic_max_true_positives": 4184,
+          "optimistic_max_recall": 0.6043622706918966
+        },
+        {
+          "benign_flag_budget": 9,
+          "optimistic_max_true_positives": 4203,
+          "optimistic_max_recall": 0.607106745630507
+        },
+        {
+          "benign_flag_budget": 10,
+          "optimistic_max_true_positives": 4222,
+          "optimistic_max_recall": 0.6098512205691174
+        },
+        {
+          "benign_flag_budget": 11,
+          "optimistic_max_true_positives": 4241,
+          "optimistic_max_recall": 0.6125956955077279
+        },
+        {
+          "benign_flag_budget": 12,
+          "optimistic_max_true_positives": 4256,
+          "optimistic_max_recall": 0.6147623862487361
+        },
+        {
+          "benign_flag_budget": 13,
+          "optimistic_max_true_positives": 4275,
+          "optimistic_max_recall": 0.6175068611873465
+        },
+        {
+          "benign_flag_budget": 14,
+          "optimistic_max_true_positives": 4294,
+          "optimistic_max_recall": 0.620251336125957
+        },
+        {
+          "benign_flag_budget": 37,
+          "optimistic_max_true_positives": 4311,
+          "optimistic_max_recall": 0.6227069189657662
+        },
+        {
+          "benign_flag_budget": 38,
+          "optimistic_max_true_positives": 4335,
+          "optimistic_max_recall": 0.6261736241513794
+        },
+        {
+          "benign_flag_budget": 39,
+          "optimistic_max_true_positives": 6342,
+          "optimistic_max_recall": 0.916076845298281
+        },
+        {
+          "benign_flag_budget": 40,
+          "optimistic_max_true_positives": 6385,
+          "optimistic_max_recall": 0.9222880254225047
+        },
+        {
+          "benign_flag_budget": 41,
+          "optimistic_max_true_positives": 6427,
+          "optimistic_max_recall": 0.9283547594973277
+        },
+        {
+          "benign_flag_budget": 42,
+          "optimistic_max_true_positives": 6469,
+          "optimistic_max_recall": 0.9344214935721508
+        },
+        {
+          "benign_flag_budget": 43,
+          "optimistic_max_true_positives": 6508,
+          "optimistic_max_recall": 0.9400548894987723
+        },
+        {
+          "benign_flag_budget": 44,
+          "optimistic_max_true_positives": 6532,
+          "optimistic_max_recall": 0.9435215946843853
+        },
+        {
+          "benign_flag_budget": 45,
+          "optimistic_max_true_positives": 6555,
+          "optimistic_max_recall": 0.946843853820598
+        },
+        {
+          "benign_flag_budget": 46,
+          "optimistic_max_true_positives": 6574,
+          "optimistic_max_recall": 0.9495883287592084
+        },
+        {
+          "benign_flag_budget": 47,
+          "optimistic_max_true_positives": 6597,
+          "optimistic_max_recall": 0.952910587895421
+        },
+        {
+          "benign_flag_budget": 48,
+          "optimistic_max_true_positives": 6616,
+          "optimistic_max_recall": 0.9556550628340315
+        },
+        {
+          "benign_flag_budget": 49,
+          "optimistic_max_true_positives": 6635,
+          "optimistic_max_recall": 0.9583995377726419
+        },
+        {
+          "benign_flag_budget": 50,
+          "optimistic_max_true_positives": 6654,
+          "optimistic_max_recall": 0.9611440127112524
+        },
+        {
+          "benign_flag_budget": 51,
+          "optimistic_max_true_positives": 6669,
+          "optimistic_max_recall": 0.9633107034522606
+        },
+        {
+          "benign_flag_budget": 52,
+          "optimistic_max_true_positives": 6688,
+          "optimistic_max_recall": 0.966055178390871
+        },
+        {
+          "benign_flag_budget": 53,
+          "optimistic_max_true_positives": 6707,
+          "optimistic_max_recall": 0.9687996533294815
+        },
+        {
+          "benign_flag_budget": 76,
+          "optimistic_max_true_positives": 6724,
+          "optimistic_max_recall": 0.9712552361692908
+        },
+        {
+          "benign_flag_budget": 77,
+          "optimistic_max_true_positives": 6748,
+          "optimistic_max_recall": 0.974721941354904
+        },
+        {
+          "benign_flag_budget": 78,
+          "optimistic_max_true_positives": 6771,
+          "optimistic_max_recall": 0.9780442004911166
+        },
+        {
+          "benign_flag_budget": 79,
+          "optimistic_max_true_positives": 6790,
+          "optimistic_max_recall": 0.980788675429727
+        },
+        {
+          "benign_flag_budget": 80,
+          "optimistic_max_true_positives": 6813,
+          "optimistic_max_recall": 0.9841109345659397
+        },
+        {
+          "benign_flag_budget": 81,
+          "optimistic_max_true_positives": 6832,
+          "optimistic_max_recall": 0.9868554095045501
+        },
+        {
+          "benign_flag_budget": 82,
+          "optimistic_max_true_positives": 6851,
+          "optimistic_max_recall": 0.9895998844431605
+        },
+        {
+          "benign_flag_budget": 83,
+          "optimistic_max_true_positives": 6870,
+          "optimistic_max_recall": 0.9923443593817709
+        },
+        {
+          "benign_flag_budget": 84,
+          "optimistic_max_true_positives": 6885,
+          "optimistic_max_recall": 0.9945110501227792
+        },
+        {
+          "benign_flag_budget": 85,
+          "optimistic_max_true_positives": 6904,
+          "optimistic_max_recall": 0.9972555250613896
+        },
+        {
+          "benign_flag_budget": 86,
+          "optimistic_max_true_positives": 6923,
+          "optimistic_max_recall": 1.0
+        }
+      ],
+      "scope": "Optimistic upper bound for this exact observed representation and UID-max family only; distinct feature-set groups choose independently even when they share vectors. Not a trained classifier, threshold, attack truth or generalization estimate."
+    }
+  ],
+  "model_fits": 0,
+  "model_or_threshold_produced": false,
+  "resources": {
+    "wall_seconds": 0.39382407599998714,
+    "sampled_peak_process_tree_rss_sum_mib": 138.984375,
+    "scope": "Two small partition reads, exact byte-set grouping and knapsack bounds; excludes imports, acquisition/preparation and input verification. 50 ms RSS samples are not OS-enforced limits."
+  },
+  "resource_screen_met": true,
+  "training_authorized": false,
+  "deployment_authorized": false,
+  "external_test_accessed": false,
+  "candidate_policy_promoted": false
+}

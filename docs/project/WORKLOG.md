@@ -547,6 +547,35 @@ Python 3.11/3.13 CI passed 172 with six skips each. Local cross-model focused ch
 46 with one Linux exporter skip. Next NAD-051 quantifies optimistic information limits from
 indistinguishable input sets before another search or causal-context feature work.
 
+## 1 November 2026 — Exact observed information ceiling and README consolidation
+
+Registered NAD-051 at `fc71910` before computing bounds. Implemented exact byte-set grouping
+of accepted connection inputs and 0/1 knapsack budgets with rational arithmetic. Shared the
+read-only statistical provenance verifier without importing model libraries into the analysis.
+Only calibration/validation rows are read; no training matrix or classifier is fitted. Tests
+cover mixed-group costs, ties/multiplicity/order, deliberate shared-vector relaxation,
+float32/float64 differences, budget refusal and label consistency. Verified standalone import
+does not load pandas/sklearn. No signature contents or oracle decisions are published.
+
+Run `41317674415` at `faf9e26` passed all twelve partition/policy/representation bounds with
+zero fits. The no-port validation representation can detect at most 4,203/6,923 attack UIDs
+(60.71%) at the exact 9/1,904 benign-flag budget. Even the optimistic relaxation requires 39
+benign flags (2.05% FPR) for 80% recall. Both numeric representations agree. Port-bearing
+representations are not ruled out, but this is not evidence that a decision rule can be
+learned/transferred; precision and inter-group shared-vector constraints are ignored.
+
+Analysis took .39 seconds / 139.0 MiB sampled tree RSS, excluding acquisition, preparation,
+imports and verification. The real Linux focused suite passed 64 tests. Updated documentation,
+backlog and aggregate evidence, retaining the old model failures, exclusions and untouched
+external source. Reorganized README around current status and a measured-stage table, removing
+stale "next/current sprint" narratives and separating native workflow startup from historical
+UQ commands. No substantive experimental result was removed.
+
+Next NAD-052 measures causal flow-start history with same-millisecond exclusion, explicit
+warm-up/clock/state behavior and packet-callback versus sorted replay parity. This adds
+information rather than pretending more model capacity can overcome the measured no-port
+bound. The pilot remains owner-deferred and no model is promoted.
+
 ## Outstanding work
 
 This work does not complete the production roadmap. Global audits cover the development inputs;
