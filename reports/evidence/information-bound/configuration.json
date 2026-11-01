@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "study_id": "connection-information-bound-v1",
+  "registered_date": "2026-11-01",
+  "statistical_config": "configs/data/statistical-features.json",
+  "expected_core_logical_sha256": "9be2a2d5c39b3cb78a31fec40118971ba03b0e62b398e1151f7480ce8c312d59",
+  "expected_statistical_logical_sha256": "a4e6d0ff836814acadd4cc778b0b63320fe5dc38cc080f040caaeb95db189259",
+  "partitions": [
+    "calibration",
+    "validation"
+  ],
+  "feature_policies": [
+    "core11_control",
+    "statistics27",
+    "statistics25_no_ports"
+  ],
+  "representations": [
+    "float64",
+    "float32"
+  ],
+  "maximum_false_positive_rate": "0.005",
+  "minimum_recall": "0.8",
+  "maximum_partition_rows": 250000,
+  "maximum_dp_updates": 10000000,
+  "maximum_wall_seconds": 600,
+  "sampled_memory_screen_mib": 512,
+  "training_enabled": false,
+  "deployment_authorized": false,
+  "purpose": "No-fit optimistic recall ceiling at an exact integer benign-UID budget. Group UIDs by their exact set of feature vectors, ignore shared-vector constraints between different sets and ignore precision constraints. Exact byte equality, not collision-prone signature hashes. Publish aggregate bounds only; no oracle classifier or threshold."
+}

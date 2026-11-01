@@ -10,7 +10,8 @@ Current focus (1 November 2026): native cohort preparation is measured and repea
 twelve native model candidates fail acceptance, with a further cross-thread score discrepancy.
 NAD-048 identified fixed-thread stability and HTTP/single-packet error slices; NAD-049 now
 validated richer measured inputs; NAD-050 measured their tradeoff and still rejected every
-candidate. NAD-051 now tests observable information limits before more tuning. The owner selected
+candidate. NAD-051 proves a no-port observed limit; NAD-052 now validates causal context before
+more fitting. The owner selected
 MIT for code and deferred the pilot; continue offline research. Historical sprint narratives
 below retain the original rationale and failed results; they are not current deployment claims.
 
@@ -101,7 +102,8 @@ the roadmap must not be read as an endorsement of the initial champion for live 
 | NAD-048 | P1 / 5 | Diagnose native false positives/family misses and test a fixed-thread linear fit before further search | 047 | Measured three fits: fixed-one-thread scores/coefficients/thresholds identical; cross-thread variation persists. HTTP bucket has 53/55 FPs and all 113 FNs; see NATIVE_ERRORS.md |
 | NAD-049 | P1 / 5 | Validate a richer measured native feature contract on independent packet fixtures, preserve core/label replay and quantify resource/information changes | 048 | Measured: 165 fixture values, unchanged core/order/label joins for all 250,819 flows, 113.5 MiB sidecar and explicit remaining feature ambiguity; no fit |
 | NAD-050 | P1 / 5 | Compare statistical/core/no-port inputs with fixed-thread fitting, calibration-only thresholds and held capture diagnostics | 049 | Measured fifteen fits, exact fixed-thread/reload checks; no candidate qualifies. Natural logistic DDoS recall 1/114 to 75/114 but FP57 to77; selected FPR 4.04% |
-| NAD-051 | P1 / 3 | Quantify optimistic connection operating-point limits from indistinguishable feature sets before further tuning/context work | 050 | Next: no-fit information bound, explicit oracle/nondeployable interpretation and unchanged held-out source roles |
+| NAD-051 | P1 / 3 | Quantify optimistic connection operating-point limits from indistinguishable feature sets before further tuning/context work | 050 | Measured zero-fit exact bound: no-port validation ceiling60.71% recall at9 benign flags; at least39 needed for80%, even in an optimistic relaxation. Not a trained model |
+| NAD-052 | P1 / 5 | Validate causal flow-start context, timestamp ordering/state bounds and online-style/offline feature parity before fitting | 051 | Next: pre-flow windows using all observed flow starts, no label-conditioned history or future events; preserve raw/sidecar/source roles |
 
 ## Next sprint after the development study
 
