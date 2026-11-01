@@ -55,6 +55,16 @@ chronology and archived assignments. Repeated/conflicting feature patterns remai
 Only aggregate manifests are retained from CI; no native detector has been trained by this
 phase. See the [native preparation guide](docs/guides/NATIVE_COHORT.md).
 
+The next [registered native baseline](docs/research/NATIVE_STUDY.md) compares twelve bounded
+candidate specifications using capture/time-separated accepted labels and connection-based
+thresholds. It explicitly remains an experimental diagnostic; see the
+[native model runbook](docs/guides/NATIVE_STUDY.md).
+
+Project code is licensed under [MIT](LICENSE), selected by the owner on 1 November 2026.
+Dataset permissions and third-party dependency licenses are separate; see the
+[dataset catalog](docs/research/DATASETS.md). The real-network pilot is deferred by the owner
+while offline research continues.
+
 ## What changed
 
 - A versioned feature contract replaces hand-built packet placeholders.

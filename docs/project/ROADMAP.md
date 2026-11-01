@@ -79,7 +79,7 @@ the roadmap must not be read as an endorsement of the initial champion for live 
 | NAD-034 | P2 / 5 | Benign-only novelty baseline and incremental-learning comparison with correct binary task mapping | 026 | Backlog |
 | NAD-035 | P2 / 8 | CICIoT2023 / DataSense / Zeek adapter chosen by deployment domain; preserve source metadata and terms | 014,021 | Backlog |
 | NAD-036 | P2 / 5 | Minimal analyst dashboard for triage, timestamps, source evidence and suppression; no raw payload exposure | 025,028 | Backlog |
-| NAD-037 | P1 / 3 | Resolve source-code license, commercial dataset permission, notices, privacy and retention before public product release | 021 | Backlog; owner decision |
+| NAD-037 | P1 / 3 | Resolve source-code license, commercial dataset permission, notices, privacy and retention before public product release | 021 | Owner selected MIT on 1 November 2026; LICENSE/package metadata added. Dataset terms, dependency notices and pilot data handling remain |
 | NAD-038 | P2 / 5 | Research release: versioned source, model/data cards, clean-environment reproduction and evaluation artifacts | 011,020,037 | Backlog |
 | NAD-039 | P2 / 8 | Production candidate: pilot acceptance, reliability/load checks, failure handling, rollback drill and operator signoff | 026–032,037 | Backlog |
 | NAD-040 | P1 / 5 | Compare ordered raw/transformed payloads, weights, repeated fits, threads and platform controls | 014 | Measured: 60 fits/platform, matching inputs, reduced control discrepancy with full sampling; one larger ablation retained decision differences |
@@ -89,6 +89,7 @@ the roadmap must not be read as an endorsement of the initial champion for live 
 | NAD-044 | P1 / 5 | Expand complete development captures under registered bounds; use a disk index and measure decision parity, attack coverage and process resources | 043 | Measured: another 215 MB local, 250,819 flows, 83,418 matched attack UIDs; SQLite assignment digest identical to memory reference with 43.7% lower sampled tree RSS in one comparison |
 | NAD-045 | P1 / 5 | Validate missing-duration/trailing-packet label linkage on controlled and real PCAP evidence; report per-attack UID coverage before freezing a new rule | 044 | Measured point candidate: 87,048 additional matched flows, all old matches preserved, DDoS 114/14,394; zero-packet contradictions and packet-tail semantics remain unresolved |
 | NAD-046 | P1 / 5 | Materialize a bounded native-feature cohort with source/capture/UID groups, immutable inclusion/overlap audits and validated partition manifests | 014,045 | Measured: 250,819 private rows, 248,997 accepted candidate labels, read-only verification, chronology/support/group checks and overlap accounting; device isolation and label promotion remain open |
+| NAD-047 | P1 / 5 | Register and measure bounded native capture/time diagnostic models, connection weighting, derived features, calibration and repeat controls | 046 | Registered experimental accepted-label subset, twelve candidate specifications plus dummy/two controls; external/device-held-out and production gates remain |
 
 ## Next sprint after the development study
 
