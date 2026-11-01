@@ -2,7 +2,16 @@ name: Native diagnostic baseline
 
 on:
   workflow_call:
+    inputs:
+      diagnostics:
+        type: boolean
+        default: false
   workflow_dispatch:
+    inputs:
+      diagnostics:
+        description: 'Run three-fit error/fixed-thread diagnostic instead of baseline selection'
+        type: boolean
+        default: false
 
 permissions:
   contents: read
@@ -27,8 +36,11 @@ jobs:
           version: '0.12.17'
           enable-cache: true
       - run: uv sync --frozen --extra dev --extra measurement
-      - run: uv run --no-sync pytest tests/test_native_study.py tests/test_native_cohort.py tests/test_measurement.py
-      - run: uv run --no-sync python scripts/research/run_native_study.py
+      - run: uv run --no-sync pytest tests/test_native_errors.py tests/test_native_study.py tests/test_native_cohort.py tests/test_measurement.py
+      - if: ${{ !inputs.diagnostics }}
+        run: uv run --no-sync python scripts/research/run_native_study.py
+      - if: ${{ inputs.diagnostics }}
+        run: uv run --no-sync python scripts/research/run_native_study.py --diagnostics
       - name: Retain diagnostic aggregate evidence only
         if: always()
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
@@ -41,4 +53,6 @@ jobs:
             artifacts/native-study/study.json
             artifacts/native-study/freeze.json
             artifacts/native-study/progress.json
+            artifacts/native-study/diagnostics.json
+            artifacts/native-study/diagnostics-config.json
           retention-days: 14

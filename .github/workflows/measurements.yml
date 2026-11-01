@@ -3,6 +3,10 @@ name: Offline flow measurement lab
 on:
   workflow_dispatch:
     inputs:
+      native_error_diagnostics:
+        description: 'Run registered native error slices and fixed-thread controls'
+        type: boolean
+        default: false
       native_study:
         description: 'Run registered experimental native-feature fits (no deployment)'
         type: boolean
@@ -58,6 +62,11 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  native-errors:
+    if: github.event_name == 'workflow_dispatch' && inputs.native_error_diagnostics
+    uses: ./.github/workflows/native-study.yml
+    with:
+      diagnostics: true
   native-study:
     if: github.event_name == 'workflow_dispatch' && inputs.native_study
     uses: ./.github/workflows/native-study.yml

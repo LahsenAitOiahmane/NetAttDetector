@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "study_id": "native-error-diagnostic-v1",
+  "registered_date": "2026-11-01",
+  "baseline_config": "configs/native-study.json",
+  "baseline_freeze": "reports/evidence/native-study/freeze.json",
+  "baseline_results": "reports/evidence/native-study/study.json",
+  "maximum_fits": 3,
+  "training_threads": [
+    2,
+    1,
+    1
+  ],
+  "score_tolerance": 1e-07,
+  "deployment_authorized": false,
+  "public_model_release_authorized": false,
+  "purpose": "Replay the selected specification at two threads, then two single-thread fits. Compare frozen-threshold validation decisions and calibration-selected thresholds without relaxing the original gate. Publish connection-level FP/FN slices by top-scoring segment protocol/service/port range and flow shape; never publish endpoint/UID/feature rows. No hyperparameter search, validation-threshold tuning or external data."
+}

@@ -1,0 +1,811 @@
+{
+  "study_id": "native-error-diagnostic-v1",
+  "source_commit": "0d5f8546750c1845920e21bc1c2f0b5006a9802f",
+  "config_sha256": "0915f85df208e094e1beb6adc02dd49f744dbda1a52b167b34368b4f55f35d5d",
+  "baseline_freeze_sha256": "bb25ba3022d660a37f00b39e826051f95c5968d223e55ed0e453a92b3a5398ae",
+  "cohort_logical_sha256": "9be2a2d5c39b3cb78a31fec40118971ba03b0e62b398e1151f7480ce8c312d59",
+  "original_frozen_threshold": 0.9921028048109991,
+  "completed_fits": 3,
+  "records": [
+    {
+      "run": 0,
+      "training_threads": 2,
+      "fit_seconds": 0.9855570299999954,
+      "calibration_selected_threshold": 0.9921028047890268,
+      "validation_at_original_frozen_threshold": {
+        "flows": {
+          "rows": 13857,
+          "attack_prevalence": 0.8491737028216786,
+          "threshold": 0.9921028048109991,
+          "accuracy": 0.985278198744317,
+          "balanced_accuracy": 0.9793303834460414,
+          "attack_precision": 0.9947796320068464,
+          "attack_recall": 0.9878473697628962,
+          "attack_f1": 0.991301381545284,
+          "macro_f1": 0.9717182646816049,
+          "average_precision": 0.9997078774130836,
+          "roc_auc": 0.998490100650469,
+          "brier_score": 0.00815821917495389,
+          "false_positive_rate": 0.029186602870813396,
+          "false_alarms_per_10000_benign_flows": 291.86602870813397,
+          "confusion_matrix": {
+            "tn": 2029,
+            "fp": 61,
+            "fn": 143,
+            "tp": 11624
+          },
+          "conditional_wilson_95": {
+            "attack_precision": [
+              0.9933005446759824,
+              0.9959335073672395
+            ],
+            "attack_recall": [
+              0.9857024079025313,
+              0.9896739099389179
+            ],
+            "false_positive_rate": [
+              0.022788812438406802,
+              0.0373119455681575
+            ],
+            "limitation": "Binomial intervals assume independent labels/rows; not capture-level or model-selection uncertainty."
+          }
+        },
+        "connections": {
+          "attack_prevalence": 0.7842981760507534,
+          "threshold": 0.9921028048109991,
+          "accuracy": 0.9809674861221253,
+          "balanced_accuracy": 0.9773955208979446,
+          "attack_precision": 0.9919883466860888,
+          "attack_recall": 0.983677596417738,
+          "attack_f1": 0.9878154917319408,
+          "macro_f1": 0.9721798617480191,
+          "average_precision": 0.9997827500751575,
+          "roc_auc": 0.9992290647300377,
+          "brier_score": 0.009849261822847467,
+          "false_positive_rate": 0.02888655462184874,
+          "confusion_matrix": {
+            "tn": 1849,
+            "fp": 55,
+            "fn": 113,
+            "tp": 6810
+          },
+          "conditional_wilson_95": {
+            "attack_precision": [
+              0.9895870756394507,
+              0.993839320281436
+            ],
+            "attack_recall": [
+              0.9804133280766899,
+              0.9864053929540894
+            ],
+            "false_positive_rate": [
+              0.022259985237318626,
+              0.037410307749743126
+            ],
+            "limitation": "Conditional on independent accepted UIDs; not independent attacks/devices, capture-level uncertainty or model-selection uncertainty. One capture per partition."
+          },
+          "connections": 8827,
+          "false_flags_per_10000_benign_connections": 288.8655462184874
+        },
+        "families": {
+          "-": {
+            "connections": 1904,
+            "attack_connections": 0,
+            "attack_recall": null
+          },
+          "C&C": {
+            "connections": 6706,
+            "attack_connections": 6706,
+            "attack_recall": 1.0
+          },
+          "DDoS": {
+            "connections": 114,
+            "attack_connections": 114,
+            "attack_recall": 0.008771929824561403
+          },
+          "PartOfAHorizontalPortScan": {
+            "connections": 103,
+            "attack_connections": 103,
+            "attack_recall": 1.0
+          }
+        }
+      },
+      "calibration_at_original_frozen_threshold": {
+        "flows": {
+          "rows": 12459,
+          "attack_prevalence": 0.8249458222971346,
+          "threshold": 0.9921028048109991,
+          "accuracy": 0.8344971506541456,
+          "balanced_accuracy": 0.899327445301231,
+          "attack_precision": 0.9997566909975669,
+          "attack_recall": 0.7995719011480833,
+          "attack_f1": 0.8885284895664396,
+          "macro_f1": 0.7836723444716933,
+          "average_precision": 0.9984791978334652,
+          "roc_auc": 0.9990829894543788,
+          "brier_score": 0.0002403884239865677,
+          "false_positive_rate": 0.0009170105456212746,
+          "false_alarms_per_10000_benign_flows": 9.170105456212747,
+          "confusion_matrix": {
+            "tn": 2179,
+            "fp": 2,
+            "fn": 2060,
+            "tp": 8218
+          },
+          "conditional_wilson_95": {
+            "attack_precision": [
+              0.9991132234801,
+              0.9999332733596119
+            ],
+            "attack_recall": [
+              0.7917213098150131,
+              0.8071986428669173
+            ],
+            "false_positive_rate": [
+              0.0002515133980888452,
+              0.003337515356851885
+            ],
+            "limitation": "Binomial intervals assume independent labels/rows; not capture-level or model-selection uncertainty."
+          }
+        },
+        "connections": {
+          "attack_prevalence": 0.790348937806402,
+          "threshold": 0.9921028048109991,
+          "accuracy": 0.9994232432952033,
+          "balanced_accuracy": 0.9992982449096267,
+          "attack_precision": 0.9997566909975669,
+          "attack_recall": 0.9995135003648747,
+          "attack_f1": 0.9996350808904026,
+          "macro_f1": 0.999130097732094,
+          "average_precision": 0.9981531814785702,
+          "roc_auc": 0.9990829894543787,
+          "brier_score": 0.0002242302982171498,
+          "false_positive_rate": 0.0009170105456212746,
+          "confusion_matrix": {
+            "tn": 2179,
+            "fp": 2,
+            "fn": 4,
+            "tp": 8218
+          },
+          "conditional_wilson_95": {
+            "attack_precision": [
+              0.9991132234801,
+              0.9999332733596119
+            ],
+            "attack_recall": [
+              0.9987496621898042,
+              0.9998107940407257
+            ],
+            "false_positive_rate": [
+              0.0002515133980888452,
+              0.003337515356851885
+            ],
+            "limitation": "Conditional on independent accepted UIDs; not independent attacks/devices, capture-level uncertainty or model-selection uncertainty. One capture per partition."
+          },
+          "connections": 10403,
+          "false_flags_per_10000_benign_connections": 9.170105456212747
+        },
+        "families": {
+          "-": {
+            "connections": 2181,
+            "attack_connections": 0,
+            "attack_recall": null
+          },
+          "C&C": {
+            "connections": 8222,
+            "attack_connections": 8222,
+            "attack_recall": 0.9995135003648747
+          }
+        }
+      }
+    },
+    {
+      "run": 1,
+      "training_threads": 1,
+      "fit_seconds": 0.41296169500003543,
+      "calibration_selected_threshold": 0.9921027806705783,
+      "validation_at_original_frozen_threshold": {
+        "flows": {
+          "rows": 13857,
+          "attack_prevalence": 0.8491737028216786,
+          "threshold": 0.9921028048109991,
+          "accuracy": 0.985278198744317,
+          "balanced_accuracy": 0.9793303834460414,
+          "attack_precision": 0.9947796320068464,
+          "attack_recall": 0.9878473697628962,
+          "attack_f1": 0.991301381545284,
+          "macro_f1": 0.9717182646816049,
+          "average_precision": 0.9997078774130836,
+          "roc_auc": 0.998490100650469,
+          "brier_score": 0.008158218509517352,
+          "false_positive_rate": 0.029186602870813396,
+          "false_alarms_per_10000_benign_flows": 291.86602870813397,
+          "confusion_matrix": {
+            "tn": 2029,
+            "fp": 61,
+            "fn": 143,
+            "tp": 11624
+          },
+          "conditional_wilson_95": {
+            "attack_precision": [
+              0.9933005446759824,
+              0.9959335073672395
+            ],
+            "attack_recall": [
+              0.9857024079025313,
+              0.9896739099389179
+            ],
+            "false_positive_rate": [
+              0.022788812438406802,
+              0.0373119455681575
+            ],
+            "limitation": "Binomial intervals assume independent labels/rows; not capture-level or model-selection uncertainty."
+          }
+        },
+        "connections": {
+          "attack_prevalence": 0.7842981760507534,
+          "threshold": 0.9921028048109991,
+          "accuracy": 0.9809674861221253,
+          "balanced_accuracy": 0.9773955208979446,
+          "attack_precision": 0.9919883466860888,
+          "attack_recall": 0.983677596417738,
+          "attack_f1": 0.9878154917319408,
+          "macro_f1": 0.9721798617480191,
+          "average_precision": 0.9997827500751575,
+          "roc_auc": 0.9992290647300377,
+          "brier_score": 0.009849260241604638,
+          "false_positive_rate": 0.02888655462184874,
+          "confusion_matrix": {
+            "tn": 1849,
+            "fp": 55,
+            "fn": 113,
+            "tp": 6810
+          },
+          "conditional_wilson_95": {
+            "attack_precision": [
+              0.9895870756394507,
+              0.993839320281436
+            ],
+            "attack_recall": [
+              0.9804133280766899,
+              0.9864053929540894
+            ],
+            "false_positive_rate": [
+              0.022259985237318626,
+              0.037410307749743126
+            ],
+            "limitation": "Conditional on independent accepted UIDs; not independent attacks/devices, capture-level uncertainty or model-selection uncertainty. One capture per partition."
+          },
+          "connections": 8827,
+          "false_flags_per_10000_benign_connections": 288.8655462184874
+        },
+        "families": {
+          "-": {
+            "connections": 1904,
+            "attack_connections": 0,
+            "attack_recall": null
+          },
+          "C&C": {
+            "connections": 6706,
+            "attack_connections": 6706,
+            "attack_recall": 1.0
+          },
+          "DDoS": {
+            "connections": 114,
+            "attack_connections": 114,
+            "attack_recall": 0.008771929824561403
+          },
+          "PartOfAHorizontalPortScan": {
+            "connections": 103,
+            "attack_connections": 103,
+            "attack_recall": 1.0
+          }
+        }
+      },
+      "calibration_at_original_frozen_threshold": {
+        "flows": {
+          "rows": 12459,
+          "attack_prevalence": 0.8249458222971346,
+          "threshold": 0.9921028048109991,
+          "accuracy": 0.8344971506541456,
+          "balanced_accuracy": 0.899327445301231,
+          "attack_precision": 0.9997566909975669,
+          "attack_recall": 0.7995719011480833,
+          "attack_f1": 0.8885284895664396,
+          "macro_f1": 0.7836723444716933,
+          "average_precision": 0.9984791978334652,
+          "roc_auc": 0.9990829894543788,
+          "brier_score": 0.00024038889918162994,
+          "false_positive_rate": 0.0009170105456212746,
+          "false_alarms_per_10000_benign_flows": 9.170105456212747,
+          "confusion_matrix": {
+            "tn": 2179,
+            "fp": 2,
+            "fn": 2060,
+            "tp": 8218
+          },
+          "conditional_wilson_95": {
+            "attack_precision": [
+              0.9991132234801,
+              0.9999332733596119
+            ],
+            "attack_recall": [
+              0.7917213098150131,
+              0.8071986428669173
+            ],
+            "false_positive_rate": [
+              0.0002515133980888452,
+              0.003337515356851885
+            ],
+            "limitation": "Binomial intervals assume independent labels/rows; not capture-level or model-selection uncertainty."
+          }
+        },
+        "connections": {
+          "attack_prevalence": 0.790348937806402,
+          "threshold": 0.9921028048109991,
+          "accuracy": 0.9994232432952033,
+          "balanced_accuracy": 0.9992982449096267,
+          "attack_precision": 0.9997566909975669,
+          "attack_recall": 0.9995135003648747,
+          "attack_f1": 0.9996350808904026,
+          "macro_f1": 0.999130097732094,
+          "average_precision": 0.9981531814785702,
+          "roc_auc": 0.9990829894543787,
+          "brier_score": 0.00022423051356603268,
+          "false_positive_rate": 0.0009170105456212746,
+          "confusion_matrix": {
+            "tn": 2179,
+            "fp": 2,
+            "fn": 4,
+            "tp": 8218
+          },
+          "conditional_wilson_95": {
+            "attack_precision": [
+              0.9991132234801,
+              0.9999332733596119
+            ],
+            "attack_recall": [
+              0.9987496621898042,
+              0.9998107940407257
+            ],
+            "false_positive_rate": [
+              0.0002515133980888452,
+              0.003337515356851885
+            ],
+            "limitation": "Conditional on independent accepted UIDs; not independent attacks/devices, capture-level uncertainty or model-selection uncertainty. One capture per partition."
+          },
+          "connections": 10403,
+          "false_flags_per_10000_benign_connections": 9.170105456212747
+        },
+        "families": {
+          "-": {
+            "connections": 2181,
+            "attack_connections": 0,
+            "attack_recall": null
+          },
+          "C&C": {
+            "connections": 8222,
+            "attack_connections": 8222,
+            "attack_recall": 0.9995135003648747
+          }
+        }
+      }
+    },
+    {
+      "run": 2,
+      "training_threads": 1,
+      "fit_seconds": 0.41291539200000216,
+      "calibration_selected_threshold": 0.9921027806705783,
+      "validation_at_original_frozen_threshold": {
+        "flows": {
+          "rows": 13857,
+          "attack_prevalence": 0.8491737028216786,
+          "threshold": 0.9921028048109991,
+          "accuracy": 0.985278198744317,
+          "balanced_accuracy": 0.9793303834460414,
+          "attack_precision": 0.9947796320068464,
+          "attack_recall": 0.9878473697628962,
+          "attack_f1": 0.991301381545284,
+          "macro_f1": 0.9717182646816049,
+          "average_precision": 0.9997078774130836,
+          "roc_auc": 0.998490100650469,
+          "brier_score": 0.008158218509517352,
+          "false_positive_rate": 0.029186602870813396,
+          "false_alarms_per_10000_benign_flows": 291.86602870813397,
+          "confusion_matrix": {
+            "tn": 2029,
+            "fp": 61,
+            "fn": 143,
+            "tp": 11624
+          },
+          "conditional_wilson_95": {
+            "attack_precision": [
+              0.9933005446759824,
+              0.9959335073672395
+            ],
+            "attack_recall": [
+              0.9857024079025313,
+              0.9896739099389179
+            ],
+            "false_positive_rate": [
+              0.022788812438406802,
+              0.0373119455681575
+            ],
+            "limitation": "Binomial intervals assume independent labels/rows; not capture-level or model-selection uncertainty."
+          }
+        },
+        "connections": {
+          "attack_prevalence": 0.7842981760507534,
+          "threshold": 0.9921028048109991,
+          "accuracy": 0.9809674861221253,
+          "balanced_accuracy": 0.9773955208979446,
+          "attack_precision": 0.9919883466860888,
+          "attack_recall": 0.983677596417738,
+          "attack_f1": 0.9878154917319408,
+          "macro_f1": 0.9721798617480191,
+          "average_precision": 0.9997827500751575,
+          "roc_auc": 0.9992290647300377,
+          "brier_score": 0.009849260241604638,
+          "false_positive_rate": 0.02888655462184874,
+          "confusion_matrix": {
+            "tn": 1849,
+            "fp": 55,
+            "fn": 113,
+            "tp": 6810
+          },
+          "conditional_wilson_95": {
+            "attack_precision": [
+              0.9895870756394507,
+              0.993839320281436
+            ],
+            "attack_recall": [
+              0.9804133280766899,
+              0.9864053929540894
+            ],
+            "false_positive_rate": [
+              0.022259985237318626,
+              0.037410307749743126
+            ],
+            "limitation": "Conditional on independent accepted UIDs; not independent attacks/devices, capture-level uncertainty or model-selection uncertainty. One capture per partition."
+          },
+          "connections": 8827,
+          "false_flags_per_10000_benign_connections": 288.8655462184874
+        },
+        "families": {
+          "-": {
+            "connections": 1904,
+            "attack_connections": 0,
+            "attack_recall": null
+          },
+          "C&C": {
+            "connections": 6706,
+            "attack_connections": 6706,
+            "attack_recall": 1.0
+          },
+          "DDoS": {
+            "connections": 114,
+            "attack_connections": 114,
+            "attack_recall": 0.008771929824561403
+          },
+          "PartOfAHorizontalPortScan": {
+            "connections": 103,
+            "attack_connections": 103,
+            "attack_recall": 1.0
+          }
+        }
+      },
+      "calibration_at_original_frozen_threshold": {
+        "flows": {
+          "rows": 12459,
+          "attack_prevalence": 0.8249458222971346,
+          "threshold": 0.9921028048109991,
+          "accuracy": 0.8344971506541456,
+          "balanced_accuracy": 0.899327445301231,
+          "attack_precision": 0.9997566909975669,
+          "attack_recall": 0.7995719011480833,
+          "attack_f1": 0.8885284895664396,
+          "macro_f1": 0.7836723444716933,
+          "average_precision": 0.9984791978334652,
+          "roc_auc": 0.9990829894543788,
+          "brier_score": 0.00024038889918162994,
+          "false_positive_rate": 0.0009170105456212746,
+          "false_alarms_per_10000_benign_flows": 9.170105456212747,
+          "confusion_matrix": {
+            "tn": 2179,
+            "fp": 2,
+            "fn": 2060,
+            "tp": 8218
+          },
+          "conditional_wilson_95": {
+            "attack_precision": [
+              0.9991132234801,
+              0.9999332733596119
+            ],
+            "attack_recall": [
+              0.7917213098150131,
+              0.8071986428669173
+            ],
+            "false_positive_rate": [
+              0.0002515133980888452,
+              0.003337515356851885
+            ],
+            "limitation": "Binomial intervals assume independent labels/rows; not capture-level or model-selection uncertainty."
+          }
+        },
+        "connections": {
+          "attack_prevalence": 0.790348937806402,
+          "threshold": 0.9921028048109991,
+          "accuracy": 0.9994232432952033,
+          "balanced_accuracy": 0.9992982449096267,
+          "attack_precision": 0.9997566909975669,
+          "attack_recall": 0.9995135003648747,
+          "attack_f1": 0.9996350808904026,
+          "macro_f1": 0.999130097732094,
+          "average_precision": 0.9981531814785702,
+          "roc_auc": 0.9990829894543787,
+          "brier_score": 0.00022423051356603268,
+          "false_positive_rate": 0.0009170105456212746,
+          "confusion_matrix": {
+            "tn": 2179,
+            "fp": 2,
+            "fn": 4,
+            "tp": 8218
+          },
+          "conditional_wilson_95": {
+            "attack_precision": [
+              0.9991132234801,
+              0.9999332733596119
+            ],
+            "attack_recall": [
+              0.9987496621898042,
+              0.9998107940407257
+            ],
+            "false_positive_rate": [
+              0.0002515133980888452,
+              0.003337515356851885
+            ],
+            "limitation": "Conditional on independent accepted UIDs; not independent attacks/devices, capture-level uncertainty or model-selection uncertainty. One capture per partition."
+          },
+          "connections": 10403,
+          "false_flags_per_10000_benign_connections": 9.170105456212747
+        },
+        "families": {
+          "-": {
+            "connections": 2181,
+            "attack_connections": 0,
+            "attack_recall": null
+          },
+          "C&C": {
+            "connections": 8222,
+            "attack_connections": 8222,
+            "attack_recall": 0.9995135003648747
+          }
+        }
+      }
+    }
+  ],
+  "two_thread_validation_metrics_replay_identical": false,
+  "fixed_one_thread_repeat": {
+    "max_absolute_score_difference": 0.0,
+    "frozen_threshold_decision_differences": 0,
+    "scores_exactly_identical": true,
+    "coefficient_max_absolute_difference": 0.0,
+    "calibration_threshold_identical": true,
+    "passed": true
+  },
+  "two_vs_one_thread": {
+    "max_absolute_score_difference": 1.413582409792724e-06,
+    "frozen_threshold_decision_differences": 0,
+    "scores_exactly_identical": false,
+    "coefficient_max_absolute_difference": 7.683117856593924e-06
+  },
+  "validation_errors_at_original_threshold": {
+    "connections": 8827,
+    "threshold": 0.9921028048109991,
+    "slices": {
+      "protocol": {
+        "TCP": {
+          "connections": 7014,
+          "tn": 37,
+          "fp": 55,
+          "fn": 113,
+          "tp": 6809
+        },
+        "UDP": {
+          "connections": 1813,
+          "tn": 1812,
+          "fp": 0,
+          "fn": 0,
+          "tp": 1
+        }
+      },
+      "observed_destination_service": {
+        "dns_53": {
+          "connections": 223,
+          "tn": 223,
+          "fp": 0,
+          "fn": 0,
+          "tp": 0
+        },
+        "http_80": {
+          "connections": 169,
+          "tn": 3,
+          "fp": 53,
+          "fn": 113,
+          "tp": 0
+        },
+        "ntp_123": {
+          "connections": 1618,
+          "tn": 1618,
+          "fp": 0,
+          "fn": 0,
+          "tp": 0
+        },
+        "other": {
+          "connections": 6817,
+          "tn": 5,
+          "fp": 2,
+          "fn": 0,
+          "tp": 6810
+        }
+      },
+      "source_port_range": {
+        "0-1023": {
+          "connections": 1625,
+          "tn": 1622,
+          "fp": 1,
+          "fn": 1,
+          "tp": 1
+        },
+        "1024-49151": {
+          "connections": 866,
+          "tn": 129,
+          "fp": 53,
+          "fn": 77,
+          "tp": 607
+        },
+        "49152-65535": {
+          "connections": 6336,
+          "tn": 98,
+          "fp": 1,
+          "fn": 35,
+          "tp": 6202
+        }
+      },
+      "packet_count_range": {
+        "1": {
+          "connections": 6360,
+          "tn": 1023,
+          "fp": 53,
+          "fn": 113,
+          "tp": 5171
+        },
+        "2-4": {
+          "connections": 1662,
+          "tn": 801,
+          "fp": 0,
+          "fn": 0,
+          "tp": 861
+        },
+        "21+": {
+          "connections": 4,
+          "tn": 1,
+          "fp": 2,
+          "fn": 0,
+          "tp": 1
+        },
+        "5-20": {
+          "connections": 801,
+          "tn": 24,
+          "fp": 0,
+          "fn": 0,
+          "tp": 777
+        }
+      },
+      "duration": {
+        "positive_ms": {
+          "connections": 2456,
+          "tn": 818,
+          "fp": 2,
+          "fn": 0,
+          "tp": 1636
+        },
+        "zero_ms": {
+          "connections": 6371,
+          "tn": 1031,
+          "fp": 53,
+          "fn": 113,
+          "tp": 5174
+        }
+      },
+      "publisher_detail": {
+        "-": {
+          "connections": 1904,
+          "tn": 1849,
+          "fp": 55,
+          "fn": 0,
+          "tp": 0
+        },
+        "C&C": {
+          "connections": 6706,
+          "tn": 0,
+          "fp": 0,
+          "fn": 0,
+          "tp": 6706
+        },
+        "DDoS": {
+          "connections": 114,
+          "tn": 0,
+          "fp": 0,
+          "fn": 113,
+          "tp": 1
+        },
+        "PartOfAHorizontalPortScan": {
+          "connections": 103,
+          "tn": 0,
+          "fp": 0,
+          "fn": 0,
+          "tp": 103
+        }
+      }
+    },
+    "score_distributions": {
+      "tn": {
+        "connections": 1849,
+        "score_quantiles_min_p25_p50_p75_max": [
+          7.381039559507465e-23,
+          2.7886517051963575e-20,
+          5.320455611538017e-16,
+          5.320455611538017e-16,
+          0.9915309163922402
+        ]
+      },
+      "fp": {
+        "connections": 55,
+        "score_quantiles_min_p25_p50_p75_max": [
+          0.9969730346729571,
+          0.9969744000743417,
+          0.9969755546483016,
+          0.9969866412427772,
+          0.9999881388952689
+        ]
+      },
+      "fn": {
+        "connections": 113,
+        "score_quantiles_min_p25_p50_p75_max": [
+          0.0056468552118426095,
+          0.6336667358092999,
+          0.8131145342312617,
+          0.8959893436473292,
+          0.9202249830251114
+        ]
+      },
+      "tp": {
+        "connections": 6810,
+        "score_quantiles_min_p25_p50_p75_max": [
+          0.9928546349511916,
+          0.9999949078726593,
+          0.9999972657854438,
+          0.9999974798316692,
+          0.9999999999999962
+        ]
+      }
+    },
+    "scope": "One highest-scoring accepted segment per UID, first stored on ties; observed direction, not verified client/service role. Aggregate bins only, no endpoint/UID/feature rows."
+  },
+  "private_fixed_thread_artifact": {
+    "sha256": "0d596ac193364dcfe0b7568535c324f41bc0e1cd8d1caf88f3e8279f5b693200",
+    "bytes": 1589
+  },
+  "resources": {
+    "wall_seconds": 5.1765646869999955,
+    "sampled_peak_process_tree_rss_sum_mib": 380.80078125,
+    "scope": "Frame loading, three fits and aggregate diagnostics; excludes imports, preparation, verification and downloads. 50 ms RSS samples are not hard process limits."
+  },
+  "resource_screen_met": true,
+  "baseline_acceptance_unchanged": true,
+  "deployment_authorized": false,
+  "public_model_release_authorized": false,
+  "external_test_accessed": false,
+  "candidate_policy_promoted": false
+}
