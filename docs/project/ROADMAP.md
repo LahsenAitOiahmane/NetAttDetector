@@ -88,7 +88,7 @@ the roadmap must not be read as an endorsement of the initial champion for live 
 | NAD-043 | P1 / 5 | Acquire bounded development PCAP/label bundles, pin inputs and audit interval linkage with streaming memory/resource evidence | 014,022 | Measured: three IoT-23 bundles local/cloud, 45,588 exported flows, 21 distinct matched attack connections; metadata/support gates prevent training |
 | NAD-044 | P1 / 5 | Expand complete development captures under registered bounds; use a disk index and measure decision parity, attack coverage and process resources | 043 | Measured: another 215 MB local, 250,819 flows, 83,418 matched attack UIDs; SQLite assignment digest identical to memory reference with 43.7% lower sampled tree RSS in one comparison |
 | NAD-045 | P1 / 5 | Validate missing-duration/trailing-packet label linkage on controlled and real PCAP evidence; report per-attack UID coverage before freezing a new rule | 044 | Measured point candidate: 87,048 additional matched flows, all old matches preserved, DDoS 114/14,394; zero-packet contradictions and packet-tail semantics remain unresolved |
-| NAD-046 | P1 / 5 | Materialize a bounded native-feature cohort with source/capture/UID groups, immutable inclusion/overlap audits and validated partition manifests | 014,045 | Proposed capture/time partition readiness passes support/purge; device identities, candidate-rule promotion and row-level cohort remain open; no training authorization |
+| NAD-046 | P1 / 5 | Materialize a bounded native-feature cohort with source/capture/UID groups, immutable inclusion/overlap audits and validated partition manifests | 014,045 | Measured: 250,819 private rows, 248,997 accepted candidate labels, read-only verification, chronology/support/group checks and overlap accounting; device isolation and label promotion remain open |
 
 ## Next sprint after the development study
 
@@ -153,6 +153,13 @@ May/July/December capture partitions pass chronological/support screens; device 
 is unverified and no native cohort exists yet. Next: review the point rule/remaining label
 contradictions, implement NAD-046, then register the bounded model/calibration study. Keep
 training disabled until its declared measurement, label and partition gates are satisfied.
+
+The [native-cohort preparation](../../reports/NATIVE_COHORT.md) now materializes those rows
+with a separate read-only audit. Archived matcher assignments are unchanged; exclusions remain
+present, and 16 conflicting feature vectors affecting 50 accepted rows remain disclosed. Capture/
+time separation passes, while device independence is unverified. Next register a narrowly scoped
+candidate-label diagnostic baseline/calibration study with explicit limitations, rather than
+claiming the broader capture/device benchmark or production gate is satisfied.
 
 Also resolve the residual NAD-040 case with per-stage model/input instrumentation before
 claiming reproducible training. Only after measurement/split requirements are ready should

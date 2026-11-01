@@ -49,6 +49,12 @@ coverage; contradictory zero-packet DDoS records remain excluded. The proposed c
 partitions pass chronology/support checks, while device isolation and native cohort preparation
 remain open. [Run the packet audit](docs/guides/PACKET_LABELS.md) on Windows or Linux.
 
+The [native-cohort sprint](reports/NATIVE_COHORT.md) materializes all 250,819 flows in a private
+173.4 MiB experimental database, preserving exclusions and verifying connection groups,
+chronology and archived assignments. Repeated/conflicting feature patterns remain reported.
+Only aggregate manifests are retained from CI; no native detector has been trained by this
+phase. See the [native preparation guide](docs/guides/NATIVE_COHORT.md).
+
 ## What changed
 
 - A versioned feature contract replaces hand-built packet placeholders.

@@ -307,13 +307,8 @@ class MatchCounts:
         }
 
 
-def audit_packet_labels(
-    capture_dir, output, *, compare_flows=False, config_path="configs/data/packet-evidence.json"
-):
-    if Path(output).exists():
-        raise FileExistsError(output)
-    if compare_flows and platform.system() != "Linux":
-        raise ValueError("Candidate flow comparison uses the verified Linux NFStream exporter.")
+def load_packet_policy(config_path):
+    """Shared validation keeps cohort preparation on the unchanged registered point rule."""
     policy = json.loads(Path(config_path).read_text(encoding="utf-8"))
     if (
         policy["policy"] != POLICY
@@ -326,6 +321,17 @@ def audit_packet_labels(
         or policy["flow_timestamp_tolerance_ms"] != 1
     ):
         raise ValueError("Use the registered training-disabled exact packet-witness policy.")
+    return policy
+
+
+def audit_packet_labels(
+    capture_dir, output, *, compare_flows=False, config_path="configs/data/packet-evidence.json"
+):
+    if Path(output).exists():
+        raise FileExistsError(output)
+    if compare_flows and platform.system() != "Linux":
+        raise ValueError("Candidate flow comparison uses the verified Linux NFStream exporter.")
+    policy = load_packet_policy(config_path)
     config, capture, receipt = verified_inputs(capture_dir, policy["source_config"])
     path = Path(capture_dir) / f".packet-evidence-{uuid4().hex}.sqlite"
     packet_index = PacketIndex(path)

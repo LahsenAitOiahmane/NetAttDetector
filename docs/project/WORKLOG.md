@@ -381,6 +381,48 @@ Full local suite: 111 passed, two Linux-only skips. The final packet-focused sui
 including a further known-interval tail regression. Lint, formatting, deterministic fixture,
 repository hygiene and documentation links are checked. No detector was fitted or promoted.
 
+## 1 November 2026 — Native row materialization and partition validation
+
+Confirmed PR #8 merged into main at `c537900` and started `codex/native-cohort` from that
+revision. Registered NAD-046's bounded preparation protocol/configuration at `3ba79b2` before
+materializing rows. Added a private SQLite cohort writer, eleven-feature/counter validation,
+source/capture/UID pseudonym groups, strict exclusions and fresh output completion manifests.
+Every original and point-candidate assignment is replayed against archived counts and digests.
+A separate read-only pass verifies rows, hashes, group consistency, support, chronology and
+exact-feature overlap; the public CLI can rerun that verification without a capture driver.
+
+Cloud run `41308516328` at `eb1455e` materialized 250,819 flows, with 248,997 accepted candidate
+labels and 1,822 exclusions retained. The 173.4 MiB main database passed checks: zero duplicate
+flow identities, zero inconsistent/cross-partition connection groups and zero UID pseudonym
+reuse across captures. Sixteen feature vectors have conflicting labels affecting 50 rows;
+retained and reported these along with shared patterns across partitions. Largest sampled
+preparation tree RSS was 260.9 MiB; all per-capture screens passed. The read-only audit and
+separate verifier reproduced the same stored-row diagnostics.
+
+Added a manual reusable GitHub job that retains only explicitly named aggregate manifests;
+the private database stays on the ephemeral runner. Existing local raw data was reused as
+provenance, not redownloaded to the laptop. Ubuntu is registered in WSL but its `E:` VHD is
+unavailable; inspected that fact without modifying the installation. Windows available RAM
+was about 0.99 GiB, so real native export remains in the bounded Linux cloud environment.
+
+Local full suite passed 128 with two Linux-only skips before the final positive manifest test;
+all 17 native tests then passed. Python 3.11/3.13 CI passed, and the real Linux lab passed 48
+packet/cohort/measurement tests plus the independent five-flow exporter comparison. Added a
+second complete build comparison on existing pinned inputs to check logical-row repeatability.
+See [NATIVE_COHORT.md](../../reports/NATIVE_COHORT.md) for evidence and limitations.
+
+Follow-up run `41308841070` at `2d51251` passed all 49 native/packet/measurement tests and
+created two complete cohorts from the same pinned inputs. Their full database bytes and
+ordered logical rows were identical to each other and the first measured run. Saved only
+aggregate manifests, independent verification and the repeat comparison under
+`reports/evidence/native-cohort/`. Main database SHA-256 begins `ba669375`; ordered rows begin
+`9be2a2d5`. PR #9 targets main and contains only this sprint's implementation/evidence.
+
+No label promotion, model fitting, external-test access, live capture or deployment occurred.
+User requested continuing sprint by sprint; pilot traffic source and source-code license choices
+were requested asynchronously while independent dataset work continued. Those answers remain
+necessary for later pilot/public-release decisions, not for completing this preparation.
+
 ## Outstanding work
 
 This work does not complete the production roadmap. Global audits cover the development inputs;

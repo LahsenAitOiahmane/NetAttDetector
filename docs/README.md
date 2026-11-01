@@ -13,6 +13,7 @@ and [current backlog](project/ROADMAP.md).
 | Sprint results | [Repository/capture/measurement report](../reports/CAPTURE_MEASUREMENTS.md), [development capture measurements](../reports/DEVELOPMENT_CAPTURES.md) |
 | Capture expansion | [Registered protocol](research/CAPTURE_EXPANSION.md), [measured support, coverage and resource report](../reports/CAPTURE_EXPANSION.md) |
 | Packet label evidence | [Protocol](research/PACKET_LABELS.md), [operations](guides/PACKET_LABELS.md), [results and native-data readiness](../reports/PACKET_LABELS.md) |
+| Native candidate cohort | [Registered protocol](research/NATIVE_COHORT.md), [operations](guides/NATIVE_COHORT.md), [measured partitions and overlap](../reports/NATIVE_COHORT.md) |
 
 Historical reports retain the dependency versions and failed results from their own runs.
 Reorganizing files or upgrading dependencies does not turn those models into production candidates.

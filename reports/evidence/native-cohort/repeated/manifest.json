@@ -1,0 +1,530 @@
+{
+  "schema": "native-cohort-v1",
+  "status": "complete_experimental_candidate",
+  "source_commit": "2d5125165d9153749792985d9a6def9c1735720b",
+  "config_hashes": {
+    "configs/data/native-cohort.json": "b8140e5b3abd0c164f0a053f54d591b79293c17f3d4abcb2e7731cfcbf439f16",
+    "configs/data/native-dataset-plan.json": "431b2b16d58e4a64164424566cbe73129df5f59e9c9ec48ac54b43e5a21d2e23",
+    "configs/data/packet-evidence.json": "dd43228e32dcd279154e3cb12847fe3502fe277a16180c439433c491c18ca57f",
+    "configs/data/iot23-expansion.json": "07da83d07774cf61b31037ff7d949ac5f465db76c5e6eb9955fc824347013116",
+    "configs/data/source_roles.json": "be689682ac291670ee843e676721b74f3a3138489deda3e77fc8ad537e137218"
+  },
+  "feature_contract": "nfstream-core-v1",
+  "features": [
+    "src_port",
+    "dst_port",
+    "protocol",
+    "ip_version",
+    "src2dst_packets",
+    "dst2src_packets",
+    "src2dst_bytes",
+    "dst2src_bytes",
+    "bidirectional_duration_ms",
+    "src2dst_duration_ms",
+    "dst2src_duration_ms"
+  ],
+  "exporter": "nfstream",
+  "exporter_version": "6.6.0",
+  "export_settings": {
+    "decode_tunnels": false,
+    "promiscuous_mode": false,
+    "snapshot_length": 65535,
+    "idle_timeout": 2,
+    "active_timeout": 1800,
+    "accounting_mode": 1,
+    "n_dissections": 0,
+    "statistical_analysis": false,
+    "n_meters": 1,
+    "max_nflows": 250000,
+    "system_visibility_mode": 0
+  },
+  "label_policy": "iot23-packet-point-candidate-v1",
+  "database": {
+    "name": "cohort.sqlite",
+    "bytes": 181800960,
+    "sha256": "ba66937547a1b5e22bbf665ef42366e1b47f5a539f87a158856bc449a26778f3"
+  },
+  "records": [
+    {
+      "capture_id": "CTU-IoT-Malware-Capture-3-1",
+      "split": "train",
+      "exported_flows": 224388,
+      "input_files": {
+        "2018-05-21_capture.pcap": {
+          "url": "https://mcfp.felk.cvut.cz/publicDatasets/IoT-23-Dataset/IndividualScenarios/CTU-IoT-Malware-Capture-3-1/2018-05-21_capture.pcap",
+          "bytes": 57919772,
+          "sha256": "c674dc0c8d584fa66e6f00c60df973c5fbacad551c850a76d75ec9952641d00b"
+        },
+        "bro/conn.log.labeled": {
+          "url": "https://mcfp.felk.cvut.cz/publicDatasets/IoT-23-Dataset/IndividualScenarios/CTU-IoT-Malware-Capture-3-1/bro/conn.log.labeled",
+          "bytes": 24383537,
+          "sha256": "9851009bbca03e15089fa1a356dd4b5eee4a98161a51703626058a0b507f50d0"
+        },
+        "README.md": {
+          "url": "https://mcfp.felk.cvut.cz/publicDatasets/IoT-23-Dataset/IndividualScenarios/CTU-IoT-Malware-Capture-3-1/README.md",
+          "bytes": 3663,
+          "sha256": "426f8ce8680c2593815f6d8bdc4f1f9cf183210a26d9459f135d4d100e91558f"
+        }
+      },
+      "receipt_sha256": "d50ad38f317f381ab035ef2f53da20c142e5059bd33d1fd330ee05b77a28d305",
+      "baseline": {
+        "flow_status_counts": {
+          "matched": 146738,
+          "unknown_label_or_duration": 71621,
+          "unsupported_protocol": 1325,
+          "partial_interval": 319,
+          "ambiguous": 4383,
+          "unmatched": 2
+        },
+        "matched_flow_class_counts": {
+          "0": 3617,
+          "1": 143121
+        },
+        "matched_detailed_labels": {
+          "-": 3617,
+          "PartOfAHorizontalPortScan": 131043,
+          "C&C": 4143,
+          "Attack": 7935
+        },
+        "matched_zeek_connection_class_counts": {
+          "0": 2818,
+          "1": 77067
+        },
+        "matched_connections_by_detail": {
+          "-": 2818,
+          "PartOfAHorizontalPortScan": 71317,
+          "C&C": 8,
+          "Attack": 5742
+        },
+        "ordered_assignment_sha256": "1cffad74345e4ccbe034253d8e36e8d36248e30d9bd9d347980b0ca7efcd7da2"
+      },
+      "candidate": {
+        "flow_status_counts": {
+          "matched": 222681,
+          "unsupported_protocol": 1325,
+          "partial_interval": 319,
+          "ambiguous": 61,
+          "unmatched": 2
+        },
+        "matched_flow_class_counts": {
+          "0": 3968,
+          "1": 218713
+        },
+        "matched_detailed_labels": {
+          "-": 3968,
+          "PartOfAHorizontalPortScan": 206635,
+          "C&C": 4143,
+          "Attack": 7935
+        },
+        "matched_zeek_connection_class_counts": {
+          "0": 3169,
+          "1": 151346
+        },
+        "matched_connections_by_detail": {
+          "-": 3169,
+          "PartOfAHorizontalPortScan": 145596,
+          "C&C": 8,
+          "Attack": 5742
+        },
+        "ordered_assignment_sha256": "658bf27f02fb972d1131c64065a49a4f1a816645983f90609699f2794731f052"
+      },
+      "archived_assignments_identical": true,
+      "previous_matches_preserved": true,
+      "packet_status_counts": {
+        "decoded_tcp_udp": 489567,
+        "non_ip_ethernet": 5658,
+        "unsupported_transport": 1734
+      },
+      "point_evidence": {
+        "zero_packet_claim_header_counts_by_detail": {},
+        "proven_points_by_detail": {
+          "-": 20,
+          "PartOfAHorizontalPortScan": 72947
+        },
+        "excluded_missing_records_by_detail": {
+          "-": {
+            "unsupported_protocol": 977
+          }
+        },
+        "missing_record_packet_witnesses_by_detail": {
+          "PartOfAHorizontalPortScan": {
+            "decoded_tcp_udp": 72947
+          },
+          "-": {
+            "decoded_tcp_udp": 20
+          }
+        }
+      },
+      "resources": {
+        "wall_seconds": 59.56468599400003,
+        "sampled_peak_process_rss_mib": 139.9296875,
+        "sampled_peak_process_tree_rss_sum_mib": 260.54296875
+      },
+      "resource_screen_met": true
+    },
+    {
+      "capture_id": "CTU-IoT-Malware-Capture-8-1",
+      "split": "calibration",
+      "exported_flows": 12459,
+      "input_files": {
+        "2018-07-31-15-15-09-192.168.100.113.pcap": {
+          "url": "https://mcfp.felk.cvut.cz/publicDatasets/IoT-23-Dataset/IndividualScenarios/CTU-IoT-Malware-Capture-8-1/2018-07-31-15-15-09-192.168.100.113.pcap",
+          "bytes": 2098362,
+          "sha256": "80dcc2602519479ddcde889fa902fee19a76696630811452f8df38888af894f2"
+        },
+        "bro/conn.log.labeled": {
+          "url": "https://mcfp.felk.cvut.cz/publicDatasets/IoT-23-Dataset/IndividualScenarios/CTU-IoT-Malware-Capture-8-1/bro/conn.log.labeled",
+          "bytes": 1431000,
+          "sha256": "4877ca8f0f01902fbd18d28b7d06cb3d0be082355b7f2c8862c9deef1782eb8a"
+        },
+        "README.md": {
+          "url": "https://mcfp.felk.cvut.cz/publicDatasets/IoT-23-Dataset/IndividualScenarios/CTU-IoT-Malware-Capture-8-1/README.md",
+          "bytes": 1688,
+          "sha256": "1788755a075f580c3628e4698ba4dad699f91c058dede73bae3f480bb5cba840"
+        }
+      },
+      "receipt_sha256": "cad1fc1eca7df8da599a6dcd9650ee3b58eafad3a8b2fd806d107424654eb22d",
+      "baseline": {
+        "flow_status_counts": {
+          "matched": 5662,
+          "unknown_label_or_duration": 2063,
+          "ambiguous": 4734
+        },
+        "matched_flow_class_counts": {
+          "0": 1550,
+          "1": 4112
+        },
+        "matched_detailed_labels": {
+          "-": 1550,
+          "C&C": 4112
+        },
+        "matched_zeek_connection_class_counts": {
+          "0": 1550,
+          "1": 2056
+        },
+        "matched_connections_by_detail": {
+          "-": 1550,
+          "C&C": 2056
+        },
+        "ordered_assignment_sha256": "56e34c7361bcb788c96da90d9af714422a1b5cd3f64f1f9fbd4da766d9d8e87c"
+      },
+      "candidate": {
+        "flow_status_counts": {
+          "matched": 12459
+        },
+        "matched_flow_class_counts": {
+          "0": 2181,
+          "1": 10278
+        },
+        "matched_detailed_labels": {
+          "-": 2181,
+          "C&C": 10278
+        },
+        "matched_zeek_connection_class_counts": {
+          "0": 2181,
+          "1": 8222
+        },
+        "matched_connections_by_detail": {
+          "-": 2181,
+          "C&C": 8222
+        },
+        "ordered_assignment_sha256": "b5139e34c183caa336abc041b19a3f5c85feca4efd169f81dece47172ecdefb6"
+      },
+      "archived_assignments_identical": true,
+      "previous_matches_preserved": true,
+      "packet_status_counts": {
+        "decoded_tcp_udp": 16677,
+        "non_ip_ethernet": 6946
+      },
+      "point_evidence": {
+        "zero_packet_claim_header_counts_by_detail": {},
+        "proven_points_by_detail": {
+          "-": 19,
+          "C&C": 6166
+        },
+        "excluded_missing_records_by_detail": {},
+        "missing_record_packet_witnesses_by_detail": {
+          "-": {
+            "decoded_tcp_udp": 19
+          },
+          "C&C": {
+            "decoded_tcp_udp": 6166
+          }
+        }
+      },
+      "resources": {
+        "wall_seconds": 4.912012629999992,
+        "sampled_peak_process_rss_mib": 139.9453125,
+        "sampled_peak_process_tree_rss_sum_mib": 203.63671875
+      },
+      "resource_screen_met": true
+    },
+    {
+      "capture_id": "CTU-IoT-Malware-Capture-34-1",
+      "split": "validation",
+      "exported_flows": 13972,
+      "input_files": {
+        "2018-12-21-15-50-14-192.168.1.195.pcap": {
+          "url": "https://mcfp.felk.cvut.cz/publicDatasets/IoT-23-Dataset/IndividualScenarios/CTU-IoT-Malware-Capture-34-1/2018-12-21-15-50-14-192.168.1.195.pcap",
+          "bytes": 126317980,
+          "sha256": "92ec7e2f6658ee4b007d0b816986c46cc0338bc5e2bec6ceaaca566c695e4699"
+        },
+        "bro/conn.log.labeled": {
+          "url": "https://mcfp.felk.cvut.cz/publicDatasets/IoT-23-Dataset/IndividualScenarios/CTU-IoT-Malware-Capture-34-1/bro/conn.log.labeled",
+          "bytes": 2926718,
+          "sha256": "d69e49b2aae8c1bd33286936531658202dec47d989f0439bad3f8be180467a6e"
+        },
+        "README.md": {
+          "url": "https://mcfp.felk.cvut.cz/publicDatasets/IoT-23-Dataset/IndividualScenarios/CTU-IoT-Malware-Capture-34-1/README.md",
+          "bytes": 1596,
+          "sha256": "940e8778cba292b4c9d2f8b7e10d77976c8eccfc8b6b8bfa79faa53230203f7f"
+        }
+      },
+      "receipt_sha256": "46c166489bc72aef8465724ff427df27792ad14029b5bbfcdf8dd9ba8b9e3450",
+      "baseline": {
+        "flow_status_counts": {
+          "matched": 9549,
+          "unknown_label_or_duration": 2826,
+          "ambiguous": 1586,
+          "partial_interval": 11
+        },
+        "matched_flow_class_counts": {
+          "0": 410,
+          "1": 9139
+        },
+        "matched_detailed_labels": {
+          "-": 410,
+          "C&C": 9138,
+          "DDoS": 1
+        },
+        "matched_zeek_connection_class_counts": {
+          "0": 243,
+          "1": 4295
+        },
+        "matched_connections_by_detail": {
+          "-": 243,
+          "C&C": 4294,
+          "DDoS": 1
+        },
+        "ordered_assignment_sha256": "efca28de810ab4c784f4dc8f13eabc16195af10d75b2111fa3d94c4ddacb353d"
+      },
+      "candidate": {
+        "flow_status_counts": {
+          "matched": 13857,
+          "partial_interval": 14,
+          "ambiguous": 8,
+          "unknown_label_or_duration": 93
+        },
+        "matched_flow_class_counts": {
+          "0": 2090,
+          "1": 11767
+        },
+        "matched_detailed_labels": {
+          "-": 2090,
+          "C&C": 11550,
+          "PartOfAHorizontalPortScan": 103,
+          "DDoS": 114
+        },
+        "matched_zeek_connection_class_counts": {
+          "0": 1904,
+          "1": 6923
+        },
+        "matched_connections_by_detail": {
+          "-": 1904,
+          "C&C": 6706,
+          "PartOfAHorizontalPortScan": 103,
+          "DDoS": 114
+        },
+        "ordered_assignment_sha256": "83b4cf3201f16e4451edd6112e8cf02265a8bacc76689dac33cf0ed2fa6f927b"
+      },
+      "archived_assignments_identical": true,
+      "previous_matches_preserved": true,
+      "packet_status_counts": {
+        "decoded_tcp_udp": 170980,
+        "non_ip_ethernet": 5396,
+        "unsupported_ipv4_fragment": 57489
+      },
+      "point_evidence": {
+        "zero_packet_claim_header_counts_by_detail": {
+          "DDoS": {
+            "tcp_flags=0x3a; payload=present": 14260
+          }
+        },
+        "proven_points_by_detail": {
+          "-": 920,
+          "C&C": 2412,
+          "DDoS": 121,
+          "PartOfAHorizontalPortScan": 111
+        },
+        "excluded_missing_records_by_detail": {
+          "DDoS": {
+            "zero_packet_claim": 14260
+          }
+        },
+        "missing_record_packet_witnesses_by_detail": {
+          "-": {
+            "decoded_tcp_udp": 920
+          },
+          "C&C": {
+            "decoded_tcp_udp": 2412
+          },
+          "PartOfAHorizontalPortScan": {
+            "decoded_tcp_udp": 111
+          },
+          "DDoS": {
+            "decoded_tcp_udp": 14381
+          }
+        }
+      },
+      "resources": {
+        "wall_seconds": 10.97818471000005,
+        "sampled_peak_process_rss_mib": 120.00390625,
+        "sampled_peak_process_tree_rss_sum_mib": 218.53515625
+      },
+      "resource_screen_met": true
+    }
+  ],
+  "audit": {
+    "rows": 250819,
+    "rows_logical_sha256": "9be2a2d5c39b3cb78a31fec40118971ba03b0e62b398e1151f7480ce8c312d59",
+    "partitions": [
+      {
+        "split": "train",
+        "capture_id": "CTU-IoT-Malware-Capture-3-1",
+        "rows": 224388,
+        "start_ms": 1526756239958,
+        "end_ms": 1526886287960,
+        "status_counts": {
+          "ambiguous": 61,
+          "matched": 222681,
+          "partial_interval": 319,
+          "unmatched": 2,
+          "unsupported_protocol": 1325
+        },
+        "matched_class_rows": {
+          "0": 3968,
+          "1": 218713
+        },
+        "matched_class_connections": {
+          "0": 3169,
+          "1": 151346
+        },
+        "matched_detail_connections": {
+          "-": 3169,
+          "Attack": 5742,
+          "C&C": 8,
+          "PartOfAHorizontalPortScan": 145596
+        }
+      },
+      {
+        "split": "calibration",
+        "capture_id": "CTU-IoT-Malware-Capture-8-1",
+        "rows": 12459,
+        "start_ms": 1533042911474,
+        "end_ms": 1533129306734,
+        "status_counts": {
+          "matched": 12459
+        },
+        "matched_class_rows": {
+          "0": 2181,
+          "1": 10278
+        },
+        "matched_class_connections": {
+          "0": 2181,
+          "1": 8222
+        },
+        "matched_detail_connections": {
+          "-": 2181,
+          "C&C": 8222
+        }
+      },
+      {
+        "split": "validation",
+        "capture_id": "CTU-IoT-Malware-Capture-34-1",
+        "rows": 13972,
+        "start_ms": 1545403816870,
+        "end_ms": 1545490213942,
+        "status_counts": {
+          "ambiguous": 8,
+          "matched": 13857,
+          "partial_interval": 14,
+          "unknown_label_or_duration": 93
+        },
+        "matched_class_rows": {
+          "0": 2090,
+          "1": 11767
+        },
+        "matched_class_connections": {
+          "0": 1904,
+          "1": 6923
+        },
+        "matched_detail_connections": {
+          "-": 1904,
+          "C&C": 6706,
+          "DDoS": 114,
+          "PartOfAHorizontalPortScan": 103
+        }
+      }
+    ],
+    "checks": {
+      "flow_identities_unique": true,
+      "connection_groups_disjoint_and_consistent": true,
+      "capture_time_order_and_purge_valid": true,
+      "distinct_connection_class_support_met": true
+    },
+    "preparation_checks_passed": true,
+    "invalid_or_cross_partition_groups": 0,
+    "repeated_flow_identities": 0,
+    "uid_pseudonyms_reused_across_captures": 0,
+    "matched_feature_patterns": {
+      "unique_vectors": 128407,
+      "rows": 248997,
+      "repeated_vectors": 43433,
+      "conflicting_label_vectors": 16,
+      "rows_in_conflicting_vectors": 50
+    },
+    "exact_feature_overlap": [
+      {
+        "left": "train",
+        "right": "calibration",
+        "shared_feature_vectors": 9,
+        "left_rows": 272,
+        "right_rows": 29,
+        "shared_vectors_with_conflicting_labels": 0
+      },
+      {
+        "left": "train",
+        "right": "validation",
+        "shared_feature_vectors": 84,
+        "left_rows": 632,
+        "right_rows": 1113,
+        "shared_vectors_with_conflicting_labels": 0
+      },
+      {
+        "left": "calibration",
+        "right": "validation",
+        "shared_feature_vectors": 17,
+        "left_rows": 2179,
+        "right_rows": 1315,
+        "shared_vectors_with_conflicting_labels": 0
+      }
+    ],
+    "overlap_interpretation": "Matched rows only; repeated feature patterns are retained. These diagnostics do not establish device independence or authorize fitting."
+  },
+  "validation_resources": {
+    "wall_seconds": 11.201735337000002,
+    "sampled_peak_process_tree_rss_sum_mib": 120.0
+  },
+  "training_authorized": false,
+  "candidate_policy_promoted": false,
+  "device_isolation_verified": false,
+  "external_test_acquired": false,
+  "limitations": [
+    "Capture/time separation is not device independence.",
+    "Point labels are an experimental linkage candidate, not independently verified attack truth.",
+    "Zero-counter DDoS contradictions, packet tails and unsupported protocols remain unresolved.",
+    "Repeated patterns and conflicting labels are retained and reported.",
+    "Raw/derived rows remain private; mirror/release terms remain unresolved.",
+    "Sampled RSS can miss brief peaks/double-count shared pages; the SQLite cap excludes journals/temp files. No OS-enforced process limit."
+  ]
+}

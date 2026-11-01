@@ -1,0 +1,138 @@
+{
+  "verified": true,
+  "schema": "native-cohort-v1",
+  "database_sha256": "ba66937547a1b5e22bbf665ef42366e1b47f5a539f87a158856bc449a26778f3",
+  "audit": {
+    "rows": 250819,
+    "rows_logical_sha256": "9be2a2d5c39b3cb78a31fec40118971ba03b0e62b398e1151f7480ce8c312d59",
+    "partitions": [
+      {
+        "split": "train",
+        "capture_id": "CTU-IoT-Malware-Capture-3-1",
+        "rows": 224388,
+        "start_ms": 1526756239958,
+        "end_ms": 1526886287960,
+        "status_counts": {
+          "ambiguous": 61,
+          "matched": 222681,
+          "partial_interval": 319,
+          "unmatched": 2,
+          "unsupported_protocol": 1325
+        },
+        "matched_class_rows": {
+          "0": 3968,
+          "1": 218713
+        },
+        "matched_class_connections": {
+          "0": 3169,
+          "1": 151346
+        },
+        "matched_detail_connections": {
+          "-": 3169,
+          "Attack": 5742,
+          "C&C": 8,
+          "PartOfAHorizontalPortScan": 145596
+        }
+      },
+      {
+        "split": "calibration",
+        "capture_id": "CTU-IoT-Malware-Capture-8-1",
+        "rows": 12459,
+        "start_ms": 1533042911474,
+        "end_ms": 1533129306734,
+        "status_counts": {
+          "matched": 12459
+        },
+        "matched_class_rows": {
+          "0": 2181,
+          "1": 10278
+        },
+        "matched_class_connections": {
+          "0": 2181,
+          "1": 8222
+        },
+        "matched_detail_connections": {
+          "-": 2181,
+          "C&C": 8222
+        }
+      },
+      {
+        "split": "validation",
+        "capture_id": "CTU-IoT-Malware-Capture-34-1",
+        "rows": 13972,
+        "start_ms": 1545403816870,
+        "end_ms": 1545490213942,
+        "status_counts": {
+          "ambiguous": 8,
+          "matched": 13857,
+          "partial_interval": 14,
+          "unknown_label_or_duration": 93
+        },
+        "matched_class_rows": {
+          "0": 2090,
+          "1": 11767
+        },
+        "matched_class_connections": {
+          "0": 1904,
+          "1": 6923
+        },
+        "matched_detail_connections": {
+          "-": 1904,
+          "C&C": 6706,
+          "DDoS": 114,
+          "PartOfAHorizontalPortScan": 103
+        }
+      }
+    ],
+    "checks": {
+      "flow_identities_unique": true,
+      "connection_groups_disjoint_and_consistent": true,
+      "capture_time_order_and_purge_valid": true,
+      "distinct_connection_class_support_met": true
+    },
+    "preparation_checks_passed": true,
+    "invalid_or_cross_partition_groups": 0,
+    "repeated_flow_identities": 0,
+    "uid_pseudonyms_reused_across_captures": 0,
+    "matched_feature_patterns": {
+      "unique_vectors": 128407,
+      "rows": 248997,
+      "repeated_vectors": 43433,
+      "conflicting_label_vectors": 16,
+      "rows_in_conflicting_vectors": 50
+    },
+    "exact_feature_overlap": [
+      {
+        "left": "train",
+        "right": "calibration",
+        "shared_feature_vectors": 9,
+        "left_rows": 272,
+        "right_rows": 29,
+        "shared_vectors_with_conflicting_labels": 0
+      },
+      {
+        "left": "train",
+        "right": "validation",
+        "shared_feature_vectors": 84,
+        "left_rows": 632,
+        "right_rows": 1113,
+        "shared_vectors_with_conflicting_labels": 0
+      },
+      {
+        "left": "calibration",
+        "right": "validation",
+        "shared_feature_vectors": 17,
+        "left_rows": 2179,
+        "right_rows": 1315,
+        "shared_vectors_with_conflicting_labels": 0
+      }
+    ],
+    "overlap_interpretation": "Matched rows only; repeated feature patterns are retained. These diagnostics do not establish device independence or authorize fitting."
+  },
+  "training_authorized": false,
+  "candidate_policy_promoted": false,
+  "resources": {
+    "wall_seconds": 8.630958008000022,
+    "sampled_peak_process_tree_rss_sum_mib": 121.984375
+  }
+}

@@ -72,6 +72,13 @@ It outputs aggregate evidence, not a training cohort or detector predictions. Se
 [packet audit guide](../guides/PACKET_LABELS.md). Proposed capture/time partitions retain
 unverified device isolation and disabled training.
 
+The [native cohort preparation](../guides/NATIVE_COHORT.md) now streams candidate assignments
+and eleven integer features into a bounded private SQLite database. Excluded flows retain null
+labels/groups; capture-scoped UID pseudonyms keep matched segments together. A separate read-only
+pass validates stored rows, class support, chronology and feature overlap, bound by database and
+logical-row hashes. Only aggregate manifests leave the CI runner. This experimental cohort does
+not change the UQ model contract, promote candidate labels or authorize deployment.
+
 Choose a maintained exporter after validating feature parity. UQ NetFlow fields are not a drop-in
 replacement for Zeek `conn.log`, CICFlowMeter features, or PyShark packet attributes. Either use
 the same compatible exporter/configuration as the benchmark, or build a new training dataset
