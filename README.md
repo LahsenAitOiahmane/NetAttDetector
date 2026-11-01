@@ -13,8 +13,10 @@ The intended environment is a [small office/home network](docs/project/THREAT_MO
 up to 50 reviewed alerts/day. Traffic volume and incident aggregation remain unmeasured; the
 owner deferred the live pilot. No live sensing, blocking or product promotion is enabled.
 The [information-bound study](reports/INFORMATION_BOUND.md) now proves an observed no-port
-ceiling of 60.71% recall at the validation FPR budget. Next work adds validated causal traffic
-context before further fitting. See the [ordered backlog](docs/project/ROADMAP.md).
+ceiling of 60.71% recall at the validation FPR budget. The new
+[causal context lab](reports/CAUSAL_CONTEXT.md) passes full replay/SQL checks and reduces
+no-port conflicting rows from 206,075 to 190; model value is the next registered comparison.
+See the [ordered backlog](docs/project/ROADMAP.md).
 
 ## Measured research stages
 
@@ -31,8 +33,9 @@ context before further fitting. See the [ordered backlog](docs/project/ROADMAP.m
 | [Statistical measurement](reports/STATISTICAL_FEATURES.md) | 165 independent fixture values, 27 measured fields, unchanged core/label joins for every flow |
 | [Statistical models](reports/STATISTICAL_STUDY.md) | Fifteen fixed-thread fits; natural logistic DDoS 1/114 to 75/114, but false positives 57 to 77 |
 | [Input information bound](reports/INFORMATION_BOUND.md) | No-port validation ceiling 60.71% at 9 benign flags; even an optimistic relaxation needs 39 flags for 80% recall |
+| [Causal context](reports/CAUSAL_CONTEXT.md) | 235 fixture values, every flow preserved/replayed, 300 independent SQL snapshots and substantially fewer input conflicts |
 
-Native contracts (`nfstream-core-v1`, `nfstream-statistical-v1`) are separate from the historical
+Native contracts (`nfstream-core-v1`, `nfstream-statistical-v1`, `nfstream-context-v1`) are separate from the historical
 UQ models. They are not column aliases. Addresses, labels, capture IDs and timestamps stay out
 of model inputs. Candidate labels, device independence, exclusions and data terms remain
 explicit limitations. CI retains aggregate evidence; private native models/rows stay on the

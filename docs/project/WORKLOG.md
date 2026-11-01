@@ -576,6 +576,37 @@ warm-up/clock/state behavior and packet-callback versus sorted replay parity. Th
 information rather than pretending more model capacity can overcome the measured no-port
 bound. The pilot remains owner-deferred and no model is promoted.
 
+## 1 November 2026 — Causal callback context and independent replay
+
+Registered NAD-052 at `3b51c79` before extraction. Added nine flow-start windows/distinct
+counts in a one-meter NFPlugin on_init callback, with no labels/final-flow data as inputs.
+The clock is an arrival-prefix watermark; same-watermark peers are excluded, late starts
+retain arrival order and raw times remain unchanged. Warm-up spans and sequence/clock/cache
+metadata stay outside model features. State is bounded to 100k active+pending events and is
+terminal on overflow, with empty counters removed. Endpoint addresses occur only in private
+state/temporary replay targets and are absent from retained numeric sidecars.
+
+Run `41321748817` at `039a361` passes 235 known synthetic values, every core/statistical
+value/identity/order and label join across all 250,819 flows, full callback arrival replay and
+300 independent SQL snapshots. Statistical float tolerance was declared before extraction;
+the actual run has zero nonexact values and maximum difference zero. Full replay shares the
+tested state routine; independent SQL references and explicit event/fixture cases supplement it.
+Original labels, exclusions and reserved source roles remain unchanged; no model fitting.
+
+The context sidecar is 113.4 MiB and logical digest starts `7a5960b1`. No-port conflicting
+patterns now affect 190 rows rather than 206,075; full36 patterns have zero observed label
+conflicts. This is additional information, not proof of accuracy or transfer. Captures3/8/34
+peak at306/14/135 cached events, with zero late starts and18/4/19 warm-up flow rows retained.
+Warm-up slices can share UIDs and must not be summed as independent connection counts.
+
+Largest callback/inserts/replay/SQL interval:81.31 seconds /257.2 MiB sampled tree RSS. Final
+joined audit:19.79 seconds /121.8 MiB. Timing excludes prior base preparation/downloads and
+differs in scope from the statistics-only path; no general speed claim is made. Newly owned
+temporary endpoint DBs are closed/removed, while original captures/artifacts remain intact.
+Only aggregate fixture/manifests are retained. Python3.11/3.13 CI passed189 with7 skips each;
+local focused checks passed36 with4 Linux skips. Next NAD-053 compares the new fixed rows
+against statistical controls, preserving one-thread repeats and adding a minority-family guard.
+
 ## Outstanding work
 
 This work does not complete the production roadmap. Global audits cover the development inputs;
