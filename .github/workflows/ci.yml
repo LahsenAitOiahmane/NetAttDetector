@@ -38,6 +38,7 @@ jobs:
       - run: uv run --no-sync ruff format --check src tests scripts
       - run: uv run --no-sync python scripts/check_repository.py
       - run: uv run --no-sync python scripts/data/make_pcap_fixtures.py --check
+      - run: uv run --no-sync python scripts/data/make_statistical_fixture.py --check
       - run: uv run --no-sync pytest
       - run: uv run --no-sync python scripts/data/make_smoke_data.py
       - run: uv run --no-sync netatt train --data data/processed/smoke.csv --config configs/ci.json --output artifacts/smoke
