@@ -488,6 +488,35 @@ still defers live traffic. Reserved test data is untouched. Real Linux focused c
 49 tests; Python 3.11/3.13 quality checks passed separately. Next NAD-049 validates richer
 TCP-state/packet-length/interarrival measurements and core/label replay before further fits.
 
+## 1 November 2026 — Statistical feature contract and immutable sidecar
+
+Registered NAD-049 at `66a5606`, then added the separate 27-feature statistical contract:
+eleven unchanged core fields plus sixteen size/interarrival/TCP-flag fields. Independent
+size/time/flag lists for twelve packets produce five fixture flows and 165 known values.
+Confirmed sample standard-deviation denominators against the pinned NFStream 6.6.0 source;
+did not use actual exporter outputs to generate expectations. Original 85 core fixture checks
+remain unchanged. Added automatic statistical fixture generation/checking and Linux replay.
+
+Run `41313480823` at `f82832c` passed all 165 fixture values and preserved every core field,
+flow identity, order and label/group join across all 250,819 development flows. A separate
+read-only joined audit recomputes sidecar values/hashes. The private sidecar is 113.5 MiB;
+largest sampled statistical export tree RSS was 233.9 MiB, with 14.07 seconds for capture 3.
+The joined audit took 13.60 seconds / 114.6 MiB. Per-capture samples exclude prior preparation,
+hash verification and final index construction; no OS-enforced resource claim is made.
+
+Extra measurements distinguish some patterns, but full/core conflicts remain 16 patterns /
+50 accepted rows. Dropping ports from statistical features leaves 63 conflicting patterns
+covering 206,075 accepted rows. Accepted DDoS has 113 SYN-bearing UIDs and one without TCP
+flags; accepted scanning also has SYN, as do 2,504 benign UIDs. Additional flags alone therefore
+do not establish attack intent or solve missing context/training support. All exclusions and
+the unpromoted point rule remain unchanged; no fitting occurs in this measurement phase.
+
+Saved aggregate fixture/sidecar evidence and the detailed report/runbook, with no private
+database or real rows in CI artifacts. Local focused checks passed 41 with three Linux skips;
+actual Linux fixture checks passed 22, and Python 3.11/3.13 quality CI passed 159 with six
+skips each. Next NAD-050 compares core/statistical/no-port inputs under a fixed-thread,
+calibration-only registered model protocol before any new independent-source evaluation.
+
 ## Outstanding work
 
 This work does not complete the production roadmap. Global audits cover the development inputs;

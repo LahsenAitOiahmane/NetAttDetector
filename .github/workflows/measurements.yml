@@ -3,6 +3,10 @@ name: Offline flow measurement lab
 on:
   workflow_dispatch:
     inputs:
+      statistical_features:
+        description: 'Validate richer measured flow statistics and unchanged core/label joins'
+        type: boolean
+        default: false
       native_error_diagnostics:
         description: 'Run registered native error slices and fixed-thread controls'
         type: boolean
@@ -37,6 +41,9 @@ on:
       - 'pyproject.toml'
       - 'uv.lock'
       - 'src/netattdetector/measurement.py'
+      - 'src/netattdetector/statistical.py'
+      - 'tests/test_statistical.py'
+      - 'scripts/data/make_statistical_fixture.py'
       - 'src/netattdetector/resources.py'
       - 'tests/test_measurement.py'
       - 'scripts/data/make_pcap_fixtures.py'
@@ -48,6 +55,9 @@ on:
       - 'pyproject.toml'
       - 'uv.lock'
       - 'src/netattdetector/measurement.py'
+      - 'src/netattdetector/statistical.py'
+      - 'tests/test_statistical.py'
+      - 'scripts/data/make_statistical_fixture.py'
       - 'src/netattdetector/resources.py'
       - 'tests/test_measurement.py'
       - 'scripts/data/make_pcap_fixtures.py'
@@ -62,6 +72,9 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  statistical-features:
+    if: github.event_name == 'workflow_dispatch' && inputs.statistical_features
+    uses: ./.github/workflows/statistical-features.yml
   native-errors:
     if: github.event_name == 'workflow_dispatch' && inputs.native_error_diagnostics
     uses: ./.github/workflows/native-study.yml
@@ -101,11 +114,13 @@ jobs:
           version: '0.12.17'
           enable-cache: true
       - run: uv sync --frozen --extra dev --extra measurement
-      - run: uv run --no-sync pytest tests/test_measurement.py
+      - run: uv run --no-sync pytest tests/test_measurement.py tests/test_statistical.py
       - run: uv run --no-sync python scripts/data/make_pcap_fixtures.py --check
       - run: uv run --no-sync netatt export-pcap --pcap tests/fixtures/pcap/core.pcap --output artifacts/measurements/export.json
       - run: uv run --no-sync netatt verify-measurements --export artifacts/measurements/export.json --expected tests/fixtures/pcap/expected.json --output artifacts/measurements/verification.json
       - run: uv run --no-sync netatt measurement-contract --output artifacts/measurements/contract.json
+      - run: uv run --no-sync netatt export-statistical-pcap --pcap tests/fixtures/pcap/core.pcap --output artifacts/measurements/statistical-export.json
+      - run: uv run --no-sync netatt verify-statistical --export artifacts/measurements/statistical-export.json --output artifacts/measurements/statistical-verification.json
       - name: Retain offline fixture evidence
         if: always()
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2

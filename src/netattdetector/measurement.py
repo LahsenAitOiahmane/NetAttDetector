@@ -76,6 +76,11 @@ def contract_report():
 
 def iter_pcap_rows(path, max_nflows=10_000, *, max_pcap_bytes=16 * 2**20):
     """One meter, bounded input/flow count, no materialization or model imports."""
+    yield from _iter_meter_rows(path, max_nflows, max_pcap_bytes, CORE_FEATURES + METADATA, False)
+
+
+def _iter_meter_rows(path, max_nflows, max_pcap_bytes, fields, statistical):
+    """Shared pinned meter lifecycle; public contracts supply their own fixed field lists."""
     if max_nflows not in (10_000, 100_000, 250_000) or max_pcap_bytes not in (
         16 * 2**20,
         128 * 2**20,
@@ -99,14 +104,14 @@ def iter_pcap_rows(path, max_nflows=10_000, *, max_pcap_bytes=16 * 2**20):
     version = importlib.metadata.version("nfstream")
     if version != "6.6.0":
         raise ValueError("Measurement settings are registered for NFStream 6.6.0 only.")
-    settings = {**SETTINGS, "max_nflows": max_nflows}
+    settings = {**SETTINGS, "max_nflows": max_nflows, "statistical_analysis": statistical}
     with closing(iter(NFStreamer(source=str(path.resolve()), **settings))) as flows:
         for count, flow in enumerate(flows, 1):
             if count >= max_nflows:
                 raise ValueError(
                     "Flow limit reached; refuse to label a potentially partial export complete."
                 )
-            yield {name: getattr(flow, name) for name in [*CORE_FEATURES, *METADATA]}
+            yield {name: getattr(flow, name) for name in fields}
 
 
 def export_pcap(path, output):

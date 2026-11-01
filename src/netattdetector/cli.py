@@ -180,10 +180,39 @@ def parser():
     native_study.add_argument("--cohort", required=True)
     native_study.add_argument("--output", required=True)
     native_study.add_argument("--config", default="configs/native-study.json")
+    stat_export = commands.add_parser(
+        "export-statistical-pcap",
+        help="Export the separate 27-feature offline statistical contract",
+    )
+    stat_export.add_argument("--pcap", required=True)
+    stat_export.add_argument("--output", required=True)
+    stat_verify = commands.add_parser(
+        "verify-statistical", help="Check independent statistical fixture values"
+    )
+    stat_verify.add_argument("--export", required=True)
+    stat_verify.add_argument("--expected", default="tests/fixtures/pcap/statistical-expected.json")
+    stat_verify.add_argument("--output", required=True)
     return root
 
 
 def execute(args):
+    if args.command == "export-statistical-pcap":
+        from netattdetector.statistical import export_statistical_pcap
+
+        result = export_statistical_pcap(args.pcap, args.output)
+        return {
+            "export": args.output,
+            "schema": result["schema"],
+            "flows": len(result["rows"]),
+            "training_authorized": False,
+        }
+    if args.command == "verify-statistical":
+        from netattdetector.statistical import verify_statistical_measurements
+
+        result = verify_statistical_measurements(args.export, args.expected, args.output)
+        if not result["passed"]:
+            raise ValueError(f"Statistical fixture comparison failed; see {args.output}.")
+        return result
     if args.command == "study-native":
         from netattdetector.native_study import run_native_study
 
