@@ -1,0 +1,21 @@
+{
+  "artifact_sha256": "a504167cf9dbd384c17b192d2f1209714c8f4ef5c27e6b892b64fcbe04e19cc7",
+  "rows": 45,
+  "comparison": {
+    "max_absolute_score_difference": 0.0,
+    "frozen_threshold_decision_differences": 0,
+    "scores_exactly_identical": true
+  },
+  "passed": true,
+  "platform": "Windows",
+  "python": "3.13.5",
+  "versions": {
+    "numpy": "2.5.4",
+    "pandas": "3.1.0",
+    "scikit-learn": "1.9.1",
+    "joblib": "1.6.0",
+    "cryptography": "50.0.2"
+  },
+  "scope": "Synthetic numeric portability only; no accuracy/generalization/live-network claim.",
+  "deployment_authorized": false
+}

@@ -89,3 +89,10 @@ the public key can encrypt arbitrary content. Follow the
 [private-transfer protocol](../docs/research/PRIVATE_ARTIFACTS.md) and
 [reproduction runbook](../docs/guides/CONTEXT_STUDY.md). Private retention does not resolve
 dataset permissions for public weights or authorize a live pilot. The pilot remains deferred.
+
+After committing and checking the freeze, Windows3.13.5 recovered the model privately and
+reproduced **all45 synthetic scores exactly**, with zero threshold-decision differences.
+[Portability evidence](evidence/context-study/windows-portability.json) records the dependency
+versions and hash. This verifies only those synthetic probes, not attack accuracy or universal
+platform equivalence. Ciphertext and plaintext model stay ignored locally; securely back up
+the owner's `.netatt-keys/recipient-v1.key` separately from public Git.
