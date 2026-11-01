@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "flows": 5,
+  "checked_fields": 235,
+  "errors": [],
+  "pcap_sha256": "077a1909e7ccc1e984b5829dbf58687f208678cb7c29d57ab1fb9fdfcb0660ff",
+  "training_authorized": false,
+  "scope": "Known five-flow/twelve-packet initialization order; core/statistical fields plus independent reused-endpoint context expectations. Not attack detection or live loss evidence."
+}

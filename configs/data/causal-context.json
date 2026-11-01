@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "registered_date": "2026-11-01",
+  "schema": "nfstream-context-v1",
+  "plugin": "causal-flow-start-v1",
+  "expected_core_logical_sha256": "9be2a2d5c39b3cb78a31fec40118971ba03b0e62b398e1151f7480ce8c312d59",
+  "expected_statistical_logical_sha256": "a4e6d0ff836814acadd4cc778b0b63320fe5dc38cc080f040caaeb95db189259",
+  "statistical_config": "configs/data/statistical-features.json",
+  "source_config": "configs/data/iot23-expansion.json",
+  "exporter_version": "6.6.0",
+  "windows_ms": [1000, 10000, 60000],
+  "max_active_events": 100000,
+  "max_database_bytes": 536870912,
+  "cache_kib": 8192,
+  "independent_sql_checks_per_capture": 100,
+  "training_enabled": false,
+  "deployment_authorized": false,
+  "time_basis": "NFPlugin on_init arrival order. Context watermark is the prefix maximum of observed first-seen milliseconds. Each window is [watermark-window, watermark); exclude every same-watermark peer. Preserve raw timestamps, report late starts and warm-up span. No label-conditioned history or retrospective timestamp sorting.",
+  "acceptance": "Independent synthetic window cases and known PCAP initialization order; unchanged core/statistical values and label joins; contiguous initialization sequence and prefix watermark; full sorted-by-initialization replay plus 100 independent SQL snapshots per capture; bounded state and complete row identity coverage. All flows, including excluded labels, contribute history. No model fitting.",
+  "resource_screen": "One meter and sequential captures, <1 GiB sampled tree RSS and <600 seconds per capture excluding prior preparation/verification/downloads. Active state 100k events including pending peers; sidecar and private temporary target databases each capped at512 MiB, 8 MiB cache targets. Sampling is not an OS memory limit."
+}

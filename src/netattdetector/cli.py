@@ -199,10 +199,18 @@ def parser():
     bound.add_argument("--statistics", required=True)
     bound.add_argument("--output", required=True)
     bound.add_argument("--config", default="configs/data/information-bound.json")
+    context_fixture = commands.add_parser(
+        "verify-context-fixture", help="Replay known causal flow-start fixture values on Linux"
+    )
+    context_fixture.add_argument("--output", required=True)
     return root
 
 
 def execute(args):
+    if args.command == "verify-context-fixture":
+        from netattdetector.context_meter import verify_context_fixture
+
+        return verify_context_fixture(args.output)
     if args.command == "information-bound":
         from netattdetector.information_bound import run_information_bound
 

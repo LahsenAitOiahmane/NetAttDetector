@@ -1,0 +1,281 @@
+{
+  "schema": "nfstream-context-v1",
+  "features": [
+    "src_port",
+    "dst_port",
+    "protocol",
+    "ip_version",
+    "src2dst_packets",
+    "dst2src_packets",
+    "src2dst_bytes",
+    "dst2src_bytes",
+    "bidirectional_duration_ms",
+    "src2dst_duration_ms",
+    "dst2src_duration_ms",
+    "bidirectional_min_ps",
+    "bidirectional_mean_ps",
+    "bidirectional_stddev_ps",
+    "bidirectional_max_ps",
+    "bidirectional_min_piat_ms",
+    "bidirectional_mean_piat_ms",
+    "bidirectional_stddev_piat_ms",
+    "bidirectional_max_piat_ms",
+    "bidirectional_syn_packets",
+    "bidirectional_cwr_packets",
+    "bidirectional_ece_packets",
+    "bidirectional_urg_packets",
+    "bidirectional_ack_packets",
+    "bidirectional_psh_packets",
+    "bidirectional_rst_packets",
+    "bidirectional_fin_packets",
+    "src_flow_starts_1s",
+    "src_flow_starts_10s",
+    "src_flow_starts_60s",
+    "dst_flow_starts_1s",
+    "dst_flow_starts_10s",
+    "dst_flow_starts_60s",
+    "src_distinct_destinations_60s",
+    "src_distinct_dst_ports_60s",
+    "dst_distinct_sources_60s"
+  ],
+  "exporter_version": "6.6.0",
+  "settings": {
+    "decode_tunnels": false,
+    "promiscuous_mode": false,
+    "snapshot_length": 65535,
+    "idle_timeout": 2,
+    "active_timeout": 1800,
+    "accounting_mode": 1,
+    "n_dissections": 0,
+    "statistical_analysis": true,
+    "n_meters": 1,
+    "max_nflows": 250000,
+    "system_visibility_mode": 0
+  },
+  "context_policy": {
+    "schema_version": 1,
+    "registered_date": "2026-11-01",
+    "schema": "nfstream-context-v1",
+    "plugin": "causal-flow-start-v1",
+    "expected_core_logical_sha256": "9be2a2d5c39b3cb78a31fec40118971ba03b0e62b398e1151f7480ce8c312d59",
+    "expected_statistical_logical_sha256": "a4e6d0ff836814acadd4cc778b0b63320fe5dc38cc080f040caaeb95db189259",
+    "statistical_config": "configs/data/statistical-features.json",
+    "source_config": "configs/data/iot23-expansion.json",
+    "exporter_version": "6.6.0",
+    "windows_ms": [
+      1000,
+      10000,
+      60000
+    ],
+    "max_active_events": 100000,
+    "max_database_bytes": 536870912,
+    "cache_kib": 8192,
+    "independent_sql_checks_per_capture": 100,
+    "training_enabled": false,
+    "deployment_authorized": false,
+    "time_basis": "NFPlugin on_init arrival order. Context watermark is the prefix maximum of observed first-seen milliseconds. Each window is [watermark-window, watermark); exclude every same-watermark peer. Preserve raw timestamps, report late starts and warm-up span. No label-conditioned history or retrospective timestamp sorting.",
+    "acceptance": "Independent synthetic window cases and known PCAP initialization order; unchanged core/statistical values and label joins; contiguous initialization sequence and prefix watermark; full sorted-by-initialization replay plus 100 independent SQL snapshots per capture; bounded state and complete row identity coverage. All flows, including excluded labels, contribute history. No model fitting.",
+    "resource_screen": "One meter and sequential captures, <1 GiB sampled tree RSS and <600 seconds per capture excluding prior preparation/verification/downloads. Active state 100k events including pending peers; sidecar and private temporary target databases each capped at512 MiB, 8 MiB cache targets. Sampling is not an OS memory limit."
+  },
+  "config_sha256": "e608d7f792572dffc8af23164e671529a4f7a07259b717d1527f9d7f33a7d01a",
+  "source_commit": "039a361273bf822b3703703eb64471963ed6e7ae",
+  "core_logical_sha256": "9be2a2d5c39b3cb78a31fec40118971ba03b0e62b398e1151f7480ce8c312d59",
+  "statistical_logical_sha256": "a4e6d0ff836814acadd4cc778b0b63320fe5dc38cc080f040caaeb95db189259",
+  "core_database_sha256": "ba66937547a1b5e22bbf665ef42366e1b47f5a539f87a158856bc449a26778f3",
+  "statistical_database_sha256": "6b9b4c289db495ae7c5c592d91b4c27781b62b21d1746b9749384dca27cb50f9",
+  "database": {
+    "bytes": 118947840,
+    "sha256": "e437358785003dcee07f7911f81a56bd7bd6bdbebda28e84d1ddc16174268e7f"
+  },
+  "records": [
+    {
+      "capture_id": "CTU-IoT-Malware-Capture-3-1",
+      "split": "train",
+      "rows": 224388,
+      "all_core_values_and_statistical_tolerances_preserved": true,
+      "nonexact_statistical_float_fields": 0,
+      "maximum_statistical_float_absolute_difference": 0.0,
+      "replay": {
+        "rows_replayed": 224388,
+        "full_callback_replay_identical": true,
+        "independent_sql_snapshots": 100,
+        "independent_sql_snapshots_identical": true,
+        "late_flow_starts": 0,
+        "warmup_flow_rows": 18,
+        "peak_active_plus_pending_events": 306,
+        "scope": "Full arrival-sequence replay shares the tested window routine; the deterministic SQL samples are algorithmically independent. Original times/labels are unchanged."
+      },
+      "resources": {
+        "wall_seconds": 81.30749461300002,
+        "sampled_peak_process_tree_rss_sum_mib": 257.2421875
+      },
+      "resource_screen_met": true
+    },
+    {
+      "capture_id": "CTU-IoT-Malware-Capture-8-1",
+      "split": "calibration",
+      "rows": 12459,
+      "all_core_values_and_statistical_tolerances_preserved": true,
+      "nonexact_statistical_float_fields": 0,
+      "maximum_statistical_float_absolute_difference": 0.0,
+      "replay": {
+        "rows_replayed": 12459,
+        "full_callback_replay_identical": true,
+        "independent_sql_snapshots": 100,
+        "independent_sql_snapshots_identical": true,
+        "late_flow_starts": 0,
+        "warmup_flow_rows": 4,
+        "peak_active_plus_pending_events": 14,
+        "scope": "Full arrival-sequence replay shares the tested window routine; the deterministic SQL samples are algorithmically independent. Original times/labels are unchanged."
+      },
+      "resources": {
+        "wall_seconds": 4.847531629000002,
+        "sampled_peak_process_tree_rss_sum_mib": 224.2265625
+      },
+      "resource_screen_met": true
+    },
+    {
+      "capture_id": "CTU-IoT-Malware-Capture-34-1",
+      "split": "validation",
+      "rows": 13972,
+      "all_core_values_and_statistical_tolerances_preserved": true,
+      "nonexact_statistical_float_fields": 0,
+      "maximum_statistical_float_absolute_difference": 0.0,
+      "replay": {
+        "rows_replayed": 13972,
+        "full_callback_replay_identical": true,
+        "independent_sql_snapshots": 100,
+        "independent_sql_snapshots_identical": true,
+        "late_flow_starts": 0,
+        "warmup_flow_rows": 19,
+        "peak_active_plus_pending_events": 135,
+        "scope": "Full arrival-sequence replay shares the tested window routine; the deterministic SQL samples are algorithmically independent. Original times/labels are unchanged."
+      },
+      "resources": {
+        "wall_seconds": 7.2522369289999915,
+        "sampled_peak_process_tree_rss_sum_mib": 220.4921875
+      },
+      "resource_screen_met": true
+    }
+  ],
+  "audit": {
+    "rows": 250819,
+    "complete_identity_core_statistical_join": true,
+    "ordered_context_rows_sha256": "7a5960b15ce59d56955c3975289bbef6e9cacbbad16c78c8336109589092c897",
+    "patterns": {
+      "full_hash": {
+        "unique_vectors": 237427,
+        "conflicting_label_vectors": 0,
+        "rows_in_conflicting_vectors": 0
+      },
+      "no_ports_hash": {
+        "unique_vectors": 102419,
+        "conflicting_label_vectors": 39,
+        "rows_in_conflicting_vectors": 190
+      }
+    },
+    "warmup_counts": [
+      {
+        "split": "calibration",
+        "warmup_complete": false,
+        "label": 0,
+        "flows": 4,
+        "accepted_uid_groups": 4
+      },
+      {
+        "split": "calibration",
+        "warmup_complete": true,
+        "label": 0,
+        "flows": 2177,
+        "accepted_uid_groups": 2177
+      },
+      {
+        "split": "calibration",
+        "warmup_complete": true,
+        "label": 1,
+        "flows": 10278,
+        "accepted_uid_groups": 8222
+      },
+      {
+        "split": "train",
+        "warmup_complete": false,
+        "label": 0,
+        "flows": 7,
+        "accepted_uid_groups": 5
+      },
+      {
+        "split": "train",
+        "warmup_complete": false,
+        "label": 1,
+        "flows": 11,
+        "accepted_uid_groups": 7
+      },
+      {
+        "split": "train",
+        "warmup_complete": true,
+        "label": null,
+        "flows": 1707,
+        "accepted_uid_groups": 0
+      },
+      {
+        "split": "train",
+        "warmup_complete": true,
+        "label": 0,
+        "flows": 3961,
+        "accepted_uid_groups": 3165
+      },
+      {
+        "split": "train",
+        "warmup_complete": true,
+        "label": 1,
+        "flows": 218702,
+        "accepted_uid_groups": 151339
+      },
+      {
+        "split": "validation",
+        "warmup_complete": false,
+        "label": null,
+        "flows": 4,
+        "accepted_uid_groups": 0
+      },
+      {
+        "split": "validation",
+        "warmup_complete": false,
+        "label": 0,
+        "flows": 15,
+        "accepted_uid_groups": 9
+      },
+      {
+        "split": "validation",
+        "warmup_complete": true,
+        "label": null,
+        "flows": 111,
+        "accepted_uid_groups": 0
+      },
+      {
+        "split": "validation",
+        "warmup_complete": true,
+        "label": 0,
+        "flows": 2075,
+        "accepted_uid_groups": 1896
+      },
+      {
+        "split": "validation",
+        "warmup_complete": true,
+        "label": 1,
+        "flows": 11767,
+        "accepted_uid_groups": 6923
+      }
+    ],
+    "scope": "All flows retained; patterns use accepted labels only. Warm-up metadata stays outside model features. Packet-callback/SQL checks occurred before private endpoint targets were removed."
+  },
+  "audit_resources": {
+    "wall_seconds": 19.78835322599997,
+    "sampled_peak_process_tree_rss_sum_mib": 121.83203125
+  },
+  "training_authorized": false,
+  "deployment_authorized": false,
+  "candidate_policy_promoted": false,
+  "external_test_accessed": false,
+  "limitations": "Observed flow-start watermark clock, not verified physical uptime/device identity or live loss. Same-watermark peers are excluded; warm-up rows are retained. Context uses every exported flow independent of labels. No model fits or label repair."
+}
