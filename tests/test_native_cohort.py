@@ -1,6 +1,7 @@
 import json
 import sqlite3
 from copy import deepcopy
+from pathlib import Path
 
 import pytest
 
@@ -12,13 +13,16 @@ from netattdetector.native_cohort import (
     SPLITS,
     CohortWriter,
     audit_database,
+    check_replay_audit,
     load_config,
     verify_native_cohort,
 )
 
 
 def fixture_flow(time, port=53000):
-    row = json.loads(open("tests/fixtures/pcap/expected.json", encoding="utf-8").read())["rows"][0]
+    row = json.loads(Path("tests/fixtures/pcap/expected.json").read_text(encoding="utf-8"))["rows"][
+        0
+    ]
     row["bidirectional_first_seen_ms"] = time
     row["bidirectional_last_seen_ms"] = time + row["bidirectional_duration_ms"]
     row["src_port"] = port
@@ -235,3 +239,70 @@ def test_zero_rows_never_complete(tmp_path):
     writer.close()
     with pytest.raises(ValueError, match="Empty"):
         audit_database(path, {"partitions": {}})
+
+
+def test_completed_manifest_roundtrip_and_replay_counter_tampering(tmp_path):
+    _, _, plan = load_config("configs/data/native-cohort.json")
+    path = tmp_path / "cohort.sqlite"
+    writer = CohortWriter(path)
+    try:
+        for index, split in enumerate(SPLITS):
+            for number in range(50):
+                label = number % 2
+                writer.add(
+                    split,
+                    plan["partitions"][split],
+                    fixture_flow((index + 1) * 1_000_000 + number * 1000),
+                    "matched",
+                    {
+                        "uid": f"{split}-{number}",
+                        "label": label,
+                        "detail": "Attack" if label else "Benign",
+                    },
+                )
+        writer.finish()
+    finally:
+        writer.close()
+    audit = audit_database(path, plan)
+    records = [
+        {
+            "split": p["split"],
+            "capture_id": p["capture_id"],
+            "exported_flows": p["rows"],
+            "candidate": {
+                "flow_status_counts": p["status_counts"],
+                "matched_flow_class_counts": p["matched_class_rows"],
+                "matched_zeek_connection_class_counts": p["matched_class_connections"],
+                "matched_connections_by_detail": p["matched_detail_connections"],
+            },
+        }
+        for p in audit["partitions"]
+    ]
+    manifest = {
+        "schema": COHORT_SCHEMA,
+        "status": "complete_experimental_candidate",
+        "training_authorized": False,
+        "candidate_policy_promoted": False,
+        "features": CORE_FEATURES,
+        "feature_contract": "nfstream-core-v1",
+        "label_policy": "iot23-packet-point-candidate-v1",
+        "database": {
+            "name": "cohort.sqlite",
+            "bytes": path.stat().st_size,
+            "sha256": sha256_file(path),
+        },
+        "config_hashes": {
+            "configs/data/native-cohort.json": sha256_file("configs/data/native-cohort.json")
+        },
+        "audit": audit,
+        "records": records,
+    }
+    write_json(tmp_path / "manifest.json", manifest)
+    assert verify_native_cohort(tmp_path, tmp_path / "verified.json")["verified"]
+    assert json.loads((tmp_path / "verified.json").read_text())["audit"] == audit
+    with pytest.raises(FileExistsError):
+        verify_native_cohort(tmp_path, tmp_path / "verified.json")
+    changed = deepcopy(records)
+    changed[0]["candidate"]["matched_flow_class_counts"]["0"] += 1
+    with pytest.raises(ValueError, match="replay"):
+        check_replay_audit(changed, audit)

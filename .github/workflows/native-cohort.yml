@@ -28,7 +28,7 @@ jobs:
           enable-cache: true
       - run: uv sync --frozen --extra dev --extra measurement
       - run: uv run --no-sync pytest tests/test_native_cohort.py tests/test_packet_evidence.py tests/test_measurement.py
-      - run: uv run --no-sync python scripts/research/prepare_native_cohort.py --cohort data/processed/native-candidate --evidence artifacts/native-cohort
+      - run: uv run --no-sync python scripts/research/prepare_native_cohort.py --cohort data/processed/native-candidate --evidence artifacts/native-cohort --repeat-check
       - name: Retain aggregate manifests only; private rows stay on the ephemeral runner
         if: always()
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
@@ -37,4 +37,5 @@ jobs:
           path: |
             artifacts/native-cohort/manifest.json
             artifacts/native-cohort/verification.json
+            artifacts/native-cohort/reproducibility.json
           retention-days: 14
