@@ -3,6 +3,10 @@ name: Offline flow measurement lab
 on:
   workflow_dispatch:
     inputs:
+      native_study:
+        description: 'Run registered experimental native-feature fits (no deployment)'
+        type: boolean
+        default: false
       native_cohort:
         description: 'Prepare and verify the private native candidate cohort (no training)'
         type: boolean
@@ -54,6 +58,9 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  native-study:
+    if: github.event_name == 'workflow_dispatch' && inputs.native_study
+    uses: ./.github/workflows/native-study.yml
   native-cohort:
     if: github.event_name == 'workflow_dispatch' && inputs.native_cohort
     uses: ./.github/workflows/native-cohort.yml

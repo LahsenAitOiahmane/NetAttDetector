@@ -174,10 +174,27 @@ def parser():
     )
     native_check.add_argument("directory")
     native_check.add_argument("--output", required=True)
+    native_study = commands.add_parser(
+        "study-native", help="Run the registered candidate-label native baseline (Linux cohort)"
+    )
+    native_study.add_argument("--cohort", required=True)
+    native_study.add_argument("--output", required=True)
+    native_study.add_argument("--config", default="configs/native-study.json")
     return root
 
 
 def execute(args):
+    if args.command == "study-native":
+        from netattdetector.native_study import run_native_study
+
+        result = run_native_study(args.cohort, args.output, args.config)
+        return {
+            "report": str(Path(args.output) / "study.json"),
+            "completed_fits": result["completed_fits"],
+            "selected_diagnostic_id": result["selected_diagnostic_id"],
+            "qualifying_candidates": result["qualifying_non_dummy_candidates"],
+            "deployment_authorized": False,
+        }
     if args.command == "prepare-native-cohort":
         from netattdetector.native_cohort import prepare_native_cohort
 

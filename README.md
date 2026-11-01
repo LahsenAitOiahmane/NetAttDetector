@@ -55,6 +55,17 @@ chronology and archived assignments. Repeated/conflicting feature patterns remai
 Only aggregate manifests are retained from CI; no native detector has been trained by this
 phase. See the [native preparation guide](docs/guides/NATIVE_COHORT.md).
 
+The [native baseline study](reports/NATIVE_STUDY.md) completed fifteen CPU fits. Its best
+diagnostic reaches 99.20% connection precision and 98.37% recall, but fails the FPR screen at
+2.89% and detects only 1/114 accepted DDoS UIDs. A training-thread control also exceeds its
+registered score tolerance. **No native candidate qualifies.** See the
+[registered protocol](docs/research/NATIVE_STUDY.md) and [runbook](docs/guides/NATIVE_STUDY.md).
+
+Project code is licensed under [MIT](LICENSE), selected by the owner on 1 November 2026.
+Dataset permissions and third-party dependency licenses are separate; see the
+[dataset catalog](docs/research/DATASETS.md). The real-network pilot is deferred by the owner
+while offline research continues.
+
 ## What changed
 
 - A versioned feature contract replaces hand-built packet placeholders.

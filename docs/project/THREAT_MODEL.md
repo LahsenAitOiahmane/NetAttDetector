@@ -47,3 +47,6 @@ remote traffic upload, deployment or live capture is enabled by this planning do
 
 Remaining product inputs are observation point/topology, flow volume, device inventory, retention,
 alert aggregation, review ownership and an operator-approved pilot SLO.
+
+On 1 November 2026 the owner chose to defer the pilot traffic source and continue offline
+research. Live collection and site/pilot acceptance remain deferred; offline work can proceed.

@@ -1,0 +1,19 @@
+{
+  "study_id": "native-capture-diagnostic-v1",
+  "selected_diagnostic_id": "logistic-native11-connection_class_balanced",
+  "artifact_sha256": "8fe3b44c3bad8b20526350f556ea4945dd8e480601958510e80e761203839ee7",
+  "threshold": 0.9921028048109991,
+  "specification": {
+    "id": "logistic-native11-connection_class_balanced",
+    "model": "logistic",
+    "features": "native11",
+    "weights": "connection_class_balanced"
+  },
+  "passes_development_research_screen": false,
+  "repeatability_screen_met": false,
+  "study_sha256": "a9ce0a871921d168552a75b29c83ca4c93a269faa01ec383b44fb59623413b4d",
+  "cohort_logical_sha256": "9be2a2d5c39b3cb78a31fec40118971ba03b0e62b398e1151f7480ce8c312d59",
+  "deployment_authorized": false,
+  "public_model_release_authorized": false,
+  "external_test_accessed": false
+}

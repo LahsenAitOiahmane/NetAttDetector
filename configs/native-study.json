@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "study_id": "native-capture-diagnostic-v1",
+  "registered_date": "2026-11-01",
+  "cohort_config": "configs/data/native-cohort.json",
+  "expected_logical_rows_sha256": "9be2a2d5c39b3cb78a31fec40118971ba03b0e62b398e1151f7480ce8c312d59",
+  "feature_contract": "nfstream-core-v1",
+  "label_policy": "iot23-packet-point-candidate-v1",
+  "research_diagnostic_fitting_authorized": true,
+  "candidate_policy_promoted": false,
+  "deployment_authorized": false,
+  "public_model_release_authorized": false,
+  "seed": 42,
+  "threads": 2,
+  "maximum_fits": 15,
+  "maximum_wall_seconds": 3600,
+  "sampled_memory_screen_mib": 1536,
+  "models": ["logistic", "histogram", "extra_trees"],
+  "feature_policies": ["native11", "behavioral_derived"],
+  "weight_policies": ["flow_natural", "connection_class_balanced"],
+  "research_screen": {
+    "minimum_precision": 0.98,
+    "maximum_fpr": 0.005,
+    "minimum_recall": 0.8,
+    "minimum_true_positive_connections": 25
+  },
+  "selection": "Choose thresholds only on calibration UID-max scores. Select the candidate using validation connection metrics, preferring a passed calibration+validation screen, then highest F1, recall, precision, lower FPR, smaller artifact and stable ID. If every candidate fails, retain the best diagnostic artifact and report no qualifying detector. No external data is accessed.",
+  "controls": "One dummy prior baseline plus twelve predefined candidates. Repeat the selected candidate with two threads and one thread, without refitting preprocessing on other partitions. Compare validation scores/decisions and saved/reloaded predictions. A total of fifteen fits; one seed, not a seed-robustness claim.",
+  "scope": "Experimental accepted-label subset of three source-matched captures, separated by time/capture with unverified device independence. This protocol authorizes only this diagnostic fit; training-disabled preparation/global capture plans and production/release gates remain unchanged. All exclusions and incomplete DDoS coverage accompany metrics."
+}
