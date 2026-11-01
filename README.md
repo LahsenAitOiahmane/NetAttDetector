@@ -69,7 +69,10 @@ measurements before another fit.
 The [statistical measurement lab](reports/STATISTICAL_FEATURES.md) validates 16 additional
 size/timing/TCP-flag fields while preserving all 250,819 core rows and label joins. Its 165
 independent fixture checks pass, but behavioral feature ambiguity remains substantial. These
-measurements are ready for a registered comparison; they are not an improved detector yet.
+measurements feed the [completed statistical comparison](reports/STATISTICAL_STUDY.md):
+accepted DDoS detections improve from 1/114 to 75/114 in the natural-weight logistic control,
+but false positives rise from 57 to 77. All fifteen fits/repeats complete within resource
+screens, and **no statistical candidate qualifies**.
 
 Project code is licensed under [MIT](LICENSE), selected by the owner on 1 November 2026.
 Dataset permissions and third-party dependency licenses are separate; see the

@@ -17,6 +17,7 @@ and [current backlog](project/ROADMAP.md).
 | Native diagnostic models | [Registered study](research/NATIVE_STUDY.md), [operations](guides/NATIVE_STUDY.md), [measured results and failures](../reports/NATIVE_STUDY.md) |
 | Native error follow-up | [Registered protocol](research/NATIVE_ERRORS.md), [operations](guides/NATIVE_ERRORS.md), [measured repeat/error slices](../reports/NATIVE_ERRORS.md) |
 | Statistical measurements | [Registered protocol](research/STATISTICAL_FEATURES.md), [operations](guides/STATISTICAL_FEATURES.md), [core-preservation and information report](../reports/STATISTICAL_FEATURES.md) |
+| Statistical model study | [Registered comparison](research/STATISTICAL_STUDY.md), [operations](guides/STATISTICAL_STUDY.md), [measured tradeoff and failed FPR](../reports/STATISTICAL_STUDY.md) |
 
 Historical reports retain the dependency versions and failed results from their own runs.
 Reorganizing files or upgrading dependencies does not turn those models into production candidates.

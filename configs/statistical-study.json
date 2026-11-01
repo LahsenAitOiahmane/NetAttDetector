@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "study_id": "statistical-capture-diagnostic-v1",
+  "registered_date": "2026-11-01",
+  "expected_core_logical_sha256": "9be2a2d5c39b3cb78a31fec40118971ba03b0e62b398e1151f7480ce8c312d59",
+  "expected_statistical_logical_sha256": "a4e6d0ff836814acadd4cc778b0b63320fe5dc38cc080f040caaeb95db189259",
+  "statistical_config": "configs/data/statistical-features.json",
+  "feature_contract": "nfstream-statistical-v1",
+  "label_policy": "iot23-packet-point-candidate-v1",
+  "research_diagnostic_fitting_authorized": true,
+  "candidate_policy_promoted": false,
+  "deployment_authorized": false,
+  "public_model_release_authorized": false,
+  "seed": 42,
+  "threads": 1,
+  "maximum_fits": 15,
+  "maximum_wall_seconds": 3600,
+  "sampled_memory_screen_mib": 1536,
+  "models": ["logistic", "histogram"],
+  "feature_policies": ["core11_control", "statistics27", "statistics25_no_ports"],
+  "weight_policies": ["flow_natural", "connection_class_balanced"],
+  "research_screen": {
+    "minimum_precision": 0.98,
+    "maximum_fpr": 0.005,
+    "minimum_recall": 0.8,
+    "minimum_true_positive_connections": 25
+  },
+  "selection": "Same calibration-only connection threshold frontier and validation ranking as the native baseline. Twelve predefined candidates plus a dummy and two identical one-thread repeat controls. Core-only ablations run through the same 27-field input contract. No new search, validation threshold tuning or external test access.",
+  "scope": "Candidate-label, capture/time-separated accepted subset only, unverified devices and incomplete DDoS coverage. Richer measurements are verified, not proof of improved attack truth or performance. Report failures and keep every repeated/conflicting input; pilot remains deferred."
+}

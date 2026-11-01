@@ -1,0 +1,20 @@
+{
+  "study_id": "statistical-capture-diagnostic-v1",
+  "selected_diagnostic_id": "logistic-statistics27-flow_natural",
+  "specification": {
+    "id": "logistic-statistics27-flow_natural",
+    "model": "logistic",
+    "features": "statistics27",
+    "weights": "flow_natural"
+  },
+  "artifact_sha256": "c53d4d085b2272af6b441a128a19f47486cecc29e62cc42903ee52e5040f2253",
+  "threshold": 0.9999190519374125,
+  "study_sha256": "04c352d4edfeb154d905cf42665bc228250ae2e0ca7559a2fd13d132adba2da9",
+  "core_logical_sha256": "9be2a2d5c39b3cb78a31fec40118971ba03b0e62b398e1151f7480ce8c312d59",
+  "statistical_logical_sha256": "a4e6d0ff836814acadd4cc778b0b63320fe5dc38cc080f040caaeb95db189259",
+  "passes_development_research_screen": false,
+  "repeatability_screen_met": true,
+  "deployment_authorized": false,
+  "public_model_release_authorized": false,
+  "external_test_accessed": false
+}

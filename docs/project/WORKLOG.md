@@ -517,6 +517,36 @@ actual Linux fixture checks passed 22, and Python 3.11/3.13 quality CI passed 15
 skips each. Next NAD-050 compares core/statistical/no-port inputs under a fixed-thread,
 calibration-only registered model protocol before any new independent-source evaluation.
 
+## 1 November 2026 — Fixed-thread statistical model comparison
+
+Registered NAD-050 at `5ebc599` before statistical fits. Reused estimator, weighting,
+calibration/selection and connection-metric code with explicit input/factory parameters; old
+native defaults remain unchanged and existing model tests pass. Added three policies under
+the same 27-field input contract: core11 control, statistics27 and statistics25 without ports.
+Logistic/histogram models and two training-weight policies give twelve candidates; a dummy
+and two identical one-thread selected-model repeats complete fifteen fits.
+
+Run `41315585426` at `0bc2f70` passed registered core/statistical logical digests, all fits,
+serialization, fixed-thread repeat and resource screens. None qualifies for model quality.
+Natural logistic's controlled core/statistics comparison raises accepted DDoS detections
+from 1/114 to 75/114 but false positives from 57 to 77. Selected statistical diagnostic:
+precision98.89%, recall99.44%, FPR4.04%, TN1827/FP77/FN39/TP6884. C&C/scanning accepted
+family recall remains complete. Perfect observed calibration connection metrics do not
+transfer to validation. The old failed native result and all exclusions stay intact.
+
+Every saved/reloaded probe matches exactly, and both selected refits have zero score/decision
+differences and identical calibration thresholds. Float32 does not reduce the major conflict
+counts; it merges eight additional no-port patterns only. Added selected aggregate error bins,
+full results/freeze/configuration, a visually checked controlled-tradeoff figure and runbook.
+Statistical models/data stay private on the ephemeral runner; no external test was accessed.
+
+Model-stage work took 34.74 seconds with 595.1 MiB sampled tree RSS, excluding preparation,
+imports and initial input verification. The selected bundle is 2,338 bytes, fitted in .91
+seconds; a single warmed 5,000-flow prediction probe took 4.60 ms excluding I/O/export/sensing.
+Python 3.11/3.13 CI passed 172 with six skips each. Local cross-model focused checks passed
+46 with one Linux exporter skip. Next NAD-051 quantifies optimistic information limits from
+indistinguishable input sets before another search or causal-context feature work.
+
 ## Outstanding work
 
 This work does not complete the production roadmap. Global audits cover the development inputs;
