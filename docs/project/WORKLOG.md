@@ -558,14 +558,14 @@ float32/float64 differences, budget refusal and label consistency. Verified stan
 does not load pandas/sklearn. No signature contents or oracle decisions are published.
 
 Run `41317674415` at `faf9e26` passed all twelve partition/policy/representation bounds with
-zero fits. The no-port validation representation can detect at most4,203/6,923 attack UIDs
-(60.71%) at the exact9/1,904 benign-flag budget. Even the optimistic relaxation requires39
-benign flags (2.05% FPR) for80% recall. Both numeric representations agree. Port-bearing
+zero fits. The no-port validation representation can detect at most 4,203/6,923 attack UIDs
+(60.71%) at the exact 9/1,904 benign-flag budget. Even the optimistic relaxation requires 39
+benign flags (2.05% FPR) for 80% recall. Both numeric representations agree. Port-bearing
 representations are not ruled out, but this is not evidence that a decision rule can be
 learned/transferred; precision and inter-group shared-vector constraints are ignored.
 
-Analysis took .39 seconds /139.0 MiB sampled tree RSS, excluding acquisition, preparation,
-imports and verification. The real Linux focused suite passed64 tests. Updated documentation,
+Analysis took .39 seconds / 139.0 MiB sampled tree RSS, excluding acquisition, preparation,
+imports and verification. The real Linux focused suite passed 64 tests. Updated documentation,
 backlog and aggregate evidence, retaining the old model failures, exclusions and untouched
 external source. Reorganized README around current status and a measured-stage table, removing
 stale "next/current sprint" narratives and separating native workflow startup from historical

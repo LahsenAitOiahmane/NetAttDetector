@@ -58,6 +58,8 @@ Only [aggregate bounds](evidence/information-bound/information-bound.json) and
 contents, oracle decisions, endpoint/UID values or model artifacts are published. Tests cover
 exact knapsack budgets, whole mixed groups, vector multiplicity/order, shared-vector relaxation,
 float32/float64 distinctions, invalid groups and refusing incomplete approximations.
+Python 3.11/3.13 quality CI passed 182 tests with six skips each; the actual optional Linux
+exporter environment passed 64 focused checks.
 
 The next work must add actual information or change the declared aggregation family before
 expecting the no-port target to pass. Prioritize causal traffic history measured before a flow

@@ -30,7 +30,7 @@ context before further fitting. See the [ordered backlog](docs/project/ROADMAP.m
 | [Error/repeat diagnostics](reports/NATIVE_ERRORS.md) | Fixed-one-thread scores/coefficients repeat exactly; cross-thread differences remain |
 | [Statistical measurement](reports/STATISTICAL_FEATURES.md) | 165 independent fixture values, 27 measured fields, unchanged core/label joins for every flow |
 | [Statistical models](reports/STATISTICAL_STUDY.md) | Fifteen fixed-thread fits; natural logistic DDoS 1/114 to 75/114, but false positives 57 to 77 |
-| [Input information bound](reports/INFORMATION_BOUND.md) | No-port validation ceiling60.71% at9 benign flags; even an optimistic relaxation needs39 flags for80% recall |
+| [Input information bound](reports/INFORMATION_BOUND.md) | No-port validation ceiling 60.71% at 9 benign flags; even an optimistic relaxation needs 39 flags for 80% recall |
 
 Native contracts (`nfstream-core-v1`, `nfstream-statistical-v1`) are separate from the historical
 UQ models. They are not column aliases. Addresses, labels, capture IDs and timestamps stay out
