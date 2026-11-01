@@ -89,7 +89,8 @@ the roadmap must not be read as an endorsement of the initial champion for live 
 | NAD-044 | P1 / 5 | Expand complete development captures under registered bounds; use a disk index and measure decision parity, attack coverage and process resources | 043 | Measured: another 215 MB local, 250,819 flows, 83,418 matched attack UIDs; SQLite assignment digest identical to memory reference with 43.7% lower sampled tree RSS in one comparison |
 | NAD-045 | P1 / 5 | Validate missing-duration/trailing-packet label linkage on controlled and real PCAP evidence; report per-attack UID coverage before freezing a new rule | 044 | Measured point candidate: 87,048 additional matched flows, all old matches preserved, DDoS 114/14,394; zero-packet contradictions and packet-tail semantics remain unresolved |
 | NAD-046 | P1 / 5 | Materialize a bounded native-feature cohort with source/capture/UID groups, immutable inclusion/overlap audits and validated partition manifests | 014,045 | Measured: 250,819 private rows, 248,997 accepted candidate labels, read-only verification, chronology/support/group checks and overlap accounting; device isolation and label promotion remain open |
-| NAD-047 | P1 / 5 | Register and measure bounded native capture/time diagnostic models, connection weighting, derived features, calibration and repeat controls | 046 | Registered experimental accepted-label subset, twelve candidate specifications plus dummy/two controls; external/device-held-out and production gates remain |
+| NAD-047 | P1 / 5 | Register and measure bounded native capture/time diagnostic models, connection weighting, derived features, calibration and repeat controls | 046 | Measured fifteen fits in 36.99 seconds / 469.2 MiB sampled tree RSS. No candidate qualifies: selected FPR 2.89%, DDoS recall 1/114, one-thread score control fails; see NATIVE_STUDY.md |
+| NAD-048 | P1 / 5 | Diagnose native false positives/family misses, test a fixed-thread linear fit and validate richer measured flow features before further search | 047 | Next: register error/repeat diagnostics and a fixture-backed statistical feature contract; retain all failures, source roles and release gates |
 
 ## Next sprint after the development study
 
@@ -161,6 +162,14 @@ present, and 16 conflicting feature vectors affecting 50 accepted rows remain di
 time separation passes, while device independence is unverified. Next register a narrowly scoped
 candidate-label diagnostic baseline/calibration study with explicit limitations, rather than
 claiming the broader capture/device benchmark or production gate is satisfied.
+
+The [registered native diagnostic](../../reports/NATIVE_STUDY.md) now completes that limited
+baseline: all fifteen fits ran, but none qualifies. Precision/recall look strong in aggregate,
+while benign FPR is too high and DDoS recall is 1/114 accepted connections. The one-thread
+linear refit also exceeds score tolerance despite identical frozen validation decisions. Prioritize
+NAD-048 (error slices, fixed-thread repeat evidence and genuinely richer measured inputs) before
+another search. Derived ratios alone did not supply missing traffic information. The owner
+selected MIT for code and deferred the real-network pilot on 1 November; continue offline work.
 
 Also resolve the residual NAD-040 case with per-stage model/input instrumentation before
 claiming reproducible training. Only after measurement/split requirements are ready should

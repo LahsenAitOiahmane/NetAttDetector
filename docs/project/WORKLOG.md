@@ -423,6 +423,47 @@ User requested continuing sprint by sprint; pilot traffic source and source-code
 were requested asynchronously while independent dataset work continued. Those answers remain
 necessary for later pilot/public-release decisions, not for completing this preparation.
 
+## 1 November 2026 — Native diagnostic baseline and owner scope decisions
+
+Continued from the completed preparation branch without merging it on the owner's behalf.
+PR #9 targets main and passed quality/fixture checks. Registered the separate native diagnostic
+protocol at `ae8c23c` before inspecting any native model scores. It explicitly permits only
+experimental accepted-label fitting, keeps candidate promotion/deployment/public-model release
+disabled and retains capture/time-only limitations. It does not relax the original device/test
+benchmark or production gates.
+
+Implemented twelve predefined logistic/histogram/Extra-Trees candidates, a dummy, two feature
+policies, natural versus connection/class training weights, calibration-only UID-max thresholds,
+validation selection, per-family metrics, conditional intervals, saved/reloaded probes and two
+repeat/thread controls. Feature transforms, class/group weights and scaling use training only.
+Single-thread prediction avoids parallel forest summation order; fitting uses at most two
+threads. Models and row data stay on the ephemeral runner; only aggregate JSON is retained.
+
+Run `41310297418` at `907868a` completed all fifteen fits in 36.99 seconds, sampled 469.2 MiB
+tree RSS and failed its declared repeatability screen. Two-thread selected-model refit matched
+exactly; one-thread training changed validation scores by up to 1.41355e-6 (limit 1e-7), with
+zero frozen-threshold decision differences. Kept the failed run and did not loosen tolerance.
+No candidate meets both calibration and validation quality screens. Selected diagnostic:
+logistic/native11/connection-class-balanced, validation connection precision 99.20%, recall
+98.37%, FPR 2.89%, TN1849/FP55/FN113/TP6810. C&C/scanning recall is complete on their accepted
+subset, but DDoS recall is only 1/114; publisher DDoS coverage remains only 114/14,394. This
+explicitly prevents a broad accuracy/deployment claim despite attractive aggregate scores.
+
+Port removal plus derived features collapses accepted rows to 11,427 exact patterns; 58
+conflicting patterns affect 206,404 rows. Retained these conflicts, rather than removing them
+or claiming that ratios add unavailable information. Saved full aggregate metrics/freeze,
+visually checked a result/family chart and documented reproduction in NATIVE_STUDY.md.
+
+The owner chose **MIT** for code and **deferred pilot traffic selection**, asking to continue
+offline research. Added LICENSE and modern package license metadata; source/wheel builds
+passed and the wheel contains the MIT expression and LICENSE. Dataset/dependency permissions
+remain separate. Updated the deployment planning record and threat model; no live capture.
+
+Local full suite: 148 passed, two Linux-only skips; focused native model suite: 19 passed.
+Python 3.11/3.13 CI: 145 passed, five skips each. The cloud measurement job's real exporter and
+native tests passed; its final failure is the measured repeatability gate, not a test failure.
+Next: NAD-048 error diagnostics, fixed-thread controls and validated richer flow measurements.
+
 ## Outstanding work
 
 This work does not complete the production roadmap. Global audits cover the development inputs;
