@@ -9,7 +9,7 @@ from netattdetector.io import write_json
 from netattdetector.native_cohort import load_config, prepare_native_cohort
 
 
-def run(data_root, cohort, study, evidence, captures=None):
+def run(data_root, cohort, study, evidence, captures=None, diagnostics=False):
     data_root, cohort, study, evidence = map(Path, (data_root, cohort, study, evidence))
     if any(path.exists() for path in (cohort, study, evidence)) or (
         captures is None and data_root.exists()
@@ -24,12 +24,15 @@ def run(data_root, cohort, study, evidence, captures=None):
             captures[capture_id] = str(directory)
     manifest = prepare_native_cohort(captures, cohort)
     # Load numerical/model libraries only after bounded packet/export preparation completes.
-    from netattdetector.native_study import run_native_study
+    if diagnostics:
+        from netattdetector.native_errors import run_native_errors as run_study
+    else:
+        from netattdetector.native_study import run_native_study as run_study
 
     evidence.mkdir(parents=True)
     write_json(evidence / "cohort-manifest.json", manifest)
     try:
-        result = run_native_study(cohort, study)
+        result = run_study(cohort, study)
     finally:
         # Explicit allowlist; model binaries and per-flow/group/feature rows never leave data/.
         for name in (
@@ -38,6 +41,8 @@ def run(data_root, cohort, study, evidence, captures=None):
             "cohort-verification.json",
             "study-config.json",
             "progress.json",
+            "diagnostics.json",
+            "diagnostics-config.json",
         ):
             source = study / name
             if source.exists():
@@ -46,8 +51,9 @@ def run(data_root, cohort, study, evidence, captures=None):
         json.dumps(
             {
                 "completed_fits": result["completed_fits"],
-                "selected": result["selected_diagnostic_id"],
-                "qualifying_candidates": result["qualifying_non_dummy_candidates"],
+                "selected": result.get("selected_diagnostic_id"),
+                "qualifying_candidates": result.get("qualifying_non_dummy_candidates"),
+                "fixed_thread_repeat": result.get("fixed_one_thread_repeat"),
                 "resources": result["resources"],
                 "deployment_authorized": False,
             },
@@ -65,6 +71,11 @@ if __name__ == "__main__":
     parser.add_argument(
         "--captures", help="Optional private capture-ID/path JSON map, skipping acquisition"
     )
+    parser.add_argument(
+        "--diagnostics",
+        action="store_true",
+        help="Run the registered three-fit error study instead of baseline selection",
+    )
     args = parser.parse_args()
     run(
         args.data_root,
@@ -72,4 +83,5 @@ if __name__ == "__main__":
         args.study,
         args.evidence,
         json.loads(Path(args.captures).read_text()) if args.captures else None,
+        args.diagnostics,
     )
