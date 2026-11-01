@@ -226,11 +226,15 @@ def evaluate_scores(frame, scores, threshold):
     return {"flows": flow, "connections": group, "families": families}
 
 
-def feature_overlap(frames, policy):
+def feature_overlap(frames, policy, *, input_features=None, transformer=None, data_type="<f8"):
+    input_features = CORE_FEATURES if input_features is None else input_features
+    transformer = NativeFeatures(policy) if transformer is None else transformer
+    if data_type not in ("<f8", "<f4"):
+        raise ValueError("Pattern diagnostics support explicit float64/float32 representations.")
     parts = []
     for split in SPLITS:
         values = np.ascontiguousarray(
-            NativeFeatures(policy).transform(frames[split][CORE_FEATURES]), dtype="<f8"
+            transformer.transform(frames[split][input_features]), dtype=data_type
         )
         hashes = [hashlib.sha256(row.tobytes()).hexdigest() for row in values]
         parts.append(
@@ -256,12 +260,12 @@ def feature_overlap(frames, policy):
         )
     return {
         "policy": policy,
-        "features": NativeFeatures(policy).get_feature_names_out().tolist(),
+        "features": transformer.get_feature_names_out().tolist(),
         "unique_vectors": len(patterns),
         "conflicting_vectors": int((patterns["classes"] > 1).sum()),
         "rows_in_conflicting_vectors": int(patterns.loc[patterns["classes"] > 1, "rows"].sum()),
         "pairwise_overlap": overlaps,
-        "scope": "Exact float64 transformed inputs before model-specific log/scaling or estimator quantization; all repeated/conflicting rows retained.",
+        "scope": f"Exact {'float64' if data_type == '<f8' else 'float32'} transformed inputs before model-specific log/scaling or estimator quantization; all repeated/conflicting rows retained.",
     }
 
 
@@ -318,14 +322,16 @@ def load_frames(cohort):
     return frames
 
 
-def fit_one(spec, frames, config, *, threads=2):
-    model = make_model(spec["model"], spec["features"], config["seed"], threads)
+def fit_one(spec, frames, config, *, threads=2, input_features=None, model_factory=None):
+    input_features = CORE_FEATURES if input_features is None else input_features
+    model_factory = make_model if model_factory is None else model_factory
+    model = model_factory(spec["model"], spec["features"], config["seed"], threads)
     weights = training_weights(frames["train"], spec["weights"])
     start = time.perf_counter()
     with threadpool_limits(limits=threads), warnings.catch_warnings(record=True) as caught:
         warnings.simplefilter("always")
         model.fit(
-            frames["train"][CORE_FEATURES],
+            frames["train"][input_features],
             frames["train"]["label"].to_numpy(),
             model__sample_weight=weights,
         )
@@ -336,7 +342,7 @@ def fit_one(spec, frames, config, *, threads=2):
     start = time.perf_counter()
     with threadpool_limits(limits=1):
         scores = {
-            split: checked_scores(model.predict_proba(frames[split][CORE_FEATURES])[:, 1])
+            split: checked_scores(model.predict_proba(frames[split][input_features])[:, 1])
             for split in ("calibration", "validation")
         }
     scoring_seconds = time.perf_counter() - start

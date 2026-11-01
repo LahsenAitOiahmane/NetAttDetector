@@ -3,6 +3,10 @@ name: Offline flow measurement lab
 on:
   workflow_dispatch:
     inputs:
+      statistical_study:
+        description: 'Run registered fixed-thread core versus richer statistical models'
+        type: boolean
+        default: false
       statistical_features:
         description: 'Validate richer measured flow statistics and unchanged core/label joins'
         type: boolean
@@ -72,6 +76,9 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  statistical-study:
+    if: github.event_name == 'workflow_dispatch' && inputs.statistical_study
+    uses: ./.github/workflows/statistical-study.yml
   statistical-features:
     if: github.event_name == 'workflow_dispatch' && inputs.statistical_features
     uses: ./.github/workflows/statistical-features.yml

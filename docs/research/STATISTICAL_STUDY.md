@@ -37,7 +37,9 @@ falls back to best F1 without pretending the operating budget is satisfied.
 Report every candidate, per-family connection support/recall, natural flow metrics, conditional
 intervals, exact feature overlap, warnings, fit/inference resources, bundle size, serialization
 and repeat controls. No cherry-picked replacement of the original 2.89%-FPR/1-of-114-DDoS
-failure, no validation threshold search, and no removal of ambiguous feature rows. If all fail,
+failure. Also report existing predefined aggregate error bins for the selected validation
+diagnostic at its calibration-only threshold, without publishing UID/feature rows. No
+validation threshold search or removal of ambiguous feature rows occurs. If all fail,
 prioritize measured causal traffic context and representative development data instead of model
 size. Reserved independent data remains untouched; the owner-deferred live pilot stays deferred.
 
