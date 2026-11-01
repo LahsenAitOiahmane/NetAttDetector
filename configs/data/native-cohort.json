@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "cohort_schema": "native-cohort-v1",
+  "registered_date": "2026-11-01",
+  "plan": "configs/data/native-dataset-plan.json",
+  "packet_policy": "configs/data/packet-evidence.json",
+  "source_config": "configs/data/iot23-expansion.json",
+  "feature_contract": "nfstream-core-v1",
+  "label_policy": "iot23-packet-point-candidate-v1",
+  "training_enabled": false,
+  "max_database_bytes": 536870912,
+  "cache_kib": 8192,
+  "max_total_flows": 750000,
+  "disk_reserve_bytes": 2147483648,
+  "minimum_distinct_connections_per_class": 25,
+  "purge_seconds": 300,
+  "acceptance": "Materialize all exported flows, retain exclusion statuses, reproduce archived baseline/candidate assignment digests, reject duplicate flow identities and connection-group leakage, validate observed chronology/support and exact-feature overlap. Candidate preparation does not promote labels or authorize training.",
+  "publication": "Publish aggregate reports and manifests only. Keep the database and row-level identifiers/features private and ignored; hashes are pseudonyms, not anonymization.",
+  "resource_screen": "Sequential captures, <1 GiB sampled process-tree RSS and <600 seconds per capture excluding downloads; 512 MiB main database cap and 8 MiB SQLite cache target. These are not OS-enforced total memory/disk limits."
+}
