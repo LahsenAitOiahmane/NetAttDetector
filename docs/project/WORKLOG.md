@@ -491,8 +491,8 @@ TCP-state/packet-length/interarrival measurements and core/label replay before f
 ## 1 November 2026 — Statistical feature contract and immutable sidecar
 
 Registered NAD-049 at `66a5606`, then added the separate 27-feature statistical contract:
-eleven unchanged core fields plus sixteen size/interarrival/TCP-flag fields. Independently
-specified twelve packet-size/time/flag lists produce five fixture flows and 165 known values.
+eleven unchanged core fields plus sixteen size/interarrival/TCP-flag fields. Independent
+size/time/flag lists for twelve packets produce five fixture flows and 165 known values.
 Confirmed sample standard-deviation denominators against the pinned NFStream 6.6.0 source;
 did not use actual exporter outputs to generate expectations. Original 85 core fixture checks
 remain unchanged. Added automatic statistical fixture generation/checking and Linux replay.
