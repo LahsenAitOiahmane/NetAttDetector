@@ -9,16 +9,19 @@ from audit_statistical_features import run as prepare_lab
 from netattdetector.io import write_json
 
 
-def run(data_root, cohort, statistics, study, evidence, captures=None):
+def run(data_root, cohort, statistics, study, evidence, captures=None, information_bound=False):
     evidence, study = Path(evidence), Path(study)
     if evidence.exists() or study.exists():
         raise FileExistsError("Use fresh statistical model/evidence directories.")
     evidence.mkdir(parents=True)
     prepare_lab(data_root, cohort, statistics, evidence / "measurements", captures)
-    from netattdetector.statistical_study import run_statistical_study
+    if information_bound:
+        from netattdetector.information_bound import run_information_bound as run_study
+    else:
+        from netattdetector.statistical_study import run_statistical_study as run_study
 
     try:
-        result = run_statistical_study(cohort, statistics, study)
+        result = run_study(cohort, statistics, study)
     finally:
         for name in (
             "study.json",
@@ -27,6 +30,8 @@ def run(data_root, cohort, statistics, study, evidence, captures=None):
             "core-verification.json",
             "statistical-verification.json",
             "progress.json",
+            "information-bound.json",
+            "configuration.json",
         ):
             path = study / name
             if path.exists():
@@ -34,9 +39,9 @@ def run(data_root, cohort, statistics, study, evidence, captures=None):
     print(
         json.dumps(
             {
-                "completed_fits": result["completed_fits"],
-                "selected": result["selected_diagnostic_id"],
-                "qualifying_candidates": result["qualifying_non_dummy_candidates"],
+                "completed_fits": result.get("completed_fits", result.get("model_fits")),
+                "selected": result.get("selected_diagnostic_id"),
+                "qualifying_candidates": result.get("qualifying_non_dummy_candidates"),
                 "resources": result["resources"],
                 "deployment_authorized": False,
             },
@@ -55,6 +60,11 @@ if __name__ == "__main__":
     parser.add_argument(
         "--captures", help="Optional private capture-ID/path map to reuse verified inputs"
     )
+    parser.add_argument(
+        "--information-bound",
+        action="store_true",
+        help="Run registered no-fit connection information bounds instead of models",
+    )
     args = parser.parse_args()
     run(
         args.data_root,
@@ -63,4 +73,5 @@ if __name__ == "__main__":
         args.study,
         args.evidence,
         json.loads(Path(args.captures).read_text()) if args.captures else None,
+        args.information_bound,
     )

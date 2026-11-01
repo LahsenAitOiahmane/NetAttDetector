@@ -192,6 +192,50 @@ def joined_audit(path, core_path):
         db.close()
 
 
+def verify_statistical_inputs(cohort, sidecar, output, config):
+    """Shared read-only provenance verification, without importing model libraries."""
+    cohort, sidecar, output = map(Path, (cohort, sidecar, output))
+    verified = verify_native_cohort(cohort, output / "core-verification.json")
+    manifest = json.loads((sidecar / "manifest.json").read_text(encoding="utf-8"))
+    if (
+        verified["audit"]["rows_logical_sha256"] != config["expected_core_logical_sha256"]
+        or manifest["core_logical_sha256"] != config["expected_core_logical_sha256"]
+        or manifest["core_database_sha256"] != verified["database_sha256"]
+    ):
+        raise ValueError("Statistical/core source identity differs from registration.")
+    if (
+        manifest["features"] != FEATURES
+        or manifest["schema"] != SCHEMA
+        or manifest["settings"] != {**STAT_SETTINGS, "max_nflows": 250_000}
+        or manifest["exporter_version"] != "6.6.0"
+        or manifest["training_authorized"] is not False
+        or manifest["config_sha256"] != sha256_file(config["statistical_config"])
+    ):
+        raise ValueError("Statistical sidecar contract or measurement configuration changed.")
+    path = sidecar / "statistics.sqlite"
+    if manifest["sidecar"]["bytes"] != path.stat().st_size or manifest["sidecar"][
+        "sha256"
+    ] != sha256_file(path):
+        raise ValueError("Statistical sidecar bytes changed.")
+    audit = joined_audit(path, cohort / "cohort.sqlite")
+    if (
+        audit != manifest["audit"]
+        or audit["ordered_sidecar_rows_sha256"] != config["expected_statistical_logical_sha256"]
+    ):
+        raise ValueError("Statistical logical measurements differ from the registered cohort.")
+    write_json(
+        output / "statistical-verification.json",
+        {
+            "verified": True,
+            "core_logical_sha256": config["expected_core_logical_sha256"],
+            "statistical_logical_sha256": config["expected_statistical_logical_sha256"],
+            "sidecar_sha256": manifest["sidecar"]["sha256"],
+            "training_authorized": False,
+        },
+    )
+    return verified, manifest
+
+
 def prepare_statistical_cohort(capture_dirs, cohort, output, config_path=CONFIG):
     policy = json.loads(Path(config_path).read_text(encoding="utf-8"))
     if any(

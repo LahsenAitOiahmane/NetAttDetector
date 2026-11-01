@@ -16,13 +16,13 @@ from threadpoolctl import threadpool_limits
 
 from netattdetector.io import sha256_file, write_json
 from netattdetector.measurement import CORE_FEATURES
-from netattdetector.native_cohort import SPLITS, verify_native_cohort
+from netattdetector.native_cohort import SPLITS
 from netattdetector.native_errors import compare_predictions, error_slices
 from netattdetector.native_study import feature_overlap, fit_one, make_model, selection_key
 from netattdetector.packet_evidence import POLICY
 from netattdetector.resources import ResourceMonitor
-from netattdetector.statistical import EXTRA_FEATURES, FEATURES, FLOAT_FIELDS, SCHEMA, STAT_SETTINGS
-from netattdetector.statistical_cohort import joined_audit
+from netattdetector.statistical import EXTRA_FEATURES, FEATURES, FLOAT_FIELDS, SCHEMA
+from netattdetector.statistical_cohort import verify_statistical_inputs
 
 CONFIG = "configs/statistical-study.json"
 POLICIES = {
@@ -133,45 +133,7 @@ def load_config(path):
 
 
 def verify_inputs(cohort, sidecar, output, config):
-    verified = verify_native_cohort(cohort, output / "core-verification.json")
-    manifest = json.loads((sidecar / "manifest.json").read_text(encoding="utf-8"))
-    if (
-        verified["audit"]["rows_logical_sha256"] != config["expected_core_logical_sha256"]
-        or manifest["core_logical_sha256"] != config["expected_core_logical_sha256"]
-        or manifest["core_database_sha256"] != verified["database_sha256"]
-    ):
-        raise ValueError("Statistical/core source identity differs from registration.")
-    if (
-        manifest["features"] != FEATURES
-        or manifest["schema"] != SCHEMA
-        or manifest["settings"] != {**STAT_SETTINGS, "max_nflows": 250_000}
-        or manifest["exporter_version"] != "6.6.0"
-        or manifest["training_authorized"] is not False
-        or manifest["config_sha256"] != sha256_file(config["statistical_config"])
-    ):
-        raise ValueError("Statistical sidecar contract or measurement configuration changed.")
-    path = sidecar / "statistics.sqlite"
-    if manifest["sidecar"]["bytes"] != path.stat().st_size or manifest["sidecar"][
-        "sha256"
-    ] != sha256_file(path):
-        raise ValueError("Statistical sidecar bytes changed.")
-    audit = joined_audit(path, cohort / "cohort.sqlite")
-    if (
-        audit != manifest["audit"]
-        or audit["ordered_sidecar_rows_sha256"] != config["expected_statistical_logical_sha256"]
-    ):
-        raise ValueError("Statistical logical measurements differ from the registered cohort.")
-    write_json(
-        output / "statistical-verification.json",
-        {
-            "verified": True,
-            "core_logical_sha256": config["expected_core_logical_sha256"],
-            "statistical_logical_sha256": config["expected_statistical_logical_sha256"],
-            "sidecar_sha256": manifest["sidecar"]["sha256"],
-            "training_authorized": False,
-        },
-    )
-    return verified, manifest
+    return verify_statistical_inputs(cohort, sidecar, output, config)
 
 
 def load_frames(cohort, sidecar):

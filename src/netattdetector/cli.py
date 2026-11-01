@@ -192,10 +192,27 @@ def parser():
     stat_verify.add_argument("--export", required=True)
     stat_verify.add_argument("--expected", default="tests/fixtures/pcap/statistical-expected.json")
     stat_verify.add_argument("--output", required=True)
+    bound = commands.add_parser(
+        "information-bound", help="Compute registered no-fit connection information ceilings"
+    )
+    bound.add_argument("--cohort", required=True)
+    bound.add_argument("--statistics", required=True)
+    bound.add_argument("--output", required=True)
+    bound.add_argument("--config", default="configs/data/information-bound.json")
     return root
 
 
 def execute(args):
+    if args.command == "information-bound":
+        from netattdetector.information_bound import run_information_bound
+
+        result = run_information_bound(args.cohort, args.statistics, args.output, args.config)
+        return {
+            "report": str(Path(args.output) / "information-bound.json"),
+            "records": result["records"],
+            "model_fits": 0,
+            "deployment_authorized": False,
+        }
     if args.command == "export-statistical-pcap":
         from netattdetector.statistical import export_statistical_pcap
 
