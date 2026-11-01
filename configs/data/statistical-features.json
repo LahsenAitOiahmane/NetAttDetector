@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "registered_date": "2026-11-01",
+  "schema": "nfstream-statistical-v1",
+  "cohort_config": "configs/data/native-cohort.json",
+  "expected_core_logical_sha256": "9be2a2d5c39b3cb78a31fec40118971ba03b0e62b398e1151f7480ce8c312d59",
+  "source_config": "configs/data/iot23-expansion.json",
+  "exporter_version": "6.6.0",
+  "statistical_analysis": true,
+  "max_database_bytes": 536870912,
+  "cache_kib": 8192,
+  "training_enabled": false,
+  "acceptance": "Independent known-packet fixture values, exact unchanged core fields/metadata/identities for all native rows, one statistical row per core flow, finite nonnegative statistics/flag bounds and resource screens. Persist a private sidecar; report exact full/no-port pattern conflicts and TCP-state distribution by class/family. No fit or label repair.",
+  "resource_screen": "Sequential captures, <1 GiB sampled tree RSS and <600 seconds per capture excluding downloads/core-cohort preparation. 512 MiB sidecar main-file cap, 8 MiB cache target; journals/temp files and sampling are not hard OS limits."
+}
