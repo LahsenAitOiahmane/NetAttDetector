@@ -6,6 +6,13 @@ false-alarm budget. The initial user is an operator of a small network, running 
 The first publishable release is a reproducible **research** release; a production service has
 additional gates. No calendar deadline or guaranteed accuracy is implied by this plan.
 
+Current focus (1 November 2026): native cohort preparation is measured and repeatable; all
+twelve native model candidates fail acceptance, with a further cross-thread score discrepancy.
+NAD-048 identified fixed-thread stability and HTTP/single-packet error slices; NAD-049 now
+targets richer measured inputs before further fits. The owner selected
+MIT for code and deferred the pilot; continue offline research. Historical sprint narratives
+below retain the original rationale and failed results; they are not current deployment claims.
+
 ## Working process
 
 Use two-week sprints, initially 10–15 story points per solo-developer sprint, revised after two
@@ -90,7 +97,8 @@ the roadmap must not be read as an endorsement of the initial champion for live 
 | NAD-045 | P1 / 5 | Validate missing-duration/trailing-packet label linkage on controlled and real PCAP evidence; report per-attack UID coverage before freezing a new rule | 044 | Measured point candidate: 87,048 additional matched flows, all old matches preserved, DDoS 114/14,394; zero-packet contradictions and packet-tail semantics remain unresolved |
 | NAD-046 | P1 / 5 | Materialize a bounded native-feature cohort with source/capture/UID groups, immutable inclusion/overlap audits and validated partition manifests | 014,045 | Measured: 250,819 private rows, 248,997 accepted candidate labels, read-only verification, chronology/support/group checks and overlap accounting; device isolation and label promotion remain open |
 | NAD-047 | P1 / 5 | Register and measure bounded native capture/time diagnostic models, connection weighting, derived features, calibration and repeat controls | 046 | Measured fifteen fits in 36.99 seconds / 469.2 MiB sampled tree RSS. No candidate qualifies: selected FPR 2.89%, DDoS recall 1/114, one-thread score control fails; see NATIVE_STUDY.md |
-| NAD-048 | P1 / 5 | Diagnose native false positives/family misses, test a fixed-thread linear fit and validate richer measured flow features before further search | 047 | Next: register error/repeat diagnostics and a fixture-backed statistical feature contract; retain all failures, source roles and release gates |
+| NAD-048 | P1 / 5 | Diagnose native false positives/family misses and test a fixed-thread linear fit before further search | 047 | Measured three fits: fixed-one-thread scores/coefficients/thresholds identical; cross-thread variation persists. HTTP bucket has 53/55 FPs and all 113 FNs; see NATIVE_ERRORS.md |
+| NAD-049 | P1 / 5 | Validate a richer measured native feature contract on independent packet fixtures, preserve core/label replay and quantify resource/information changes | 048 | Next: packet-length/interarrival and TCP flags; do not assume additional fields solve missing context or unsupported attack families |
 
 ## Next sprint after the development study
 

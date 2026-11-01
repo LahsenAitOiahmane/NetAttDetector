@@ -464,6 +464,30 @@ Python 3.11/3.13 CI: 145 passed, five skips each. The cloud measurement job's re
 native tests passed; its final failure is the measured repeatability gate, not a test failure.
 Next: NAD-048 error diagnostics, fixed-thread controls and validated richer flow measurements.
 
+## 1 November 2026 — Fixed-thread controls and native error diagnosis
+
+Registered the three-fit follow-up at `48029e9`, then implemented aggregate UID error slices
+and two-thread/one-thread/one-thread controls without changing the old diagnostic freeze.
+Run `41311537200` at `0d5f854` passed fixed-thread and resource screens in 5.18 seconds with
+380.8 MiB sampled tree RSS. The two one-thread fits have exactly matching validation scores,
+coefficients and calibration thresholds; two-versus-one training still differs by 1.41358e-6
+in scores and 7.68312e-6 in coefficients, with zero frozen validation decision differences.
+The old failed cross-thread acceptance remains unchanged. The new two-thread replay preserves
+all confusion/family metrics, while Brier scores change around 1e-12; explicitly retained the
+false full-metric-equality flag instead of claiming bit-identical separate-run metrics.
+
+All 55 false positives are TCP, 53 fall in the observed HTTP/80 destination bucket, and
+independently 53 have one-packet/zero-duration top segments. All 113 false negatives are
+accepted DDoS UIDs with single-packet/zero-duration observed HTTP top segments. These are
+aggregate/marginal slices, not proof of application roles, label errors or identical UID sets
+between separate bins. No validation threshold retuning or broad HTTP suppression was added.
+
+Saved aggregate diagnostic evidence and the operations/report documents. The private fitted
+model, per-UID scores, endpoints and individual feature rows stay off CI artifacts. The owner
+still defers live traffic. Reserved test data is untouched. Real Linux focused checks passed
+49 tests; Python 3.11/3.13 quality checks passed separately. Next NAD-049 validates richer
+TCP-state/packet-length/interarrival measurements and core/label replay before further fits.
+
 ## Outstanding work
 
 This work does not complete the production roadmap. Global audits cover the development inputs;

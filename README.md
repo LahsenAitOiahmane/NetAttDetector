@@ -61,6 +61,11 @@ diagnostic reaches 99.20% connection precision and 98.37% recall, but fails the 
 registered score tolerance. **No native candidate qualifies.** See the
 [registered protocol](docs/research/NATIVE_STUDY.md) and [runbook](docs/guides/NATIVE_STUDY.md).
 
+The [error follow-up](reports/NATIVE_ERRORS.md) finds exact repeatability when logistic training
+stays on one thread. Cross-thread variation and the failed quality result remain. HTTP-port,
+single-packet and zero-duration error slices motivate validating richer packet-state/statistical
+measurements before another fit.
+
 Project code is licensed under [MIT](LICENSE), selected by the owner on 1 November 2026.
 Dataset permissions and third-party dependency licenses are separate; see the
 [dataset catalog](docs/research/DATASETS.md). The real-network pilot is deferred by the owner
