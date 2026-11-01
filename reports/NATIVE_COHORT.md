@@ -14,6 +14,17 @@ at `eb1455e` passed exporter fixtures, archived baseline/candidate replay, all p
 preservation checks, complete row storage and a fresh read-only database audit/verification.
 No new source or holdout was acquired. No model was fitted.
 
+The [follow-up run](https://github.com/LahsenAitOiahmane/NetAttDetector/actions/runs/41308841070)
+at `2d51251` rebuilt the entire cohort twice from the same pinned captures. Both builds and
+the original run produced the **same logical rows and complete SQLite byte hash**:
+`ba66937547a1b5e22bbf665ef42366e1b47f5a539f87a158856bc449a26778f3`.
+See the [first manifest](evidence/native-cohort/first/manifest.json),
+[repeated-run manifest](evidence/native-cohort/repeated/manifest.json),
+[independent verification](evidence/native-cohort/repeated/verification.json) and
+[rebuild comparison](evidence/native-cohort/repeated/reproducibility.json).
+This establishes repeatability for these inputs on the recorded Linux environment, not across
+all platforms/versions or for model fitting.
+
 The cohort stores the eleven integer `nfstream-core-v1` features, separate event/counter
 metadata, capture/partition IDs, linkage status and accepted class/detail. SHA-256 pseudonyms
 identify flow keys, exact feature vectors and connection groups. Raw endpoint addresses, raw
@@ -79,6 +90,10 @@ matching and row inserts, excluding downloads and final index construction. Audi
 measure their separate read-only passes. RSS is sampled every 50 ms, may miss peaks or count
 shared child pages twice, and is not an OS memory guarantee. SQLite cache targets/main-file caps
 do not cover all temporary files or journals. One run does not establish a speed improvement.
+
+The follow-up first build used 59.56/4.91/10.98 seconds for captures 3/8/34, with maximum sampled
+tree RSS of 260.5 MiB. Runner variation changes elapsed time despite identical output bytes;
+the saved rebuild comparison also retains resources from its second build.
 
 Only aggregate manifests and verification evidence are retained as CI artifacts. The database
 was materialized privately on the ephemeral Linux runner and **was not downloaded to Windows**.

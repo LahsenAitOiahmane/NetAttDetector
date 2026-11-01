@@ -411,6 +411,13 @@ packet/cohort/measurement tests plus the independent five-flow exporter comparis
 second complete build comparison on existing pinned inputs to check logical-row repeatability.
 See [NATIVE_COHORT.md](../../reports/NATIVE_COHORT.md) for evidence and limitations.
 
+Follow-up run `41308841070` at `2d51251` passed all 49 native/packet/measurement tests and
+created two complete cohorts from the same pinned inputs. Their full database bytes and
+ordered logical rows were identical to each other and the first measured run. Saved only
+aggregate manifests, independent verification and the repeat comparison under
+`reports/evidence/native-cohort/`. Main database SHA-256 begins `ba669375`; ordered rows begin
+`9be2a2d5`. PR #9 targets main and contains only this sprint's implementation/evidence.
+
 No label promotion, model fitting, external-test access, live capture or deployment occurred.
 User requested continuing sprint by sprint; pilot traffic source and source-code license choices
 were requested asynchronously while independent dataset work continued. Those answers remain
