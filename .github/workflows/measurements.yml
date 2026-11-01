@@ -3,6 +3,10 @@ name: Offline flow measurement lab
 on:
   workflow_dispatch:
     inputs:
+      context_study:
+        description: 'Run registered family-aware models with causal context and private encrypted retention'
+        type: boolean
+        default: false
       causal_context:
         description: 'Validate causal flow-start windows and callback/replay parity (no fitting)'
         type: boolean
@@ -90,6 +94,9 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  context-study:
+    if: github.event_name == 'workflow_dispatch' && inputs.context_study
+    uses: ./.github/workflows/context-study.yml
   causal-context:
     if: github.event_name == 'workflow_dispatch' && inputs.causal_context
     uses: ./.github/workflows/causal-context.yml

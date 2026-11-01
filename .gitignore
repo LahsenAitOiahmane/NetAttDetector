@@ -20,6 +20,8 @@ htmlcov/
 /reports/local/
 /logs/
 /saved_models/
+/.netatt-keys/
+*.nadenc
 *.joblib
 *.pkl
 *.pickle
