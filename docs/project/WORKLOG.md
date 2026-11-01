@@ -595,16 +595,16 @@ Original labels, exclusions and reserved source roles remain unchanged; no model
 
 The context sidecar is 113.4 MiB and logical digest starts `7a5960b1`. No-port conflicting
 patterns now affect 190 rows rather than 206,075; full36 patterns have zero observed label
-conflicts. This is additional information, not proof of accuracy or transfer. Captures3/8/34
-peak at306/14/135 cached events, with zero late starts and18/4/19 warm-up flow rows retained.
+conflicts. This is additional information, not proof of accuracy or transfer. Captures 3/8/34
+peak at 306/14/135 cached events, with zero late starts and 18/4/19 warm-up flow rows retained.
 Warm-up slices can share UIDs and must not be summed as independent connection counts.
 
-Largest callback/inserts/replay/SQL interval:81.31 seconds /257.2 MiB sampled tree RSS. Final
-joined audit:19.79 seconds /121.8 MiB. Timing excludes prior base preparation/downloads and
+Largest callback/inserts/replay/SQL interval: 81.31 seconds / 257.2 MiB sampled tree RSS. Final
+joined audit: 19.79 seconds / 121.8 MiB. Timing excludes prior base preparation/downloads and
 differs in scope from the statistics-only path; no general speed claim is made. Newly owned
 temporary endpoint DBs are closed/removed, while original captures/artifacts remain intact.
-Only aggregate fixture/manifests are retained. Python3.11/3.13 CI passed189 with7 skips each;
-local focused checks passed36 with4 Linux skips. Next NAD-053 compares the new fixed rows
+Only aggregate fixture/manifests are retained. Python 3.11/3.13 CI passed 189 with 7 skips each;
+local focused checks passed 36 with 4 Linux skips. Next NAD-053 compares the new fixed rows
 against statistical controls, preserving one-thread repeats and adding a minority-family guard.
 
 ## Outstanding work
