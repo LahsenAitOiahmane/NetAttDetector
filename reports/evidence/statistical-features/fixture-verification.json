@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "schema": "nfstream-statistical-v1",
+  "flows": 5,
+  "checked_fields": 165,
+  "errors": [],
+  "export_sha256": "14b535b6498107a928537be305eb84a6bb18812038f69e7622352e5c663f87d5",
+  "expected_sha256": "a1d36dcb5d2bc3ef62bf55150675c2f4bb80d00b81a7acf37f3a20eaa82a3418",
+  "training_authorized": false
+}

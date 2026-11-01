@@ -1,0 +1,521 @@
+{
+  "schema": "nfstream-statistical-v1",
+  "features": [
+    "src_port",
+    "dst_port",
+    "protocol",
+    "ip_version",
+    "src2dst_packets",
+    "dst2src_packets",
+    "src2dst_bytes",
+    "dst2src_bytes",
+    "bidirectional_duration_ms",
+    "src2dst_duration_ms",
+    "dst2src_duration_ms",
+    "bidirectional_min_ps",
+    "bidirectional_mean_ps",
+    "bidirectional_stddev_ps",
+    "bidirectional_max_ps",
+    "bidirectional_min_piat_ms",
+    "bidirectional_mean_piat_ms",
+    "bidirectional_stddev_piat_ms",
+    "bidirectional_max_piat_ms",
+    "bidirectional_syn_packets",
+    "bidirectional_cwr_packets",
+    "bidirectional_ece_packets",
+    "bidirectional_urg_packets",
+    "bidirectional_ack_packets",
+    "bidirectional_psh_packets",
+    "bidirectional_rst_packets",
+    "bidirectional_fin_packets"
+  ],
+  "settings": {
+    "decode_tunnels": false,
+    "promiscuous_mode": false,
+    "snapshot_length": 65535,
+    "idle_timeout": 2,
+    "active_timeout": 1800,
+    "accounting_mode": 1,
+    "n_dissections": 0,
+    "statistical_analysis": true,
+    "n_meters": 1,
+    "max_nflows": 250000,
+    "system_visibility_mode": 0
+  },
+  "exporter_version": "6.6.0",
+  "source_commit": "f82832c69e6e581b867851904683ba9ba6452717",
+  "config_sha256": "bb66bfdb25fd6de36ec1e683dd1ef98b74ad5e44f0f25abc844106c595ec0dbe",
+  "core_logical_sha256": "9be2a2d5c39b3cb78a31fec40118971ba03b0e62b398e1151f7480ce8c312d59",
+  "core_database_sha256": "ba66937547a1b5e22bbf665ef42366e1b47f5a539f87a158856bc449a26778f3",
+  "sidecar": {
+    "bytes": 118968320,
+    "sha256": "6b9b4c289db495ae7c5c592d91b4c27781b62b21d1746b9749384dca27cb50f9"
+  },
+  "records": [
+    {
+      "capture_id": "CTU-IoT-Malware-Capture-3-1",
+      "split": "train",
+      "rows": 224388,
+      "expected_rows": 224388,
+      "all_core_values_and_identities_preserved": true,
+      "resources": {
+        "wall_seconds": 14.070355532999997,
+        "sampled_peak_process_tree_rss_sum_mib": 233.9375
+      },
+      "resource_screen_met": true
+    },
+    {
+      "capture_id": "CTU-IoT-Malware-Capture-8-1",
+      "split": "calibration",
+      "rows": 12459,
+      "expected_rows": 12459,
+      "all_core_values_and_identities_preserved": true,
+      "resources": {
+        "wall_seconds": 0.905748879999976,
+        "sampled_peak_process_tree_rss_sum_mib": 207.22265625
+      },
+      "resource_screen_met": true
+    },
+    {
+      "capture_id": "CTU-IoT-Malware-Capture-34-1",
+      "split": "validation",
+      "rows": 13972,
+      "expected_rows": 13972,
+      "all_core_values_and_identities_preserved": true,
+      "resources": {
+        "wall_seconds": 1.2764935200000025,
+        "sampled_peak_process_tree_rss_sum_mib": 202.96875
+      },
+      "resource_screen_met": true
+    }
+  ],
+  "audit": {
+    "rows": 250819,
+    "ordered_sidecar_rows_sha256": "a4e6d0ff836814acadd4cc778b0b63320fe5dc38cc080f040caaeb95db189259",
+    "complete_identity_core_join": true,
+    "patterns": {
+      "full_hash": {
+        "unique_vectors": 128801,
+        "conflicting_label_vectors": 16,
+        "rows_in_conflicting_vectors": 50
+      },
+      "no_ports_hash": {
+        "unique_vectors": 12416,
+        "conflicting_label_vectors": 63,
+        "rows_in_conflicting_vectors": 206075
+      }
+    },
+    "details": {
+      "-": {
+        "accepted_flows": 8239,
+        "accepted_connections": 7254,
+        "flags": {
+          "bidirectional_syn_packets": {
+            "flows_with_flag": 2586,
+            "connections_with_flag": 2504
+          },
+          "bidirectional_cwr_packets": {
+            "flows_with_flag": 0,
+            "connections_with_flag": 0
+          },
+          "bidirectional_ece_packets": {
+            "flows_with_flag": 0,
+            "connections_with_flag": 0
+          },
+          "bidirectional_urg_packets": {
+            "flows_with_flag": 0,
+            "connections_with_flag": 0
+          },
+          "bidirectional_ack_packets": {
+            "flows_with_flag": 3183,
+            "connections_with_flag": 2432
+          },
+          "bidirectional_psh_packets": {
+            "flows_with_flag": 295,
+            "connections_with_flag": 181
+          },
+          "bidirectional_rst_packets": {
+            "flows_with_flag": 2346,
+            "connections_with_flag": 2344
+          },
+          "bidirectional_fin_packets": {
+            "flows_with_flag": 227,
+            "connections_with_flag": 150
+          }
+        },
+        "statistics": {
+          "bidirectional_min_ps": {
+            "min": 40,
+            "flow_weighted_mean": 62.380628717077315,
+            "max": 328
+          },
+          "bidirectional_mean_ps": {
+            "min": 40.0,
+            "flow_weighted_mean": 68.17288316137908,
+            "max": 350.5
+          },
+          "bidirectional_stddev_ps": {
+            "min": 0.0,
+            "flow_weighted_mean": 9.178808902472834,
+            "max": 547.8819824256559
+          },
+          "bidirectional_max_ps": {
+            "min": 40,
+            "flow_weighted_mean": 85.41194319698992,
+            "max": 1492
+          },
+          "bidirectional_min_piat_ms": {
+            "min": 0,
+            "flow_weighted_mean": 116.05437553101105,
+            "max": 1973
+          },
+          "bidirectional_mean_piat_ms": {
+            "min": 0.0,
+            "flow_weighted_mean": 141.24312348209224,
+            "max": 1973.0
+          },
+          "bidirectional_stddev_piat_ms": {
+            "min": 0.0,
+            "flow_weighted_mean": 35.19877543757285,
+            "max": 1340.674457129694
+          },
+          "bidirectional_max_piat_ms": {
+            "min": 0,
+            "flow_weighted_mean": 188.15280980701542,
+            "max": 1999
+          }
+        }
+      },
+      "Attack": {
+        "accepted_flows": 7935,
+        "accepted_connections": 5742,
+        "flags": {
+          "bidirectional_syn_packets": {
+            "flows_with_flag": 5753,
+            "connections_with_flag": 5741
+          },
+          "bidirectional_cwr_packets": {
+            "flows_with_flag": 0,
+            "connections_with_flag": 0
+          },
+          "bidirectional_ece_packets": {
+            "flows_with_flag": 0,
+            "connections_with_flag": 0
+          },
+          "bidirectional_urg_packets": {
+            "flows_with_flag": 0,
+            "connections_with_flag": 0
+          },
+          "bidirectional_ack_packets": {
+            "flows_with_flag": 7927,
+            "connections_with_flag": 5741
+          },
+          "bidirectional_psh_packets": {
+            "flows_with_flag": 7863,
+            "connections_with_flag": 5722
+          },
+          "bidirectional_rst_packets": {
+            "flows_with_flag": 347,
+            "connections_with_flag": 347
+          },
+          "bidirectional_fin_packets": {
+            "flows_with_flag": 5703,
+            "connections_with_flag": 5644
+          }
+        },
+        "statistics": {
+          "bidirectional_min_ps": {
+            "min": 40,
+            "flow_weighted_mean": 50.49489603024575,
+            "max": 188
+          },
+          "bidirectional_mean_ps": {
+            "min": 40.0,
+            "flow_weighted_mean": 123.22687329921672,
+            "max": 592.0
+          },
+          "bidirectional_stddev_ps": {
+            "min": 0.0,
+            "flow_weighted_mean": 166.13612876335492,
+            "max": 660.0484830677213
+          },
+          "bidirectional_max_ps": {
+            "min": 40,
+            "flow_weighted_mean": 761.7442974165091,
+            "max": 1492
+          },
+          "bidirectional_min_piat_ms": {
+            "min": 0,
+            "flow_weighted_mean": 1.035538752362949,
+            "max": 998
+          },
+          "bidirectional_mean_piat_ms": {
+            "min": 0.0,
+            "flow_weighted_mean": 103.16863053617448,
+            "max": 998.0
+          },
+          "bidirectional_stddev_piat_ms": {
+            "min": 0.0,
+            "flow_weighted_mean": 177.43841828628217,
+            "max": 1333.6033893178287
+          },
+          "bidirectional_max_piat_ms": {
+            "min": 0,
+            "flow_weighted_mean": 680.0544423440454,
+            "max": 1999
+          }
+        }
+      },
+      "C&C": {
+        "accepted_flows": 25971,
+        "accepted_connections": 14936,
+        "flags": {
+          "bidirectional_syn_packets": {
+            "flows_with_flag": 20106,
+            "connections_with_flag": 14936
+          },
+          "bidirectional_cwr_packets": {
+            "flows_with_flag": 0,
+            "connections_with_flag": 0
+          },
+          "bidirectional_ece_packets": {
+            "flows_with_flag": 0,
+            "connections_with_flag": 0
+          },
+          "bidirectional_urg_packets": {
+            "flows_with_flag": 0,
+            "connections_with_flag": 0
+          },
+          "bidirectional_ack_packets": {
+            "flows_with_flag": 7513,
+            "connections_with_flag": 1648
+          },
+          "bidirectional_psh_packets": {
+            "flows_with_flag": 3997,
+            "connections_with_flag": 1647
+          },
+          "bidirectional_rst_packets": {
+            "flows_with_flag": 56,
+            "connections_with_flag": 56
+          },
+          "bidirectional_fin_packets": {
+            "flows_with_flag": 1640,
+            "connections_with_flag": 1639
+          }
+        },
+        "statistics": {
+          "bidirectional_min_ps": {
+            "min": 40,
+            "flow_weighted_mean": 56.20461283739556,
+            "max": 141
+          },
+          "bidirectional_mean_ps": {
+            "min": 43.0,
+            "flow_weighted_mean": 60.440152778797156,
+            "max": 406.35714285714283
+          },
+          "bidirectional_stddev_ps": {
+            "min": 0.0,
+            "flow_weighted_mean": 5.5753189617753645,
+            "max": 530.6710711111787
+          },
+          "bidirectional_max_ps": {
+            "min": 52,
+            "flow_weighted_mean": 69.78822532825075,
+            "max": 1500
+          },
+          "bidirectional_min_piat_ms": {
+            "min": 0,
+            "flow_weighted_mean": 207.29047784066844,
+            "max": 1857
+          },
+          "bidirectional_mean_piat_ms": {
+            "min": 0.0,
+            "flow_weighted_mean": 225.1707675112701,
+            "max": 1857.0
+          },
+          "bidirectional_stddev_piat_ms": {
+            "min": 0.0,
+            "flow_weighted_mean": 33.35292732543537,
+            "max": 1047.3133883099813
+          },
+          "bidirectional_max_piat_ms": {
+            "min": 0,
+            "flow_weighted_mean": 286.8521042701475,
+            "max": 1941
+          }
+        }
+      },
+      "DDoS": {
+        "accepted_flows": 114,
+        "accepted_connections": 114,
+        "flags": {
+          "bidirectional_syn_packets": {
+            "flows_with_flag": 113,
+            "connections_with_flag": 113
+          },
+          "bidirectional_cwr_packets": {
+            "flows_with_flag": 0,
+            "connections_with_flag": 0
+          },
+          "bidirectional_ece_packets": {
+            "flows_with_flag": 0,
+            "connections_with_flag": 0
+          },
+          "bidirectional_urg_packets": {
+            "flows_with_flag": 0,
+            "connections_with_flag": 0
+          },
+          "bidirectional_ack_packets": {
+            "flows_with_flag": 0,
+            "connections_with_flag": 0
+          },
+          "bidirectional_psh_packets": {
+            "flows_with_flag": 0,
+            "connections_with_flag": 0
+          },
+          "bidirectional_rst_packets": {
+            "flows_with_flag": 0,
+            "connections_with_flag": 0
+          },
+          "bidirectional_fin_packets": {
+            "flows_with_flag": 0,
+            "connections_with_flag": 0
+          }
+        },
+        "statistics": {
+          "bidirectional_min_ps": {
+            "min": 40,
+            "flow_weighted_mean": 52.80701754385965,
+            "max": 1500
+          },
+          "bidirectional_mean_ps": {
+            "min": 40.0,
+            "flow_weighted_mean": 52.80701754385965,
+            "max": 1500.0
+          },
+          "bidirectional_stddev_ps": {
+            "min": 0.0,
+            "flow_weighted_mean": 0.0,
+            "max": 0.0
+          },
+          "bidirectional_max_ps": {
+            "min": 40,
+            "flow_weighted_mean": 52.80701754385965,
+            "max": 1500
+          },
+          "bidirectional_min_piat_ms": {
+            "min": 0,
+            "flow_weighted_mean": 0.0,
+            "max": 0
+          },
+          "bidirectional_mean_piat_ms": {
+            "min": 0.0,
+            "flow_weighted_mean": 0.011475851152579118,
+            "max": 1.3082470313940195
+          },
+          "bidirectional_stddev_piat_ms": {
+            "min": 0.0,
+            "flow_weighted_mean": 0.038183465763489355,
+            "max": 4.352915097037786
+          },
+          "bidirectional_max_piat_ms": {
+            "min": 0,
+            "flow_weighted_mean": 0.37719298245614036,
+            "max": 43
+          }
+        }
+      },
+      "PartOfAHorizontalPortScan": {
+        "accepted_flows": 206738,
+        "accepted_connections": 145699,
+        "flags": {
+          "bidirectional_syn_packets": {
+            "flows_with_flag": 206738,
+            "connections_with_flag": 145699
+          },
+          "bidirectional_cwr_packets": {
+            "flows_with_flag": 0,
+            "connections_with_flag": 0
+          },
+          "bidirectional_ece_packets": {
+            "flows_with_flag": 0,
+            "connections_with_flag": 0
+          },
+          "bidirectional_urg_packets": {
+            "flows_with_flag": 0,
+            "connections_with_flag": 0
+          },
+          "bidirectional_ack_packets": {
+            "flows_with_flag": 0,
+            "connections_with_flag": 0
+          },
+          "bidirectional_psh_packets": {
+            "flows_with_flag": 0,
+            "connections_with_flag": 0
+          },
+          "bidirectional_rst_packets": {
+            "flows_with_flag": 0,
+            "connections_with_flag": 0
+          },
+          "bidirectional_fin_packets": {
+            "flows_with_flag": 0,
+            "connections_with_flag": 0
+          }
+        },
+        "statistics": {
+          "bidirectional_min_ps": {
+            "min": 40,
+            "flow_weighted_mean": 59.99003569735607,
+            "max": 60
+          },
+          "bidirectional_mean_ps": {
+            "min": 40.0,
+            "flow_weighted_mean": 59.99003569735607,
+            "max": 60.0
+          },
+          "bidirectional_stddev_ps": {
+            "min": 0.0,
+            "flow_weighted_mean": 0.0,
+            "max": 0.0
+          },
+          "bidirectional_max_ps": {
+            "min": 40,
+            "flow_weighted_mean": 59.99003569735607,
+            "max": 60
+          },
+          "bidirectional_min_piat_ms": {
+            "min": 0,
+            "flow_weighted_mean": 349.7493107217831,
+            "max": 1283
+          },
+          "bidirectional_mean_piat_ms": {
+            "min": 0.0,
+            "flow_weighted_mean": 377.5914321508383,
+            "max": 1502.5
+          },
+          "bidirectional_stddev_piat_ms": {
+            "min": 0.0,
+            "flow_weighted_mean": 39.37470573020835,
+            "max": 712.7636354360399
+          },
+          "bidirectional_max_piat_ms": {
+            "min": 0,
+            "flow_weighted_mean": 405.4335535798934,
+            "max": 1999
+          }
+        }
+      }
+    },
+    "scope": "Exact float64 inputs; full/no-port patterns include the sixteen statistics. All accepted conflicting/repeated patterns retained; excluded flows stay present. Connection flag presence means any matched segment, not independent incidents."
+  },
+  "audit_resources": {
+    "wall_seconds": 13.604072782999992,
+    "sampled_peak_process_tree_rss_sum_mib": 114.55859375
+  },
+  "training_authorized": false,
+  "candidate_policy_promoted": false,
+  "external_test_accessed": false,
+  "device_isolation_verified": false,
+  "limitations": "Core/label preservation proves compatible measurements, not attack truth or model quality. No checksums, reassembly, DPI, live sensing or new model fits. Cache/file caps and sampled resources are not OS-enforced total limits."
+}
