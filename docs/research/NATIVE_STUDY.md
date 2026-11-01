@@ -32,6 +32,9 @@ Logistic regression uses train-fitted standard scaling after `log1p`, C=1, lbfgs
 64 trees, maximum depth 14, minimum five leaf rows, all input features, no bootstrap and two
 threads. No preprocessing fits on calibration or validation observations.
 
+Prediction uses one thread, including sequential forest-tree accumulation, to avoid introducing
+parallel summation order into threshold decisions. Forest fitting can still use two workers.
+
 ## Threshold, selection and claims
 
 For each candidate, aggregate segment scores by maximum within each accepted UID. This measures
