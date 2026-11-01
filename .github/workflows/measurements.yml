@@ -3,6 +3,10 @@ name: Offline flow measurement lab
 on:
   workflow_dispatch:
     inputs:
+      native_cohort:
+        description: 'Prepare and verify the private native candidate cohort (no training)'
+        type: boolean
+        default: false
       packet_label_audit:
         description: 'Run the registered development packet-witness experiment'
         type: boolean
@@ -50,6 +54,9 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  native-cohort:
+    if: github.event_name == 'workflow_dispatch' && inputs.native_cohort
+    uses: ./.github/workflows/native-cohort.yml
   packet-labels:
     if: github.event_name == 'workflow_dispatch' && inputs.packet_label_audit
     uses: ./.github/workflows/packet-labels.yml

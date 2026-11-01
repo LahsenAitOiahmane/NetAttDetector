@@ -160,10 +160,38 @@ def parser():
     packets.add_argument("--output", required=True)
     packets.add_argument("--config", default="configs/data/packet-evidence.json")
     packets.add_argument("--compare-flows", action="store_true")
+    native = commands.add_parser(
+        "prepare-native-cohort",
+        help="Materialize a private experimental native-flow cohort on Linux",
+    )
+    native.add_argument(
+        "--captures", required=True, help="JSON mapping capture IDs to local directories"
+    )
+    native.add_argument("--output", required=True)
+    native.add_argument("--config", default="configs/data/native-cohort.json")
+    native_check = commands.add_parser(
+        "verify-native-cohort", help="Reopen and verify native cohort bytes, rows and partitions"
+    )
+    native_check.add_argument("directory")
+    native_check.add_argument("--output", required=True)
     return root
 
 
 def execute(args):
+    if args.command == "prepare-native-cohort":
+        from netattdetector.native_cohort import prepare_native_cohort
+
+        captures = json.loads(Path(args.captures).read_text(encoding="utf-8"))
+        result = prepare_native_cohort(captures, args.output, args.config)
+        return {
+            "manifest": str(Path(args.output) / "manifest.json"),
+            "audit": result["audit"],
+            "training_authorized": False,
+        }
+    if args.command == "verify-native-cohort":
+        from netattdetector.native_cohort import verify_native_cohort
+
+        return verify_native_cohort(args.directory, args.output)
     if args.command == "audit-packet-labels":
         from netattdetector.packet_evidence import audit_packet_labels
 
