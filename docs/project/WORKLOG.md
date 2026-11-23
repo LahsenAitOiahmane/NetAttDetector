@@ -692,6 +692,18 @@ statistical/context checks passed27 with4 Linux skips. Remote CI/fixture validat
 required before treating the maintenance change as verified on Linux. No experiment was refit
 or historical model/result/hash replaced.
 
+Follow-up verification: run `45239277333` passes locked install, universal lock consistency,
+lint/format/hygiene, fixtures, full tests and synthetic smoke training on both CPython3.11
+and3.13:241 passed /7 skips each. Linux measurement run `45239277185` also passes the pinned
+fixture exports. PR #18 contains the repair and PR #17's independent-source work, both targeting
+main for review. No automatic merge was performed.
+
+NAD-055 metadata probes for three additional benign IoT-23 captures and malware capture1
+currently time out at the publisher mirror. No new rows were acquired or source roles changed
+by those probes. This is a source-access issue to revisit or work around through other official
+sources, not evidence that development coverage has improved. Available Windows disk is5.55GiB;
+retain bounded/cloud acquisition and the2GiB reserve for the next data sprint.
+
 ## Outstanding work
 
 This work does not complete the production roadmap. Global audits cover the development inputs;
