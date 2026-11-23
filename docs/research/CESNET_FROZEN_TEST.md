@@ -27,6 +27,14 @@ the publisher's overlapping `-train`/`-test` copies. Freeze that exact member in
 export. Reject ambiguous/missing samples. Stream selected members to fresh private paths, with
 128MiB per-capture and512MiB total expansion bounds and2GiB free-disk reserve.
 
+Archive-header inspection after acquisition found AppleDouble `._` metadata forks and both
+hyphenated and underscored split-copy suffixes. Exclude all those explicitly. Some complete
+released captures use `-filtered.pcapng` filenames: retain the one unsplit file supplied by
+the publisher, and describe it as the full released C&C capture rather than an unfiltered
+network recording. This naming clarification precedes measurement/scoring and does not depend
+on labels or predictions. The first conservative inventory attempt refused ambiguity; it did
+not extract or score anything.
+
 Export complete captures using pinned NFStream6.6.0/core/statistical/context settings already
 fixture-validated, one meter/capture, original direction, idle2s/active1800s, 250k flow refusal
 bound and100k context-event refusal bound. Preserve every supported exported flow and causal
