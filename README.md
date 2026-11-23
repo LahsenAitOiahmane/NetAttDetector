@@ -41,6 +41,7 @@ See the [ordered backlog](docs/project/ROADMAP.md).
 | [Causal context](reports/CAUSAL_CONTEXT.md) | 235 fixture values, every flow preserved/replayed, 300 independent SQL snapshots and substantially fewer input conflicts |
 | [Context models](reports/CONTEXT_STUDY.md) | Fifteen fixed-thread fits, no qualifying candidate; statistics-only control remains selected, with private encrypted retention |
 | [Independent C&C test](reports/CESNET_FROZEN_TEST.md) | 32 released captures, 265,622 native segments; 61.31% recall on 243,382 endpoint-matched positives, with family failures and unknown coverage retained |
+| [Kitsune development admission](reports/KITSUNE_DEVELOPMENT.md) | Complete 75.1 MB capture and packet labels; 764,137 aligned records, with non-IP/truncation/clock coverage retained; native flow linkage remains |
 
 Native contracts (`nfstream-core-v1`, `nfstream-statistical-v1`, `nfstream-context-v1`) are separate from the historical
 UQ models. They are not column aliases. Addresses, labels, capture IDs and timestamps stay out

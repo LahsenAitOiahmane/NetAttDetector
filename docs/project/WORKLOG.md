@@ -704,6 +704,43 @@ by those probes. This is a source-access issue to revisit or work around through
 sources, not evidence that development coverage has improved. Available Windows disk is5.55GiB;
 retain bounded/cloud acquisition and the2GiB reserve for the next data sprint.
 
+## 23 November 2026 — Kitsune development acquisition and packet-label admission
+
+NAD-055 now adds a new development acquisition lineage. Registered Kitsune and the bounded
+Mirai profile at `033cf53` before raw access; official author-mirror GET requests work even
+though earlier HEAD checks failed. Downloaded the full 75,075,844-byte capture and 2,292,409-byte
+label file, then committed observed hashes/receipt at `12c2aed` before label/packet auditing.
+No 1.37 GB feature CSV, complete multi-gigabyte archive, credentials or malware binary used.
+
+The capture is PCAPNG despite its `.pcap` name. The classic reader first refused it. Added
+a streaming callback to the previously tested bounded PCAPNG block auditor, with known
+per-interface micro/nanosecond clocks, integer offsets, section resets and explicit rejection
+of unsupported clock/packet formats. Source order and labels for non-IP/truncated records stay
+intact. Exact one-column binary labels are accepted; numeric first values are never guessed
+headers or indices. Native feature contracts and model inputs have not been changed.
+
+Complete audit: 764,137 packets/labels, 121,621 benign and 642,516 malicious annotations.
+There is one label transition, 173 timestamp regressions and 1,550 truncated packets. Fully
+decoded TCP/UDP packets account for 84,088 benign / 68,583 malicious labels. Non-IP Ethernet
+accounts for 8,746 / 556,455; thus 86.61% of malicious packet labels cannot directly become
+current IP-flow examples. Other transports and truncation stay separately accounted. Do not
+claim full-capture attack detection by reporting only native IP rows. Source phase labels are
+structurally aligned, not independently verified truth for every packet.
+
+Benign and attack timestamp ranges are separated by 40.393 ms, suggesting a conservative
+callback-time label experiment, but no native flow has been labeled or fitted yet. A single
+phased capture cannot provide independent capture/device holdouts or a chronological
+both-class benchmark. Missing-family development support and the next frozen test plan remain.
+
+Linux run `45241955600` at `e6d30f0` reacquired identical input hashes and reproduced every
+non-resource semantic audit field from Windows. It passed67 focused checks; full CPython3.11/
+3.13 CI each passed277 with7 skips. A preceding run stopped in a new test with a missing
+import; fixed it and retained the failed run rather than calling it data evidence. Audit
+resources: Windows5.42s /24.8MiB, Linux6.37s /23.4MiB sampled RSS, excluding acquisition,
+imports and input-hash verification. Added report, runbook, acquisition/audit evidence and
+dataset/backlog updates. Raw captures/labels remain ignored and private. No new fitting,
+threshold selection, live capture or deployment; the pilot stays deferred.
+
 ## Outstanding work
 
 This work does not complete the production roadmap. Global audits cover the development inputs;

@@ -22,6 +22,7 @@ and [current backlog](project/ROADMAP.md).
 | Causal traffic context | [Registered lab](research/CAUSAL_CONTEXT.md), [operations](guides/CAUSAL_CONTEXT.md), [measured parity and information gain](../reports/CAUSAL_CONTEXT.md) |
 | Context model comparison | [Registered study](research/CONTEXT_STUDY.md), [operations](guides/CONTEXT_STUDY.md), [measured rejection](../reports/CONTEXT_STUDY.md), [private artifact retention](research/PRIVATE_ARTIFACTS.md) |
 | Frozen independent C&C test | [Registered protocol](research/CESNET_FROZEN_TEST.md), [private reproduction](guides/CESNET_FROZEN_TEST.md), [measured result and family failures](../reports/CESNET_FROZEN_TEST.md) |
+| Kitsune development admission | [Registered acquisition](research/KITSUNE_DEVELOPMENT.md), [operations](guides/KITSUNE_DEVELOPMENT.md), [packet-label coverage and limitations](../reports/KITSUNE_DEVELOPMENT.md) |
 
 Historical reports retain the dependency versions and failed results from their own runs.
 Reorganizing files or upgrading dependencies does not turn those models into production candidates.

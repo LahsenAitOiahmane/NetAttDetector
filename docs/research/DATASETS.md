@@ -61,6 +61,14 @@ downloaded or compatible native inputs**. Do not imply a large mixed-class evalu
 the small raw archive. The [registered test](CESNET_FROZEN_TEST.md) retains this distinction
 and CC-BY-4.0 attribution. No botnet binaries are acquired or executed.
 
+The [Kitsune publisher record](https://archive.ics.uci.edu/dataset/516/kitsune+network+attack+dataset)
+describes 27,170,754 packet observations over nine captures. A registered development subset
+now retains only the complete 75.1 MB Mirai capture and 2.3 MB labels from the author's mirror,
+with 764,137 packet/label pairs audited on Windows and Linux. The 1.37 GB derived-feature CSV
+and full archive were not downloaded. Its 115 packet statistics are not native flow aliases.
+[Coverage and label limits](../../reports/KITSUNE_DEVELOPMENT.md) remain explicit, especially
+the predominance of non-IP malicious labels and the single benign/attack phase transition.
+
 ## Acquisition policy
 
 1. Follow the permanent publisher record, inspect terms, feature definitions and expected size.
