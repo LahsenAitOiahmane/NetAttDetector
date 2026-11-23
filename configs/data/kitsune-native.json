@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "study_id": "kitsune-native-phase-lab-v1",
+  "registered_date": "2026-11-23",
+  "source_profile": "configs/data/kitsune-development.json",
+  "expected_pcap_sha256": "3bebe40dbf24546be36880f89908e315f8f858c8256aa00de0b3bbab8c3c69e6",
+  "expected_labels_sha256": "190d5cc70c35e11000f98f5e508d0d5e50eed82c0ea3acd1abefda8d18a95817",
+  "expected_packets": 764137,
+  "expected_class_counts": {
+    "0": 121621,
+    "1": 642516
+  },
+  "label_time_ranges_ns": {
+    "0": {
+      "minimum_ns": 1540446382933899000,
+      "maximum_ns": 1540450841432895000
+    },
+    "1": {
+      "minimum_ns": 1540450841473288000,
+      "maximum_ns": 1540453519842464000
+    }
+  },
+  "schema": "nfstream-context-v1",
+  "label_policy": "kitsune-packet-phase-candidate-v1",
+  "maximum_flows": 250000,
+  "maximum_pcap_bytes": 134217728,
+  "maximum_context_events": 100000,
+  "maximum_database_bytes": 536870912,
+  "training_authorized": false,
+  "deployment_authorized": false,
+  "public_model_release_authorized": false
+}
