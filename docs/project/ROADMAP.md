@@ -6,13 +6,16 @@ false-alarm budget. The initial user is an operator of a small network, running 
 The first publishable release is a reproducible **research** release; a production service has
 additional gates. No calendar deadline or guaranteed accuracy is implied by this plan.
 
-Current focus (1 November 2026): native cohort preparation is measured and repeatable; all
+Current focus (23 November 2026): native cohort preparation is measured and repeatable; all
 twelve native model candidates fail acceptance, with a further cross-thread score discrepancy.
 NAD-048 identified fixed-thread stability and HTTP/single-packet error slices; NAD-049 now
 validated richer measured inputs; NAD-050 measured their tradeoff and still rejected every
 candidate. NAD-051 proves a no-port observed limit; NAD-052 validates added causal context.
 NAD-053 measured that information under fixed-thread/family-aware screens: no candidate qualifies,
-and the statistical control remains selected. The owner selected
+and the statistical control remains selected. NAD-054 independently tests that frozen control
+on CESNET-CC25: 61.31% eligible positive-flow recall, with severe family failures and no
+compatible benign FPR assessment. Improve development coverage before another model study.
+The owner selected
 MIT for code and deferred the pilot; continue offline research. Historical sprint narratives
 below retain the original rationale and failed results; they are not current deployment claims.
 
@@ -106,6 +109,8 @@ the roadmap must not be read as an endorsement of the initial champion for live 
 | NAD-051 | P1 / 3 | Quantify optimistic connection operating-point limits from indistinguishable feature sets before further tuning/context work | 050 | Measured zero-fit exact bound: no-port validation ceiling 60.71% recall at 9 benign flags; at least 39 needed for 80%, even in an optimistic relaxation. Not a trained model |
 | NAD-052 | P1 / 5 | Validate causal flow-start context, timestamp ordering/state bounds and online-style/offline feature parity before fitting | 051 | Measured: 235 fixture values, all 250,819 flows preserved/replayed, 300 independent SQL checks, no-port conflicting rows 206,075 to 190; no fit |
 | NAD-053 | P1 / 5 | Compare context/statistical/no-port models on fixed rows with calibration-only thresholds, family support guards and fixed-thread controls | 052 | Measured fifteen fits, exact reload/repeats, no qualifying candidate; context can reduce FP while DDoS detection collapses. Selected statistical control retained encrypted for private verification |
+| NAD-054 | P1 / 5 | Evaluate the frozen diagnostic on independently sourced CESNET-CC25 C&C captures, preserving endpoint eligibility, per-capture/family coverage and positive-only metric limits | 053 | Measured: 32 released captures / 265,622 native segments; 149,224 of 243,382 eligible positives detected (61.31%). Unknown coverage, severe family failures and publisher count discrepancies retained; no new fit. All released packet records reconcile |
+| NAD-055 | P1 / 5 | Expand compatible benign and missing-family development coverage; register capture roles, budgets and a fresh evaluation plan before fitting | 054 | Ready for source-metadata/acquisition planning. CESNET is observed evaluation; no longer a fresh test. Preserve original capture/UID/label evidence and do not substitute IPFIX aliases |
 
 ## Next sprint after the development study
 

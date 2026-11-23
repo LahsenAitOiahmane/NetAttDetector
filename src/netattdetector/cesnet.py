@@ -656,3 +656,61 @@ def recover_measurements(envelope, private_key, trusted_manifest, output):
         "rows": manifest["rows"],
         "verified_before_sqlite_open": True,
     }
+
+
+def audit_packet_coverage(source, measurement_manifest, output, config_path=CONFIG):
+    """Post-score diagnostic: reconcile independent block counts, without changing scores."""
+    from netattdetector.pcapng_audit import audit_stream
+
+    policy = config(config_path)
+    source, output = Path(source), Path(output)
+    if output.exists():
+        raise FileExistsError(output)
+    acquisition = json.loads((source / "acquisition.json").read_text(encoding="utf-8"))
+    manifest = json.loads(Path(measurement_manifest).read_text(encoding="utf-8"))
+    if (
+        archive_identity(source / "botnet.tar.gz", policy) != acquisition["archive"]
+        or inventory_archive(source / "botnet.tar.gz", policy) != acquisition["inventory"]
+    ):
+        raise ValueError("Packet coverage source differs from the frozen archive.")
+    samples = {row["capture_id"]: row for row in policy["captures"]}
+    measured = {row["capture_id"]: row for row in manifest["records"]}
+    selected = {
+        row["member"]: capture for capture, row in acquisition["inventory"]["selected"].items()
+    }
+    records = []
+    with ResourceMonitor() as resources, tarfile.open(source / "botnet.tar.gz", "r|gz") as archive:
+        for member in archive:
+            if member.name not in selected:
+                continue
+            capture = selected[member.name]
+            with archive.extractfile(member) as stream:
+                audit = audit_stream(stream)
+            if {key: audit[key] for key in ("bytes", "sha256")} != measured[capture]["file"]:
+                raise ValueError("Packet audit capture differs from the measured bytes.")
+            records.append(
+                {
+                    "capture_id": capture,
+                    "audit": audit,
+                    "exported_packets": measured[capture]["exported_packets"],
+                    "all_packet_records_accounted": audit["packet_records"]
+                    == measured[capture]["exported_packets"],
+                    "publisher_cc_packets": samples[capture]["publisher_cc_packets"],
+                    "publisher_count_difference": audit["packet_records"]
+                    - samples[capture]["publisher_cc_packets"],
+                }
+            )
+    if {row["capture_id"] for row in records} != set(samples):
+        raise ValueError("Packet coverage audit missed a registered capture.")
+    result = {
+        "records": sorted(records, key=lambda row: int(row["capture_id"].split("-", 1)[0])),
+        "all_released_packet_records_accounted": all(
+            row["all_packet_records_accounted"] for row in records
+        ),
+        "packet_records": sum(row["audit"]["packet_records"] for row in records),
+        "publisher_cc_packets": sum(row["publisher_cc_packets"] for row in records),
+        "resources": {"seconds": resources.elapsed, "sampled_rss_mib": resources.peak / 2**20},
+        "scope": "Post-score byte/block accounting diagnostic on exact frozen unsplit releases. No endpoint relabeling, checksum/payload validation, score change or inference of missing publisher packets.",
+    }
+    write_json(output, result)
+    return result

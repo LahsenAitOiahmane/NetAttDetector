@@ -1,8 +1,8 @@
 # Registered CESNET-CC25 frozen recall test
 
-NAD-054, registered23November2026 before reading archive bytes or computing source features.
-The [publisher record](https://zenodo.org/records/16752462) and its public API identify32 C&C
-sample captures, six botnet families, a43,421,271-byte raw archive and CC-BY-4.0 terms.
+NAD-054, registered 23 November 2026 before reading archive bytes or computing source features.
+The [publisher record](https://zenodo.org/records/16752462) and its public API identify 32 C&C
+sample captures, six botnet families, a 43,421,271-byte raw archive and CC-BY-4.0 terms.
 Publisher metadata was inspected; raw captures and IPFIX/label rows were not. Keep
 CICIDS2017 reserved/unacquired. CESNET is a new independent acquisition lineage, not verified
 independence of every device, attack infrastructure or malware lineage from IoT-23.

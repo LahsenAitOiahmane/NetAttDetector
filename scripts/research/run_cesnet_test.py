@@ -6,6 +6,7 @@ from pathlib import Path
 
 from netattdetector.cesnet import (
     acquire,
+    audit_packet_coverage,
     evaluate,
     prepare,
     recover_measurements,
@@ -13,7 +14,9 @@ from netattdetector.cesnet import (
 )
 
 parser = argparse.ArgumentParser(description=__doc__)
-parser.add_argument("stage", choices=("acquire", "prepare", "seal", "recover", "evaluate"))
+parser.add_argument(
+    "stage", choices=("acquire", "prepare", "seal", "recover", "evaluate", "packet-audit")
+)
 parser.add_argument("--source", default="data/raw/cesnet-cc25")
 parser.add_argument("--measurements", default="data/processed/cesnet-cc25")
 parser.add_argument("--model", default="artifacts/private-context-model/selected.joblib")
@@ -37,6 +40,8 @@ elif args.stage == "recover":
     result = recover_measurements(
         args.envelope, args.private_key, args.trusted_manifest, args.measurements
     )
+elif args.stage == "packet-audit":
+    result = audit_packet_coverage(args.source, args.trusted_manifest, args.output)
 else:
     result = evaluate(args.measurements, args.model, args.output)
 print(
