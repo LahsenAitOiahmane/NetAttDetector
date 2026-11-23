@@ -677,6 +677,21 @@ source role changed to observed evaluation. CESNET cannot be a fresh holdout in 
 Next NAD-055 addresses benign/missing-family development coverage and fresh evaluation roles.
 The pilot remains explicitly deferred; no live capture, blocking or deployment was enabled.
 
+## 23 November 2026 — Dependency updater/runtime scope
+
+Inspected failed Dependabot run `41335151030`: its exact pandas 3.1.0 update could not
+resolve NFStream's PyPy pandas<3 branch under the universal dependency graph. The actual
+exporter is verified only on CPython Linux. Restricted the measurement dependency marker
+accordingly and added an explicit interpreter rejection before NFStream import. Core Windows
+model scoring remains available. Removed only unused pandas2.3.3/pytz lock entries; no
+CPython experiment-library version changed. The exact targeted updater command now resolves.
+
+Added universal lock-consistency checking to existing Python3.11/3.13 CI, documented the
+runtime scope, and tested explicit refusal of unverified interpreters. Local measurement/
+statistical/context checks passed27 with4 Linux skips. Remote CI/fixture validation is
+required before treating the maintenance change as verified on Linux. No experiment was refit
+or historical model/result/hash replaced.
+
 ## Outstanding work
 
 This work does not complete the production roadmap. Global audits cover the development inputs;
