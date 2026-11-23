@@ -1,0 +1,323 @@
+{
+  "schema_version": 1,
+  "study_id": "cesnet-cc25-frozen-recall-v1",
+  "registered_date": "2026-11-23",
+  "source_role": "external_recall_test",
+  "publisher": "https://zenodo.org/records/16752462",
+  "doi": "10.5281/zenodo.16752462",
+  "license": "cc-by-4.0",
+  "archive": {
+    "url": "https://zenodo.org/api/records/16752462/files/botnet.tar.gz/content",
+    "bytes": 43421271,
+    "publisher_md5": "f66a6410bc1e35881f2de2077788847f"
+  },
+  "freeze": "reports/evidence/context-study/freeze.json",
+  "expected_model_sha256": "a504167cf9dbd384c17b192d2f1209714c8f4ef5c27e6b892b64fcbe04e19cc7",
+  "threshold": 0.9999190519374116,
+  "feature_contract": "nfstream-context-v1",
+  "model_policy": "statistics27_control",
+  "maximum_archive_bytes": 67108864,
+  "maximum_total_uncompressed_bytes": 536870912,
+  "maximum_capture_bytes": 134217728,
+  "maximum_flows_per_capture": 250000,
+  "maximum_context_events": 100000,
+  "batch_size": 1024,
+  "prediction_threads": 1,
+  "training_authorized": false,
+  "deployment_authorized": false,
+  "captures": [
+    {
+      "capture_id": "1-u4",
+      "family": "Gafgyt",
+      "cc_ip": "38.134.189.10",
+      "cc_port": 12345,
+      "publisher_cc_packets": 33793,
+      "publisher_ipfix_flows": 8290,
+      "publisher_endpoint_annotation": null
+    },
+    {
+      "capture_id": "2-u5",
+      "family": "Mirai",
+      "cc_ip": "107.172.51.228",
+      "cc_port": 3778,
+      "publisher_cc_packets": 92346,
+      "publisher_ipfix_flows": 22263,
+      "publisher_endpoint_annotation": null
+    },
+    {
+      "capture_id": "3-u6",
+      "family": "Mirai",
+      "cc_ip": "83.222.191.90",
+      "cc_port": 13566,
+      "publisher_cc_packets": 10767,
+      "publisher_ipfix_flows": 1954,
+      "publisher_endpoint_annotation": null
+    },
+    {
+      "capture_id": "4-u7",
+      "family": "Mirai",
+      "cc_ip": "141.98.10.115",
+      "cc_port": 60195,
+      "publisher_cc_packets": 6256,
+      "publisher_ipfix_flows": 1532,
+      "publisher_endpoint_annotation": null
+    },
+    {
+      "capture_id": "5-u8",
+      "family": "Mirai",
+      "cc_ip": "83.222.191.90",
+      "cc_port": 13566,
+      "publisher_cc_packets": 10527,
+      "publisher_ipfix_flows": 1879,
+      "publisher_endpoint_annotation": null
+    },
+    {
+      "capture_id": "6-u8_2",
+      "family": "Kaiji",
+      "cc_ip": "158.178.235.53",
+      "cc_port": 888,
+      "publisher_cc_packets": 145787,
+      "publisher_ipfix_flows": 3635,
+      "publisher_endpoint_annotation": null
+    },
+    {
+      "capture_id": "7-u6_3",
+      "family": "Mirai",
+      "cc_ip": "160.191.245.5",
+      "cc_port": 56999,
+      "publisher_cc_packets": 121308,
+      "publisher_ipfix_flows": 17464,
+      "publisher_endpoint_annotation": null
+    },
+    {
+      "capture_id": "8-u8_3",
+      "family": "Mirai",
+      "cc_ip": "160.191.245.5",
+      "cc_port": 56999,
+      "publisher_cc_packets": 116199,
+      "publisher_ipfix_flows": 16609,
+      "publisher_endpoint_annotation": null
+    },
+    {
+      "capture_id": "9-u0_0",
+      "family": "Miori",
+      "cc_ip": "79.124.40.48",
+      "cc_port": 3277,
+      "publisher_cc_packets": 19889,
+      "publisher_ipfix_flows": 4938,
+      "publisher_endpoint_annotation": null
+    },
+    {
+      "capture_id": "10-u5_4",
+      "family": "Hailbot",
+      "cc_ip": "146.103.38.7",
+      "cc_port": 4338,
+      "publisher_cc_packets": 16024,
+      "publisher_ipfix_flows": 3946,
+      "publisher_endpoint_annotation": "*"
+    },
+    {
+      "capture_id": "11-u6_4",
+      "family": "Gafgyt",
+      "cc_ip": "103.130.214.198",
+      "cc_port": 23,
+      "publisher_cc_packets": 3462,
+      "publisher_ipfix_flows": 975,
+      "publisher_endpoint_annotation": null
+    },
+    {
+      "capture_id": "12-u7_4",
+      "family": "Mirai",
+      "cc_ip": "193.143.1.166",
+      "cc_port": 1908,
+      "publisher_cc_packets": 548,
+      "publisher_ipfix_flows": 126,
+      "publisher_endpoint_annotation": null
+    },
+    {
+      "capture_id": "13-u8_4",
+      "family": "Hailbot",
+      "cc_ip": "146.103.38.7",
+      "cc_port": 17526,
+      "publisher_cc_packets": 4300,
+      "publisher_ipfix_flows": 1056,
+      "publisher_endpoint_annotation": null
+    },
+    {
+      "capture_id": "14-u9",
+      "family": "Hailbot",
+      "cc_ip": "185.198.58.166",
+      "cc_port": 18581,
+      "publisher_cc_packets": 6851,
+      "publisher_ipfix_flows": 1663,
+      "publisher_endpoint_annotation": "*"
+    },
+    {
+      "capture_id": "15-u10",
+      "family": "Mirai",
+      "cc_ip": "156.244.6.20",
+      "cc_port": 64715,
+      "publisher_cc_packets": 50138,
+      "publisher_ipfix_flows": 583,
+      "publisher_endpoint_annotation": "*"
+    },
+    {
+      "capture_id": "16-u11",
+      "family": "Gafgyt",
+      "cc_ip": "45.135.194.61",
+      "cc_port": 6606,
+      "publisher_cc_packets": 21368,
+      "publisher_ipfix_flows": 125,
+      "publisher_endpoint_annotation": null
+    },
+    {
+      "capture_id": "17-u10_3",
+      "family": "Hailbot",
+      "cc_ip": "172.86.73.60",
+      "cc_port": 3130,
+      "publisher_cc_packets": 10858,
+      "publisher_ipfix_flows": 2540,
+      "publisher_endpoint_annotation": "*"
+    },
+    {
+      "capture_id": "18-u11_2",
+      "family": "Mirai",
+      "cc_ip": "193.143.1.32",
+      "cc_port": 1440,
+      "publisher_cc_packets": 28078,
+      "publisher_ipfix_flows": 6970,
+      "publisher_endpoint_annotation": "*"
+    },
+    {
+      "capture_id": "19-u11_3",
+      "family": "Mirai",
+      "cc_ip": "172.86.73.60",
+      "cc_port": 9823,
+      "publisher_cc_packets": 14695,
+      "publisher_ipfix_flows": 3412,
+      "publisher_endpoint_annotation": "*"
+    },
+    {
+      "capture_id": "20-u9_4",
+      "family": "Gafgyt",
+      "cc_ip": "185.74.222.38",
+      "cc_port": 8080,
+      "publisher_cc_packets": 3738,
+      "publisher_ipfix_flows": 928,
+      "publisher_endpoint_annotation": null
+    },
+    {
+      "capture_id": "21-u10_4",
+      "family": "Mirai",
+      "cc_ip": "96.62.214.212",
+      "cc_port": 3778,
+      "publisher_cc_packets": 77691,
+      "publisher_ipfix_flows": 18918,
+      "publisher_endpoint_annotation": null
+    },
+    {
+      "capture_id": "22-u11_5",
+      "family": "Gafgyt",
+      "cc_ip": "87.251.79.180",
+      "cc_port": 12345,
+      "publisher_cc_packets": 10640,
+      "publisher_ipfix_flows": 2610,
+      "publisher_endpoint_annotation": null
+    },
+    {
+      "capture_id": "23-u12_5",
+      "family": "Gafgyt",
+      "cc_ip": "37.44.238.66",
+      "cc_port": 666,
+      "publisher_cc_packets": 987,
+      "publisher_ipfix_flows": 245,
+      "publisher_endpoint_annotation": null
+    },
+    {
+      "capture_id": "24-u12_6",
+      "family": "Mirai",
+      "cc_ip": "84.200.24.112",
+      "cc_port": 9931,
+      "publisher_cc_packets": 36415,
+      "publisher_ipfix_flows": 9040,
+      "publisher_endpoint_annotation": null
+    },
+    {
+      "capture_id": "25-u9_7",
+      "family": "Xorbot",
+      "cc_ip": "37.44.238.92",
+      "cc_port": 443,
+      "publisher_cc_packets": 156215,
+      "publisher_ipfix_flows": 2646,
+      "publisher_endpoint_annotation": null
+    },
+    {
+      "capture_id": "26-u10_7",
+      "family": "Gafgyt",
+      "cc_ip": "162.0.214.70",
+      "cc_port": 1111,
+      "publisher_cc_packets": 9892,
+      "publisher_ipfix_flows": 2826,
+      "publisher_endpoint_annotation": null
+    },
+    {
+      "capture_id": "27-u12_7",
+      "family": "Hailbot",
+      "cc_ip": "217.105.153.175",
+      "cc_port": 11950,
+      "publisher_cc_packets": 338,
+      "publisher_ipfix_flows": 94,
+      "publisher_endpoint_annotation": null
+    },
+    {
+      "capture_id": "28-u9_8",
+      "family": "Gafgyt",
+      "cc_ip": "209.141.35.180",
+      "cc_port": 23,
+      "publisher_cc_packets": 53901,
+      "publisher_ipfix_flows": 11089,
+      "publisher_endpoint_annotation": null
+    },
+    {
+      "capture_id": "29-u10_8",
+      "family": "Mirai",
+      "cc_ip": "159.89.101.70",
+      "cc_port": 1440,
+      "publisher_cc_packets": 26103,
+      "publisher_ipfix_flows": 6291,
+      "publisher_endpoint_annotation": null
+    },
+    {
+      "capture_id": "30-u11_8",
+      "family": "Gafgyt",
+      "cc_ip": "196.251.80.231",
+      "cc_port": 839,
+      "publisher_cc_packets": 298,
+      "publisher_ipfix_flows": 75,
+      "publisher_endpoint_annotation": null
+    },
+    {
+      "capture_id": "31-u9_9",
+      "family": "Gafgyt",
+      "cc_ip": "37.44.238.66",
+      "cc_port": 666,
+      "publisher_cc_packets": 7697,
+      "publisher_ipfix_flows": 1825,
+      "publisher_endpoint_annotation": null
+    },
+    {
+      "capture_id": "32-u12_9",
+      "family": "Mirai",
+      "cc_ip": "209.141.59.9",
+      "cc_port": 3778,
+      "publisher_cc_packets": 15634,
+      "publisher_ipfix_flows": 4196,
+      "publisher_endpoint_annotation": null
+    }
+  ],
+  "bootstrap": {
+    "replicates": 10000,
+    "seed": 20261123,
+    "unit": "capture_macro_recall"
+  }
+}

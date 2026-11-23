@@ -4,6 +4,13 @@ The active package lives only under `src/netattdetector/`. Run `netatt` or
 `python -m netattdetector` after installing the project. Dependency declarations belong in
 `pyproject.toml`; exact resolutions belong in `uv.lock`.
 
+The pinned NFStream measurement extra is supported on **CPython Linux**. Its dependency
+marker and runtime check both enforce that scope. Windows supports model recovery/scoring
+and platform-neutral tests; other interpreters do not silently install an unverified exporter.
+CI checks universal lock consistency as well as frozen installs. A targeted pandas update must
+resolve without the unused NFStream/PyPy pandas<3 branch; historical experiment versions/hashes
+remain unchanged.
+
 ```text
 .github/                 CI, bounded research workflows, dependency maintenance
 configs/                 Experiment and validation settings

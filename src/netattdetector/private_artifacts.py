@@ -122,19 +122,29 @@ def derive(private, public, salt, recipient, ephemeral):
 
 
 def seal_model(model_path, freeze, probes, recipient_path, output):
-    from cryptography.hazmat.primitives.asymmetric.x25519 import X25519PrivateKey
-    from cryptography.hazmat.primitives.ciphers.aead import AESGCM
-
     model = bounded_read(model_path, MAX_MODEL)
     if hashlib.sha256(model).hexdigest() != freeze["artifact_sha256"]:
         raise ValueError("Model does not match its diagnostic freeze.")
+    result = seal_payload(
+        {"model": encode(model), "freeze": freeze, "synthetic_probes": probes},
+        recipient_path,
+        output,
+    )
+    return {**result, "artifact_sha256": freeze["artifact_sha256"]}
+
+
+def seal_payload(value, recipient_path, output, *, max_payload=MAX_PAYLOAD):
+    """Shared authenticated envelope; callers enforce a versioned payload schema."""
+    from cryptography.hazmat.primitives.asymmetric.x25519 import X25519PrivateKey
+    from cryptography.hazmat.primitives.ciphers.aead import AESGCM
+
     recipient = json.loads(bounded_read(recipient_path, MAX_HEADER))
     public = decode(recipient["public_key"], 32)
     fingerprint = hashlib.sha256(public).hexdigest()
     if recipient["algorithm"] != ALGORITHM or recipient["fingerprint_sha256"] != fingerprint:
         raise ValueError("Invalid recipient contract.")
-    payload = canonical({"model": encode(model), "freeze": freeze, "synthetic_probes": probes})
-    if len(payload) > MAX_PAYLOAD:
+    payload = canonical(value)
+    if len(payload) > max_payload:
         raise ValueError("Research payload exceeds its byte bound.")
     private = X25519PrivateKey.generate()
     ephemeral = private.public_key().public_bytes_raw()
@@ -158,16 +168,15 @@ def seal_model(model_path, freeze, probes, recipient_path, output):
     return {
         "algorithm": ALGORITHM,
         "recipient": fingerprint,
-        "artifact_sha256": freeze["artifact_sha256"],
         "ciphertext_bytes": len(prefix) + len(ciphertext),
     }
 
 
-def recover_model(envelope, private_path, trusted_freeze):
+def recover_payload(envelope, private_path, *, max_payload=MAX_PAYLOAD):
     from cryptography.hazmat.primitives.asymmetric.x25519 import X25519PrivateKey
     from cryptography.hazmat.primitives.ciphers.aead import AESGCM
 
-    raw = bounded_read(envelope, MAX_PAYLOAD + MAX_HEADER + len(MAGIC) + 20)
+    raw = bounded_read(envelope, max_payload + MAX_HEADER + len(MAGIC) + 20)
     offset = len(MAGIC) + 4
     if len(raw) < offset or raw[: len(MAGIC)] != MAGIC:
         raise ValueError("Unsupported research envelope.")
@@ -183,7 +192,7 @@ def recover_model(envelope, private_path, trusted_freeze):
     size = header["payload_bytes"]
     if (
         type(size) is not int
-        or not 0 < size <= MAX_PAYLOAD
+        or not 0 < size <= max_payload
         or len(raw) != offset + length + size + 16
     ):
         raise ValueError("Invalid/truncated research payload.")
@@ -197,7 +206,11 @@ def recover_model(envelope, private_path, trusted_freeze):
         decode(header["nonce"], 12),
     )
     key = derive(private, ephemeral, salt, public, ephemeral)
-    payload = json.loads(AESGCM(key).decrypt(nonce, raw[offset + length :], raw[: offset + length]))
+    return json.loads(AESGCM(key).decrypt(nonce, raw[offset + length :], raw[: offset + length]))
+
+
+def recover_model(envelope, private_path, trusted_freeze):
+    payload = recover_payload(envelope, private_path)
     if (
         set(payload) != {"model", "freeze", "synthetic_probes"}
         or payload["freeze"] != trusted_freeze

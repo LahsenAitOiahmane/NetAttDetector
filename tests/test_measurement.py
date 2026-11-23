@@ -115,3 +115,12 @@ def test_linux_streaming_audit_settings_preserve_known_fixture_fields(flow_limit
     actual = list(iter_pcap_rows("tests/fixtures/pcap/core.pcap", max_nflows=flow_limit))
     assert len(actual) == len(expected) == 5
     assert {flow_key(row): row for row in actual} == {flow_key(row): row for row in expected}
+
+
+def test_unverified_interpreter_is_rejected_before_loading_exporter(monkeypatch):
+    import netattdetector.measurement as measurement
+
+    monkeypatch.setattr(measurement.platform, "system", lambda: "Linux")
+    monkeypatch.setattr(measurement.platform, "python_implementation", lambda: "PyPy")
+    with pytest.raises(ValueError, match="CPython"):
+        list(measurement.iter_pcap_rows("tests/fixtures/pcap/core.pcap"))
