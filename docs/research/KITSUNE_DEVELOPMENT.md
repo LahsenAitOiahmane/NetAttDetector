@@ -32,13 +32,22 @@ answer the current feature/label question on the user's small PC.
 
 ## Label/packet audit before native preparation
 
-Independently parse the complete classic-PCAP record structure and the complete label CSV.
+Detect the capture format by its magic bytes; independently parse its complete packet record
+structure and the complete label CSV.
 Verify exact packet/label cardinality, header/index semantics, binary values, timestamp order,
 captured versus original lengths, supported protocols and label distribution. Validate a
 constant-memory or disk-backed audit against controlled synthetic fixtures. Preserve labels
 for unsupported, truncated and ambiguous packets rather than treating them as benign.
 The author's demo statement about an initial benign prefix is context, not a replacement
 for per-packet labels. Do not infer a connection label from the capture's Mirai name.
+
+After acquisition, magic-byte inspection showed the Mirai file is PCAPNG despite its `.pcap`
+suffix. The classic-only reader correctly refused it. Use the existing bounded enhanced-packet
+block auditor with a streaming packet callback, supporting default/explicit decimal microsecond
+or nanosecond interface clocks and integer timestamp offsets. Reject other packet block/clock
+formats rather than shifting packet ordinals. All packet records, including non-IP and truncated
+packets, still consume their original label ordinal. Numeric first rows are labels; never guess
+that a `0` is a CSV header. A literal `label`/`Label` header is the only optional header.
 
 Packet labels cannot be assigned to NFStream flow segments by row number. First register a
 packet-to-exporter linkage rule that handles omitted protocols, timestamp precision, direction,

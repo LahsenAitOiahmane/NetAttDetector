@@ -183,3 +183,31 @@ def test_modified_acquisition_policy_is_rejected(tmp_path):
     path.write_text(json.dumps(policy))
     with pytest.raises(ValueError, match="registered"):
         kitsune.configuration(path)
+
+
+def test_pcapng_magic_dispatch_consumes_labels_for_unsupported_and_truncated_packets(tmp_path):
+    def block(kind, body):
+        size = len(body) + 12
+        return struct.pack("<II", kind, size) + body + struct.pack("<I", size)
+
+    raw = block(0x0A0D0D0A, struct.pack("<IHHq", 0x1A2B3C4D, 1, 0, -1))
+    raw += block(1, struct.pack("<HHI", 1, 0, 65535))
+    frame = bytes(12) + bytes.fromhex("0806")
+    for timestamp, original in [(100, len(frame)), (50, len(frame) + 5)]:
+        raw += block(
+            6, struct.pack("<IIIII", 0, 0, timestamp, len(frame), original) + frame + bytes(2)
+        )
+    path = tmp_path / "misleading-name.pcap"
+    path.write_bytes(raw)
+    result = kitsune.audit_pairs(path, labels(tmp_path / "labels.csv", [0, 1]))
+    assert result["capture_format"] == "pcapng-enhanced"
+    assert result["pcapng_structure"]["packet_records"] == 2
+    assert result["binary_class_counts"] == {"0": 1, "1": 1}
+    assert result["class_counts_by_packet_status"] == {
+        "capture_truncated": {"1": 1},
+        "non_ip_ethernet": {"0": 1},
+    }
+    assert result["timestamp_regressions"] == 1
+    labels(tmp_path / "labels.csv", [0, 1, 0])
+    with pytest.raises(ValueError, match="cardinality"):
+        kitsune.audit_pairs(path, tmp_path / "labels.csv")

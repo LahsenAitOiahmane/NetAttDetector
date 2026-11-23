@@ -9,7 +9,39 @@ import struct
 from collections import Counter
 
 
-def audit_stream(stream, *, max_bytes=128 * 2**20):
+def interface_clock(options, endian):
+    """Callback mode supports verified decimal micro/nanoseconds and integer offsets."""
+    multiplier, offset, seen, cursor = 1000, 0, set(), 0
+    while cursor < len(options):
+        if cursor + 4 > len(options):
+            raise ValueError("Truncated PCAPNG interface option.")
+        code, length = struct.unpack(endian + "HH", options[cursor : cursor + 4])
+        cursor += 4
+        padded = (length + 3) // 4 * 4
+        if cursor + padded > len(options):
+            raise ValueError("PCAPNG interface option exceeds its block.")
+        value = options[cursor : cursor + length]
+        cursor += padded
+        if code == 0:
+            if length or any(options[cursor:]):
+                raise ValueError("Invalid PCAPNG end-of-options marker.")
+            break
+        if code in (9, 14):
+            if code in seen:
+                raise ValueError("Ambiguous duplicate PCAPNG clock option.")
+            seen.add(code)
+        if code == 9:
+            if length != 1 or value[0] not in (6, 9):
+                raise ValueError("Packet callbacks require decimal micro/nanosecond timestamps.")
+            multiplier = 1000 if value[0] == 6 else 1
+        if code == 14:
+            if length != 8:
+                raise ValueError("Invalid PCAPNG timestamp offset.")
+            offset = struct.unpack(endian + "q", value)[0] * 1_000_000_000
+    return multiplier, offset
+
+
+def audit_stream(stream, *, max_bytes=128 * 2**20, max_packets=2_000_000, on_packet=None):
     count = packets = truncated = captured_bytes = wire_bytes = 0
     types = Counter()
     links, interfaces = [], []
@@ -61,11 +93,13 @@ def audit_stream(stream, *, max_bytes=128 * 2**20):
             if reserved != 0:
                 raise ValueError("Invalid PCAPNG reserved interface field.")
             interfaces.append((link, snapshot))
+            if on_packet is not None:
+                interfaces[-1] = (*interfaces[-1], *interface_clock(body[8:-4], endian))
             links.append(link)
         elif kind == 6:
             if length < 32:
                 raise ValueError("Truncated enhanced packet block.")
-            interface, _, _, caplen, wirelen = struct.unpack(endian + "IIIII", body[:20])
+            interface, high, low, caplen, wirelen = struct.unpack(endian + "IIIII", body[:20])
             if (
                 interface >= len(interfaces)
                 or caplen > wirelen
@@ -76,9 +110,23 @@ def audit_stream(stream, *, max_bytes=128 * 2**20):
             if snapshot and caplen > snapshot:
                 raise ValueError("Captured packet exceeds its interface snapshot length.")
             packets += 1
+            if packets > max_packets:
+                raise ValueError("PCAPNG packet count bound exceeded.")
             truncated += caplen < wirelen
             captured_bytes += caplen
             wire_bytes += wirelen
+            if on_packet is not None:
+                link, _, multiplier, offset = interfaces[interface]
+                on_packet(
+                    {
+                        "packet_id": packets,
+                        "time_ns": ((high << 32) + low) * multiplier + offset,
+                        "linktype": link,
+                        "captured_bytes": caplen,
+                        "original_bytes": wirelen,
+                        "frame": body[20 : 20 + caplen],
+                    }
+                )
         elif kind in (2, 3):
             raise ValueError(
                 "This audit requires enhanced packets; other packet blocks are unassessed."

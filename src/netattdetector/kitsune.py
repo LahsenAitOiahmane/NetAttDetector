@@ -10,12 +10,11 @@ import time
 import urllib.request
 import zipfile
 from collections import Counter, defaultdict
-from itertools import zip_longest
 from pathlib import Path, PurePosixPath
 from urllib.parse import quote, urlsplit
 
 from netattdetector.io import sha256_file, write_json
-from netattdetector.packet_reader import packet_records
+from netattdetector.packet_reader import decode_frame, packet_records
 from netattdetector.resources import ResourceMonitor
 
 CONFIG = "configs/data/kitsune-development.json"
@@ -259,14 +258,23 @@ def audit_pairs(pcap, labels, *, max_rows=1_000_000):
     count = regressions = transitions = 0
     first_attack = last_benign = previous_label = previous_time = None
     time_ranges = {}
-    missing = object()
-    for packet, label in zip_longest(
-        packet_records(pcap, max_packets=max_rows),
-        binary_labels(labels, max_rows=max_rows),
-        fillvalue=missing,
-    ):
-        if packet is missing or label is missing:
-            raise ValueError("Kitsune packet/label cardinality differs; refuse ordinal alignment.")
+    label_iterator = iter(binary_labels(labels, max_rows=max_rows))
+
+    def observe(packet):
+        nonlocal \
+            count, \
+            regressions, \
+            transitions, \
+            first_attack, \
+            last_benign, \
+            previous_label, \
+            previous_time
+        try:
+            label = next(label_iterator)
+        except StopIteration as error:
+            raise ValueError(
+                "Kitsune packet/label cardinality differs; refuse ordinal alignment."
+            ) from error
         count += 1
         counts[str(label)] += 1
         statuses[packet["status"]][str(label)] += 1
@@ -284,7 +292,40 @@ def audit_pairs(pcap, labels, *, max_rows=1_000_000):
             time_ranges[name]["minimum_ns"] = min(time_ranges[name]["minimum_ns"], timestamp)
             time_ranges[name]["maximum_ns"] = max(time_ranges[name]["maximum_ns"], timestamp)
         previous_time, previous_label = timestamp, label
+
+    path = Path(pcap)
+    with path.open("rb") as stream:
+        magic = stream.read(4)
+        stream.seek(0)
+        if magic == b"\x0a\x0d\x0d\x0a":
+            from netattdetector.pcapng_audit import audit_stream
+
+            def observe_enhanced(packet):
+                decoded = (
+                    decode_frame(packet["frame"])
+                    if packet["linktype"] == 1
+                    else {"status": "unsupported_linktype"}
+                )
+                if packet["captured_bytes"] < packet["original_bytes"]:
+                    decoded["status"] = "capture_truncated"
+                observe({"packet_id": packet["packet_id"], "time_ns": packet["time_ns"], **decoded})
+
+            structure = audit_stream(stream, max_packets=max_rows, on_packet=observe_enhanced)
+            capture_format = "pcapng-enhanced"
+        else:
+            structure = None
+            capture_format = "classic-pcap"
+            for packet in packet_records(path, max_packets=max_rows):
+                observe(packet)
+    try:
+        next(label_iterator)
+    except StopIteration:
+        pass
+    else:
+        raise ValueError("Kitsune packet/label cardinality differs; refuse ordinal alignment.")
     return {
+        "capture_format": capture_format,
+        "pcapng_structure": structure,
         "packets": count,
         "labels": count,
         "binary_class_counts": dict(counts),
