@@ -18,6 +18,7 @@ from netattdetector.packet_reader import decode_frame, packet_records
 from netattdetector.resources import ResourceMonitor
 
 CONFIG = "configs/data/kitsune-development.json"
+PINS = "reports/evidence/kitsune-development/acquisition.json"
 API = "https://www.kaggle.com/api/v1/datasets/download/ymirsky/network-attack-dataset-kitsune/"
 FILES = [
     ("pcap", "Mirai Botnet/Mirai_pcap.pcap", 75075844, 96 * 2**20),
@@ -203,7 +204,17 @@ def acquire(output, config_path=CONFIG):
         "scope": "Complete bounded author-mirror originals. Observed hashes, not publisher-authenticated checksums. No packet-feature CSV or whole collection.",
     }
     write_json(output / "acquisition.json", receipt)
+    verify_pins(receipt)
     return receipt
+
+
+def verify_pins(receipt, pins_path=PINS):
+    trusted = json.loads(Path(pins_path).read_text(encoding="utf-8"))
+    fields = ("id", "source_name", "local_name", "bytes", "sha256")
+    actual = [{name: row[name] for name in fields} for row in receipt["files"]]
+    expected = [{name: row[name] for name in fields} for row in trusted["files"]]
+    if receipt["config_sha256"] != trusted["config_sha256"] or actual != expected:
+        raise ValueError("Kitsune inputs differ from the independently committed observed hashes.")
 
 
 def verified_files(directory, config_path=CONFIG):
@@ -215,8 +226,10 @@ def verified_files(directory, config_path=CONFIG):
         or receipt["profile_id"] != policy["profile_id"]
         or receipt["source_role"] != "development"
         or len(receipt["files"]) != 2
+        or {row["id"] for row in receipt["files"]} != {"pcap", "labels"}
     ):
         raise ValueError("Kitsune acquisition differs from the registered profile.")
+    verify_pins(receipt)
     paths = {}
     for specification in policy["files"]:
         record = next(row for row in receipt["files"] if row["id"] == specification["id"])

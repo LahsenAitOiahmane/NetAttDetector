@@ -211,3 +211,15 @@ def test_pcapng_magic_dispatch_consumes_labels_for_unsupported_and_truncated_pac
     labels(tmp_path / "labels.csv", [0, 1, 0])
     with pytest.raises(ValueError, match="cardinality"):
         kitsune.audit_pairs(path, tmp_path / "labels.csv")
+
+
+def test_repeatability_pins_reject_changes_while_allowing_new_transfer_timings(tmp_path):
+    receipt = json.loads(Path(kitsune.PINS).read_text())
+    pins = tmp_path / "pins.json"
+    pins.write_text(json.dumps(receipt))
+    repeat = copy.deepcopy(receipt)
+    repeat["resources"] = {"seconds": 0.1, "sampled_rss_mib": 30}
+    kitsune.verify_pins(repeat, pins)
+    repeat["files"][0]["sha256"] = "0" * 64
+    with pytest.raises(ValueError, match="committed"):
+        kitsune.verify_pins(repeat, pins)
