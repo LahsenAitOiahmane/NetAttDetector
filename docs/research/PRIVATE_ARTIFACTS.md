@@ -58,3 +58,9 @@ tested probe behavior, not all-platform/model generalization or real-network per
 The project owner requested complete offline research and selected MIT for code. This protocol
 retains the user's research model privately; it does not change dataset terms, candidate label
 promotion, public-model permissions or the explicitly deferred pilot. No live traffic is captured.
+
+The separately registered [CESNET protocol](CESNET_FROZEN_TEST.md) later extends the envelope
+to recipient-encrypted numeric measurements for local scoring when WSL cannot execute. Its
+distinct payload format, larger bounded envelope, exact-member decompression and separately
+trusted SQLite hash checks do not alter the model-transfer payload's synthetic-only rule.
+Real measurement rows remain private and are never uploaded as plaintext artifacts.

@@ -1,0 +1,947 @@
+{
+  "study_id": "cesnet-cc25-frozen-recall-v1",
+  "source_commit": "cb1c1b788a603985b4f3c884c423a9b0fc8e9d73",
+  "config_sha256": "cb8d32f8308c17ae10b270316493b8602115eef3ef56982454c80cbbbe009fbf",
+  "uv_lock_sha256": "c81938e4bac6227716f9fbb10f57b74748a219f30755eb95a4a68ecaec16e325",
+  "model_sha256": "a504167cf9dbd384c17b192d2f1209714c8f4ef5c27e6b892b64fcbe04e19cc7",
+  "threshold": 0.9999190519374116,
+  "measurements_manifest_sha256": "8afd0c8ba3bcf87b5839d9d0ac0f0c76ec3ef1887448116054de9d08b0f27e06",
+  "measurement_logical_sha256": "f0f4bc858cb17335bf974193afca6670785ec50aaea09e0c613afd828b4f4c94",
+  "summary": {
+    "captures": 32,
+    "assessed_captures": 30,
+    "unassessed_captures": 2,
+    "eligible_positive_flows": 243382,
+    "detected_positive_flows": 149224,
+    "pooled_positive_flow_recall": 0.6131266897305471,
+    "capture_macro_recall": 0.8485955594192106,
+    "capture_bootstrap_95": [
+      0.7229700019183442,
+      0.9554145463592008
+    ],
+    "bootstrap_replicates": 10000,
+    "bootstrap_seed": 20261123,
+    "uncertainty_limitation": "Percentile resampling of observed captures with eligible endpoint-matched flows. Captures can share devices/infrastructure/families; not independent-attack or population uncertainty.",
+    "precision": null,
+    "false_positive_rate": null,
+    "accuracy": null,
+    "balanced_accuracy": null,
+    "reason": "No compatible labeled benign packet captures. Native flow segments are not Zeek UID connections."
+  },
+  "families": {
+    "Gafgyt": {
+      "captures": 10,
+      "assessed_captures": 10,
+      "unassessed_captures": 0,
+      "eligible_positive_flows": 38082,
+      "detected_positive_flows": 22790,
+      "pooled_positive_flow_recall": 0.5984454597972796,
+      "capture_macro_recall": 0.7708150907404636,
+      "capture_bootstrap_95": [
+        0.49478701280575044,
+        0.984804930056198
+      ],
+      "bootstrap_replicates": 10000,
+      "bootstrap_seed": 20261123,
+      "uncertainty_limitation": "Percentile resampling of observed captures with eligible endpoint-matched flows. Captures can share devices/infrastructure/families; not independent-attack or population uncertainty.",
+      "precision": null,
+      "false_positive_rate": null,
+      "accuracy": null,
+      "balanced_accuracy": null,
+      "reason": "No compatible labeled benign packet captures. Native flow segments are not Zeek UID connections."
+    },
+    "Hailbot": {
+      "captures": 5,
+      "assessed_captures": 4,
+      "unassessed_captures": 1,
+      "eligible_positive_flows": 4898,
+      "detected_positive_flows": 4896,
+      "pooled_positive_flow_recall": 0.9995916700694161,
+      "capture_macro_recall": 0.9995452540269549,
+      "capture_bootstrap_95": [
+        0.9990905080539099,
+        1.0
+      ],
+      "bootstrap_replicates": 10000,
+      "bootstrap_seed": 20261123,
+      "uncertainty_limitation": "Percentile resampling of observed captures with eligible endpoint-matched flows. Captures can share devices/infrastructure/families; not independent-attack or population uncertainty.",
+      "precision": null,
+      "false_positive_rate": null,
+      "accuracy": null,
+      "balanced_accuracy": null,
+      "reason": "No compatible labeled benign packet captures. Native flow segments are not Zeek UID connections."
+    },
+    "Kaiji": {
+      "captures": 1,
+      "assessed_captures": 1,
+      "unassessed_captures": 0,
+      "eligible_positive_flows": 72767,
+      "detected_positive_flows": 99,
+      "pooled_positive_flow_recall": 0.0013605068231478555,
+      "capture_macro_recall": 0.0013605068231478555,
+      "capture_bootstrap_95": [
+        0.0013605068231478555,
+        0.0013605068231478555
+      ],
+      "bootstrap_replicates": 10000,
+      "bootstrap_seed": 20261123,
+      "uncertainty_limitation": "Percentile resampling of observed captures with eligible endpoint-matched flows. Captures can share devices/infrastructure/families; not independent-attack or population uncertainty.",
+      "precision": null,
+      "false_positive_rate": null,
+      "accuracy": null,
+      "balanced_accuracy": null,
+      "reason": "No compatible labeled benign packet captures. Native flow segments are not Zeek UID connections."
+    },
+    "Miori": {
+      "captures": 1,
+      "assessed_captures": 1,
+      "unassessed_captures": 0,
+      "eligible_positive_flows": 4951,
+      "detected_positive_flows": 4947,
+      "pooled_positive_flow_recall": 0.9991920824075944,
+      "capture_macro_recall": 0.9991920824075944,
+      "capture_bootstrap_95": [
+        0.9991920824075944,
+        0.9991920824075944
+      ],
+      "bootstrap_replicates": 10000,
+      "bootstrap_seed": 20261123,
+      "uncertainty_limitation": "Percentile resampling of observed captures with eligible endpoint-matched flows. Captures can share devices/infrastructure/families; not independent-attack or population uncertainty.",
+      "precision": null,
+      "false_positive_rate": null,
+      "accuracy": null,
+      "balanced_accuracy": null,
+      "reason": "No compatible labeled benign packet captures. Native flow segments are not Zeek UID connections."
+    },
+    "Mirai": {
+      "captures": 14,
+      "assessed_captures": 13,
+      "unassessed_captures": 1,
+      "eligible_positive_flows": 117492,
+      "detected_positive_flows": 116402,
+      "pooled_positive_flow_recall": 0.9907227726143056,
+      "capture_macro_recall": 0.9795113776368013,
+      "capture_bootstrap_95": [
+        0.9458895630977674,
+        0.998879736273774
+      ],
+      "bootstrap_replicates": 10000,
+      "bootstrap_seed": 20261123,
+      "uncertainty_limitation": "Percentile resampling of observed captures with eligible endpoint-matched flows. Captures can share devices/infrastructure/families; not independent-attack or population uncertainty.",
+      "precision": null,
+      "false_positive_rate": null,
+      "accuracy": null,
+      "balanced_accuracy": null,
+      "reason": "No compatible labeled benign packet captures. Native flow segments are not Zeek UID connections."
+    },
+    "Xorbot": {
+      "captures": 1,
+      "assessed_captures": 1,
+      "unassessed_captures": 0,
+      "eligible_positive_flows": 5192,
+      "detected_positive_flows": 90,
+      "pooled_positive_flow_recall": 0.017334360554699536,
+      "capture_macro_recall": 0.017334360554699536,
+      "capture_bootstrap_95": [
+        0.017334360554699536,
+        0.017334360554699536
+      ],
+      "bootstrap_replicates": 10000,
+      "bootstrap_seed": 20261123,
+      "uncertainty_limitation": "Percentile resampling of observed captures with eligible endpoint-matched flows. Captures can share devices/infrastructure/families; not independent-attack or population uncertainty.",
+      "precision": null,
+      "false_positive_rate": null,
+      "accuracy": null,
+      "balanced_accuracy": null,
+      "reason": "No compatible labeled benign packet captures. Native flow segments are not Zeek UID connections."
+    }
+  },
+  "records": [
+    {
+      "capture_id": "1-u4",
+      "family": "Gafgyt",
+      "exported_flows": 8339,
+      "eligible_positive_flows": 8339,
+      "unknown_flows": 0,
+      "exported_packets": 33793,
+      "eligible_packets": 33793,
+      "warmup_flows": 2,
+      "late_flows": 0,
+      "peak_context_events": 6,
+      "file": {
+        "bytes": 3416480,
+        "sha256": "3e59c0751fb7ff920c1f92a742c6d1277322c9d68d27f7fbaa6296b8c080277c"
+      },
+      "publisher_endpoint_annotated": false,
+      "resources": {
+        "seconds": 1.6484067489999958,
+        "sampled_tree_rss_mib": 140.6796875
+      },
+      "detected_positive_flows": 8339,
+      "missed_positive_flows": 0,
+      "positive_flow_recall": 1.0
+    },
+    {
+      "capture_id": "2-u5",
+      "family": "Mirai",
+      "exported_flows": 23871,
+      "eligible_positive_flows": 23871,
+      "unknown_flows": 0,
+      "exported_packets": 92346,
+      "eligible_packets": 92346,
+      "warmup_flows": 58,
+      "late_flows": 0,
+      "peak_context_events": 85,
+      "file": {
+        "bytes": 8344992,
+        "sha256": "1951d82a75c25472efb616edc9d3da722f12d6baa6cf1a5a63dff20bff8e2258"
+      },
+      "publisher_endpoint_annotated": false,
+      "resources": {
+        "seconds": 4.092473065999997,
+        "sampled_tree_rss_mib": 144.3828125
+      },
+      "detected_positive_flows": 23870,
+      "missed_positive_flows": 1,
+      "positive_flow_recall": 0.9999581081647188
+    },
+    {
+      "capture_id": "3-u6",
+      "family": "Mirai",
+      "exported_flows": 2224,
+      "eligible_positive_flows": 2105,
+      "unknown_flows": 119,
+      "exported_packets": 10767,
+      "eligible_packets": 10644,
+      "warmup_flows": 63,
+      "late_flows": 0,
+      "peak_context_events": 63,
+      "file": {
+        "bytes": 985344,
+        "sha256": "529423538bc521ee7315d7ed75ec3ddadce0621028f53ed7057c9b9d2eddc4ca"
+      },
+      "publisher_endpoint_annotated": false,
+      "resources": {
+        "seconds": 0.4707691830000016,
+        "sampled_tree_rss_mib": 146.49609375
+      },
+      "detected_positive_flows": 2055,
+      "missed_positive_flows": 50,
+      "positive_flow_recall": 0.9762470308788599
+    },
+    {
+      "capture_id": "4-u7",
+      "family": "Mirai",
+      "exported_flows": 1541,
+      "eligible_positive_flows": 1541,
+      "unknown_flows": 0,
+      "exported_packets": 6256,
+      "eligible_packets": 6256,
+      "warmup_flows": 20,
+      "late_flows": 0,
+      "peak_context_events": 20,
+      "file": {
+        "bytes": 565424,
+        "sha256": "dab65466f3575aaf0bcb7b58da686785555ce8d2d172fb472532c7fc6894271b"
+      },
+      "publisher_endpoint_annotated": false,
+      "resources": {
+        "seconds": 0.3198087009999995,
+        "sampled_tree_rss_mib": 146.984375
+      },
+      "detected_positive_flows": 1541,
+      "missed_positive_flows": 0,
+      "positive_flow_recall": 1.0
+    },
+    {
+      "capture_id": "5-u8",
+      "family": "Mirai",
+      "exported_flows": 2088,
+      "eligible_positive_flows": 2088,
+      "unknown_flows": 0,
+      "exported_packets": 10527,
+      "eligible_packets": 10527,
+      "warmup_flows": 2,
+      "late_flows": 0,
+      "peak_context_events": 40,
+      "file": {
+        "bytes": 962528,
+        "sha256": "db74cd343331a61f9d28abd739a959d6b9cb173f63989ab200ca785e7385f5a9"
+      },
+      "publisher_endpoint_annotated": false,
+      "resources": {
+        "seconds": 0.4545306269999969,
+        "sampled_tree_rss_mib": 147.2421875
+      },
+      "detected_positive_flows": 2038,
+      "missed_positive_flows": 50,
+      "positive_flow_recall": 0.9760536398467433
+    },
+    {
+      "capture_id": "6-u8_2",
+      "family": "Kaiji",
+      "exported_flows": 72767,
+      "eligible_positive_flows": 72767,
+      "unknown_flows": 0,
+      "exported_packets": 145787,
+      "eligible_packets": 145787,
+      "warmup_flows": 13,
+      "late_flows": 0,
+      "peak_context_events": 18,
+      "file": {
+        "bytes": 13168432,
+        "sha256": "ce8e3d1eaed5e20511a998755f70a7c9d302c1bfb501692767f7dc260b239104"
+      },
+      "publisher_endpoint_annotated": false,
+      "resources": {
+        "seconds": 10.042580317000002,
+        "sampled_tree_rss_mib": 156.52734375
+      },
+      "detected_positive_flows": 99,
+      "missed_positive_flows": 72668,
+      "positive_flow_recall": 0.0013605068231478555
+    },
+    {
+      "capture_id": "7-u6_3",
+      "family": "Mirai",
+      "exported_flows": 19452,
+      "eligible_positive_flows": 19452,
+      "unknown_flows": 0,
+      "exported_packets": 121308,
+      "eligible_packets": 121308,
+      "warmup_flows": 18,
+      "late_flows": 0,
+      "peak_context_events": 29,
+      "file": {
+        "bytes": 11479412,
+        "sha256": "2bfb93df43f8ea3b0c93da4ba0815840c8e3bfcc2c7235f93503c4871e7cd514"
+      },
+      "publisher_endpoint_annotated": false,
+      "resources": {
+        "seconds": 4.608386012000011,
+        "sampled_tree_rss_mib": 156.703125
+      },
+      "detected_positive_flows": 19452,
+      "missed_positive_flows": 0,
+      "positive_flow_recall": 1.0
+    },
+    {
+      "capture_id": "8-u8_3",
+      "family": "Mirai",
+      "exported_flows": 18787,
+      "eligible_positive_flows": 18787,
+      "unknown_flows": 0,
+      "exported_packets": 116199,
+      "eligible_packets": 116199,
+      "warmup_flows": 22,
+      "late_flows": 0,
+      "peak_context_events": 30,
+      "file": {
+        "bytes": 10927184,
+        "sha256": "ab61b0b265447f159c7af2361e1f88f777c651d08cc2cbf8eff0c3369f7fa186"
+      },
+      "publisher_endpoint_annotated": false,
+      "resources": {
+        "seconds": 4.392820180000001,
+        "sampled_tree_rss_mib": 156.90234375
+      },
+      "detected_positive_flows": 18787,
+      "missed_positive_flows": 0,
+      "positive_flow_recall": 1.0
+    },
+    {
+      "capture_id": "9-u0_0",
+      "family": "Miori",
+      "exported_flows": 4951,
+      "eligible_positive_flows": 4951,
+      "unknown_flows": 0,
+      "exported_packets": 19889,
+      "eligible_packets": 19889,
+      "warmup_flows": 30,
+      "late_flows": 0,
+      "peak_context_events": 30,
+      "file": {
+        "bytes": 1791196,
+        "sha256": "83335d808f5b359ecd2b5db83cd4aaa81e7f6a7ef5d9242c8463f180d72b7a95"
+      },
+      "publisher_endpoint_annotated": false,
+      "resources": {
+        "seconds": 0.9548212839999906,
+        "sampled_tree_rss_mib": 156.79296875
+      },
+      "detected_positive_flows": 4947,
+      "missed_positive_flows": 4,
+      "positive_flow_recall": 0.9991920824075944
+    },
+    {
+      "capture_id": "10-u5_4",
+      "family": "Hailbot",
+      "exported_flows": 4995,
+      "eligible_positive_flows": 1167,
+      "unknown_flows": 3828,
+      "exported_packets": 16024,
+      "eligible_packets": 4294,
+      "warmup_flows": 7,
+      "late_flows": 0,
+      "peak_context_events": 15,
+      "file": {
+        "bytes": 1562296,
+        "sha256": "af9d1ef14a254d3253227dc30ac58adffb06887baa631d60cade60bf970d610d"
+      },
+      "publisher_endpoint_annotated": true,
+      "resources": {
+        "seconds": 0.8983505909999963,
+        "sampled_tree_rss_mib": 156.8203125
+      },
+      "detected_positive_flows": 1167,
+      "missed_positive_flows": 0,
+      "positive_flow_recall": 1.0
+    },
+    {
+      "capture_id": "11-u6_4",
+      "family": "Gafgyt",
+      "exported_flows": 1140,
+      "eligible_positive_flows": 1140,
+      "unknown_flows": 0,
+      "exported_packets": 3462,
+      "eligible_packets": 3462,
+      "warmup_flows": 7,
+      "late_flows": 0,
+      "peak_context_events": 12,
+      "file": {
+        "bytes": 316928,
+        "sha256": "3648a303ca56010c86eded3421d6481d156ef825adc043cd2cecb0f4bd15bede"
+      },
+      "publisher_endpoint_annotated": false,
+      "resources": {
+        "seconds": 0.22208200599999373,
+        "sampled_tree_rss_mib": 156.8046875
+      },
+      "detected_positive_flows": 0,
+      "missed_positive_flows": 1140,
+      "positive_flow_recall": 0.0
+    },
+    {
+      "capture_id": "12-u7_4",
+      "family": "Mirai",
+      "exported_flows": 127,
+      "eligible_positive_flows": 0,
+      "unknown_flows": 127,
+      "exported_packets": 548,
+      "eligible_packets": 0,
+      "warmup_flows": 7,
+      "late_flows": 0,
+      "peak_context_events": 7,
+      "file": {
+        "bytes": 50144,
+        "sha256": "d2699ca8fb3b0c4038fcbf2b5b836d5a2e69b601805539138254d841f1c4418b"
+      },
+      "publisher_endpoint_annotated": false,
+      "resources": {
+        "seconds": 0.04475346799999613,
+        "sampled_tree_rss_mib": 92.6484375
+      },
+      "detected_positive_flows": 0,
+      "missed_positive_flows": 0,
+      "positive_flow_recall": null
+    },
+    {
+      "capture_id": "13-u8_4",
+      "family": "Hailbot",
+      "exported_flows": 1165,
+      "eligible_positive_flows": 1165,
+      "unknown_flows": 0,
+      "exported_packets": 4300,
+      "eligible_packets": 4300,
+      "warmup_flows": 2,
+      "late_flows": 0,
+      "peak_context_events": 3,
+      "file": {
+        "bytes": 391052,
+        "sha256": "88a7f8db12116b4340e199809d59ecca12df8967e015ee97fa45fabe1efeb32e"
+      },
+      "publisher_endpoint_annotated": false,
+      "resources": {
+        "seconds": 0.24295893699999738,
+        "sampled_tree_rss_mib": 156.8203125
+      },
+      "detected_positive_flows": 1164,
+      "missed_positive_flows": 1,
+      "positive_flow_recall": 0.9991416309012876
+    },
+    {
+      "capture_id": "14-u9",
+      "family": "Hailbot",
+      "exported_flows": 1859,
+      "eligible_positive_flows": 1525,
+      "unknown_flows": 334,
+      "exported_packets": 6851,
+      "eligible_packets": 5637,
+      "warmup_flows": 2,
+      "late_flows": 0,
+      "peak_context_events": 5,
+      "file": {
+        "bytes": 624228,
+        "sha256": "f80d6ae12ea585cf0ef7c13b3b95b1b7924763fc2e42b4d07e4056780b09e5ba"
+      },
+      "publisher_endpoint_annotated": true,
+      "resources": {
+        "seconds": 0.36403034900000364,
+        "sampled_tree_rss_mib": 156.8125
+      },
+      "detected_positive_flows": 1525,
+      "missed_positive_flows": 0,
+      "positive_flow_recall": 1.0
+    },
+    {
+      "capture_id": "15-u10",
+      "family": "Mirai",
+      "exported_flows": 13246,
+      "eligible_positive_flows": 3408,
+      "unknown_flows": 9838,
+      "exported_packets": 50138,
+      "eligible_packets": 12897,
+      "warmup_flows": 9,
+      "late_flows": 0,
+      "peak_context_events": 9,
+      "file": {
+        "bytes": 5982472,
+        "sha256": "7da43ca0bc7228218ae070b37cdfa880fe6dcf4914150ae4e97c8354f2caf8d5"
+      },
+      "publisher_endpoint_annotated": true,
+      "resources": {
+        "seconds": 2.418835997000002,
+        "sampled_tree_rss_mib": 156.87890625
+      },
+      "detected_positive_flows": 3408,
+      "missed_positive_flows": 0,
+      "positive_flow_recall": 1.0
+    },
+    {
+      "capture_id": "16-u11",
+      "family": "Gafgyt",
+      "exported_flows": 6396,
+      "eligible_positive_flows": 6396,
+      "unknown_flows": 0,
+      "exported_packets": 21368,
+      "eligible_packets": 21368,
+      "warmup_flows": 10,
+      "late_flows": 0,
+      "peak_context_events": 16,
+      "file": {
+        "bytes": 2249520,
+        "sha256": "470edbcdf359e88201a323ea31d81bfc940992092e7d713a46603b51686c3ff4"
+      },
+      "publisher_endpoint_annotated": false,
+      "resources": {
+        "seconds": 1.132421413000003,
+        "sampled_tree_rss_mib": 156.88671875
+      },
+      "detected_positive_flows": 6396,
+      "missed_positive_flows": 0,
+      "positive_flow_recall": 1.0
+    },
+    {
+      "capture_id": "17-u10_3",
+      "family": "Hailbot",
+      "exported_flows": 3457,
+      "eligible_positive_flows": 1041,
+      "unknown_flows": 2416,
+      "exported_packets": 10858,
+      "eligible_packets": 3564,
+      "warmup_flows": 5,
+      "late_flows": 0,
+      "peak_context_events": 6,
+      "file": {
+        "bytes": 1003840,
+        "sha256": "851cca8e08ebef360e568f45681eed5fb7ea4d96cfb5c462f1e162b830c278e7"
+      },
+      "publisher_endpoint_annotated": true,
+      "resources": {
+        "seconds": 0.5943968719999901,
+        "sampled_tree_rss_mib": 156.81640625
+      },
+      "detected_positive_flows": 1040,
+      "missed_positive_flows": 1,
+      "positive_flow_recall": 0.9990393852065321
+    },
+    {
+      "capture_id": "18-u11_2",
+      "family": "Mirai",
+      "exported_flows": 7358,
+      "eligible_positive_flows": 5204,
+      "unknown_flows": 2154,
+      "exported_packets": 28078,
+      "eligible_packets": 20708,
+      "warmup_flows": 8,
+      "late_flows": 0,
+      "peak_context_events": 15,
+      "file": {
+        "bytes": 2569504,
+        "sha256": "69e4c719ca0c58f559f7736904dd037cb0aacaf426b096db76a3758dfa256896"
+      },
+      "publisher_endpoint_annotated": true,
+      "resources": {
+        "seconds": 1.4105024130000032,
+        "sampled_tree_rss_mib": 156.83203125
+      },
+      "detected_positive_flows": 5179,
+      "missed_positive_flows": 25,
+      "positive_flow_recall": 0.995196003074558
+    },
+    {
+      "capture_id": "19-u11_3",
+      "family": "Mirai",
+      "exported_flows": 4439,
+      "eligible_positive_flows": 1111,
+      "unknown_flows": 3328,
+      "exported_packets": 14695,
+      "eligible_packets": 3575,
+      "warmup_flows": 6,
+      "late_flows": 0,
+      "peak_context_events": 9,
+      "file": {
+        "bytes": 1360920,
+        "sha256": "b8335f8b5c012ec0ecc02f6b54ccb46d3b8d6a60ed7019ff1e87c6edfa298c2e"
+      },
+      "publisher_endpoint_annotated": true,
+      "resources": {
+        "seconds": 0.7966014120000011,
+        "sampled_tree_rss_mib": 156.8359375
+      },
+      "detected_positive_flows": 1111,
+      "missed_positive_flows": 0,
+      "positive_flow_recall": 1.0
+    },
+    {
+      "capture_id": "20-u9_4",
+      "family": "Gafgyt",
+      "exported_flows": 932,
+      "eligible_positive_flows": 932,
+      "unknown_flows": 0,
+      "exported_packets": 3738,
+      "eligible_packets": 3738,
+      "warmup_flows": 6,
+      "late_flows": 0,
+      "peak_context_events": 6,
+      "file": {
+        "bytes": 337272,
+        "sha256": "836f1caf839b236f6962a3850041cf06547da19ec0a2eb14fe973670978d86fb"
+      },
+      "publisher_endpoint_annotated": false,
+      "resources": {
+        "seconds": 0.20434308499999077,
+        "sampled_tree_rss_mib": 156.83203125
+      },
+      "detected_positive_flows": 931,
+      "missed_positive_flows": 1,
+      "positive_flow_recall": 0.9989270386266095
+    },
+    {
+      "capture_id": "21-u10_4",
+      "family": "Mirai",
+      "exported_flows": 19614,
+      "eligible_positive_flows": 19614,
+      "unknown_flows": 0,
+      "exported_packets": 77691,
+      "eligible_packets": 77691,
+      "warmup_flows": 36,
+      "late_flows": 0,
+      "peak_context_events": 161,
+      "file": {
+        "bytes": 7022388,
+        "sha256": "3217d70d1d90ef32c83cc060e22e1420fef07689d949bc0cf351febe25ef5d63"
+      },
+      "publisher_endpoint_annotated": false,
+      "resources": {
+        "seconds": 3.626941716999994,
+        "sampled_tree_rss_mib": 156.8984375
+      },
+      "detected_positive_flows": 19610,
+      "missed_positive_flows": 4,
+      "positive_flow_recall": 0.9997960640358927
+    },
+    {
+      "capture_id": "22-u11_5",
+      "family": "Gafgyt",
+      "exported_flows": 2658,
+      "eligible_positive_flows": 2658,
+      "unknown_flows": 0,
+      "exported_packets": 10640,
+      "eligible_packets": 10640,
+      "warmup_flows": 40,
+      "late_flows": 0,
+      "peak_context_events": 40,
+      "file": {
+        "bytes": 961568,
+        "sha256": "04461da9df37eaefd62c9c64a9d03e46afc77652b07ea5ed593d295e850dda4f"
+      },
+      "publisher_endpoint_annotated": false,
+      "resources": {
+        "seconds": 0.5420598799999965,
+        "sampled_tree_rss_mib": 156.83984375
+      },
+      "detected_positive_flows": 2657,
+      "missed_positive_flows": 1,
+      "positive_flow_recall": 0.9996237772761475
+    },
+    {
+      "capture_id": "23-u12_5",
+      "family": "Gafgyt",
+      "exported_flows": 246,
+      "eligible_positive_flows": 246,
+      "unknown_flows": 0,
+      "exported_packets": 986,
+      "eligible_packets": 986,
+      "warmup_flows": 1,
+      "late_flows": 0,
+      "peak_context_events": 3,
+      "file": {
+        "bytes": 89376,
+        "sha256": "5f0430b61351680ab7c5bbe2a3e2576b5a1c0624eea908b6d83c7b7f634729ac"
+      },
+      "publisher_endpoint_annotated": false,
+      "resources": {
+        "seconds": 0.06881086699999628,
+        "sampled_tree_rss_mib": 156.828125
+      },
+      "detected_positive_flows": 240,
+      "missed_positive_flows": 6,
+      "positive_flow_recall": 0.975609756097561
+    },
+    {
+      "capture_id": "24-u12_6",
+      "family": "Mirai",
+      "exported_flows": 9049,
+      "eligible_positive_flows": 9049,
+      "unknown_flows": 0,
+      "exported_packets": 36415,
+      "eligible_packets": 36415,
+      "warmup_flows": 39,
+      "late_flows": 0,
+      "peak_context_events": 39,
+      "file": {
+        "bytes": 3280740,
+        "sha256": "243c49dd5a6174e67ba860114c8465ef3a8c0843fbed0592c687c37f5231e69c"
+      },
+      "publisher_endpoint_annotated": false,
+      "resources": {
+        "seconds": 1.7950780759999958,
+        "sampled_tree_rss_mib": 156.859375
+      },
+      "detected_positive_flows": 9048,
+      "missed_positive_flows": 1,
+      "positive_flow_recall": 0.9998894905514422
+    },
+    {
+      "capture_id": "25-u9_7",
+      "family": "Xorbot",
+      "exported_flows": 5192,
+      "eligible_positive_flows": 5192,
+      "unknown_flows": 0,
+      "exported_packets": 15952,
+      "eligible_packets": 15952,
+      "warmup_flows": 2,
+      "late_flows": 0,
+      "peak_context_events": 6,
+      "file": {
+        "bytes": 2570508,
+        "sha256": "e1c29aa31ab052e736a15297a3281b8bf0174efb800b97a6157b95c05b174c4e"
+      },
+      "publisher_endpoint_annotated": false,
+      "resources": {
+        "seconds": 0.9041381070000085,
+        "sampled_tree_rss_mib": 156.9296875
+      },
+      "detected_positive_flows": 90,
+      "missed_positive_flows": 5102,
+      "positive_flow_recall": 0.017334360554699536
+    },
+    {
+      "capture_id": "26-u10_7",
+      "family": "Gafgyt",
+      "exported_flows": 2948,
+      "eligible_positive_flows": 2948,
+      "unknown_flows": 0,
+      "exported_packets": 9892,
+      "eligible_packets": 9892,
+      "warmup_flows": 6,
+      "late_flows": 0,
+      "peak_context_events": 15,
+      "file": {
+        "bytes": 906608,
+        "sha256": "15605cafecddd305c9ddf7fa1966fce31147b7b7115c629d932b5b73ee8d5507"
+      },
+      "publisher_endpoint_annotated": false,
+      "resources": {
+        "seconds": 0.5425629570000012,
+        "sampled_tree_rss_mib": 156.859375
+      },
+      "detected_positive_flows": 2275,
+      "missed_positive_flows": 673,
+      "positive_flow_recall": 0.7717096336499322
+    },
+    {
+      "capture_id": "27-u12_7",
+      "family": "Hailbot",
+      "exported_flows": 96,
+      "eligible_positive_flows": 0,
+      "unknown_flows": 96,
+      "exported_packets": 388,
+      "eligible_packets": 0,
+      "warmup_flows": 3,
+      "late_flows": 0,
+      "peak_context_events": 3,
+      "file": {
+        "bytes": 35524,
+        "sha256": "1212271fef783b5fb7abf6bf178f3d3a6dd6d37fbd224e3a2eaa485469e99592"
+      },
+      "publisher_endpoint_annotated": false,
+      "resources": {
+        "seconds": 0.03614344900000788,
+        "sampled_tree_rss_mib": 92.66796875
+      },
+      "detected_positive_flows": 0,
+      "missed_positive_flows": 0,
+      "positive_flow_recall": null
+    },
+    {
+      "capture_id": "28-u9_8",
+      "family": "Gafgyt",
+      "exported_flows": 13448,
+      "eligible_positive_flows": 13448,
+      "unknown_flows": 0,
+      "exported_packets": 53901,
+      "eligible_packets": 53901,
+      "warmup_flows": 6,
+      "late_flows": 0,
+      "peak_context_events": 13,
+      "file": {
+        "bytes": 4886604,
+        "sha256": "f0d39615f6dcc38ded95325256d83d8a2314c745e54f269bb9d7a3d3232b89f1"
+      },
+      "publisher_endpoint_annotated": false,
+      "resources": {
+        "seconds": 2.5210584969999985,
+        "sampled_tree_rss_mib": 157.00390625
+      },
+      "detected_positive_flows": 0,
+      "missed_positive_flows": 13448,
+      "positive_flow_recall": 0.0
+    },
+    {
+      "capture_id": "29-u10_8",
+      "family": "Mirai",
+      "exported_flows": 6819,
+      "eligible_positive_flows": 6819,
+      "unknown_flows": 0,
+      "exported_packets": 26103,
+      "eligible_packets": 26103,
+      "warmup_flows": 10,
+      "late_flows": 0,
+      "peak_context_events": 10,
+      "file": {
+        "bytes": 2365552,
+        "sha256": "c6103da56010fd21b822b7c7431e4a68aaa1527fc2689f511a2f42eb1cfe358d"
+      },
+      "publisher_endpoint_annotated": false,
+      "resources": {
+        "seconds": 1.3408931449999955,
+        "sampled_tree_rss_mib": 156.8671875
+      },
+      "detected_positive_flows": 6789,
+      "missed_positive_flows": 30,
+      "positive_flow_recall": 0.9956005279366476
+    },
+    {
+      "capture_id": "30-u11_8",
+      "family": "Gafgyt",
+      "exported_flows": 75,
+      "eligible_positive_flows": 75,
+      "unknown_flows": 0,
+      "exported_packets": 298,
+      "eligible_packets": 298,
+      "warmup_flows": 2,
+      "late_flows": 0,
+      "peak_context_events": 2,
+      "file": {
+        "bytes": 27300,
+        "sha256": "b5873a7d0e163a3019f538f9cdd916ca15767e5098e8895b95bde1a6ca8ed262"
+      },
+      "publisher_endpoint_annotated": false,
+      "resources": {
+        "seconds": 0.03452624900000956,
+        "sampled_tree_rss_mib": 92.671875
+      },
+      "detected_positive_flows": 73,
+      "missed_positive_flows": 2,
+      "positive_flow_recall": 0.9733333333333334
+    },
+    {
+      "capture_id": "31-u9_9",
+      "family": "Gafgyt",
+      "exported_flows": 1900,
+      "eligible_positive_flows": 1900,
+      "unknown_flows": 0,
+      "exported_packets": 7697,
+      "eligible_packets": 7697,
+      "warmup_flows": 2,
+      "late_flows": 0,
+      "peak_context_events": 5,
+      "file": {
+        "bytes": 696688,
+        "sha256": "00292f34433dc388baff5851323451f748c84448ec3bd05fb3e22e47367d30c2"
+      },
+      "publisher_endpoint_annotated": false,
+      "resources": {
+        "seconds": 0.3840142220000047,
+        "sampled_tree_rss_mib": 156.9375
+      },
+      "detected_positive_flows": 1879,
+      "missed_positive_flows": 21,
+      "positive_flow_recall": 0.9889473684210527
+    },
+    {
+      "capture_id": "32-u12_9",
+      "family": "Mirai",
+      "exported_flows": 4443,
+      "eligible_positive_flows": 4443,
+      "unknown_flows": 0,
+      "exported_packets": 15634,
+      "eligible_packets": 15634,
+      "warmup_flows": 2,
+      "late_flows": 0,
+      "peak_context_events": 36,
+      "file": {
+        "bytes": 1435356,
+        "sha256": "ad5114fdefd42d389ada8154037ea097ac66e0443504f4591f58f921d7732d92"
+      },
+      "publisher_endpoint_annotated": false,
+      "resources": {
+        "seconds": 0.8470269129999934,
+        "sampled_tree_rss_mib": 156.890625
+      },
+      "detected_positive_flows": 3514,
+      "missed_positive_flows": 929,
+      "positive_flow_recall": 0.7909070447895566
+    }
+  ],
+  "versions": {
+    "numpy": "2.5.4",
+    "pandas": "3.1.0",
+    "scikit-learn": "1.9.1",
+    "joblib": "1.6.0"
+  },
+  "platform": "Windows",
+  "resources": {
+    "seconds": 7.73847970017232,
+    "sampled_tree_rss_mib": 162.62890625,
+    "scope": "Bounded scoring and count reconciliation only; excludes imports, input/hash verification, model load and bootstrap. Sampled RSS is not an OS-enforced limit."
+  },
+  "source_now_observed": true,
+  "model_fits": 0,
+  "threshold_changed": false,
+  "deployment_authorized": false,
+  "development_research_screen_passed": false,
+  "limitations": "Positive-only endpoint-matched native segment recall. Unknown endpoint flows are retained and never called benign. No precision/FPR or production acceptance. Independent acquisition source does not establish device/infrastructure independence."
+}

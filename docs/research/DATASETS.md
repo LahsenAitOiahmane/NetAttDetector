@@ -51,6 +51,16 @@ dataset to it fails when required fields are absent; renaming columns cannot mak
 feature definitions equivalent. We intentionally do not execute malware samples or download
 large raw-binary/PCAP archives to improve a tabular model.
 
+On 23 November 2026 the separate [CESNET-CC25 raw C&C record](https://zenodo.org/records/16752462)
+was registered for a frozen positive-only test, then its 43,421,271-byte archive was acquired
+with verified publisher MD5. It supplies 32 unsplit released captures totaling 92,367,380 bytes
+after excluding metadata and overlapping split copies. Its six botnet families extend the
+diagnostic source coverage; this does not make IoT-23-trained models robust automatically.
+The publisher's 194-million benign IPFIX flows are in a separate 14.9 GB archive and are **not
+downloaded or compatible native inputs**. Do not imply a large mixed-class evaluation from
+the small raw archive. The [registered test](CESNET_FROZEN_TEST.md) retains this distinction
+and CC-BY-4.0 attribution. No botnet binaries are acquired or executed.
+
 ## Acquisition policy
 
 1. Follow the permanent publisher record, inspect terms, feature definitions and expected size.

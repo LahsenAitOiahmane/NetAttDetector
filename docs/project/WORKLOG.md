@@ -636,6 +636,47 @@ protocols, runbook, all-candidate report, freeze and aggregate Windows evidence 
 Kali WSL was found working; Ubuntu still has the previously recorded missing VHD. No system
 repair, live capture, pilot or deployment was performed. MIT and offline-only choices persist.
 
+## 23 November 2026 — Independent frozen C&C test
+
+Confirmed PR #16 merged and resumed from clean `main`. Registered NAD-054/source role at
+`71178dc` before acquisition. Downloaded only the 43.4 MB CESNET-CC25 raw C&C archive and
+verified publisher size/MD5; froze the complete unsplit member inventory at `3aac817` before
+measurement. It contains 32 released captures / 92.4 MB, excluding AppleDouble metadata and
+overlapping split copies. Some complete released files are publisher-filtered. No malware
+binaries or 14.9 GB incompatible benign IPFIX archive were acquired.
+
+Kali WSL finished the locked dependency install but then could not launch commands due to
+filesystem I/O errors. Existing measurement/test handles exited with that error; no local
+fixture or real export was claimed. Used GitHub Linux run `45237321471` at `5c313b3` instead,
+without system repair/restart. All 235 fixture values pass. Exported 265,622 flow segments,
+243,382 eligible under exact registered C&C endpoints; 22,240 remain unknown. Two captures
+have no endpoint matches and remain unassessed. Causal state includes every supported flow;
+446 warm-up segments remain, no late starts, peak cached events 161.
+
+Extended the authenticated envelope narrowly to numeric SQLite measurements, with explicit
+size/member bounds and the separately committed manifest/hash verified before SQLite opening.
+Only ciphertext and aggregates were uploaded; the local key/model never entered GitHub.
+Input manifest frozen at `cb1c1b7` before private Windows recovery and scoring. The previously
+frozen NAD-053 model and threshold were checked and never fitted/changed. It detects 149,224
+of 243,382 eligible segments (61.31% pooled recall); capture macro recall is 84.86%, conditional
+capture-bootstrap interval 72.30–95.54%. Kaiji recall 0.14%, Xorbot 1.73%, Mirai 99.07%.
+Two Gafgyt captures have zero detections. No compatible benign set means precision/FPR and
+production acceptance remain unassessed. The model's development rejection remains in force.
+
+An independent post-score PCAPNG block audit reconciles all 972,529 released packet records
+to exported counters in every capture, with no truncated packet records. Publisher table
+counts differ in samples 23/25/27, particularly Xorbot 15,952 released versus 156,215 listed.
+Retained discrepancies without changing labels/scores or implying missing traffic was observed.
+New parser tests cover byte-order changes, known counts, truncation, interfaces and bounds.
+
+Per-capture export intervals total 47.96s, maximum sampled tree RSS 157.0 MiB; bounded Windows
+scoring 7.74s / 162.6 MiB, with precise exclusions documented. CI Python 3.11/3.13 each passed
+231 with seven skips for the scoring implementation; the Linux focused suite passed 57.
+Retained complete aggregates, a visually checked family chart, runbook, source attribution and
+source role changed to observed evaluation. CESNET cannot be a fresh holdout in later tuning.
+Next NAD-055 addresses benign/missing-family development coverage and fresh evaluation roles.
+The pilot remains explicitly deferred; no live capture, blocking or deployment was enabled.
+
 ## Outstanding work
 
 This work does not complete the production roadmap. Global audits cover the development inputs;

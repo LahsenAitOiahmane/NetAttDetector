@@ -1,0 +1,145 @@
+{
+  "study_id": "cesnet-cc25-frozen-recall-v1",
+  "config_sha256": "cb8d32f8308c17ae10b270316493b8602115eef3ef56982454c80cbbbe009fbf",
+  "archive": {
+    "bytes": 43421271,
+    "publisher_md5_verified": true,
+    "sha256": "0df3c3f506ca49b5e3e0c74baa10251c02fa00ab2dd74ca428cb3d49a789f0da"
+  },
+  "inventory": {
+    "members": 260,
+    "declared_uncompressed_bytes": 184780425,
+    "selected": {
+      "9-u0_0": {
+        "member": "botnet/9-u0_0/u0_0.pcapng",
+        "bytes": 1791196
+      },
+      "8-u8_3": {
+        "member": "botnet/8-u8_3/u8_3.pcapng",
+        "bytes": 10927184
+      },
+      "7-u6_3": {
+        "member": "botnet/7-u6_3/u6_3.pcapng",
+        "bytes": 11479412
+      },
+      "6-u8_2": {
+        "member": "botnet/6-u8_2/u8_2.pcapng",
+        "bytes": 13168432
+      },
+      "5-u8": {
+        "member": "botnet/5-u8/u8.pcapng",
+        "bytes": 962528
+      },
+      "4-u7": {
+        "member": "botnet/4-u7/u7.pcapng",
+        "bytes": 565424
+      },
+      "32-u12_9": {
+        "member": "botnet/32-u12_9/u12_9-filtered.pcapng",
+        "bytes": 1435356
+      },
+      "31-u9_9": {
+        "member": "botnet/31-u9_9/u9_9-filtered.pcapng",
+        "bytes": 696688
+      },
+      "30-u11_8": {
+        "member": "botnet/30-u11_8/u11_8-filtered.pcapng",
+        "bytes": 27300
+      },
+      "3-u6": {
+        "member": "botnet/3-u6/u6.pcapng",
+        "bytes": 985344
+      },
+      "29-u10_8": {
+        "member": "botnet/29-u10_8/u10_8-filtered.pcapng",
+        "bytes": 2365552
+      },
+      "28-u9_8": {
+        "member": "botnet/28-u9_8/u9_8-filtered.pcapng",
+        "bytes": 4886604
+      },
+      "27-u12_7": {
+        "member": "botnet/27-u12_7/u12_7-filtered.pcapng",
+        "bytes": 35524
+      },
+      "26-u10_7": {
+        "member": "botnet/26-u10_7/u10_7-filtered.pcapng",
+        "bytes": 906608
+      },
+      "25-u9_7": {
+        "member": "botnet/25-u9_7/u9_7-filtered.pcapng",
+        "bytes": 2570508
+      },
+      "24-u12_6": {
+        "member": "botnet/24-u12_6/u12_6-filtered.pcapng",
+        "bytes": 3280740
+      },
+      "23-u12_5": {
+        "member": "botnet/23-u12_5/u12_5-filtered.pcapng",
+        "bytes": 89376
+      },
+      "22-u11_5": {
+        "member": "botnet/22-u11_5/u11_5-filtered.pcapng",
+        "bytes": 961568
+      },
+      "21-u10_4": {
+        "member": "botnet/21-u10_4/u10_4-filtered.pcapng",
+        "bytes": 7022388
+      },
+      "20-u9_4": {
+        "member": "botnet/20-u9_4/u9_4-filtered.pcapng",
+        "bytes": 337272
+      },
+      "2-u5": {
+        "member": "botnet/2-u5/u5.pcapng",
+        "bytes": 8344992
+      },
+      "19-u11_3": {
+        "member": "botnet/19-u11_3/u11_3.pcapng",
+        "bytes": 1360920
+      },
+      "18-u11_2": {
+        "member": "botnet/18-u11_2/u11_2.pcapng",
+        "bytes": 2569504
+      },
+      "17-u10_3": {
+        "member": "botnet/17-u10_3/u10_3.pcapng",
+        "bytes": 1003840
+      },
+      "16-u11": {
+        "member": "botnet/16-u11/u11.pcapng",
+        "bytes": 2249520
+      },
+      "15-u10": {
+        "member": "botnet/15-u10/u10.pcapng",
+        "bytes": 5982472
+      },
+      "14-u9": {
+        "member": "botnet/14-u9/u9.pcapng",
+        "bytes": 624228
+      },
+      "13-u8_4": {
+        "member": "botnet/13-u8_4/u8_4.pcapng",
+        "bytes": 391052
+      },
+      "12-u7_4": {
+        "member": "botnet/12-u7_4/u7_4.pcapng",
+        "bytes": 50144
+      },
+      "11-u6_4": {
+        "member": "botnet/11-u6_4/u6_4.pcapng",
+        "bytes": 316928
+      },
+      "10-u5_4": {
+        "member": "botnet/10-u5_4/u5_4.pcapng",
+        "bytes": 1562296
+      },
+      "1-u4": {
+        "member": "botnet/1-u4/u4.pcapng",
+        "bytes": 3416480
+      }
+    }
+  },
+  "training_authorized": false,
+  "scoring_started": false
+}

@@ -3,7 +3,10 @@
 CPU-conscious network intrusion detection research, rebuilt from the 2024 prototype with
 bounded data processing, measured flow contracts and reproducible experiments.
 
-**Current stage: offline research; no detector qualifies for deployment.** The latest
+**Current stage: offline research; no detector qualifies for deployment.** The independent
+[CESNET C&C test](reports/CESNET_FROZEN_TEST.md) detects 61.31% of eligible positive flow
+segments, with severe Kaiji/Xorbot failures and no compatible benign false-positive estimate.
+The latest development
 [statistical diagnostic](reports/STATISTICAL_STUDY.md) reaches 98.89% connection precision and
 99.44% recall on its accepted validation subset, but its **4.04% benign FPR** fails the 0.5%
 research screen. DDoS detection improves to 75/114 accepted UIDs, while label linkage covers
@@ -37,6 +40,7 @@ See the [ordered backlog](docs/project/ROADMAP.md).
 | [Input information bound](reports/INFORMATION_BOUND.md) | No-port validation ceiling 60.71% at 9 benign flags; even an optimistic relaxation needs 39 flags for 80% recall |
 | [Causal context](reports/CAUSAL_CONTEXT.md) | 235 fixture values, every flow preserved/replayed, 300 independent SQL snapshots and substantially fewer input conflicts |
 | [Context models](reports/CONTEXT_STUDY.md) | Fifteen fixed-thread fits, no qualifying candidate; statistics-only control remains selected, with private encrypted retention |
+| [Independent C&C test](reports/CESNET_FROZEN_TEST.md) | 32 released captures, 265,622 native segments; 61.31% recall on 243,382 endpoint-matched positives, with family failures and unknown coverage retained |
 
 Native contracts (`nfstream-core-v1`, `nfstream-statistical-v1`, `nfstream-context-v1`) are separate from the historical
 UQ models. They are not column aliases. Addresses, labels, capture IDs and timestamps stay out

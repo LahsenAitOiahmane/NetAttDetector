@@ -1,0 +1,45 @@
+name: Frozen CESNET measurement preparation
+
+on:
+  workflow_call:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  measurement:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    env:
+      OMP_NUM_THREADS: '1'
+      OPENBLAS_NUM_THREADS: '1'
+      MKL_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: '3.13'
+      - uses: astral-sh/setup-uv@68559e99cc807c1eb7e9238fd43a15bba460eec2 # v10.3.3
+        with:
+          version: '0.12.17'
+          enable-cache: true
+      - run: uv sync --frozen --extra dev --extra measurement --extra artifacts
+      - run: uv run --no-sync pytest tests/test_cesnet.py tests/test_private_artifacts.py tests/test_causal_context.py tests/test_statistical.py tests/test_measurement.py
+      - run: uv run --no-sync python scripts/research/run_cesnet_test.py acquire
+      - run: uv run --no-sync python scripts/research/run_cesnet_test.py prepare
+      - run: uv run --no-sync python scripts/research/run_cesnet_test.py seal --output artifacts/cesnet-measurements.nadenc
+      - name: Retain aggregates and recipient-encrypted numeric measurements
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: cesnet-measurements-${{ github.run_id }}
+          path: |
+            data/raw/cesnet-cc25/acquisition.json
+            data/processed/cesnet-cc25/fixture.json
+            data/processed/cesnet-cc25/manifest.json
+            data/processed/cesnet-cc25/progress.json
+            artifacts/cesnet-measurements.nadenc
+          retention-days: 30
