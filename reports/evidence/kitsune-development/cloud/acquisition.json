@@ -1,0 +1,37 @@
+{
+  "profile_id": "kitsune-mirai-development-v1",
+  "source_role": "development",
+  "config_sha256": "1673ba45d40fb345c8a9ec7e24a480f263926c97374897b1feeda61ea42efc9e",
+  "files": [
+    {
+      "bytes": 75075844,
+      "sha256": "3bebe40dbf24546be36880f89908e315f8f858c8256aa00de0b3bbab8c3c69e6",
+      "container": "raw",
+      "publisher_checksum_verified": false,
+      "id": "pcap",
+      "source_name": "Mirai Botnet/Mirai_pcap.pcap",
+      "local_name": "Mirai_pcap.pcap",
+      "transfer_bytes": 75075844,
+      "transfer_sha256": "3bebe40dbf24546be36880f89908e315f8f858c8256aa00de0b3bbab8c3c69e6"
+    },
+    {
+      "bytes": 2292409,
+      "sha256": "190d5cc70c35e11000f98f5e508d0d5e50eed82c0ea3acd1abefda8d18a95817",
+      "container": "raw",
+      "publisher_checksum_verified": false,
+      "id": "labels",
+      "source_name": "Mirai Botnet/mirai_labels.csv",
+      "local_name": "mirai_labels.csv",
+      "transfer_bytes": 2292409,
+      "transfer_sha256": "190d5cc70c35e11000f98f5e508d0d5e50eed82c0ea3acd1abefda8d18a95817"
+    }
+  ],
+  "resources": {
+    "seconds": 2.313974205000001,
+    "sampled_rss_mib": 28.8125
+  },
+  "publisher_checksum_verified": false,
+  "training_authorized": false,
+  "deployment_authorized": false,
+  "scope": "Complete bounded author-mirror originals. Observed hashes, not publisher-authenticated checksums. No packet-feature CSV or whole collection."
+}

@@ -1,0 +1,780 @@
+{
+  "records": [
+    {
+      "capture_id": "1-u4",
+      "audit": {
+        "bytes": 3416480,
+        "sha256": "3e59c0751fb7ff920c1f92a742c6d1277322c9d68d27f7fbaa6296b8c080277c",
+        "packet_records": 33793,
+        "truncated_packet_records": 0,
+        "captured_packet_bytes": 2275720,
+        "original_packet_bytes": 2275720,
+        "linktypes": [
+          1
+        ],
+        "block_types": {
+          "1": 1,
+          "5": 1,
+          "6": 33793,
+          "168627466": 1
+        }
+      },
+      "exported_packets": 33793,
+      "all_packet_records_accounted": true,
+      "publisher_cc_packets": 33793,
+      "publisher_count_difference": 0
+    },
+    {
+      "capture_id": "2-u5",
+      "audit": {
+        "bytes": 8344992,
+        "sha256": "1951d82a75c25472efb616edc9d3da722f12d6baa6cf1a5a63dff20bff8e2258",
+        "packet_records": 92346,
+        "truncated_packet_records": 0,
+        "captured_packet_bytes": 5338430,
+        "original_packet_bytes": 5338430,
+        "linktypes": [
+          1
+        ],
+        "block_types": {
+          "1": 1,
+          "5": 1,
+          "6": 92346,
+          "168627466": 1
+        }
+      },
+      "exported_packets": 92346,
+      "all_packet_records_accounted": true,
+      "publisher_cc_packets": 92346,
+      "publisher_count_difference": 0
+    },
+    {
+      "capture_id": "3-u6",
+      "audit": {
+        "bytes": 985344,
+        "sha256": "529423538bc521ee7315d7ed75ec3ddadce0621028f53ed7057c9b9d2eddc4ca",
+        "packet_records": 10767,
+        "truncated_packet_records": 0,
+        "captured_packet_bytes": 632024,
+        "original_packet_bytes": 632024,
+        "linktypes": [
+          1
+        ],
+        "block_types": {
+          "1": 1,
+          "5": 1,
+          "6": 10767,
+          "168627466": 1
+        }
+      },
+      "exported_packets": 10767,
+      "all_packet_records_accounted": true,
+      "publisher_cc_packets": 10767,
+      "publisher_count_difference": 0
+    },
+    {
+      "capture_id": "4-u7",
+      "audit": {
+        "bytes": 565424,
+        "sha256": "dab65466f3575aaf0bcb7b58da686785555ce8d2d172fb472532c7fc6894271b",
+        "packet_records": 6256,
+        "truncated_packet_records": 0,
+        "captured_packet_bytes": 361577,
+        "original_packet_bytes": 361577,
+        "linktypes": [
+          1
+        ],
+        "block_types": {
+          "1": 1,
+          "5": 1,
+          "6": 6256,
+          "168627466": 1
+        }
+      },
+      "exported_packets": 6256,
+      "all_packet_records_accounted": true,
+      "publisher_cc_packets": 6256,
+      "publisher_count_difference": 0
+    },
+    {
+      "capture_id": "5-u8",
+      "audit": {
+        "bytes": 962528,
+        "sha256": "db74cd343331a61f9d28abd739a959d6b9cb173f63989ab200ca785e7385f5a9",
+        "packet_records": 10527,
+        "truncated_packet_records": 0,
+        "captured_packet_bytes": 617085,
+        "original_packet_bytes": 617085,
+        "linktypes": [
+          1
+        ],
+        "block_types": {
+          "1": 1,
+          "5": 1,
+          "6": 10527,
+          "168627466": 1
+        }
+      },
+      "exported_packets": 10527,
+      "all_packet_records_accounted": true,
+      "publisher_cc_packets": 10527,
+      "publisher_count_difference": 0
+    },
+    {
+      "capture_id": "6-u8_2",
+      "audit": {
+        "bytes": 13168432,
+        "sha256": "ce8e3d1eaed5e20511a998755f70a7c9d302c1bfb501692767f7dc260b239104",
+        "packet_records": 145787,
+        "truncated_packet_records": 0,
+        "captured_packet_bytes": 8357138,
+        "original_packet_bytes": 8357138,
+        "linktypes": [
+          1
+        ],
+        "block_types": {
+          "1": 1,
+          "5": 1,
+          "6": 145787,
+          "168627466": 1
+        }
+      },
+      "exported_packets": 145787,
+      "all_packet_records_accounted": true,
+      "publisher_cc_packets": 145787,
+      "publisher_count_difference": 0
+    },
+    {
+      "capture_id": "7-u6_3",
+      "audit": {
+        "bytes": 11479412,
+        "sha256": "2bfb93df43f8ea3b0c93da4ba0815840c8e3bfcc2c7235f93503c4871e7cd514",
+        "packet_records": 121308,
+        "truncated_packet_records": 0,
+        "captured_packet_bytes": 7458703,
+        "original_packet_bytes": 7458703,
+        "linktypes": [
+          1
+        ],
+        "block_types": {
+          "1": 1,
+          "5": 1,
+          "6": 121308,
+          "168627466": 1
+        }
+      },
+      "exported_packets": 121308,
+      "all_packet_records_accounted": true,
+      "publisher_cc_packets": 121308,
+      "publisher_count_difference": 0
+    },
+    {
+      "capture_id": "8-u8_3",
+      "audit": {
+        "bytes": 10927184,
+        "sha256": "ab61b0b265447f159c7af2361e1f88f777c651d08cc2cbf8eff0c3369f7fa186",
+        "packet_records": 116199,
+        "truncated_packet_records": 0,
+        "captured_packet_bytes": 7125174,
+        "original_packet_bytes": 7125174,
+        "linktypes": [
+          1
+        ],
+        "block_types": {
+          "1": 1,
+          "5": 1,
+          "6": 116199,
+          "168627466": 1
+        }
+      },
+      "exported_packets": 116199,
+      "all_packet_records_accounted": true,
+      "publisher_cc_packets": 116199,
+      "publisher_count_difference": 0
+    },
+    {
+      "capture_id": "9-u0_0",
+      "audit": {
+        "bytes": 1791196,
+        "sha256": "83335d808f5b359ecd2b5db83cd4aaa81e7f6a7ef5d9242c8463f180d72b7a95",
+        "packet_records": 19889,
+        "truncated_packet_records": 0,
+        "captured_packet_bytes": 1144291,
+        "original_packet_bytes": 1144291,
+        "linktypes": [
+          1
+        ],
+        "block_types": {
+          "1": 1,
+          "5": 1,
+          "6": 19889,
+          "168627466": 1
+        }
+      },
+      "exported_packets": 19889,
+      "all_packet_records_accounted": true,
+      "publisher_cc_packets": 19889,
+      "publisher_count_difference": 0
+    },
+    {
+      "capture_id": "10-u5_4",
+      "audit": {
+        "bytes": 1562296,
+        "sha256": "af9d1ef14a254d3253227dc30ac58adffb06887baa631d60cade60bf970d610d",
+        "packet_records": 16024,
+        "truncated_packet_records": 0,
+        "captured_packet_bytes": 1031621,
+        "original_packet_bytes": 1031621,
+        "linktypes": [
+          1
+        ],
+        "block_types": {
+          "1": 1,
+          "5": 1,
+          "6": 16024,
+          "168627466": 1
+        }
+      },
+      "exported_packets": 16024,
+      "all_packet_records_accounted": true,
+      "publisher_cc_packets": 16024,
+      "publisher_count_difference": 0
+    },
+    {
+      "capture_id": "11-u6_4",
+      "audit": {
+        "bytes": 316928,
+        "sha256": "3648a303ca56010c86eded3421d6481d156ef825adc043cd2cecb0f4bd15bede",
+        "packet_records": 3462,
+        "truncated_packet_records": 0,
+        "captured_packet_bytes": 203409,
+        "original_packet_bytes": 203409,
+        "linktypes": [
+          1
+        ],
+        "block_types": {
+          "1": 1,
+          "5": 1,
+          "6": 3462,
+          "168627466": 1
+        }
+      },
+      "exported_packets": 3462,
+      "all_packet_records_accounted": true,
+      "publisher_cc_packets": 3462,
+      "publisher_count_difference": 0
+    },
+    {
+      "capture_id": "12-u7_4",
+      "audit": {
+        "bytes": 50144,
+        "sha256": "d2699ca8fb3b0c4038fcbf2b5b836d5a2e69b601805539138254d841f1c4418b",
+        "packet_records": 548,
+        "truncated_packet_records": 0,
+        "captured_packet_bytes": 31896,
+        "original_packet_bytes": 31896,
+        "linktypes": [
+          1
+        ],
+        "block_types": {
+          "1": 1,
+          "5": 1,
+          "6": 548,
+          "168627466": 1
+        }
+      },
+      "exported_packets": 548,
+      "all_packet_records_accounted": true,
+      "publisher_cc_packets": 548,
+      "publisher_count_difference": 0
+    },
+    {
+      "capture_id": "13-u8_4",
+      "audit": {
+        "bytes": 391052,
+        "sha256": "88a7f8db12116b4340e199809d59ecca12df8967e015ee97fa45fabe1efeb32e",
+        "packet_records": 4300,
+        "truncated_packet_records": 0,
+        "captured_packet_bytes": 250484,
+        "original_packet_bytes": 250484,
+        "linktypes": [
+          1
+        ],
+        "block_types": {
+          "1": 1,
+          "5": 1,
+          "6": 4300,
+          "168627466": 1
+        }
+      },
+      "exported_packets": 4300,
+      "all_packet_records_accounted": true,
+      "publisher_cc_packets": 4300,
+      "publisher_count_difference": 0
+    },
+    {
+      "capture_id": "14-u9",
+      "audit": {
+        "bytes": 624228,
+        "sha256": "f80d6ae12ea585cf0ef7c13b3b95b1b7924763fc2e42b4d07e4056780b09e5ba",
+        "packet_records": 6851,
+        "truncated_packet_records": 0,
+        "captured_packet_bytes": 400417,
+        "original_packet_bytes": 400417,
+        "linktypes": [
+          1
+        ],
+        "block_types": {
+          "1": 1,
+          "5": 1,
+          "6": 6851,
+          "168627466": 1
+        }
+      },
+      "exported_packets": 6851,
+      "all_packet_records_accounted": true,
+      "publisher_cc_packets": 6851,
+      "publisher_count_difference": 0
+    },
+    {
+      "capture_id": "15-u10",
+      "audit": {
+        "bytes": 5982472,
+        "sha256": "7da43ca0bc7228218ae070b37cdfa880fe6dcf4914150ae4e97c8354f2caf8d5",
+        "packet_records": 50138,
+        "truncated_packet_records": 0,
+        "captured_packet_bytes": 4355583,
+        "original_packet_bytes": 4355583,
+        "linktypes": [
+          1
+        ],
+        "block_types": {
+          "1": 1,
+          "5": 1,
+          "6": 50138,
+          "168627466": 1
+        }
+      },
+      "exported_packets": 50138,
+      "all_packet_records_accounted": true,
+      "publisher_cc_packets": 50138,
+      "publisher_count_difference": 0
+    },
+    {
+      "capture_id": "16-u11",
+      "audit": {
+        "bytes": 2249520,
+        "sha256": "470edbcdf359e88201a323ea31d81bfc940992092e7d713a46603b51686c3ff4",
+        "packet_records": 21368,
+        "truncated_packet_records": 0,
+        "captured_packet_bytes": 1526038,
+        "original_packet_bytes": 1526038,
+        "linktypes": [
+          1
+        ],
+        "block_types": {
+          "1": 1,
+          "5": 1,
+          "6": 21368,
+          "168627466": 1
+        }
+      },
+      "exported_packets": 21368,
+      "all_packet_records_accounted": true,
+      "publisher_cc_packets": 21368,
+      "publisher_count_difference": 0
+    },
+    {
+      "capture_id": "17-u10_3",
+      "audit": {
+        "bytes": 1003840,
+        "sha256": "851cca8e08ebef360e568f45681eed5fb7ea4d96cfb5c462f1e162b830c278e7",
+        "packet_records": 10858,
+        "truncated_packet_records": 0,
+        "captured_packet_bytes": 647662,
+        "original_packet_bytes": 647662,
+        "linktypes": [
+          1
+        ],
+        "block_types": {
+          "1": 1,
+          "5": 1,
+          "6": 10858,
+          "168627466": 1
+        }
+      },
+      "exported_packets": 10858,
+      "all_packet_records_accounted": true,
+      "publisher_cc_packets": 10858,
+      "publisher_count_difference": 0
+    },
+    {
+      "capture_id": "18-u11_2",
+      "audit": {
+        "bytes": 2569504,
+        "sha256": "69e4c719ca0c58f559f7736904dd037cb0aacaf426b096db76a3758dfa256896",
+        "packet_records": 28078,
+        "truncated_packet_records": 0,
+        "captured_packet_bytes": 1653234,
+        "original_packet_bytes": 1653234,
+        "linktypes": [
+          1
+        ],
+        "block_types": {
+          "1": 1,
+          "5": 1,
+          "6": 28078,
+          "168627466": 1
+        }
+      },
+      "exported_packets": 28078,
+      "all_packet_records_accounted": true,
+      "publisher_cc_packets": 28078,
+      "publisher_count_difference": 0
+    },
+    {
+      "capture_id": "19-u11_3",
+      "audit": {
+        "bytes": 1360920,
+        "sha256": "b8335f8b5c012ec0ecc02f6b54ccb46d3b8d6a60ed7019ff1e87c6edfa298c2e",
+        "packet_records": 14695,
+        "truncated_packet_records": 0,
+        "captured_packet_bytes": 878584,
+        "original_packet_bytes": 878584,
+        "linktypes": [
+          1
+        ],
+        "block_types": {
+          "1": 1,
+          "5": 1,
+          "6": 14695,
+          "168627466": 1
+        }
+      },
+      "exported_packets": 14695,
+      "all_packet_records_accounted": true,
+      "publisher_cc_packets": 14695,
+      "publisher_count_difference": 0
+    },
+    {
+      "capture_id": "20-u9_4",
+      "audit": {
+        "bytes": 337272,
+        "sha256": "836f1caf839b236f6962a3850041cf06547da19ec0a2eb14fe973670978d86fb",
+        "packet_records": 3738,
+        "truncated_packet_records": 0,
+        "captured_packet_bytes": 213555,
+        "original_packet_bytes": 213555,
+        "linktypes": [
+          1
+        ],
+        "block_types": {
+          "1": 1,
+          "5": 1,
+          "6": 3738,
+          "168627466": 1
+        }
+      },
+      "exported_packets": 3738,
+      "all_packet_records_accounted": true,
+      "publisher_cc_packets": 3738,
+      "publisher_count_difference": 0
+    },
+    {
+      "capture_id": "21-u10_4",
+      "audit": {
+        "bytes": 7022388,
+        "sha256": "3217d70d1d90ef32c83cc060e22e1420fef07689d949bc0cf351febe25ef5d63",
+        "packet_records": 77691,
+        "truncated_packet_records": 0,
+        "captured_packet_bytes": 4494775,
+        "original_packet_bytes": 4494775,
+        "linktypes": [
+          1
+        ],
+        "block_types": {
+          "1": 1,
+          "5": 1,
+          "6": 77691,
+          "168627466": 1
+        }
+      },
+      "exported_packets": 77691,
+      "all_packet_records_accounted": true,
+      "publisher_cc_packets": 77691,
+      "publisher_count_difference": 0
+    },
+    {
+      "capture_id": "22-u11_5",
+      "audit": {
+        "bytes": 961568,
+        "sha256": "04461da9df37eaefd62c9c64a9d03e46afc77652b07ea5ed593d295e850dda4f",
+        "packet_records": 10640,
+        "truncated_packet_records": 0,
+        "captured_packet_bytes": 610080,
+        "original_packet_bytes": 610080,
+        "linktypes": [
+          1
+        ],
+        "block_types": {
+          "1": 1,
+          "5": 1,
+          "6": 10640,
+          "168627466": 1
+        }
+      },
+      "exported_packets": 10640,
+      "all_packet_records_accounted": true,
+      "publisher_cc_packets": 10640,
+      "publisher_count_difference": 0
+    },
+    {
+      "capture_id": "23-u12_5",
+      "audit": {
+        "bytes": 89376,
+        "sha256": "5f0430b61351680ab7c5bbe2a3e2576b5a1c0624eea908b6d83c7b7f634729ac",
+        "packet_records": 986,
+        "truncated_packet_records": 0,
+        "captured_packet_bytes": 56465,
+        "original_packet_bytes": 56465,
+        "linktypes": [
+          1
+        ],
+        "block_types": {
+          "1": 1,
+          "5": 1,
+          "6": 986,
+          "168627466": 1
+        }
+      },
+      "exported_packets": 986,
+      "all_packet_records_accounted": true,
+      "publisher_cc_packets": 987,
+      "publisher_count_difference": -1
+    },
+    {
+      "capture_id": "24-u12_6",
+      "audit": {
+        "bytes": 3280740,
+        "sha256": "243c49dd5a6174e67ba860114c8465ef3a8c0843fbed0592c687c37f5231e69c",
+        "packet_records": 36415,
+        "truncated_packet_records": 0,
+        "captured_packet_bytes": 2096510,
+        "original_packet_bytes": 2096510,
+        "linktypes": [
+          1
+        ],
+        "block_types": {
+          "1": 1,
+          "5": 1,
+          "6": 36415,
+          "168627466": 1
+        }
+      },
+      "exported_packets": 36415,
+      "all_packet_records_accounted": true,
+      "publisher_cc_packets": 36415,
+      "publisher_count_difference": 0
+    },
+    {
+      "capture_id": "25-u9_7",
+      "audit": {
+        "bytes": 2570508,
+        "sha256": "e1c29aa31ab052e736a15297a3281b8bf0174efb800b97a6157b95c05b174c4e",
+        "packet_records": 15952,
+        "truncated_packet_records": 0,
+        "captured_packet_bytes": 2041108,
+        "original_packet_bytes": 2041108,
+        "linktypes": [
+          1
+        ],
+        "block_types": {
+          "1": 1,
+          "5": 1,
+          "6": 15952,
+          "168627466": 1
+        }
+      },
+      "exported_packets": 15952,
+      "all_packet_records_accounted": true,
+      "publisher_cc_packets": 156215,
+      "publisher_count_difference": -140263
+    },
+    {
+      "capture_id": "26-u10_7",
+      "audit": {
+        "bytes": 906608,
+        "sha256": "15605cafecddd305c9ddf7fa1966fce31147b7b7115c629d932b5b73ee8d5507",
+        "packet_records": 9892,
+        "truncated_packet_records": 0,
+        "captured_packet_bytes": 582708,
+        "original_packet_bytes": 582708,
+        "linktypes": [
+          1
+        ],
+        "block_types": {
+          "1": 1,
+          "5": 1,
+          "6": 9892,
+          "168627466": 1
+        }
+      },
+      "exported_packets": 9892,
+      "all_packet_records_accounted": true,
+      "publisher_cc_packets": 9892,
+      "publisher_count_difference": 0
+    },
+    {
+      "capture_id": "27-u12_7",
+      "audit": {
+        "bytes": 35524,
+        "sha256": "1212271fef783b5fb7abf6bf178f3d3a6dd6d37fbd224e3a2eaa485469e99592",
+        "packet_records": 388,
+        "truncated_packet_records": 0,
+        "captured_packet_bytes": 22525,
+        "original_packet_bytes": 22525,
+        "linktypes": [
+          1
+        ],
+        "block_types": {
+          "1": 1,
+          "5": 1,
+          "6": 388,
+          "168627466": 1
+        }
+      },
+      "exported_packets": 388,
+      "all_packet_records_accounted": true,
+      "publisher_cc_packets": 338,
+      "publisher_count_difference": 50
+    },
+    {
+      "capture_id": "28-u9_8",
+      "audit": {
+        "bytes": 4886604,
+        "sha256": "f0d39615f6dcc38ded95325256d83d8a2314c745e54f269bb9d7a3d3232b89f1",
+        "packet_records": 53901,
+        "truncated_packet_records": 0,
+        "captured_packet_bytes": 3112495,
+        "original_packet_bytes": 3112495,
+        "linktypes": [
+          1
+        ],
+        "block_types": {
+          "1": 1,
+          "5": 1,
+          "6": 53901,
+          "168627466": 1
+        }
+      },
+      "exported_packets": 53901,
+      "all_packet_records_accounted": true,
+      "publisher_cc_packets": 53901,
+      "publisher_count_difference": 0
+    },
+    {
+      "capture_id": "29-u10_8",
+      "audit": {
+        "bytes": 2365552,
+        "sha256": "c6103da56010fd21b822b7c7431e4a68aaa1527fc2689f511a2f42eb1cfe358d",
+        "packet_records": 26103,
+        "truncated_packet_records": 0,
+        "captured_packet_bytes": 1514826,
+        "original_packet_bytes": 1514826,
+        "linktypes": [
+          1
+        ],
+        "block_types": {
+          "1": 1,
+          "5": 1,
+          "6": 26103,
+          "168627466": 1
+        }
+      },
+      "exported_packets": 26103,
+      "all_packet_records_accounted": true,
+      "publisher_cc_packets": 26103,
+      "publisher_count_difference": 0
+    },
+    {
+      "capture_id": "30-u11_8",
+      "audit": {
+        "bytes": 27300,
+        "sha256": "b5873a7d0e163a3019f538f9cdd916ca15767e5098e8895b95bde1a6ca8ed262",
+        "packet_records": 298,
+        "truncated_packet_records": 0,
+        "captured_packet_bytes": 17095,
+        "original_packet_bytes": 17095,
+        "linktypes": [
+          1
+        ],
+        "block_types": {
+          "1": 1,
+          "5": 1,
+          "6": 298,
+          "168627466": 1
+        }
+      },
+      "exported_packets": 298,
+      "all_packet_records_accounted": true,
+      "publisher_cc_packets": 298,
+      "publisher_count_difference": 0
+    },
+    {
+      "capture_id": "31-u9_9",
+      "audit": {
+        "bytes": 696688,
+        "sha256": "00292f34433dc388baff5851323451f748c84448ec3bd05fb3e22e47367d30c2",
+        "packet_records": 7697,
+        "truncated_packet_records": 0,
+        "captured_packet_bytes": 442185,
+        "original_packet_bytes": 442185,
+        "linktypes": [
+          1
+        ],
+        "block_types": {
+          "1": 1,
+          "5": 1,
+          "6": 7697,
+          "168627466": 1
+        }
+      },
+      "exported_packets": 7697,
+      "all_packet_records_accounted": true,
+      "publisher_cc_packets": 7697,
+      "publisher_count_difference": 0
+    },
+    {
+      "capture_id": "32-u12_9",
+      "audit": {
+        "bytes": 1435356,
+        "sha256": "ad5114fdefd42d389ada8154037ea097ac66e0443504f4591f58f921d7732d92",
+        "packet_records": 15634,
+        "truncated_packet_records": 0,
+        "captured_packet_bytes": 925187,
+        "original_packet_bytes": 925187,
+        "linktypes": [
+          1
+        ],
+        "block_types": {
+          "1": 1,
+          "5": 1,
+          "6": 15634,
+          "168627466": 1
+        }
+      },
+      "exported_packets": 15634,
+      "all_packet_records_accounted": true,
+      "publisher_cc_packets": 15634,
+      "publisher_count_difference": 0
+    }
+  ],
+  "all_released_packet_records_accounted": true,
+  "packet_records": 972529,
+  "publisher_cc_packets": 1112743,
+  "resources": {
+    "seconds": 2.6635892000049353,
+    "sampled_rss_mib": 30.640625
+  },
+  "scope": "Post-score byte/block accounting diagnostic on exact frozen unsplit releases. No endpoint relabeling, checksum/payload validation, score change or inference of missing publisher packets."
+}

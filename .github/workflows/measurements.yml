@@ -3,6 +3,14 @@ name: Offline flow measurement lab
 on:
   workflow_dispatch:
     inputs:
+      kitsune_audit:
+        description: 'Reacquire pinned Kitsune development originals and audit packet/label coverage; no training'
+        type: boolean
+        default: false
+      cesnet_recall:
+        description: 'Prepare frozen independent C&C test measurements; encrypted numeric transfer, no fitting'
+        type: boolean
+        default: false
       context_study:
         description: 'Run registered family-aware models with causal context and private encrypted retention'
         type: boolean
@@ -94,6 +102,12 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  kitsune-audit:
+    if: github.event_name == 'workflow_dispatch' && inputs.kitsune_audit
+    uses: ./.github/workflows/kitsune.yml
+  cesnet-recall:
+    if: github.event_name == 'workflow_dispatch' && inputs.cesnet_recall
+    uses: ./.github/workflows/cesnet.yml
   context-study:
     if: github.event_name == 'workflow_dispatch' && inputs.context_study
     uses: ./.github/workflows/context-study.yml

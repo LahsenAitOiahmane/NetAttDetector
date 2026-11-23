@@ -97,6 +97,8 @@ def _iter_meter_rows(path, max_nflows, max_pcap_bytes, fields, statistical, *, u
         raise ValueError(
             "The verified NFStream adapter runs on Linux. Use the offline GitHub measurement workflow; no Windows capture driver is installed by this project."
         )
+    if platform.python_implementation() != "CPython":
+        raise ValueError("The pinned NFStream measurement adapter requires CPython on Linux.")
     try:
         from nfstream import NFStreamer
     except ImportError as error:

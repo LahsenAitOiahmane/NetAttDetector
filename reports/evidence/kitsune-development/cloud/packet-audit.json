@@ -1,0 +1,94 @@
+{
+  "capture_format": "pcapng-enhanced",
+  "pcapng_structure": {
+    "bytes": 75075844,
+    "sha256": "3bebe40dbf24546be36880f89908e315f8f858c8256aa00de0b3bbab8c3c69e6",
+    "packet_records": 764137,
+    "truncated_packet_records": 1550,
+    "captured_packet_bytes": 50313120,
+    "original_packet_bytes": 50633584,
+    "linktypes": [
+      1
+    ],
+    "block_types": {
+      "1": 1,
+      "6": 764137,
+      "168627466": 1
+    }
+  },
+  "packets": 764137,
+  "labels": 764137,
+  "binary_class_counts": {
+    "0": 121621,
+    "1": 642516
+  },
+  "class_counts_by_packet_status": {
+    "capture_truncated": {
+      "0": 829,
+      "1": 721
+    },
+    "decoded_tcp_udp": {
+      "0": 84088,
+      "1": 68583
+    },
+    "non_ip_ethernet": {
+      "0": 8746,
+      "1": 556455
+    },
+    "unsupported_transport": {
+      "0": 27958,
+      "1": 16757
+    }
+  },
+  "timestamp_regressions": 173,
+  "label_transitions": 1,
+  "first_attack_packet_ordinal": 121622,
+  "last_benign_packet_ordinal": 121621,
+  "single_benign_prefix_then_attack_suffix": true,
+  "time_ranges_by_label": {
+    "0": {
+      "minimum_ns": 1540446382933899000,
+      "maximum_ns": 1540450841432895000
+    },
+    "1": {
+      "minimum_ns": 1540450841473288000,
+      "maximum_ns": 1540453519842464000
+    }
+  },
+  "packet_label_cardinality_verified": true,
+  "native_flow_labels_authorized": false,
+  "scope": "Structural ordinal alignment under publisher one-label-per-packet documentation; not independent validation of attack truth, checksums/payloads or native flow mapping. Truncated/unsupported packet labels are retained in coverage counts.",
+  "profile_id": "kitsune-mirai-development-v1",
+  "config_sha256": "1673ba45d40fb345c8a9ec7e24a480f263926c97374897b1feeda61ea42efc9e",
+  "acquisition_sha256": "47f6e684bf755455198a8064055698b06261f7f69812a55f43f79e32e5f9291a",
+  "input_files": [
+    {
+      "bytes": 75075844,
+      "sha256": "3bebe40dbf24546be36880f89908e315f8f858c8256aa00de0b3bbab8c3c69e6",
+      "container": "raw",
+      "publisher_checksum_verified": false,
+      "id": "pcap",
+      "source_name": "Mirai Botnet/Mirai_pcap.pcap",
+      "local_name": "Mirai_pcap.pcap",
+      "transfer_bytes": 75075844,
+      "transfer_sha256": "3bebe40dbf24546be36880f89908e315f8f858c8256aa00de0b3bbab8c3c69e6"
+    },
+    {
+      "bytes": 2292409,
+      "sha256": "190d5cc70c35e11000f98f5e508d0d5e50eed82c0ea3acd1abefda8d18a95817",
+      "container": "raw",
+      "publisher_checksum_verified": false,
+      "id": "labels",
+      "source_name": "Mirai Botnet/mirai_labels.csv",
+      "local_name": "mirai_labels.csv",
+      "transfer_bytes": 2292409,
+      "transfer_sha256": "190d5cc70c35e11000f98f5e508d0d5e50eed82c0ea3acd1abefda8d18a95817"
+    }
+  ],
+  "resources": {
+    "seconds": 6.373676402000001,
+    "sampled_rss_mib": 23.4453125
+  },
+  "training_authorized": false,
+  "deployment_authorized": false
+}
