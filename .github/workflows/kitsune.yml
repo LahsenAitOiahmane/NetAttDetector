@@ -2,7 +2,16 @@ name: Kitsune development packet audit
 
 on:
   workflow_call:
+    inputs:
+      native:
+        type: boolean
+        default: false
   workflow_dispatch:
+    inputs:
+      native:
+        description: 'Also validate registered candidate phase labels and complete native measurement parity'
+        type: boolean
+        default: false
 
 permissions:
   contents: read
@@ -22,10 +31,12 @@ jobs:
         with:
           version: '0.12.17'
           enable-cache: true
-      - run: uv sync --frozen --extra dev
-      - run: uv run --no-sync pytest tests/test_kitsune.py tests/test_pcapng_audit.py tests/test_packet_evidence.py
+      - run: uv sync --frozen --extra dev --extra measurement
+      - run: uv run --no-sync pytest tests/test_kitsune.py tests/test_kitsune_native.py tests/test_pcapng_audit.py tests/test_packet_evidence.py
       - run: uv run --no-sync python scripts/research/prepare_kitsune.py acquire
       - run: uv run --no-sync python scripts/research/prepare_kitsune.py audit
+      - if: ${{ inputs.native }}
+        run: uv run --no-sync python scripts/research/prepare_kitsune_native.py
       - name: Retain aggregate source and packet-label evidence only
         if: always()
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
@@ -35,4 +46,7 @@ jobs:
             data/raw/kitsune-mirai/acquisition.json
             data/raw/kitsune-mirai/progress.json
             artifacts/kitsune-packet-audit.json
+            data/processed/kitsune-native/fixture.json
+            data/processed/kitsune-native/packet-audit.json
+            data/processed/kitsune-native/manifest.json
           retention-days: 30

@@ -3,6 +3,10 @@ name: Offline flow measurement lab
 on:
   workflow_dispatch:
     inputs:
+      kitsune_native:
+        description: 'Measure registered Kitsune native callback labels and unchanged context values; no fitting'
+        type: boolean
+        default: false
       kitsune_audit:
         description: 'Reacquire pinned Kitsune development originals and audit packet/label coverage; no training'
         type: boolean
@@ -102,6 +106,11 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  kitsune-native:
+    if: github.event_name == 'workflow_dispatch' && inputs.kitsune_native
+    uses: ./.github/workflows/kitsune.yml
+    with:
+      native: true
   kitsune-audit:
     if: github.event_name == 'workflow_dispatch' && inputs.kitsune_audit
     uses: ./.github/workflows/kitsune.yml
@@ -164,7 +173,7 @@ jobs:
           version: '0.12.17'
           enable-cache: true
       - run: uv sync --frozen --extra dev --extra measurement
-      - run: uv run --no-sync pytest tests/test_measurement.py tests/test_statistical.py tests/test_causal_context.py
+      - run: uv run --no-sync pytest tests/test_measurement.py tests/test_statistical.py tests/test_causal_context.py tests/test_kitsune_native.py
       - run: uv run --no-sync python scripts/data/make_pcap_fixtures.py --check
       - run: uv run --no-sync netatt export-pcap --pcap tests/fixtures/pcap/core.pcap --output artifacts/measurements/export.json
       - run: uv run --no-sync netatt verify-measurements --export artifacts/measurements/export.json --expected tests/fixtures/pcap/expected.json --output artifacts/measurements/verification.json
