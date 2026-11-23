@@ -571,3 +571,88 @@ def evaluate(measurements, model_path, output, config_path=CONFIG):
     }
     write_json(output / "evaluation.json", result)
     return result
+
+
+def seal_measurements(
+    directory, output, recipient="configs/security/model-recipient.json", config_path=CONFIG
+):
+    """Only recipient-encrypted numeric measurements leave the private Linux runner."""
+    import io
+    import zipfile
+
+    from netattdetector.private_artifacts import encode, seal_payload
+
+    policy = config(config_path)
+    manifest = verify_database(directory, policy, config_path)
+    compressed = io.BytesIO()
+    with zipfile.ZipFile(
+        compressed, "w", compression=zipfile.ZIP_DEFLATED, compresslevel=6
+    ) as archive:
+        archive.write(Path(directory) / "flows.sqlite", "flows.sqlite")
+    if compressed.tell() > 64 * 2**20:
+        raise ValueError("Encrypted measurement archive exceeds its compressed byte bound.")
+    return seal_payload(
+        {
+            "format": "cesnet-numeric-transfer-v1",
+            "manifest": manifest,
+            "sqlite_zip": encode(compressed.getvalue()),
+        },
+        recipient,
+        output,
+        max_payload=96 * 2**20,
+    )
+
+
+def recover_measurements(envelope, private_key, trusted_manifest, output):
+    import io
+    import zipfile
+
+    from netattdetector.private_artifacts import decode, protect_directory, recover_payload
+
+    manifest = json.loads(Path(trusted_manifest).read_text(encoding="utf-8"))
+    if not 0 < manifest["database"]["bytes"] <= MAX_DATABASE:
+        raise ValueError("Trusted measurement database exceeds its bound.")
+    payload = recover_payload(envelope, private_key, max_payload=96 * 2**20)
+    if (
+        set(payload) != {"format", "manifest", "sqlite_zip"}
+        or payload["format"] != "cesnet-numeric-transfer-v1"
+        or payload["manifest"] != manifest
+    ):
+        raise ValueError(
+            "Recovered measurement metadata differs from the separately trusted manifest."
+        )
+    raw = decode(payload["sqlite_zip"])
+    if len(raw) > 64 * 2**20:
+        raise ValueError("Compressed measurement payload exceeds its bound.")
+    with zipfile.ZipFile(io.BytesIO(raw)) as archive:
+        entries = archive.infolist()
+        if (
+            len(entries) != 1
+            or entries[0].filename != "flows.sqlite"
+            or entries[0].file_size != manifest["database"]["bytes"]
+        ):
+            raise ValueError("Measurement payload does not contain the exact frozen SQLite member.")
+        output = protect_directory(output)
+        reserve_space(output, entries[0].file_size)
+        digest, count = hashlib.sha256(), 0
+        with (
+            archive.open(entries[0]) as source,
+            (output / "flows.sqlite").open("xb") as destination,
+        ):
+            while chunk := source.read(65536):
+                count += len(chunk)
+                if count > manifest["database"]["bytes"]:
+                    raise ValueError("Measurement decompression exceeds the frozen bound.")
+                digest.update(chunk)
+                destination.write(chunk)
+        if (
+            count != manifest["database"]["bytes"]
+            or digest.hexdigest() != manifest["database"]["sha256"]
+        ):
+            raise ValueError("Recovered database differs from the separately trusted hash.")
+    write_json(output / "manifest.json", manifest)
+    return {
+        "database_sha256": digest.hexdigest(),
+        "rows": manifest["rows"],
+        "verified_before_sqlite_open": True,
+    }

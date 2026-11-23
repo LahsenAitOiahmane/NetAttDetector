@@ -1,6 +1,7 @@
 import copy
 import hashlib
 import io
+import json
 import sqlite3
 import tarfile
 
@@ -304,3 +305,72 @@ def test_evaluation_uses_frozen_hash_before_loading_and_never_calls_fit(
     monkeypatch.setattr(joblib, "load", lambda *_: pytest.fail("Must check hash before load"))
     with pytest.raises(ValueError, match="freeze"):
         cesnet.evaluate(directory, path, tmp_path / "other-evaluation", policy_path)
+
+
+def test_encrypted_numeric_transfer_recovers_exact_database_with_trusted_manifest(
+    synthetic_measurements, tmp_path
+):
+    pytest.importorskip("cryptography")
+    from netattdetector.private_artifacts import generate_recipient
+
+    directory, _, policy_path, _ = synthetic_measurements
+    recipient = tmp_path / "recipient.json"
+    generate_recipient(tmp_path / "keys", recipient)
+    envelope = tmp_path / "measurements.nadenc"
+    cesnet.seal_measurements(directory, envelope, recipient, policy_path)
+    recovered = tmp_path / "recovered"
+    result = cesnet.recover_measurements(
+        envelope, tmp_path / "keys/recipient-v1.key", directory / "manifest.json", recovered
+    )
+    assert result["rows"] == 90 and result["verified_before_sqlite_open"]
+    assert (recovered / "flows.sqlite").read_bytes() == (directory / "flows.sqlite").read_bytes()
+    assert b"SQLite format" not in envelope.read_bytes()
+    with pytest.raises(FileExistsError):
+        cesnet.recover_measurements(
+            envelope, tmp_path / "keys/recipient-v1.key", directory / "manifest.json", recovered
+        )
+
+
+@pytest.mark.parametrize("corruption", ["path", "hash", "manifest"])
+def test_numeric_payload_rejects_unsafe_member_wrong_hash_and_untrusted_metadata(
+    synthetic_measurements, tmp_path, monkeypatch, corruption
+):
+    pytest.importorskip("cryptography")
+    import zipfile
+
+    from netattdetector.private_artifacts import encode, generate_recipient, seal_payload
+
+    directory, _, _, _ = synthetic_measurements
+    manifest = json.loads((directory / "manifest.json").read_text())
+    raw = bytearray((directory / "flows.sqlite").read_bytes())
+    if corruption == "hash":
+        raw[-1] ^= 1
+    inner = copy.deepcopy(manifest)
+    if corruption == "manifest":
+        inner["rows"] += 1
+    compressed = io.BytesIO()
+    with zipfile.ZipFile(compressed, "w", compression=zipfile.ZIP_DEFLATED) as archive:
+        archive.writestr("../flows.sqlite" if corruption == "path" else "flows.sqlite", raw)
+    recipient = tmp_path / "recipient.json"
+    generate_recipient(tmp_path / "keys", recipient)
+    envelope = tmp_path / "forged.nadenc"
+    seal_payload(
+        {
+            "format": "cesnet-numeric-transfer-v1",
+            "manifest": inner,
+            "sqlite_zip": encode(compressed.getvalue()),
+        },
+        recipient,
+        envelope,
+        max_payload=96 * 2**20,
+    )
+    monkeypatch.setattr(
+        sqlite3, "connect", lambda *_a, **_kw: pytest.fail("Must verify before SQLite opening")
+    )
+    with pytest.raises(ValueError):
+        cesnet.recover_measurements(
+            envelope,
+            tmp_path / "keys/recipient-v1.key",
+            directory / "manifest.json",
+            tmp_path / "recovered",
+        )

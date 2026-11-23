@@ -43,6 +43,18 @@ from history based on labels. Verify235 fixture values locally before real expor
 numeric SQLite rows, no endpoint addresses in retained features. Bound score batches to1,024.
 Report wall time/50ms sampled tree RSS and exporter versions; no hard-memory or live-load claim.
 
+Local Kali commands subsequently failed to launch with filesystem I/O errors before fixture
+or measurement execution. Do not repair or restart the user's environment as part of this test.
+Use the tested GitHub Linux runner instead. Extend private transfer narrowly to recipient-encrypted
+numeric SQLite measurements, containing no raw endpoint values, payloads or Zeek UIDs. Compress
+at most64MiB into a versioned96MiB bounded encrypted JSON envelope using the existing public key;
+the private key stays local. Plaintext real rows are never uploaded. The separately committed
+aggregate measurement manifest and SQLite SHA must match **before** any recovered database is
+opened. Decompression permits exactly one `flows.sqlite` member, with its frozen byte count
+and512MiB limit, into a fresh owner-restricted ignored directory. Publish only aggregate results
+and retain ciphertext privately for reproduction. This exception permits encrypted private data
+transfer for this study; the model-only transfer protocol retains its original payload boundary.
+
 ## Labels, units and uncertainty
 
 The publisher describes raw botnet C&C traffic only. Use its registered C&C IP/port in either
