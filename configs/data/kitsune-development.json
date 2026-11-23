@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "source_id": "kitsune",
+  "profile_id": "kitsune-mirai-development-v1",
+  "registered_date": "2026-11-23",
+  "role": "development",
+  "publisher": "https://archive.ics.uci.edu/dataset/516/kitsune+network+attack+dataset",
+  "author_mirror": "https://www.kaggle.com/datasets/ymirsky/network-attack-dataset-kitsune",
+  "license_note": "UCI publisher record CC-BY-4.0. Retain author/paper/record attribution; source code MIT does not relicense data.",
+  "files": [
+    {
+      "id": "pcap",
+      "name": "Mirai Botnet/Mirai_pcap.pcap",
+      "expected_uncompressed_bytes": 75075844,
+      "maximum_transfer_bytes": 100663296
+    },
+    {
+      "id": "labels",
+      "name": "Mirai Botnet/mirai_labels.csv",
+      "expected_uncompressed_bytes": 2292409,
+      "maximum_transfer_bytes": 4194304
+    }
+  ],
+  "maximum_total_uncompressed_bytes": 100663296,
+  "disk_reserve_bytes": 2147483648,
+  "maximum_label_rows": 1000000,
+  "training_authorized": false,
+  "deployment_authorized": false,
+  "purpose": "Acquire complete bounded originals, verify CRC/size and then pin SHA before an independent packet-count/label audit. No 1.37 GB feature CSV, whole dataset archive, malware binaries or live traffic."
+}
